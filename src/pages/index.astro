@@ -1,11 +1,84 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Hotel Dorado · Inicio">
+    <!-- Hero principal -->
+    <section class="hero">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h2>Bienvenido al Hostal Acuarius</h2>
+                <p>
+                    Vive una experiencia de lujo y confort en el corazón de la
+                    ciudad. Elegancia, exclusividad y hospitalidad en un solo
+                    lugar.
+                </p>
+                <a href="/habitaciones" class="btn">Reservar ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección habitaciones destacadas -->
+    <section class="container rooms">
+        <h3 class="section-title">Nuestras Habitaciones</h3>
+        <div class="room-grid">
+            <div class="room-card">
+                <img
+                    src="/images/habitaciones/habitacion1.jpg"
+                    alt="Habitación simple"
+                />
+                <h4>Habitación Simple</h4>
+                <p>Perfecta para descansar cómodamente con todo lo esencial.</p>
+                <a href="/habitaciones" class="btn">Ver más</a>
+            </div>
+
+            <div class="room-card">
+                <img
+                    src="/images/habitaciones/habitacion2.jpg"
+                    alt="Habitación doble"
+                />
+                <h4>Habitación Doble</h4>
+                <p>Espacio y comodidad para compartir una experiencia única.</p>
+                <a href="/habitaciones" class="btn">Ver más</a>
+            </div>
+
+            <div class="room-card">
+                <img
+                    src="/images/habitaciones/habitacion3.jpg"
+                    alt="Suite premium"
+                />
+                <h4>Suite Premium</h4>
+                <p>Lujo y elegancia con detalles exclusivos para tu confort.</p>
+                <a href="/habitaciones" class="btn">Ver más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección servicios -->
+    <section class="container services">
+        <h3 class="section-title">Servicios Exclusivos</h3>
+        <div class="services-grid">
+            <div class="service-card">
+                <h4>Desayuno Buffet</h4>
+                <p>Incluido con tu estadía para empezar el día con energía.</p>
+            </div>
+            <div class="service-card">
+                <h4>Transporte</h4>
+                <p>Traslados desde y hacia el aeropuerto bajo solicitud.</p>
+            </div>
+            <div class="service-card">
+                <h4>Tours Personalizados</h4>
+                <p>Explora la ciudad y alrededores con guías expertos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección contacto -->
+    <section class="contact">
+        <h3 class="section-title">Contáctanos</h3>
+        <p>📍 Av. Principal #123, Puno - Perú</p>
+        <p>📞 +51 987 654 321</p>
+        <p>✉️ contacto@hostalacuarius.com</p>
+        <a href="/contacto" class="btn">Formulario de Contacto</a>
+    </section>
 </Layout>
