@@ -1,30 +1,114 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../styles/index.css";
 ---
 
-<Layout title="Hotel Dorado · Inicio">
-    <!-- Hero principal -->
+<Layout title="Hostal Aquarius · Inicio">
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-overlay">
             <div class="hero-content">
-                <h2>Bienvenido al Hostal Acuarius</h2>
+                <h2>Descubre Puno con Estilo</h2>
                 <p>
-                    Vive una experiencia de lujo y confort en el corazón de la
-                    ciudad. Elegancia, exclusividad y hospitalidad en un solo
-                    lugar.
+                    En Hostal Aquarius te espera una combinación única de
+                    confort, hospitalidad y la mejor ubicación para explorar el
+                    Lago Titicaca y la magia de los Andes.
                 </p>
-                <a href="/habitaciones" class="btn">Reservar ahora</a>
+                <a href="/habitaciones" class="btn">Reserva tu estadía</a>
             </div>
         </div>
     </section>
 
-    <!-- Sección habitaciones destacadas -->
-    <section class="container rooms">
+    <!-- Sección Sobre Nosotros -->
+    <section class="about container" id="about">
+        <!-- Header -->
+        <div class="about-header">
+            <h2 class="section-title">Hostal Acuarius</h2>
+            <p class="rating">⭐⭐⭐⭐ <span>(Puntuación: 4 de 5)</span></p>
+            <p class="about-text">
+                Habitaciones cómodas y acogedoras para todo tipo de viajeros.
+                Opciones con baño privado o compartido, garantizando limpieza,
+                seguridad y confort.
+            </p>
+        </div>
+
+        <!-- Fila 1: Ubicación -->
+        <div class="about-row location-header">
+            <div class="about-card location-card">
+                <i class="fas fa-map-marker-alt card-icon"></i>
+                <h3>Ubicación</h3>
+                <p>
+                    A solo una cuadra de la Plaza de Armas, cerca de
+                    restaurantes, bancos y casas de cambio. Acceso rápido al
+                    Lago Titicaca y puntos turísticos principales.
+                </p>
+            </div>
+            <div class="about-map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.373553158138!2d-70.0218803856587!3d-15.840221289031056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915cf1c8b6b2b9e5%3A0xabcdef1234567890!2sHostal%20Acuarius!5e0!3m2!1ses!2spe!4v1234567890123"
+                    width="100%"
+                    height="350"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <!-- Fila 2: Horario -->
+        <div class="about-row schedule-row">
+            <div class="about-card schedule-card">
+                <i class="fas fa-clock card-icon"></i>
+                <div class="schedule-info">
+                    <h3>Horario</h3>
+                    <ul>
+                        <li><strong>Check-In:</strong> 10:00 – 10:30 hrs.</li>
+                        <li><strong>Check-Out:</strong> 11:00 hrs.</li>
+                        <li><strong>Desayuno:</strong> 05:00 – 10:00 AM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fila 3: Servicios -->
+        <div class="about-row services-row">
+            <div class="service-card">
+                <i class="fas fa-wifi card-icon"></i>
+                <p>WiFi gratis</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-shower card-icon"></i>
+                <p>Agua caliente</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-utensils card-icon"></i>
+                <p>Desayuno incluido</p>
+            </div>
+        </div>
+
+        <div class="about-row services-row">
+            <div class="service-card">
+                <i class="fas fa-tv card-icon"></i>
+                <p>TV por cable</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-globe card-icon"></i>
+                <p>Agencia de viajes</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-car card-icon"></i>
+                <p>Cochera</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección habitaciones -->
+    <section class="container rooms" id="habitaciones">
         <h3 class="section-title">Nuestras Habitaciones</h3>
         <div class="room-grid">
             <div class="room-card">
                 <img
-                    src="/images/habitaciones/habitacion1.jpg"
+                    src="/images/habitaciones/habitacion1.webp"
                     alt="Habitación simple"
                 />
                 <h4>Habitación Simple</h4>
@@ -34,7 +118,7 @@ import Layout from "../layouts/Layout.astro";
 
             <div class="room-card">
                 <img
-                    src="/images/habitaciones/habitacion2.jpg"
+                    src="/images/habitaciones/habitacion2.webp"
                     alt="Habitación doble"
                 />
                 <h4>Habitación Doble</h4>
@@ -44,7 +128,7 @@ import Layout from "../layouts/Layout.astro";
 
             <div class="room-card">
                 <img
-                    src="/images/habitaciones/habitacion3.jpg"
+                    src="/images/habitaciones/habitacion3.webp"
                     alt="Suite premium"
                 />
                 <h4>Suite Premium</h4>
@@ -54,31 +138,59 @@ import Layout from "../layouts/Layout.astro";
         </div>
     </section>
 
-    <!-- Sección servicios -->
-    <section class="container services">
-        <h3 class="section-title">Servicios Exclusivos</h3>
-        <div class="services-grid">
-            <div class="service-card">
-                <h4>Desayuno Buffet</h4>
-                <p>Incluido con tu estadía para empezar el día con energía.</p>
+    <!-- Sección tours -->
+    <section class="container tours" id="tours">
+        <h3 class="section-title">Explora con Nosotros</h3>
+        <div class="tours-grid">
+            <div class="tour-card">
+                <img
+                    src="/images/tours/titicaca.webp"
+                    alt="Tour Lago Titicaca"
+                />
+                <h4>Tour Lago Titicaca</h4>
+                <p>
+                    Visita las islas flotantes de los Uros y Taquile en una
+                    experiencia inolvidable.
+                </p>
             </div>
-            <div class="service-card">
-                <h4>Transporte</h4>
-                <p>Traslados desde y hacia el aeropuerto bajo solicitud.</p>
+            <div class="tour-card">
+                <img
+                    src="/images/tours/sillustani.webp"
+                    alt="Chullpas de Sillustani"
+                />
+                <h4>Chullpas de Sillustani</h4>
+                <p>
+                    Descubre la historia preinca en un paisaje majestuoso junto
+                    a la laguna Umayo.
+                </p>
             </div>
-            <div class="service-card">
-                <h4>Tours Personalizados</h4>
-                <p>Explora la ciudad y alrededores con guías expertos.</p>
+            <div class="tour-card">
+                <img src="/images/tours/cusco.webp" alt="Excursión a Cusco" />
+                <h4>Excursión a Cusco</h4>
+                <p>
+                    Conecta Puno con la magia de Cusco y Machu Picchu en un
+                    viaje lleno de cultura.
+                </p>
             </div>
         </div>
     </section>
 
     <!-- Sección contacto -->
-    <section class="contact">
+    <section class="contact" id="contacto">
         <h3 class="section-title">Contáctanos</h3>
         <p>📍 Av. Principal #123, Puno - Perú</p>
         <p>📞 +51 987 654 321</p>
         <p>✉️ contacto@hostalacuarius.com</p>
         <a href="/contacto" class="btn">Formulario de Contacto</a>
     </section>
+
+    <!-- Botón flotante WhatsApp -->
+    <a
+        href="https://wa.me/51987654321"
+        class="whatsapp-float"
+        target="_blank"
+        rel="noopener"
+    >
+        <img src="/images/Whatsapp_logo.svg" alt="WhatsApp" />
+    </a>
 </Layout>

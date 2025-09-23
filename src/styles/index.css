@@ -1,0 +1,379 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Cormorant Garamond", serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: url("/images/hero.webp") center/cover no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 0; /* hero detrás del navbar */
+    margin: 0; /* eliminar cualquier margen */
+    padding: 0;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.5); /* oscurece la imagen */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    color: var(--color-text);
+    max-width: 700px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.2s ease forwards;
+}
+
+.hero-content h2 {
+    color: var(--color-gold);
+    font-family: "Numans", sans-serif; 
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;    
+    line-height: 1.1;       
+    font-size: 4rem;         
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    position: relative;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content p {
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn {
+    font-family: "Numans", sans-serif; 
+    display: inline-block;
+    background: transparent;
+    color: var(--color-gold);
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: relative;
+    transition: all 0.4s ease;
+    border: 2px solid var(--color-gold);
+    box-shadow: 0 0 0 rgba(0,0,0,0); /* sin sombra inicial */
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #d4af37, #f0c965);
+    color: #000;
+    border: 2px solid var(--color-gold);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    transform: translateY(-2px);
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.btn:hover::after {
+    opacity: 1;
+}
+
+/* About Section */
+.about {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #fff;
+}
+
+.about-header {
+    margin-bottom: 3rem;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+    color: #ddd;
+}
+
+.rating {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 1.5rem 0;
+    color: var(--color-gold);
+}
+
+/* Filas y tarjetas */
+.about-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.location-header {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+}
+
+.location-card {
+    grid-column: span 3;
+}
+
+/* Mapa ocupa 9/12 */
+.about-map {
+    grid-column: span 9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+.about-map iframe:hover {
+    transform: scale(1.01);
+}
+
+/* Horario ocupa 12/12 */
+.schedule-row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin-bottom: 2rem;
+}
+
+.schedule-card {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: flex-start;   /* icono alineado arriba */
+    gap: 1rem;                 /* espacio entre icono y texto */
+    justify-content: flex-start;
+    text-align: left;
+    width: 100%;               /* ocupar todo el ancho */
+    margin: 0;                 /* reset */
+    padding: 0;                /* reset */
+    box-sizing: border-box;    /* asegura que respete el ancho */
+}
+
+/* Icono */
+.schedule-card .card-icon {
+    font-size: 2.2rem;
+    color: var(--color-gold);
+    flex-shrink: 0; /* evita que el icono se achique */
+}
+
+/* Encabezado */
+.schedule-card h3 {
+    margin: 0 0 0.3rem 0;
+    font-size: 1.4rem;
+    color: var(--color-gold);
+}
+
+/* Lista */
+.schedule-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.schedule-card li {
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* Cards */
+.about-card, .service-card, .location-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2.5rem 2rem;   /* más padding interno */
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s, background 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box; /* evita que padding rompa el ancho */
+}
+
+.about-card:hover, .service-card:hover, .location-card:hover {
+    transform: translateY(-5px);
+    background: rgba(212, 175, 55, 0.15);
+}
+
+.card-icon {
+    font-size: 2rem;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+}
+
+/* Servicios en grid uniforme */
+.services-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Secciones */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--color-gold);
+}
+
+/* Habitaciones y tours (mismo estilo de cards) */
+.room-grid,
+.tours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.room-card,
+.tour-card {
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-card img,
+.tour-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    transition: transform 0.4s ease;
+}
+
+/* Hover efecto elegante */
+.room-card:hover,
+.tour-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+.room-card:hover img,
+.tour-card:hover img {
+    transform: scale(1.08);
+}
+
+/* Overlay dorado en hover */
+.room-card::after,
+.tour-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(212, 175, 55, 0.15);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 12px;
+}
+
+.room-card:hover::after,
+.tour-card:hover::after {
+    opacity: 1;
+}
+
+/* Servicios */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: #111;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card h4 {
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* Contacto */
+.contact {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #111;
+}
+
+.contact p {
+    margin: 0.5rem 0;
+}
+
+/* WhatsApp Float */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    border-radius: 50%; /* más limpio que 10% */
+    width: 55px; /* tamaño fijo del botón */
+    height: 55px;
+    display: flex; /* centrar el ícono */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.whatsapp-float img {
+    width: 30px; /* el ícono en sí */
+    height: 30px;
+}
+
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
