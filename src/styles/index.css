@@ -21,13 +21,16 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    z-index: 0; /* hero detrás del navbar */
-    margin: 0; /* eliminar cualquier margen */
+    z-index: 0;
+    /* hero detrás del navbar */
+    margin: 0;
+    /* eliminar cualquier margen */
     padding: 0;
 }
 
 .hero-overlay {
-    background: rgba(0, 0, 0, 0.5); /* oscurece la imagen */
+    background: rgba(0, 0, 0, 0.5);
+    /* oscurece la imagen */
     width: 100%;
     height: 100%;
     display: flex;
@@ -45,12 +48,12 @@ body {
 
 .hero-content h2 {
     color: var(--color-gold);
-    font-family: "Numans", sans-serif; 
+    font-family: "Numans", sans-serif;
     font-weight: 700;
     letter-spacing: 0.5px;
-    margin-bottom: 1rem;    
-    line-height: 1.1;       
-    font-size: 4rem;         
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    font-size: 4rem;
     font-size: clamp(2.5rem, 5vw, 4rem);
     position: relative;
 }
@@ -69,7 +72,7 @@ body {
 }
 
 .btn {
-    font-family: "Numans", sans-serif; 
+    font-family: "Numans", sans-serif;
     display: inline-block;
     background: transparent;
     color: var(--color-gold);
@@ -81,14 +84,15 @@ body {
     position: relative;
     transition: all 0.4s ease;
     border: 2px solid var(--color-gold);
-    box-shadow: 0 0 0 rgba(0,0,0,0); /* sin sombra inicial */
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    /* sin sombra inicial */
 }
 
 .btn:hover {
     background: linear-gradient(145deg, #d4af37, #f0c965);
     color: #000;
     border: 2px solid var(--color-gold);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
 }
 
@@ -101,7 +105,7 @@ body {
     height: calc(100% + 4px);
     border-radius: 10px;
     border: 2px solid transparent;
-    background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
     transition: opacity 0.3s ease;
     opacity: 0;
 }
@@ -121,11 +125,33 @@ body {
     margin-bottom: 3rem;
 }
 
+.about-header h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--color-gold);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.about-header h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--color-gold);
+    border-radius: 2px;
+}
+
 .about-text {
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.7;
     color: #ddd;
+    font-size: 20px;
 }
 
 .rating {
@@ -134,62 +160,17 @@ body {
     color: var(--color-gold);
 }
 
-/* Filas y tarjetas */
-.about-row {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-}
-
-.location-header {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 2rem;
-}
-
-.location-card {
-    grid-column: span 3;
-}
-
-/* Mapa ocupa 9/12 */
-.about-map {
-    grid-column: span 9;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-}
 
 .about-map iframe:hover {
     transform: scale(1.01);
-}
-
-/* Horario ocupa 12/12 */
-.schedule-row {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    margin-bottom: 2rem;
-}
-
-.schedule-card {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: flex-start;   /* icono alineado arriba */
-    gap: 1rem;                 /* espacio entre icono y texto */
-    justify-content: flex-start;
-    text-align: left;
-    width: 100%;               /* ocupar todo el ancho */
-    margin: 0;                 /* reset */
-    padding: 0;                /* reset */
-    box-sizing: border-box;    /* asegura que respete el ancho */
 }
 
 /* Icono */
 .schedule-card .card-icon {
     font-size: 2.2rem;
     color: var(--color-gold);
-    flex-shrink: 0; /* evita que el icono se achique */
+    flex-shrink: 0;
+    /* evita que el icono se achique */
 }
 
 /* Encabezado */
@@ -213,9 +194,9 @@ body {
 }
 
 /* Cards */
-.about-card, .service-card, .location-card {
+.location-card {
     background: rgba(255, 255, 255, 0.05);
-    padding: 2.5rem 2rem;   /* más padding interno */
+    padding: 2.5rem 2rem;
     border-radius: 12px;
     text-align: center;
     transition: transform 0.3s, background 0.3s;
@@ -223,10 +204,35 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-sizing: border-box; /* evita que padding rompa el ancho */
+    box-sizing: border-box;
 }
 
-.about-card:hover, .service-card:hover, .location-card:hover {
+.about-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    transition: transform 0.3s, background 0.3s;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.about-card h3 {
+    color: #d4af37;
+}
+
+.service-card i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-gold);
+}
+.service-card p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.about-card:hover,
+.service-card:hover,
+.location-card:hover {
     transform: translateY(-5px);
     background: rgba(212, 175, 55, 0.15);
 }
@@ -235,14 +241,6 @@ body {
     font-size: 2rem;
     color: var(--color-gold);
     margin-bottom: 1rem;
-}
-
-/* Servicios en grid uniforme */
-.services-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
 }
 
 /* Secciones */
@@ -260,6 +258,131 @@ body {
 }
 
 /* Habitaciones y tours (mismo estilo de cards) */
+.section-title {
+    font-size: 2rem;
+    color: var(--color-gold);
+    margin-bottom: 0;
+    text-align: left;
+}
+
+/* Sección habitaciones */
+.carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.carousel {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.6s ease;
+}
+
+/* Todas las cards tienen el mismo ancho base */
+.card {
+  flex: 0 0 240px;       /* ancho fijo para el cálculo */
+  height: 220px;
+  background: #f4f4f4;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all .4s ease;
+  opacity: 0.5;
+  transform: scale(0.9);
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #333;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Card activa (solo se escala dentro del espacio asignado) */
+.card.active {
+  background: #e6f0ff;
+  opacity: 1;
+  transform: scale(1.1); /* crece un poco sin romper el layout */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.card.active h3 {
+  font-size: 1.4rem;
+  color: #004080;
+}
+
+.card.active p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Controles */
+.controls {
+  margin-top: 20px;
+  text-align: center;
+}
+.controls button {
+  margin: 0 5px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #004080;
+  color: #fff;
+  cursor: pointer;
+  transition: background .3s;
+}
+.controls button:hover {
+  background: #0066cc;
+}
+
+.controls {
+  margin-top: 20px;
+  text-align: center;
+}
+.controls button {
+  margin: 0 5px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #004080;
+  color: #fff;
+  cursor: pointer;
+  transition: background .3s;
+}
+.controls button:hover {
+  background: #0066cc;
+}
+
+
+/* Controles */
+.controls {
+  margin-top: 20px;
+  text-align: center;
+}
+.controls button {
+  margin: 0 5px;
+  padding: 8px 12px;
+}
+
+
+.btn-outline-gold {
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+}
+
+.btn-outline-gold:hover {
+    background: var(--color-gold);
+    color: #000;
+}
+
 .room-grid,
 .tours-grid {
     display: grid;
@@ -347,8 +470,14 @@ body {
     background: #111;
 }
 
+.contact h3 {
+    text-align: center;
+    font-size: 55px;
+}
+
 .contact p {
     margin: 0.5rem 0;
+    font-size: 20px;
 }
 
 /* WhatsApp Float */
@@ -357,10 +486,13 @@ body {
     bottom: 20px;
     right: 20px;
     background: #25d366;
-    border-radius: 50%; /* más limpio que 10% */
-    width: 55px; /* tamaño fijo del botón */
+    border-radius: 50%;
+    /* más limpio que 10% */
+    width: 55px;
+    /* tamaño fijo del botón */
     height: 55px;
-    display: flex; /* centrar el ícono */
+    display: flex;
+    /* centrar el ícono */
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -369,7 +501,8 @@ body {
 }
 
 .whatsapp-float img {
-    width: 30px; /* el ícono en sí */
+    width: 30px;
+    /* el ícono en sí */
     height: 30px;
 }
 

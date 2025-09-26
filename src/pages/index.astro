@@ -20,10 +20,12 @@ import "../styles/index.css";
     </section>
 
     <!-- Sección Sobre Nosotros -->
-    <section class="about container" id="about">
+    <section class="about container px-1 my-2" id="about">
         <!-- Header -->
         <div class="about-header">
-            <h2 class="section-title">Hostal Acuarius</h2>
+            <h2 class="section-title" style="text-align: center;">
+                Hostal Acuarius
+            </h2>
             <p class="rating">⭐⭐⭐⭐ <span>(Puntuación: 4 de 5)</span></p>
             <p class="about-text">
                 Habitaciones cómodas y acogedoras para todo tipo de viajeros.
@@ -33,35 +35,48 @@ import "../styles/index.css";
         </div>
 
         <!-- Fila 1: Ubicación -->
-        <div class="about-row location-header">
-            <div class="about-card location-card">
-                <i class="fas fa-map-marker-alt card-icon"></i>
-                <h3>Ubicación</h3>
-                <p>
-                    A solo una cuadra de la Plaza de Armas, cerca de
-                    restaurantes, bancos y casas de cambio. Acceso rápido al
-                    Lago Titicaca y puntos turísticos principales.
-                </p>
+        <div class="row g-4 align-items-stretch mb-4">
+            <div class="col-md-12">
+                <div class="about-card h-100">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <i class="fas fa-map-marker-alt card-icon"></i>
+                        <h3>Ubicación</h3>
+                    </div>
+                    <p>
+                        A solo una cuadra de la Plaza de Armas, cerca de
+                        restaurantes, bancos y casas de cambio. Acceso rápido al
+                        Lago Titicaca y puntos turísticos principales.
+                    </p>
+                    <div class="about-map mt-3">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.373553158138!2d-70.0218803856587!3d-15.840221289031056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915cf1c8b6b2b9e5%3A0xabcdef1234567890!2sHostal%20Acuarius!5e0!3m2!1ses!2spe!4v1234567890123"
+                            width="100%"
+                            height="350"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </div>
+                </div>
             </div>
-            <div class="about-map">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.373553158138!2d-70.0218803856587!3d-15.840221289031056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915cf1c8b6b2b9e5%3A0xabcdef1234567890!2sHostal%20Acuarius!5e0!3m2!1ses!2spe!4v1234567890123"
-                    width="100%"
-                    height="350"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+            <div class="col-md-9"></div>
         </div>
 
         <!-- Fila 2: Horario -->
-        <div class="about-row schedule-row">
-            <div class="about-card schedule-card">
-                <i class="fas fa-clock card-icon"></i>
-                <div class="schedule-info">
-                    <h3>Horario</h3>
-                    <ul>
+        <div class="row mb-4">
+            <div class="col-12">
+                <div
+                    class="about-card d-flex justify-content-between align-items-start"
+                >
+                    <!-- Bloque izquierdo: icono + título -->
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="fas fa-clock card-icon"></i>
+                        <h3 class="mb-0">Horario</h3>
+                    </div>
+
+                    <!-- Bloque derecho: lista -->
+                    <ul class="list-unstyled mb-0">
                         <li><strong>Check-In:</strong> 10:00 – 10:30 hrs.</li>
                         <li><strong>Check-Out:</strong> 11:00 hrs.</li>
                         <li><strong>Desayuno:</strong> 05:00 – 10:00 AM</li>
@@ -71,75 +86,85 @@ import "../styles/index.css";
         </div>
 
         <!-- Fila 3: Servicios -->
-        <div class="about-row services-row">
-            <div class="service-card">
-                <i class="fas fa-wifi card-icon"></i>
-                <p>WiFi gratis</p>
+        <div class="row g-4 mb-4">
+            <div class="col-6 col-md-4">
+                <div class="service-card h-100">
+                    <i class="fas fa-wifi card-icon"></i>
+                    <p>WiFi gratis</p>
+                </div>
             </div>
-            <div class="service-card">
-                <i class="fas fa-shower card-icon"></i>
-                <p>Agua caliente</p>
+            <div class="col-6 col-md-4">
+                <div class="service-card h-100">
+                    <i class="fas fa-shower card-icon"></i>
+                    <p>Agua caliente</p>
+                </div>
             </div>
-            <div class="service-card">
-                <i class="fas fa-utensils card-icon"></i>
-                <p>Desayuno incluido</p>
+            <div class="col-6 col-md-4">
+                <div class="service-card h-100">
+                    <i class="fas fa-utensils card-icon"></i>
+                    <p>Desayuno incluido</p>
+                </div>
             </div>
         </div>
 
-        <div class="about-row services-row">
-            <div class="service-card">
-                <i class="fas fa-tv card-icon"></i>
-                <p>TV por cable</p>
+        <div class="row g-4 mb-4">
+            <div class="col-6 col-md-4">
+                <div class="service-card h-100">
+                    <i class="fas fa-tv card-icon"></i>
+                    <p>TV por cable</p>
+                </div>
             </div>
-            <div class="service-card">
-                <i class="fas fa-globe card-icon"></i>
-                <p>Agencia de viajes</p>
+            <div class="col-6 col-md-4">
+                <div class="service-card h-100">
+                    <i class="fas fa-globe card-icon"></i>
+                    <p>Agencia de viajes</p>
+                </div>
             </div>
-            <div class="service-card">
-                <i class="fas fa-car card-icon"></i>
-                <p>Cochera</p>
+            <div class="col-6 col-md-4">
+                <div class="service-card h-100">
+                    <i class="fas fa-car card-icon"></i>
+                    <p>Cochera</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Sección habitaciones -->
-    <section class="container rooms" id="habitaciones">
-        <h3 class="section-title">Nuestras Habitaciones</h3>
-        <div class="room-grid">
-            <div class="room-card">
-                <img
-                    src="/images/habitaciones/habitacion1.webp"
-                    alt="Habitación simple"
-                />
-                <h4>Habitación Simple</h4>
-                <p>Perfecta para descansar cómodamente con todo lo esencial.</p>
-                <a href="/habitaciones" class="btn">Ver más</a>
+    <section
+        class="rooms container my-5"
+        id="habitaciones"
+        x-data="{ active: 0, items: [
+      { titulo: 'Habitación Simple', desc: 'Ideal para viajeros solos, incluye desayuno.' },
+      { titulo: 'Habitación Doble', desc: 'Cómoda para dos personas, vista al lago.' },
+      { titulo: 'Suite Familiar', desc: 'Amplia, perfecta para familias, con sala privada.' },
+      { titulo: 'Suite Ejecutiva', desc: 'Moderna, equipada para viajes de negocios.' },
+      { titulo: 'Habitación Deluxe', desc: 'Lujo y confort con jacuzzi privado.' }
+    ] }"
+    >
+        <div class="carousel-wrapper">
+            <div
+                class="carousel"
+                :style="`transform: translateX(calc(-${active * 260}px + 40px))`">
+                <template x-for="(item, index) in items" :key="index">
+                    <div class="card" :class="{ 'active': index === active }">
+                        <h3 x-text="item.titulo"></h3>
+                        <p x-text="item.desc"></p>
+                    </div>
+                </template>
             </div>
+        </div>
 
-            <div class="room-card">
-                <img
-                    src="/images/habitaciones/habitacion2.webp"
-                    alt="Habitación doble"
-                />
-                <h4>Habitación Doble</h4>
-                <p>Espacio y comodidad para compartir una experiencia única.</p>
-                <a href="/habitaciones" class="btn">Ver más</a>
-            </div>
-
-            <div class="room-card">
-                <img
-                    src="/images/habitaciones/habitacion3.webp"
-                    alt="Suite premium"
-                />
-                <h4>Suite Premium</h4>
-                <p>Lujo y elegancia con detalles exclusivos para tu confort.</p>
-                <a href="/habitaciones" class="btn">Ver más</a>
-            </div>
+        <!-- Controles -->
+        <div class="controls">
+            <button @click="active = (active - 1 + items.length) % items.length"
+                >←</button
+            >
+            <button @click="active = (active + 1) % items.length">→</button>
         </div>
     </section>
 
     <!-- Sección tours -->
-    <section class="container tours" id="tours">
+    <section class="container px-1 my-2 tours" id="tours">
         <h3 class="section-title">Explora con Nosotros</h3>
         <div class="tours-grid">
             <div class="tour-card">
@@ -178,9 +203,14 @@ import "../styles/index.css";
     <!-- Sección contacto -->
     <section class="contact" id="contacto">
         <h3 class="section-title">Contáctanos</h3>
-        <p>📍 Av. Principal #123, Puno - Perú</p>
-        <p>📞 +51 987 654 321</p>
-        <p>✉️ contacto@hostalacuarius.com</p>
+        <p>
+            <i class="fa-solid fa-location-dot card-icon"></i> Jr. Cajamarca 206,
+            Puno
+        </p>
+        <p><i class="fa-solid fa-phone card-icon"></i> +51 944 278 647</p>
+        <p>
+            <i class="fa-solid fa-envelope card-icon"></i> contacto@hostalacuarius.com
+        </p>
         <a href="/contacto" class="btn">Formulario de Contacto</a>
     </section>
 
