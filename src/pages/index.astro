@@ -5,10 +5,57 @@ import "../styles/index.css";
 
 <Layout title="Hostal Aquarius · Inicio">
     <!-- Hero -->
-    <section class="hero">
+    <section
+        class="hero"
+        x-data="{
+        images: ['/images/hero.webp','/images/hero2.jpg','/images/hero3.jpg','/images/hero4.jpg', '/images/hero5.jpg'],
+        current: 0,
+        init() {
+            setInterval(() => {
+                this.current = (this.current + 1) % this.images.length;
+            }, 4000);
+        }
+    }"
+    >
+        <template x-for="(img, index) in images" :key="index">
+            <div
+                class="hero-slide"
+                :class="{ 'active': current === index }"
+                :style="`background-image: url(${img});`"
+            >
+            </div>
+        </template>
+
         <div class="hero-overlay">
+            <!-- NAV DENTRO DEL HERO -->
+            <div class="hero-nav">
+                <nav>
+                    <a href="/">Inicio</a>
+                    <a href="/habitaciones">Habitaciones</a>
+                    <a href="/contacto">Nosotros</a>
+                </nav>
+            </div>
+
             <div class="hero-content">
-                <h2>Descubre Puno con Estilo</h2>
+                <!-- Logo encima -->
+                <div class="hero-logo">
+                    <img src="images/logo_hero.png" alt="Hostal Aquarius" />
+                </div>
+
+                <!-- Texto dinámico -->
+                <h2 class="dynamic-text" x-data="{ text: 'Bienvenidos' }">
+                    <template
+                        x-for="(letter, index) in text.split('')"
+                        :key="index"
+                    >
+                        <span
+                            x-text="letter"
+                            x-init="$el.style.animationDelay = (index * 0.05) + 's'"
+                        >
+                        </span>
+                    </template>
+                </h2>
+
                 <p>
                     En Hostal Aquarius te espera una combinación única de
                     confort, hospitalidad y la mejor ubicación para explorar el
@@ -20,10 +67,10 @@ import "../styles/index.css";
     </section>
 
     <!-- Sección Sobre Nosotros -->
-    <section class="about container" id="about">
+    <section class="about container reveal" id="about">
         <!-- Encabezado -->
-        <div class="section-header">
-            <h2 class="section-title">Hostal Acuarius</h2>
+        <div class="section-header reveal">
+            <h2 class="section-title reveal">Hostal Acuarius</h2>
             <p class="rating">⭐⭐⭐⭐ <span>(Puntuación: 4 de 5)</span></p>
             <p class="section-subtitle">
                 Habitaciones cómodas y acogedoras para todo tipo de viajeros.
@@ -69,7 +116,7 @@ import "../styles/index.css";
 
         <!-- Servicios -->
         <div class="services">
-            <h3 class="services-title">Nuestros Servicios</h3>
+            <h3 class="section-title">Nuestros Servicios</h3>
             <div class="services-grid">
                 <div class="service-item">
                     <i class="fas fa-wifi"></i><span>WiFi Gratis</span>
@@ -78,8 +125,8 @@ import "../styles/index.css";
                     <i class="fas fa-shower"></i><span>Agua Caliente</span>
                 </div>
                 <div class="service-item">
-                    <i class="fas fa-utensils"></i><span
-                        >Desayuno Incluido</span>
+                    <i class="fas fa-utensils"></i><span>Desayuno Incluido</span
+                    >
                 </div>
                 <div class="service-item">
                     <i class="fas fa-tv"></i><span>TV por Cable</span>
@@ -96,22 +143,27 @@ import "../styles/index.css";
 
     <!-- Sección habitaciones -->
     <section
-        class="rooms container my-5"
+        class="rooms container my-5 reveal"
         id="habitaciones"
         x-data="{ 
-    active: 0, 
-    items: [
-      { titulo: 'Habitación Simple', desc: 'Ideal para viajeros solos, incluye desayuno.', img: 'images/rooms/room1.png', link: '#' },
-      { titulo: 'Habitación Doble', desc: 'Cómoda para dos personas, vista al lago.', img: 'images/habitacion-doble.jpg', link: '#' },
-      { titulo: 'Suite Familiar', desc: 'Amplia, perfecta para familias, con sala privada.', img: 'images/suite-familiar.jpg', link: '#' },
-      { titulo: 'Suite Ejecutiva', desc: 'Moderna, equipada para viajes de negocios.', img: 'images/suite-ejecutiva.jpg', link: '#' },
-      { titulo: 'Habitación Deluxe', desc: 'Lujo y confort con jacuzzi privado.', img: 'images/rooms/room1.png', link: '#' }
-    ] 
-  }"
+        active: 0, 
+        items: [
+          { titulo: 'Habitación Simple', desc: 'Cómodo ambiente de 9 m², cama individual, baño privado, TV y WiFi.', img: 'images/rooms/room1.png', link: '#' },
+          { titulo: 'Habitación Doble', desc: 'Espacio de 12 m², cama doble, baño privado, TV y WiFi.', img: 'images/rooms/room2.png', link: '#' },
+          { titulo: 'Habitación Triple', desc: 'Ideal para familias, 15 m², tres camas, baño privado, TV y WiFi.', img: 'images/rooms/room3.png', link: '#' },
+          { titulo: 'Habitación Matrimonial', desc: 'Ambiente acogedor de 14 m², cama queen, baño privado, TV y WiFi.', img: 'images/rooms/room4.png', link: '#' },
+        ] 
+    }"
     >
-        <h3 class="section-title">Nuestras habitaciones</h3>
+        <div class="section-header reveal">
+            <h3 class="section-title">Nuestras Habitaciones</h3>
+            <p class="section-subtitle">
+                Confort y estilo pensados para tu descanso
+            </p>
+        </div>
 
-        <div class="carousel-wrapper">
+        <!-- Carousel -->
+        <div class="carousel-wrapper reveal">
             <button
                 class="control prev"
                 @click="active = (active - 1 + items.length) % items.length"
@@ -129,32 +181,18 @@ import "../styles/index.css";
                         :class="{ 'active': index === active }"
                         @click="active = index"
                     >
-                        <template x-if="index === active">
-                            <a :href="item.link" class="card-link">
-                                <img
-                                    :src="item.img"
-                                    :alt="item.titulo"
-                                    class="card-img"
-                                />
-                                <div class="card-body">
-                                    <h3 x-text="item.titulo"></h3>
-                                    <p x-text="item.desc"></p>
-                                </div>
-                            </a>
-                        </template>
-                        <template x-if="index !== active">
-                            <div>
-                                <img
-                                    :src="item.img"
-                                    :alt="item.titulo"
-                                    class="card-img"
-                                />
-                                <div class="card-body">
-                                    <h3 x-text="item.titulo"></h3>
-                                    <p x-text="item.desc"></p>
-                                </div>
-                            </div>
-                        </template>
+                        <img
+                            :src="item.img"
+                            :alt="item.titulo"
+                            class="card-img"
+                        />
+                        <div class="card-body">
+                            <h3 x-text="item.titulo"></h3>
+                            <p x-text="item.desc"></p>
+                            <a :href="item.link" class="btn-reserva"
+                                >Ver Detalles</a
+                            >
+                        </div>
                     </div>
                 </template>
             </div>
@@ -164,10 +202,14 @@ import "../styles/index.css";
                 @click="active = (active + 1) % items.length">›</button
             >
         </div>
+
+        <div class="text-center mt-4 reveal">
+            <a href="/habitaciones" class="btn">Ver todas las habitaciones</a>
+        </div>
     </section>
 
     <!-- Sección tours -->
-    <section class="tours-section container" id="tours">
+    <section class="tours-section container reveal" id="tours">
         <div class="tours-header">
             <h3 class="section-title">Explora con Nosotros</h3>
             <p class="section-subtitle">
@@ -176,62 +218,72 @@ import "../styles/index.css";
             </p>
         </div>
 
-        <div class="tours-grid">
-            <div class="tour-card">
-                <div class="tour-img">
-                    <img
-                        src="/images/tours/titicaca.webp"
-                        alt="Tour Lago Titicaca"
-                    />
-                </div>
-                <div class="tour-content">
-                    <h4>Tour Lago Titicaca</h4>
-                    <p>
-                        Visita las islas flotantes de los Uros y Taquile en una
-                        experiencia inolvidable.
-                    </p>
-                    <a href="#" class="btn-tour">Ver más</a>
-                </div>
-            </div>
+        <div class="tours-grid reveal">
+    <div class="tour-card">
+        <div class="tour-img">
+            <img src="/images/tours/tour1.jpg" alt="Islas Flotantes de los Uros" />
+        </div>
+        <div class="tour-content">
+            <h4>Islas Flotantes de los Uros</h4>
+            <p>
+                Navega por el Lago Titicaca y descubre las islas
+                flotantes construidas de totora por sus habitantes.
+            </p>
+            <a href="#" class="btn-tour">Ver más</a>
+        </div>
+    </div>
 
-            <div class="tour-card">
-                <div class="tour-img">
-                    <img
-                        src="/images/tours/sillustani.webp"
-                        alt="Chullpas de Sillustani"
-                    />
-                </div>
-                <div class="tour-content">
-                    <h4>Chullpas de Sillustani</h4>
-                    <p>
-                        Descubre la historia preinca en un paisaje majestuoso
-                        junto a la laguna Umayo.
-                    </p>
-                    <a href="#" class="btn-tour">Ver más</a>
-                </div>
-            </div>
+    <div class="tour-card">
+        <div class="tour-img">
+            <img src="/images/tours/tour2.png" alt="Isla Taquile" />
+        </div>
+        <div class="tour-content">
+            <h4>Isla Taquile</h4>
+            <p>
+                Explora esta isla declarada Patrimonio Cultural por
+                la UNESCO, famosa por sus tejidos artesanales.
+            </p>
+            <a href="#" class="btn-tour">Ver más</a>
+        </div>
+    </div>
 
-            <div class="tour-card">
-                <div class="tour-img">
-                    <img
-                        src="/images/tours/cusco.webp"
-                        alt="Excursión a Cusco"
-                    />
-                </div>
-                <div class="tour-content">
-                    <h4>Excursión a Cusco</h4>
-                    <p>
-                        Conecta Puno con la magia de Cusco y Machu Picchu en un
-                        viaje lleno de cultura.
-                    </p>
-                    <a href="#" class="btn-tour">Ver más</a>
-                </div>
-            </div>
+    <div class="tour-card">
+        <div class="tour-img">
+            <img src="/images/tours/tour3.png" alt="Isla Amantaní" />
+        </div>
+        <div class="tour-content">
+            <h4>Isla Amantaní</h4>
+            <p>
+                Vive una experiencia auténtica compartiendo con
+                familias locales y contempla un atardecer
+                inolvidable desde Pachatata.
+            </p>
+            <a href="#" class="btn-tour">Ver más</a>
+        </div>
+    </div>
+
+    <div class="tour-card">
+        <div class="tour-img">
+            <img src="/images/tours/tour4.png" alt="Sillustani" />
+        </div>
+        <div class="tour-content">
+            <h4>Sillustani</h4>
+            <p>
+                Descubre las imponentes chullpas de Sillustani,
+                antiguas torres funerarias preincaicas.
+            </p>
+            <a href="#" class="btn-tour">Ver más</a>
+        </div>
+    </div>
+</div>
+
+        <div class="text-center mt-5">
+            <a href="/tours" class="btn btn-gold">Ver todos los tours</a>
         </div>
     </section>
 
     <!-- Sección contacto -->
-    <section class="contact" id="contacto">
+    <section class="contact reveal" id="contacto">
         <div class="section-header">
             <h2 class="section-title">Contáctanos</h2>
             <p class="section-subtitle">

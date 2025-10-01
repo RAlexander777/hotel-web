@@ -3,15 +3,16 @@ import "../styles/navbar.css";
 ---
 
 <header
-    x-data="{ opacity: 0 }"
-    x-init="
-        const heroHeight = document.querySelector('.hero').offsetHeight;
-        window.addEventListener('scroll', () => {
-            opacity = Math.min(window.scrollY / heroHeight, 1);
-        });
-    "
-    :style="`background: rgba(0,0,0,${opacity})`"
-    class="custom-navbar"
+    x-data="{ show: false }"
+  x-init="
+    const heroLogo = document.querySelector('.hero-logo');
+    const observer = new IntersectionObserver(([entry]) => {
+      show = !entry.isIntersecting; // 👈 si el logo ya no se ve → aparece el navbar
+    }, { threshold: 0.1 });
+    observer.observe(heroLogo);
+  "
+  :class="show ? 'navbar-visible' : 'navbar-hidden'"
+  class="custom-navbar"
 >
     <div class="container px-1 custom-navbar-content">
         <h1 class="logo">
@@ -22,8 +23,9 @@ import "../styles/navbar.css";
         <nav>
             <a href="/">Inicio</a>
             <a href="/habitaciones">Habitaciones</a>
-            <a href="/contacto">Contacto</a>
+            <a href="/contacto">Nosotros</a>
         </nav>
+        <a href="/reserva" class="btn-banderola">Reserva</a>
     </div>
 </header>
 

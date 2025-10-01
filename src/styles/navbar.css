@@ -1,12 +1,21 @@
 .custom-navbar {
-    position: fixed; 
-    padding: 0.3rem 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100; 
-    background: rgba(0,0,0,0); 
-    transition: background 0.2s linear;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  background: #000; /* negro directo */
+}
+
+/* Estados */
+.navbar-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.navbar-visible {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .custom-navbar-scrolled {
@@ -18,12 +27,63 @@
     justify-content: space-between;
     align-items: center;
     max-height: 10px;
+    position: relative;
+}
+
+.custom-navbar-content nav {
+    padding-right: 130px; /* un poco más que el ancho de la banderola */
 }
 
 .logo-img {
     height: 150px;
     width: auto;
     display: block;
+}
+
+.btn-banderola {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;              /* 👈 activamos flexbox */
+    justify-content: center;    /* 👈 centrado horizontal */
+    align-items: center;        /* 👈 centrado vertical */
+    width: 120px; 
+    height: 100%;               /* mismo alto que el navbar */
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: var(--color-gold);
+    color: #000;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+
+/* Triángulo inferior */
+.btn-banderola::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; /* altura del triángulo */
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;   /* mitad del ancho */
+    border-right: 60px solid transparent;  /* mitad del ancho */
+    border-top: 10px solid var(--color-gold); /* color del triángulo */
+    transition: border-top-color 0.3s ease;
+}
+
+/* Hover */
+.btn-banderola:hover {
+    background: #000;
+    color: var(--color-gold);
+}
+
+.btn-banderola:hover::after {
+    border-top-color: #000; /* el triángulo sigue al fondo */
 }
 
 nav a {
