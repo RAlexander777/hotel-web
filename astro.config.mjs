@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  outDir: './dist',
-  base: '/hotel-web/',
+  site: "https://ralexander777.github.io/hotel-web", 
+  base: "/hotel-web/", 
+  outDir: "dist",
 });
