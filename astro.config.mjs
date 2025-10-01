@@ -8,6 +8,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  output: 'static',
+  outDir: './dist',
   base: '/hotel-web/',
 });
