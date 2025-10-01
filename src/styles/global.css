@@ -1,0 +1,14 @@
+:root {
+    --color-gold: #d4af37;
+    --color-bg: #000;
+    --color-text: #fff;
+}
+
+body {
+    margin: 0;
+    font-family: "Numans", sans-serif;
+    /* background-color: var(--color-bg); */
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
