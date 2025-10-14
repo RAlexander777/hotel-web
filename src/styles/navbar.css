@@ -1,7 +1,10 @@
 :root {
-    --navbar-height: 80px;
+    --navbar-height: 90px;
+    --color-gold: #c5a47e;
+    --color-bg: #111111;
 }
 
+/* 1. ESTILO BASE DEL NAVBAR */
 .custom-navbar {
     position: fixed;
     top: 0;
@@ -9,13 +12,14 @@
     width: 100%;
     z-index: 1000;
     background: transparent;
-    transition: background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+    transition: background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease, height 0.4s ease;
 }
 
 .custom-navbar.navbar-scrolled {
     background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    --navbar-height: 80px;
 }
 
 .navbar-container {
@@ -26,32 +30,98 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    transition: height 0.4s ease;
 }
 
-/* Logo */
+/* ================================== */
+/* 2. LOGO CORREGIDO (ANIMACIÓN FINAL)*/
+/* ================================== */
+.logo {
+    display: flex;
+    align-items: center;
+    
+    /* ESTADO INICIAL (OCULTO): Invisible y más arriba */
+    opacity: 0;
+    transform: translateY(-20px); /* Lo movemos 20px hacia arriba */
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+}
+
+/* ESTADO FINAL (VISIBLE): Visible y en su posición final */
+.logo.logo-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
 .logo a {
     display: flex;
     align-items: center;
 }
 .logo-img {
-    height: 60px; /* Tamaño más adecuado para un navbar fijo */
+    height: 60px; /* Tamaño del logo en móvil */
     width: auto;
-    transition: height 0.3s ease;
-}
-.custom-navbar.navbar-scrolled .logo-img {
-    height: 50px;
+    transition: height 0.4s ease;
 }
 
-/* Navegación de Escritorio */
-.desktop-nav {
-    display: none; /* Oculto por defecto, visible en pantallas grandes */
-}
-@media (min-width: 768px) {
+
+/* 3. VISIBILIDAD DE ELEMENTOS (MÓVIL PRIMERO) */
+.desktop-nav { display: none; }
+.btn.btn-nav { display: none; }
+
+
+/* 4. LAYOUT DE ESCRITORIO CON LOGO CENTRADO Y ANIMADO */
+@media (min-width: 992px) {
+    .navbar-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .logo {
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        z-index: 10;
+        
+        /* CORRECCIÓN CLAVE: Combinamos las transformaciones aquí */
+        /* Estado inicial (oculto) en escritorio */
+        transform: translateX(-50%) translateY(-20px);
+    }
+    
+    .logo.logo-visible {
+        /* Estado final (visible) en escritorio */
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .logo-img {
+        height: 100px; /* Tamaño principal del logo */
+    }
+
+    .custom-navbar.navbar-scrolled .logo-img {
+        height: 80px; /* Tamaño al hacer scroll */
+    }
+
+    /* Mostramos y posicionamos los elementos laterales */
     .desktop-nav {
         display: flex;
         gap: 2.5rem;
+        grid-column: 1 / 2;
+        justify-self: start;
+    }
+    .navbar-actions {
+        grid-column: 2 / 2;
+        justify-self: end;
+    }
+    .btn.btn-nav {
+        display: inline-block;
+    }
+    .custom-navbar .hamburger {
+        display: none;
     }
 }
+
+/* 5. ESTILOS DE ENLACES Y BOTONES */
 .desktop-nav a {
     position: relative;
     color: #fff;
@@ -62,120 +132,25 @@
     text-decoration: none;
     padding: 5px 0;
 }
-.desktop-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-gold);
-    transition: width 0.3s ease-out;
-}
-.desktop-nav a:hover::after {
-    width: 100%;
-}
+.desktop-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--color-gold); transition: width 0.3s ease-out; }
+.desktop-nav a:hover::after { width: 100%; }
 
-.navbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.btn-reserva-main {
-    display: none;
-    background: var(--color-gold);
-    color: #000;
+.navbar-actions { display: flex; align-items: center; gap: 1.5rem; }
+.btn.btn-nav {
     padding: 0.6rem 1.5rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
     font-size: 0.9rem;
     text-transform: uppercase;
-    transition: all 0.3s ease;
-    border: 2px solid var(--color-gold);
-}
-.btn-reserva-main:hover {
-    background: transparent;
-    color: var(--color-gold);
-}
-@media (min-width: 768px) {
-    .btn-reserva-main {
-        display: block;
-    }
 }
 
-/* Botón Hamburguesa */
-.hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 28px;
-    height: 22px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 10;
-}
-.hamburger span {
-    width: 100%;
-    height: 2px;
-    background: #fff;
-    border-radius: 10px;
-    transition: all 0.3s ease-in-out;
-}
-.hamburger span.toggled:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger span.toggled:nth-child(2) {
-    opacity: 0;
-}
-.hamburger span.toggled:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-}
-@media (min-width: 768px) {
-    .hamburger {
-        display: none;
-    }
-}
+/* 6. MENÚ HAMBURGUESA Y MÓVIL */
+.hamburger { display: flex; flex-direction: column; justify-content: space-around; width: 28px; height: 22px; background: transparent; border: none; cursor: pointer; z-index: 10; }
+.hamburger span { width: 100%; height: 2px; background: #fff; border-radius: 10px; transition: all 0.3s ease-in-out; }
+.hamburger span.toggled:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger span.toggled:nth-child(2) { opacity: 0; }
+.hamburger span.toggled:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
-/* Menú Móvil */
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 5;
-}
-.mobile-menu nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5rem;
-    text-align: center;
-}
-.mobile-menu nav a {
-    color: #fff;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.mobile-menu nav a:hover {
-    color: var(--color-gold);
-}
-.btn-reserva-mobile {
-    margin-top: 1rem;
-    background: var(--color-gold);
-    color: #000;
-    padding: 0.8rem 2rem;
-    border-radius: 5px;
-}
+.mobile-menu { position: fixed; top: 0; right: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 5; }
+.mobile-menu nav { display: flex; flex-direction: column; align-items: center; gap: 2.5rem; }
+.mobile-menu nav a { color: #fff; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; transition: color 0.3s ease; }
+.mobile-menu nav a:hover { color: var(--color-gold); }
+.btn-reserva-mobile { margin-top: 1rem; background: var(--color-gold); color: #000; padding: 0.8rem 2rem; border-radius: 30px; text-decoration: none; }

@@ -134,18 +134,18 @@ body {
 }
 
 .btn {
-    display: inline-block;
+    font-family: var(--font-body);
+    display: block;
     background-color: var(--color-gold);
     color: var(--color-bg);
-    padding: 0.8rem 2.5rem;
+    padding: 0.8rem 1.5rem;
     border: 1px solid var(--color-gold);
     border-radius: 30px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
-    cursor: pointer;
-    width: 100%;
-    font-size: 1rem;
+    text-align: center;
 }
 .btn:hover {
     background-color: transparent;

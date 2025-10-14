@@ -1,15 +1,44 @@
+/* ================================== */
+/* ESTILOS GLOBALES REUTILIZABLES     */
+/* ================================== */
 :root {
-    --color-gold: #d4af37;
-    --color-bg: #000;
-    --color-text: #fff;
+    --color-gold: #c5a47e;
+    --color-bg: #111111;
+    --color-bg-alt: #1c1c1c;
+    --color-text-primary: #e0e0e0;
+    --color-text-secondary: #a0a0a0;
+    --color-border: #333;
+    --font-heading: "Playfair Display", serif;
+    --font-body: "Rethink Sans", sans-serif;
 }
 
 body {
     margin: 0;
-    font-family: "Numans", sans-serif;
-    /* background-color: var(--color-bg); */
-    color: var(--color-text);
-    line-height: 1.6;
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+}
+
+/* ESTILO MAESTRO PARA BOTONES */
+.btn {
+    display: inline-block;
+    background: var(--color-gold);
+    color: var(--color-bg);
+    padding: 0.8rem 2.2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--color-gold);
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--color-gold);
+    transform: translateY(-3px);
 }
 
 /* --- WhatsApp --- */
