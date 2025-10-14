@@ -3,31 +3,50 @@ import "../styles/navbar.css";
 ---
 
 <header
-    x-data="{ show: false }"
-  x-init="
-    const heroLogo = document.querySelector('.hero-logo');
-    const observer = new IntersectionObserver(([entry]) => {
-      show = !entry.isIntersecting; // 👈 si el logo ya no se ve → aparece el navbar
-    }, { threshold: 0.1 });
-    observer.observe(heroLogo);
-  "
-  :class="show ? 'navbar-visible' : 'navbar-hidden'"
-  class="custom-navbar"
+    x-data="{
+        scrolled: false,
+        mobileMenuOpen: false,
+        init() {
+            window.addEventListener('scroll', () => {
+                this.scrolled = window.scrollY > 50;
+            });
+        }
+    }"
+    :class="{ 'navbar-scrolled': scrolled }"
+    class="custom-navbar"
 >
-    <div class="container px-1 custom-navbar-content">
-        <h1 class="logo">
-            <a href="/" class="logo-link">
-                <img src="images/logo.webp" alt="Hostal Acuarius" class="logo-img" />
+    <div class="navbar-container">
+        <div class="logo">
+            <a href="/hotel-web/">
+                <img src="/hotel-web/images/logo.webp" alt="Hostal Acuarius Logo" class="logo-img" />
             </a>
-        </h1>
-        <nav>
-            <a href="/">Inicio</a>
-            <a href="/habitaciones">Habitaciones</a>
-            <a href="/contacto">Nosotros</a>
+        </div>
+
+        <nav class="desktop-nav">
+            <a href="/hotel-web/nosotros">Nosotros</a>
+            <a href="/hotel-web/habitaciones">Habitaciones</a>
+            <a href="/hotel-web/tours">Tours</a>
+            <a href="/hotel-web/contacto">Contacto</a>
         </nav>
-        <a href="/reserva" class="btn-banderola">Reserva</a>
+
+        <div class="navbar-actions">
+            <a href="/reserva" class="btn-reserva-main">Reserva Ahora</a>
+            
+            <button class="hamburger" @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Abrir menú">
+                <span :class="{ 'toggled': mobileMenuOpen }"></span>
+                <span :class="{ 'toggled': mobileMenuOpen }"></span>
+                <span :class="{ 'toggled': mobileMenuOpen }"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="mobile-menu" x-show="mobileMenuOpen" @click.outside="mobileMenuOpen = false" x-transition>
+        <nav>
+            <a href="/#about" @click="mobileMenuOpen = false">Nosotros</a>
+            <a href="/#habitaciones" @click="mobileMenuOpen = false">Habitaciones</a>
+            <a href="/#tours" @click="mobileMenuOpen = false">Tours</a>
+            <a href="/#contacto" @click="mobileMenuOpen = false">Contacto</a>
+            <a href="/reserva" class="btn-reserva-mobile">Reserva Ahora</a>
+        </nav>
     </div>
 </header>
-
-
-

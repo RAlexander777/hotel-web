@@ -4,328 +4,223 @@ import "../styles/index.css";
 ---
 
 <Layout title="Hostal Aquarius · Inicio">
-    <!-- Hero -->
     <section
         class="hero"
         x-data="{
-        images: ['/hotel-web/images/hero.webp','/hotel-web/images/hero2.jpg','/hotel-web/images/hero3.jpg','/hotel-web/images/hero4.jpg', '/hotel-web/images/hero5.jpg'],
-        current: 0,
-        init() {
-            setInterval(() => {
-                this.current = (this.current + 1) % this.images.length;
-            }, 4000);
-        }
-    }"
+            images: ['/hotel-web/images/hero.webp','/hotel-web/images/hero2.jpg','/hotel-web/images/hero3.jpg','/hotel-web/images/hero4.jpg', '/hotel-web/images/hero5.jpg'],
+            current: 0,
+            init() {
+                setInterval(() => {
+                    this.current = (this.current + 1) % this.images.length;
+                }, 5000);
+            }
+        }"
     >
         <template x-for="(img, index) in images" :key="index">
             <div
                 class="hero-slide"
                 :class="{ 'active': current === index }"
                 :style="`background-image: url(${img});`"
-            >
-            </div>
+            ></div>
         </template>
-
         <div class="hero-overlay">
-            <!-- NAV DENTRO DEL HERO -->
-            <div class="hero-nav">
-                <nav>
-                    <a href="/">Inicio</a>
-                    <a href="/habitaciones">Habitaciones</a>
-                    <a href="/contacto">Nosotros</a>
-                </nav>
-            </div>
-
             <div class="hero-content">
-                <!-- Logo encima -->
                 <div class="hero-logo">
                     <img src="/hotel-web/images/logo_hero.png" alt="Hostal Aquarius" />
                 </div>
-
-                <!-- Texto dinámico -->
                 <h2 class="dynamic-text" x-data="{ text: 'Bienvenidos' }">
-                    <template
-                        x-for="(letter, index) in text.split('')"
-                        :key="index"
-                    >
+                    <template x-for="(letter, index) in text.split('')" :key="index">
                         <span
                             x-text="letter"
                             x-init="$el.style.animationDelay = (index * 0.05) + 's'"
-                        >
-                        </span>
+                        ></span>
                     </template>
                 </h2>
-
                 <p>
-                    En Hostal Aquarius te espera una combinación única de
-                    confort, hospitalidad y la mejor ubicación para explorar el
-                    Lago Titicaca y la magia de los Andes.
+                    Una combinación única de confort, hospitalidad y la mejor ubicación para explorar la magia de Puno.
                 </p>
-                <a href="/habitaciones" class="btn">Reserva tu estadía</a>
+                <a href="#habitaciones" class="btn">Reserva tu Estadía</a>
             </div>
         </div>
     </section>
 
-    <!-- Sección Sobre Nosotros -->
     <section class="about container reveal" id="about">
-        <!-- Encabezado -->
         <div class="section-header reveal">
-            <h2 class="section-title reveal">Hostal Acuarius</h2>
-            <p class="rating">⭐⭐⭐⭐ <span>(Puntuación: 4 de 5)</span></p>
+            <h2 class="section-title reveal">Hostal Acuarius Puno</h2>
             <p class="section-subtitle">
-                Habitaciones cómodas y acogedoras para todo tipo de viajeros.
-                Opciones con baño privado o compartido, garantizando limpieza,
-                seguridad y confort.
+                Ubicados en el corazón de Puno, a solo una cuadra de la Plaza de Armas, ofrecemos habitaciones cómodas y acogedoras. Garantizamos limpieza, seguridad y un ambiente confortable para todo tipo de viajeros.
             </p>
         </div>
+        <div class="services-grid">
+            <div class="service-item"><i class="fas fa-wifi"></i><span>WiFi Gratis</span></div>
+            <div class="service-item"><i class="fas fa-shower"></i><span>Agua Caliente 24h</span></div>
+            <div class="service-item"><i class="fas fa-utensils"></i><span>Desayuno Incluido</span></div>
+            <div class="service-item"><i class="fas fa-tv"></i><span>TV por Cable</span></div>
+            <div class="service-item"><i class="fas fa-globe"></i><span>Agencia de Viajes</span></div>
+        </div>
+    </section>
 
-        <!-- Grid Información Principal -->
-        <div class="about-main-grid">
-            <!-- Ubicación -->
-            <div class="about-card large">
-                <i class="fas fa-map-marker-alt card-icon"></i>
-                <h3>Ubicación</h3>
-                <p>
-                    A solo una cuadra de la Plaza de Armas, cerca de
-                    restaurantes, bancos y casas de cambio. Acceso rápido al
-                    Lago Titicaca y puntos turísticos principales.
-                </p>
-                <div class="about-map">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4564.538301894094!2d-70.0289149512695!3d-15.840617304882771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915d695dd2de208d%3A0x34b6cbb487f845c2!2sHostal%20Acuarius%20Puno!5e0!3m2!1ses-419!2spe!4v1759304545956!5m2!1ses-419!2spe"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                    >
+    <section class="rooms-section container reveal" id="habitaciones">
+        <div class="section-header reveal">
+            <h2 class="section-title">Nuestras Habitaciones</h2>
+            <p class="section-subtitle">Confort y estilo pensados para tu descanso.</p>
+        </div>
+        <div class="rooms-grid">
+            <div class="room-card">
+                <img src="/hotel-web/images/rooms/room1.png" alt="Habitación Simple" class="room-card-img"/>
+                <div class="room-card-body">
+                    <h3>Habitación Simple</h3>
+                    <p>Cómodo ambiente de 9 m², ideal para viajeros solos que buscan confort y privacidad.</p>
+                    <div class="room-amenities">
+                        <span><i class="fas fa-wifi"></i> WiFi</span>
+                        <span><i class="fas fa-tv"></i> TV</span>
+                        <span><i class="fas fa-shower"></i> Ducha</span>
+                    </div>
+                    <a href="/habitaciones/simple" class="btn-details">Ver Detalles</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="/hotel-web/images/rooms/room2.png" alt="Habitación Doble" class="room-card-img"/>
+                <div class="room-card-body">
+                    <h3>Habitación Doble</h3>
+                    <p>Espacio de 12 m² con dos camas, perfecto para amigos o colegas explorando Puno.</p>
+                    <div class="room-amenities">
+                        <span><i class="fas fa-wifi"></i> WiFi</span>
+                        <span><i class="fas fa-tv"></i> TV</span>
+                        <span><i class="fas fa-shower"></i> Ducha</span>
+                    </div>
+                    <a href="/habitaciones/doble" class="btn-details">Ver Detalles</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="/hotel-web/images/rooms/room4.png" alt="Habitación Matrimonial" class="room-card-img"/>
+                <div class="room-card-body">
+                    <h3>Habitación Matrimonial</h3>
+                    <p>Acogedor ambiente de 14 m² con cama queen, diseñado para el confort de las parejas.</p>
+                    <div class="room-amenities">
+                        <span><i class="fas fa-wifi"></i> WiFi</span>
+                        <span><i class="fas fa-tv"></i> TV</span>
+                        <span><i class="fas fa-shower"></i> Ducha</span>
+                    </div>
+                    <a href="/habitaciones/matrimonial" class="btn-details">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+             <a href="/habitaciones" class="btn">Ver Todas las Habitaciones</a>
+        </div>
+    </section>
+    
+    <section class="reviews-section container reveal" id="reviews">
+        <div class="section-header reveal">
+            <h2 class="section-title">Opiniones de nuestros huéspedes</h2>
+            <p class="section-subtitle">Descubre por qué nuestros visitantes nos recomiendan.</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Maria G.</span>
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <p>"¡La ubicación es inmejorable! A pasos de todo. El personal fue muy amable y el desayuno delicioso. Definitivamente volvería."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">John D.</span>
+                    <div class="review-rating">⭐⭐⭐⭐</div>
+                </div>
+                <p>"Una excelente opción en Puno. Habitaciones limpias, agua caliente sin problemas y el WiFi funcionaba perfectamente. Muy recomendable."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Ana L.</span>
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <p>"Nos ayudaron a organizar todos nuestros tours al Lago Titicaca. Un servicio completo y muy conveniente. El hostal es acogedor y seguro."</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tours-section container reveal" id="tours">
+        <div class="section-header">
+            <h2 class="section-title">Explora Puno con Nosotros</h2>
+            <p class="section-subtitle">Organizamos experiencias inolvidables en los destinos más emblemáticos.</p>
+        </div>
+        <div class="tours-container">
+            <div class="tour-plan-card">
+                <div class="tour-plan-img">
+                    <img src="/hotel-web/images/tours/tour1.jpg" alt="Islas Flotantes de los Uros" />
+                </div>
+                <div class="tour-plan-content">
+                    <h3>Islas Flotantes de los Uros</h3>
+                    <p>Navega por el Lago Titicaca y descubre las fascinantes islas flotantes construidas de totora por la ancestral cultura Uru.</p>
+                    <a href="/tours/uros" class="btn-details">Consultar Plan</a>
+                </div>
+            </div>
+            <div class="tour-plan-card">
+                <div class="tour-plan-img">
+                    <img src="/hotel-web/images/tours/tour2.png" alt="Isla Taquile" />
+                </div>
+                <div class="tour-plan-content">
+                    <h3>Isla Taquile, Patrimonio UNESCO</h3>
+                    <p>Explora esta isla única, famosa por sus extraordinarios tejidos artesanales y paisajes que te dejarán sin aliento.</p>
+                    <a href="/tours/taquile" class="btn-details">Consultar Plan</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="/tours" class="btn">Ver Todos los Tours</a>
+        </div>
+    </section>
+
+    <section class="contact-section container reveal" id="contacto">
+        <div class="section-header">
+            <h2 class="section-title">Contacto y Ubicación</h2>
+            <p class="section-subtitle">Estamos aquí para ayudarte. Envíanos tu consulta o visítanos.</p>
+        </div>
+        <div class="contact-layout">
+            <div class="contact-form-container">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Tu Nombre" required>
+                        <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
+                    </div>
+                    <textarea name="message" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                    <button type="submit" class="btn">Enviar Mensaje</button>
+                </form>
+            </div>
+            <div class="contact-info-container">
+                <div class="contact-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Dirección</h4>
+                        <p>Jr. Cajamarca 206, Puno, Perú</p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Teléfono</h4>
+                        <p>+51 944 278 647</p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>contacto@hostalacuarius.com</p>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3848.7760939228!2d-70.0292510888998!3d-15.8427799849503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915d6a367d8d2c3b%3A0x1d36862f36c342f5!2sJr.%20Cajamarca%20206%2C%20Puno%2021001!5e0!3m2!1ses-419!2spe!4v1715892576192!5m2!1ses-419!2spe"
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>
-
-            <!-- Horario -->
-            <div class="about-card medium">
-                <i class="fas fa-clock card-icon"></i>
-                <h3>Horario</h3>
-                <ul class="schedule">
-                    <li><strong>Check-In:</strong> 10:00 – 10:30 hrs.</li>
-                    <li><strong>Check-Out:</strong> 11:00 hrs.</li>
-                    <li><strong>Desayuno:</strong> 05:00 – 10:00 AM</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Servicios -->
-        <div class="services">
-            <h3 class="section-title">Nuestros Servicios</h3>
-            <div class="services-grid">
-                <div class="service-item">
-                    <i class="fas fa-wifi"></i><span>WiFi Gratis</span>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-shower"></i><span>Agua Caliente</span>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-utensils"></i><span>Desayuno Incluido</span
-                    >
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-tv"></i><span>TV por Cable</span>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-globe"></i><span>Agencia de Viajes</span>
-                </div>
-                <div class="service-item">
-                    <i class="fas fa-car"></i><span>Cochera</span>
-                </div>
-            </div>
         </div>
     </section>
-
-    <!-- Sección habitaciones -->
-    <section
-        class="rooms container my-5 reveal"
-        id="habitaciones"
-        x-data="{ 
-        active: 0, 
-        items: [
-          { titulo: 'Habitación Simple', desc: 'Cómodo ambiente de 9 m², cama individual, baño privado, TV y WiFi.', img: 'images/rooms/room1.png', link: '#' },
-          { titulo: 'Habitación Doble', desc: 'Espacio de 12 m², cama doble, baño privado, TV y WiFi.', img: 'images/rooms/room2.png', link: '#' },
-          { titulo: 'Habitación Triple', desc: 'Ideal para familias, 15 m², tres camas, baño privado, TV y WiFi.', img: 'images/rooms/room3.png', link: '#' },
-          { titulo: 'Habitación Matrimonial', desc: 'Ambiente acogedor de 14 m², cama queen, baño privado, TV y WiFi.', img: 'images/rooms/room4.png', link: '#' },
-        ] 
-    }"
-    >
-        <div class="section-header reveal">
-            <h3 class="section-title">Nuestras Habitaciones</h3>
-            <p class="section-subtitle">
-                Confort y estilo pensados para tu descanso
-            </p>
-        </div>
-
-        <!-- Carousel -->
-        <div class="carousel-wrapper reveal">
-            <button
-                class="control prev"
-                @click="active = (active - 1 + items.length) % items.length"
-                >‹</button
-            >
-
-            <div
-                class="carousel"
-                :style="`transform: translateX(-${active * (cardWidth + gap)}px)`"
-                x-data="{ cardWidth: 360, gap: 24 }"
-            >
-                <template x-for="(item, index) in items" :key="index">
-                    <div
-                        class="card"
-                        :class="{ 'active': index === active }"
-                        @click="active = index"
-                    >
-                        <img
-                            :src="item.img"
-                            :alt="item.titulo"
-                            class="card-img"
-                        />
-                        <div class="card-body">
-                            <h3 x-text="item.titulo"></h3>
-                            <p x-text="item.desc"></p>
-                            <a :href="item.link" class="btn-reserva"
-                                >Ver Detalles</a
-                            >
-                        </div>
-                    </div>
-                </template>
-            </div>
-
-            <button
-                class="control next"
-                @click="active = (active + 1) % items.length">›</button
-            >
-        </div>
-
-        <div class="text-center mt-4 reveal">
-            <a href="/habitaciones" class="btn">Ver todas las habitaciones</a>
-        </div>
-    </section>
-
-    <!-- Sección tours -->
-    <section class="tours-section container reveal" id="tours">
-        <div class="tours-header">
-            <h3 class="section-title">Explora con Nosotros</h3>
-            <p class="section-subtitle">
-                Vive experiencias únicas en los destinos más emblemáticos de
-                Puno y el Perú.
-            </p>
-        </div>
-
-        <div class="tours-grid reveal">
-    <div class="tour-card">
-        <div class="tour-img">
-            <img src="/hotel-web/images/tours/tour1.jpg" alt="Islas Flotantes de los Uros" />
-        </div>
-        <div class="tour-content">
-            <h4>Islas Flotantes de los Uros</h4>
-            <p>
-                Navega por el Lago Titicaca y descubre las islas
-                flotantes construidas de totora por sus habitantes.
-            </p>
-            <a href="#" class="btn-tour">Ver más</a>
-        </div>
-    </div>
-
-    <div class="tour-card">
-        <div class="tour-img">
-            <img src="/hotel-web/images/tours/tour2.png" alt="Isla Taquile" />
-        </div>
-        <div class="tour-content">
-            <h4>Isla Taquile</h4>
-            <p>
-                Explora esta isla declarada Patrimonio Cultural por
-                la UNESCO, famosa por sus tejidos artesanales.
-            </p>
-            <a href="#" class="btn-tour">Ver más</a>
-        </div>
-    </div>
-
-    <div class="tour-card">
-        <div class="tour-img">
-            <img src="/hotel-web/images/tours/tour3.png" alt="Isla Amantaní" />
-        </div>
-        <div class="tour-content">
-            <h4>Isla Amantaní</h4>
-            <p>
-                Vive una experiencia auténtica compartiendo con
-                familias locales y contempla un atardecer
-                inolvidable desde Pachatata.
-            </p>
-            <a href="#" class="btn-tour">Ver más</a>
-        </div>
-    </div>
-
-    <div class="tour-card">
-        <div class="tour-img">
-            <img src="/hotel-web/images/tours/tour4.png" alt="Sillustani" />
-        </div>
-        <div class="tour-content">
-            <h4>Sillustani</h4>
-            <p>
-                Descubre las imponentes chullpas de Sillustani,
-                antiguas torres funerarias preincaicas.
-            </p>
-            <a href="#" class="btn-tour">Ver más</a>
-        </div>
-    </div>
-</div>
-
-        <div class="text-center mt-5">
-            <a href="/tours" class="btn btn-gold">Ver todos los tours</a>
-        </div>
-    </section>
-
-    <!-- Sección contacto -->
-    <section class="contact reveal" id="contacto">
-        <div class="section-header">
-            <h2 class="section-title">Contáctanos</h2>
-            <p class="section-subtitle">
-                Estamos disponibles para ayudarte con reservas, consultas o
-                información adicional.
-            </p>
-        </div>
-
-        <div class="contact-grid">
-            <!-- Dirección -->
-            <div class="contact-card">
-                <i class="fa-solid fa-location-dot card-icon"></i>
-                <h4>Dirección</h4>
-                <p>Jr. Cajamarca 206, Puno</p>
-            </div>
-
-            <!-- Teléfono -->
-            <div class="contact-card">
-                <i class="fa-solid fa-phone card-icon"></i>
-                <h4>Teléfono</h4>
-                <p>+51 944 278 647</p>
-            </div>
-
-            <!-- Email -->
-            <div class="contact-card">
-                <i class="fa-solid fa-envelope card-icon"></i>
-                <h4>Email</h4>
-                <p>contacto@hostalacuarius.com</p>
-            </div>
-        </div>
-
-        <!-- Botón -->
-        <a href="/contacto" class="btn">Formulario de Contacto</a>
-    </section>
-
-    <!-- Botón flotante WhatsApp -->
-    <a
-        href="https://wa.me/51987654321"
-        class="whatsapp-float"
-        target="_blank"
-        rel="noopener"
-    >
-        <img src="/images/Whatsapp_logo.svg" alt="WhatsApp" />
-    </a>
 </Layout>
