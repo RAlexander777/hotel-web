@@ -56,7 +56,7 @@ body {
     height: 55vh;
     min-height: 350px;
     position: relative;
-    background-image: url("/hotel-web/images/tours/hero-tours.jpg"); /* Imagen de fondo para tours */
+    background-image: url("/hotel-web/images/hero2.jpg"); /* Imagen de fondo para tours */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

@@ -7,7 +7,7 @@ import "../styles/index.css";
     <section
         class="hero"
         x-data="{
-            images: ['/hotel-web/images/hero.webp','/hotel-web/images/hero2.jpg','/hotel-web/images/hero3.jpg','/hotel-web/images/hero4.jpg', '/hotel-web/images/hero5.jpg'],
+            images: ['/hotel-web/images/hero.webp','/hotel-web/images/hero2.jpg','/hotel-web/images/hero3.jpg','/hotel-web/images/hero4.jpg', '/hotel-web/images/hero5.jpg', '/hotel-web/images/hero6.png'],
             current: 0,
             init() {
                 setInterval(() => {
@@ -57,6 +57,7 @@ import "../styles/index.css";
             <div class="service-item"><i class="fas fa-utensils"></i><span>Desayuno Incluido</span></div>
             <div class="service-item"><i class="fas fa-tv"></i><span>TV por Cable</span></div>
             <div class="service-item"><i class="fas fa-globe"></i><span>Agencia de Viajes</span></div>
+            <div class="service-item"><i class="fas fa-car"></i><span>Cochera</span></div>
         </div>
     </section>
 
@@ -67,47 +68,47 @@ import "../styles/index.css";
         </div>
         <div class="rooms-grid">
             <div class="room-card">
-                <img src="/hotel-web/images/rooms/room1.png" alt="Habitación Simple" class="room-card-img"/>
+                <img src="/hotel-web/images/rooms/simple/2.png" alt="Habitación Simple" class="room-card-img"/>
                 <div class="room-card-body">
                     <h3>Habitación Simple</h3>
-                    <p>Cómodo ambiente de 9 m², ideal para viajeros solos que buscan confort y privacidad.</p>
+                    <p>Ideal para viajeros solos que buscan confort y privacidad.</p>
                     <div class="room-amenities">
                         <span><i class="fas fa-wifi"></i> WiFi</span>
                         <span><i class="fas fa-tv"></i> TV</span>
                         <span><i class="fas fa-shower"></i> Ducha</span>
                     </div>
-                    <a href="/habitaciones/simple" class="btn-details">Ver Detalles</a>
+                    <a href="/hotel-web/habitaciones#simple" class="btn-details">Ver Detalles</a>
                 </div>
             </div>
             <div class="room-card">
-                <img src="/hotel-web/images/rooms/room2.png" alt="Habitación Doble" class="room-card-img"/>
+                <img src="/hotel-web/images/rooms/doble/1.png" alt="Habitación Doble" class="room-card-img"/>
                 <div class="room-card-body">
                     <h3>Habitación Doble</h3>
-                    <p>Espacio de 12 m² con dos camas, perfecto para amigos o colegas explorando Puno.</p>
+                    <p>Perfecto para amigos o colegas explorando Puno.</p>
                     <div class="room-amenities">
                         <span><i class="fas fa-wifi"></i> WiFi</span>
                         <span><i class="fas fa-tv"></i> TV</span>
                         <span><i class="fas fa-shower"></i> Ducha</span>
                     </div>
-                    <a href="/habitaciones/doble" class="btn-details">Ver Detalles</a>
+                    <a href="/hotel-web/habitaciones#doble" class="btn-details">Ver Detalles</a>
                 </div>
             </div>
             <div class="room-card">
-                <img src="/hotel-web/images/rooms/room4.png" alt="Habitación Matrimonial" class="room-card-img"/>
+                <img src="/hotel-web/images/rooms/matrimonial/3.png" alt="Habitación Matrimonial" class="room-card-img"/>
                 <div class="room-card-body">
                     <h3>Habitación Matrimonial</h3>
-                    <p>Acogedor ambiente de 14 m² con cama queen, diseñado para el confort de las parejas.</p>
+                    <p>Diseñado para el confort de las parejas.</p>
                     <div class="room-amenities">
                         <span><i class="fas fa-wifi"></i> WiFi</span>
                         <span><i class="fas fa-tv"></i> TV</span>
                         <span><i class="fas fa-shower"></i> Ducha</span>
                     </div>
-                    <a href="/habitaciones/matrimonial" class="btn-details">Ver Detalles</a>
+                    <a href="/hotel-web/habitaciones#matrimonial" class="btn-details">Ver Detalles</a>
                 </div>
             </div>
         </div>
         <div class="text-center mt-4">
-             <a href="/habitaciones" class="btn">Ver Todas las Habitaciones</a>
+            <a href="/hotel-web/habitaciones" class="btn">Ver Todas las Habitaciones</a>
         </div>
     </section>
     
@@ -149,27 +150,27 @@ import "../styles/index.css";
         <div class="tours-container">
             <div class="tour-plan-card">
                 <div class="tour-plan-img">
-                    <img src="/hotel-web/images/tours/tour1.jpg" alt="Islas Flotantes de los Uros" />
+                    <img src="/hotel-web/images/tours/uros.jpg" alt="Islas Flotantes de los Uros" />
                 </div>
                 <div class="tour-plan-content">
                     <h3>Islas Flotantes de los Uros</h3>
                     <p>Navega por el Lago Titicaca y descubre las fascinantes islas flotantes construidas de totora por la ancestral cultura Uru.</p>
-                    <a href="/tours/uros" class="btn-details">Consultar Plan</a>
+                    <a href="/hotel-web/tours" class="btn-details">Consultar Plan</a>
                 </div>
             </div>
             <div class="tour-plan-card">
                 <div class="tour-plan-img">
-                    <img src="/hotel-web/images/tours/tour2.png" alt="Isla Taquile" />
+                    <img src="/hotel-web/images/tours/taquile.png" alt="Isla Taquile" />
                 </div>
                 <div class="tour-plan-content">
                     <h3>Isla Taquile, Patrimonio UNESCO</h3>
                     <p>Explora esta isla única, famosa por sus extraordinarios tejidos artesanales y paisajes que te dejarán sin aliento.</p>
-                    <a href="/tours/taquile" class="btn-details">Consultar Plan</a>
+                    <a href="/hotel-web/tours" class="btn-details">Consultar Plan</a>
                 </div>
             </div>
         </div>
         <div class="text-center mt-5">
-            <a href="/tours" class="btn">Ver Todos los Tours</a>
+            <a href="/hotel-web/tours" class="btn">Ver Todos los Tours</a>
         </div>
     </section>
 

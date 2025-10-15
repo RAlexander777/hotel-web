@@ -36,7 +36,7 @@ body {
     height: 55vh;
     min-height: 350px;
     position: relative;
-    background-image: url("/hotel-web/images/contact/hero-contact.jpg"); /* Cambia esta imagen si lo deseas */
+    background-image: url("/hotel-web/images/hero5.jpg"); /* Cambia esta imagen si lo deseas */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

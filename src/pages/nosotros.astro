@@ -10,7 +10,8 @@ import "../styles/nosotros.css";
             <div class="hero-about-content">
                 <h1 class="hero-about-title">Corazón y Alma de Puno</h1>
                 <p class="hero-about-subtitle">
-                    Más que un hostal, somos tu hogar en el Altiplano. Descubre nuestra historia y la pasión que nos define.
+                    Más que un hostal, somos tu hogar en el Altiplano. Descubre
+                    nuestra historia y la pasión que nos define.
                 </p>
             </div>
         </div>
@@ -20,11 +21,43 @@ import "../styles/nosotros.css";
         <div class="story-content reveal">
             <h2 class="section-title">Nuestra Historia</h2>
             <p class="section-text">
-                Fundado con el sueño de ofrecer una auténtica hospitalidad puneña, Hostal Aquarius nació del amor por nuestra tierra y el deseo de compartir su magia. Desde nuestros humildes comienzos, hemos crecido gracias a la confianza de viajeros como tú, convirtiéndenos en un refugio de confort y calidez en el corazón de Puno.
+                Trabajamos con dedicación para ofrecerte una estadía cómoda,
+                segura y acogedora en el corazón de la ciudad. Nuestra prioridad
+                es que cada huésped se sienta como en casa, brindando un
+                servicio cálido y habitaciones limpias y funcionales para todo
+                tipo de viajero. Ya sea que viajes por turismo, descanso o
+                trabajo, en Hostal Acuarius encontrarás una atención
+                personalizada, precios accesibles y un ambiente tranquilo para
+                disfrutar de tu visita a Puno.
             </p>
         </div>
-        <div class="story-image reveal">
-            <img src="/hotel-web/images/about/history.jpg" alt="Interior del Hostal Aquarius" />
+
+        <div
+            class="story-carousel reveal"
+            x-data="{
+                images: [
+                    '/hotel-web/images/nosotros/1.png',
+                    '/hotel-web/images/nosotros/5.png',
+                    '/hotel-web/images/nosotros/2.png',
+                    '/hotel-web/images/nosotros/3.png',
+                    '/hotel-web/images/nosotros/4.png',
+                ],
+                current: 0,
+                init() {
+                    setInterval(() => {
+                        this.current = (this.current + 1) % this.images.length;
+                    }, 4000); // Cambia de imagen cada 4 segundos
+                }
+            }"
+        >
+            <template x-for="(image, index) in images" :key="index">
+                <div
+                    class="carousel-slide"
+                    :class="{ 'active': current === index }"
+                    :style="`background-image: url(${image})`"
+                >
+                </div>
+            </template>
         </div>
     </section>
 
@@ -36,14 +69,20 @@ import "../styles/nosotros.css";
                 </div>
                 <h3 class="philosophy-title">Nuestra Misión</h3>
                 <p>
-                    Brindar un servicio de alojamiento de calidad, seguro y confortable, superando las expectativas de nuestros huéspedes a través de un trato personalizado y una atención excepcional que refleje la calidez de la cultura puneña.
+                    Brindar un servicio de alojamiento de calidad, seguro y
+                    confortable, superando las expectativas de nuestros
+                    huéspedes a través de un trato personalizado y una atención
+                    excepcional que refleje la calidez de la cultura puneña.
                 </p>
             </div>
             <div class="philosophy-card reveal">
                 <div class="philosophy-icon"><i class="fas fa-eye"></i></div>
                 <h3 class="philosophy-title">Nuestra Visión</h3>
                 <p>
-                    Ser reconocidos como el hostal líder en Puno por nuestra excelencia en hospitalidad, convirtiéndonos en la primera opción para viajeros que buscan una experiencia auténtica, memorable y conectada con la cultura local.
+                    Ser reconocidos como el hostal líder en Puno por nuestra
+                    excelencia en hospitalidad, convirtiéndonos en la primera
+                    opción para viajeros que buscan una experiencia auténtica,
+                    memorable y conectada con la cultura local.
                 </p>
             </div>
         </div>
@@ -58,7 +97,8 @@ import "../styles/nosotros.css";
                 </div>
                 <h4 class="feature-title">Ubicación Estratégica</h4>
                 <p>
-                    A pasos de la Plaza de Armas y los principales atractivos turísticos de la ciudad.
+                    A pasos de la Plaza de Armas y los principales atractivos
+                    turísticos de la ciudad.
                 </p>
             </div>
             <div class="feature-item reveal">
@@ -67,14 +107,16 @@ import "../styles/nosotros.css";
                 </div>
                 <h4 class="feature-title">Servicio Personalizado</h4>
                 <p>
-                    Nuestro equipo está dedicado a hacer de tu estadía una experiencia inolvidable.
+                    Nuestro equipo está dedicado a hacer de tu estadía una
+                    experiencia inolvidable.
                 </p>
             </div>
             <div class="feature-item reveal">
                 <div class="feature-icon"><i class="fas fa-leaf"></i></div>
                 <h4 class="feature-title">Cultura Local</h4>
                 <p>
-                    Te conectamos con lo mejor de Puno, desde tours auténticos hasta gastronomía local.
+                    Te conectamos con lo mejor de Puno, desde tours auténticos
+                    hasta gastronomía local.
                 </p>
             </div>
             <div class="feature-item reveal">
@@ -83,35 +125,82 @@ import "../styles/nosotros.css";
                 </div>
                 <h4 class="feature-title">Seguridad y Confort</h4>
                 <p>
-                    Habitaciones impecables y un ambiente seguro para que te relajes con total tranquilidad.
+                    Habitaciones impecables y un ambiente seguro para que te
+                    relajes con total tranquilidad.
                 </p>
             </div>
         </div>
     </section>
 
     <section class="gallery-section container">
-        <h2 class="section-title text-center reveal">Momentos Aquarius</h2>
-        <p class="section-text text-center reveal" style="margin-bottom: 4rem;">
-            Algunos recuerdos felices con huéspedes que se convirtieron en amigos.
-        </p>
-        <div class="gallery-grid">
-            <div class="gallery-item reveal">
-                <img src="/hotel-web/images/gallery/gallery1.jpg" alt="Huéspedes felices en el Hostal Aquarius" />
+        <div class="section-header text-center reveal">
+            <h2 class="section-title">Momentos Aquarius</h2>
+            <p class="section-text">
+                Recuerdos felices con huéspedes que se convirtieron en parte de
+                nuestra familia.
+            </p>
+        </div>
+
+        <div class="masonry-gallery">
+            <div class="masonry-item reveal">
+                <img
+                    src="/hotel-web/images/clientes/1.png"
+                    alt="Huéspedes felices en el Hostal Aquarius"
+                />
             </div>
-            <div class="gallery-item reveal">
-                <img src="/hotel-web/images/gallery/gallery2.jpg" alt="Huéspedes felices en el Hostal Aquarius" />
+            <div class="masonry-item reveal">
+                <img
+                    src="/hotel-web/images/clientes/2.png"
+                    alt="Detalle del ambiente del Hostal Aquarius"
+                />
             </div>
-            <div class="gallery-item reveal">
-                <img src="/hotel-web/images/gallery/gallery3.jpg" alt="Huéspedes felices en el Hostal Aquarius" />
+            <div class="masonry-item reveal">
+                <img
+                    src="/hotel-web/images/clientes/5.png"
+                    alt="Desayuno en Hostal Aquarius"
+                />
             </div>
-            <div class="gallery-item reveal">
-                <img src="/hotel-web/images/gallery/gallery4.jpg" alt="Huéspedes felices en el Hostal Aquarius" />
+            <div class="masonry-item reveal">
+                <img
+                    src="/hotel-web/images/clientes/3.png"
+                    alt="Grupo de amigos en Puno"
+                />
             </div>
-            <div class="gallery-item reveal">
-                <img src="/hotel-web/images/gallery/gallery5.jpg" alt="Huéspedes felices en el Hostal Aquarius" />
+            <div class="masonry-item reveal">
+                <img
+                    src="/hotel-web/images/clientes/4.png"
+                    alt="Pareja de viajeros en Hostal Aquarius"
+                />
             </div>
-            <div class="gallery-item reveal">
-                <img src="/hotel-web/images/gallery/gallery6.jpg" alt="Huéspedes felices en el Hostal Aquarius" />
+            <div class="masonry-item reveal">
+                <img
+                    src="/hotel-web/images/clientes/7.png"
+                    alt="Recepción del hostal"
+                />
+            </div>
+            <div class="masonry-item reveal">
+                <img
+                    src="/hotel-web/images/clientes/6.png"
+                    alt="Vista desde el hostal"
+                />
+            </div>
+            <div class="masonry-item reveal">
+                <img
+                    src="/hotel-web/images/clientes/7.png"
+                    alt="Vista desde el hostal"
+                />
+            </div>
+            <div class="masonry-item reveal">
+                <img
+                    src="/hotel-web/images/clientes/8.png"
+                    alt="Vista desde el hostal"
+                />
+            </div>
+            <div class="masonry-item reveal">
+                <img
+                    src="/hotel-web/images/clientes/9.png"
+                    alt="Vista desde el hostal"
+                />
             </div>
         </div>
     </section>
@@ -120,7 +209,8 @@ import "../styles/nosotros.css";
         <div class="container text-center reveal">
             <h2 class="cta-title">Descubre tu Espacio Ideal</h2>
             <p class="cta-text">
-                Ahora que conoces nuestra historia, te invitamos a encontrar la habitación perfecta para tu aventura en Puno.
+                Ahora que conoces nuestra historia, te invitamos a encontrar la
+                habitación perfecta para tu aventura en Puno.
             </p>
             <a href="/habitaciones" class="btn">Ver Habitaciones</a>
         </div>
@@ -131,7 +221,8 @@ import "../styles/nosotros.css";
             <div class="contact-info reveal">
                 <h3 class="contact-title">Contáctanos</h3>
                 <p class="contact-text">
-                    Estamos aquí para ayudarte. Llámanos, escríbenos o visítanos directamente. ¡Tu aventura en Puno comienza aquí!
+                    Estamos aquí para ayudarte. Llámanos, escríbenos o visítanos
+                    directamente. ¡Tu aventura en Puno comienza aquí!
                 </p>
                 <ul class="contact-list">
                     <li>
@@ -150,11 +241,25 @@ import "../styles/nosotros.css";
 
                 <form action="#" method="POST" class="contact-form">
                     <div class="form-group form-row">
-                        <input type="text" name="name" placeholder="Tu Nombre" required>
-                        <input type="email" name="email" placeholder="Tu Correo" required>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Tu Nombre"
+                            required
+                        />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Tu Correo"
+                            required
+                        />
                     </div>
                     <div class="form-group">
-                        <textarea name="message" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        <textarea
+                            name="message"
+                            rows="5"
+                            placeholder="Escribe tu mensaje aquí..."
+                            required></textarea>
                     </div>
                     <button type="submit" class="btn">Enviar Consulta</button>
                 </form>
@@ -174,4 +279,3 @@ import "../styles/nosotros.css";
         </div>
     </footer>
 </Layout>
-

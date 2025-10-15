@@ -1,0 +1,103 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/reserva.css";
+---
+
+<Layout title="Hostal Aquarius · Reserva tu Estadía" heroLayout={true}>
+    <section class="hero-about">
+        <div class="hero-about-overlay">
+            <div class="hero-about-content">
+                <h1 class="hero-about-title">Reserva tu Estadía</h1>
+                <p class="hero-about-subtitle">
+                    Estás a un paso de comenzar tu aventura en Puno. Completa el
+                    formulario y nos pondremos en contacto contigo a la brevedad.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <main class="booking-section container">
+        <div class="booking-form-wrapper reveal">
+            <div class="form-header">
+                <h2 class="form-title">Completa tus Datos</h2>
+                <p class="form-subtitle">Los campos marcados con * son obligatorios.</p>
+            </div>
+            
+            <form action="#" method="POST" class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Nombre Completo *</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Ej: Juan Pérez" required />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico *</label>
+                        <input type="email" id="email" name="email" placeholder="Ej: correo@dominio.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono / WhatsApp</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+51 987 654 321" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="checkin">Fecha de Llegada *</label>
+                        <input type="date" id="checkin" name="checkin" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout">Fecha de Salida *</label>
+                        <input type="date" id="checkout" name="checkout" required />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="adults">Adultos *</label>
+                        <select id="adults" name="adults" required>
+                            <option value="1">1 Adulto</option>
+                            <option value="2">2 Adultos</option>
+                            <option value="3">3 Adultos</option>
+                            <option value="4">4 Adultos</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="children">Niños</label>
+                        <select id="children" name="children">
+                            <option value="0">0 Niños</option>
+                            <option value="1">1 Niño</option>
+                            <option value="2">2 Niños</option>
+                            <option value="3">3+</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="roomType">Tipo de Habitación Preferida</label>
+                        <select id="roomType" name="roomType">
+                            <option value="cualquiera">Cualquiera disponible</option>
+                            <option value="simple">Habitación Simple</option>
+                            <option value="doble">Habitación Doble</option>
+                            <option value="matrimonial">Habitación Matrimonial</option>
+                            <option value="triple">Habitación Triple</option>
+                            <option value="cuadruple">Habitación Cuádruple</option>
+                            <option value="simple-compartido">Simple (Baño Compartido)</option>
+                            <option value="doble-compartido">Doble (Baño Compartido)</option>
+                            <option value="matrimonial-compartido">Matrimonial (Baño Compartido)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="requests">Solicitudes Especiales</label>
+                        <textarea id="requests" name="requests" rows="4" placeholder="Ej: Llegada tarde, preferencia de cama, etc."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Solicitar Reserva</button>
+            </form>
+        </div>
+    </main>
+</Layout>

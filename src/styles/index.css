@@ -147,14 +147,20 @@ body {
     line-height: 1.7;
 }
 
-/* --- Servicios --- */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     justify-items: center;
     margin-top: 2rem;
 }
+
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1rf);
+    }
+}
+
 .service-item {
     text-align: center;
 }

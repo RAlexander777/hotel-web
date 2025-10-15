@@ -1,7 +1,11 @@
 ---
 import "../styles/navbar.css";
 
+// Recibimos las props como antes
 const { isIndex = false } = Astro.props;
+
+// OBTENEMOS LA RUTA ACTUAL DE LA PÁGINA
+const pathname = Astro.url.pathname;
 ---
 <header
     x-data=`{
@@ -10,19 +14,14 @@ const { isIndex = false } = Astro.props;
         isIndexPage: ${isIndex},
         showLogo: ${!isIndex},
         init() {
-            // Lógica para el fondo del navbar (se aplica a todas las páginas)
+            // ... toda tu lógica de Alpine.js se mantiene igual ...
             window.addEventListener('scroll', () => {
                 this.scrolled = window.scrollY > 50;
             });
-
-            // Lógica especial para mostrar/ocultar el logo SÓLO en el index
             if (this.isIndexPage) {
                 window.addEventListener('scroll', () => {
-                    // El hero del index ocupa el 100% de la altura de la ventana (100vh)
-                    const heroHeight = window.innerHeight; 
-                    
-                    // Si el scroll ha pasado la altura del hero, muestra el logo
-                    if (window.scrollY > heroHeight - 80) { // 80 es la altura del navbar
+                    const heroHeight = window.innerHeight;
+                    if (window.scrollY > heroHeight - 80) {
                         this.showLogo = true;
                     } else {
                         this.showLogo = false;
@@ -42,15 +41,14 @@ const { isIndex = false } = Astro.props;
         </div>
 
         <nav class="desktop-nav">
-            <a href="/hotel-web/nosotros">Nosotros</a>
-            <a href="/hotel-web/habitaciones">Habitaciones</a>
-            <a href="/hotel-web/tours">Tours</a>
-            <a href="/hotel-web/contacto">Contacto</a>
+            <a href="/hotel-web/nosotros" class:list={{ active: pathname.includes('/nosotros') }}>Nosotros</a>
+            <a href="/hotel-web/habitaciones" class:list={{ active: pathname.includes('/habitaciones') }}>Habitaciones</a>
+            <a href="/hotel-web/tours" class:list={{ active: pathname.includes('/tours') }}>Tours</a>
+            <a href="/hotel-web/contacto" class:list={{ active: pathname.includes('/contacto') }}>Contacto</a>
         </nav>
 
         <div class="navbar-actions">
-            <a href="/reserva" class="btn btn-nav">Reserva Ahora</a>
-            
+            <a href="/hotel-web/reserva" class="btn btn-nav">Reserva Ahora</a>
             <button class="hamburger" @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Abrir menú">
                 <span :class="{ 'toggled': mobileMenuOpen }"></span>
                 <span :class="{ 'toggled': mobileMenuOpen }"></span>
@@ -61,11 +59,11 @@ const { isIndex = false } = Astro.props;
 
     <div class="mobile-menu" x-show="mobileMenuOpen" @click.outside="mobileMenuOpen = false" x-transition>
         <nav>
-            <a href="/hotel-web/nosotros" @click="mobileMenuOpen = false">Nosotros</a>
-            <a href="/hotel-web/habitaciones" @click="mobileMenuOpen = false">Habitaciones</a>
-            <a href="/hotel-web/tours" @click="mobileMenuOpen = false">Tours</a>
-            <a href="/hotel-web/contacto" @click="mobileMenuOpen = false">Contacto</a>
-            <a href="/reserva" class="btn-reserva-mobile">Reserva Ahora</a>
+            <a href="/hotel-web/nosotros" @click="mobileMenuOpen = false" class:list={{ active: pathname.includes('/nosotros') }}>Nosotros</a>
+            <a href="/hotel-web/habitaciones" @click="mobileMenuOpen = false" class:list={{ active: pathname.includes('/habitaciones') }}>Habitaciones</a>
+            <a href="/hotel-web/tours" @click="mobileMenuOpen = false" class:list={{ active: pathname.includes('/tours') }}>Tours</a>
+            <a href="/hotel-web/contacto" @click="mobileMenuOpen = false" class:list={{ active: pathname.includes('/contacto') }}>Contacto</a>
+            <a href="/hotel-web/reserva" class="btn-reserva-mobile">Reserva Ahora</a>
         </nav>
     </div>
 </header>
