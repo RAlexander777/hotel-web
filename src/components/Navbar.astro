@@ -7,10 +7,12 @@ const { isIndex = false } = Astro.props;
 // OBTENEMOS LA RUTA ACTUAL DE LA PÁGINA
 const pathname = Astro.url.pathname;
 ---
+
 <header
     x-data=`{
         scrolled: false,
         mobileMenuOpen: false,
+        mobilePhoneOpen: false,
         isIndexPage: ${isIndex},
         showLogo: ${!isIndex},
         init() {
@@ -36,20 +38,68 @@ const pathname = Astro.url.pathname;
     <div class="navbar-container">
         <div class="logo" :class="{ 'logo-visible': showLogo }">
             <a href="/hotel-web/">
-                <img src="/hotel-web/images/logo.png" alt="Hostal Acuarius Logo" class="logo-img" />
+                <img
+                    src="/hotel-web/images/logo.png"
+                    alt="Hostal Acuarius Logo"
+                    class="logo-img"
+                />
             </a>
         </div>
 
         <nav class="desktop-nav">
-            <a href="/hotel-web/nosotros" class:list={{ active: pathname.includes('/nosotros') }}>Nosotros</a>
-            <a href="/hotel-web/habitaciones" class:list={{ active: pathname.includes('/habitaciones') }}>Habitaciones</a>
-            <a href="/hotel-web/tours" class:list={{ active: pathname.includes('/tours') }}>Tours</a>
-            <a href="/hotel-web/contacto" class:list={{ active: pathname.includes('/contacto') }}>Contacto</a>
+            <a
+                href="/hotel-web/nosotros"
+                class:list={{ active: pathname.includes("/nosotros") }}
+                >Nosotros</a
+            >
+            <a
+                href="/hotel-web/habitaciones"
+                class:list={{ active: pathname.includes("/habitaciones") }}
+                >Habitaciones</a
+            >
+            <a
+                href="/hotel-web/tours"
+                class:list={{ active: pathname.includes("/tours") }}>Tours</a
+            >
+            <a
+                href="/hotel-web/contacto"
+                class:list={{ active: pathname.includes("/contacto") }}
+                >Contacto</a
+            >
         </nav>
 
         <div class="navbar-actions">
+            <a href="tel:+51987654321" class="navbar-phone">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-phone"
+                >
+                    <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    ></path>
+                </svg>
+                <span>Llámanos: +51 944 278 647</span>
+            </a>
             <a href="/hotel-web/reserva" class="btn btn-nav">Reserva Ahora</a>
-            <button class="hamburger" @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Abrir menú">
+
+            <button class="mobile-phone-btn" @click="mobilePhoneOpen = !mobilePhoneOpen; mobileMenuOpen = false" aria-label="Llamar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+            </button>
+            <button
+                class="hamburger"
+                @click="mobileMenuOpen = !mobileMenuOpen"
+                aria-label="Abrir menú"
+            >
                 <span :class="{ 'toggled': mobileMenuOpen }"></span>
                 <span :class="{ 'toggled': mobileMenuOpen }"></span>
                 <span :class="{ 'toggled': mobileMenuOpen }"></span>
@@ -57,13 +107,43 @@ const pathname = Astro.url.pathname;
         </div>
     </div>
 
-    <div class="mobile-menu" x-show="mobileMenuOpen" @click.outside="mobileMenuOpen = false" x-transition>
+    <div class="mobile-phone-popup" x-show="mobilePhoneOpen" @click.outside="mobilePhoneOpen = false" x-transition>
+        <a href="tel:+51987654321">Llamar Ahora: +51 944 278 647</a>
+    </div>
+
+    <div
+        class="mobile-menu"
+        x-show="mobileMenuOpen"
+        @click.outside="mobileMenuOpen = false"
+        x-transition
+    >
         <nav>
-            <a href="/hotel-web/nosotros" @click="mobileMenuOpen = false" class:list={{ active: pathname.includes('/nosotros') }}>Nosotros</a>
-            <a href="/hotel-web/habitaciones" @click="mobileMenuOpen = false" class:list={{ active: pathname.includes('/habitaciones') }}>Habitaciones</a>
-            <a href="/hotel-web/tours" @click="mobileMenuOpen = false" class:list={{ active: pathname.includes('/tours') }}>Tours</a>
-            <a href="/hotel-web/contacto" @click="mobileMenuOpen = false" class:list={{ active: pathname.includes('/contacto') }}>Contacto</a>
-            <a href="/hotel-web/reserva" class="btn-reserva-mobile">Reserva Ahora</a>
+            <a
+                href="/hotel-web/nosotros"
+                @click="mobileMenuOpen = false"
+                class:list={{ active: pathname.includes("/nosotros") }}
+                >Nosotros</a
+            >
+            <a
+                href="/hotel-web/habitaciones"
+                @click="mobileMenuOpen = false"
+                class:list={{ active: pathname.includes("/habitaciones") }}
+                >Habitaciones</a
+            >
+            <a
+                href="/hotel-web/tours"
+                @click="mobileMenuOpen = false"
+                class:list={{ active: pathname.includes("/tours") }}>Tours</a
+            >
+            <a
+                href="/hotel-web/contacto"
+                @click="mobileMenuOpen = false"
+                class:list={{ active: pathname.includes("/contacto") }}
+                >Contacto</a
+            >
+            <a href="/hotel-web/reserva" class="btn-reserva-mobile"
+                >Reserva Ahora</a
+            >
         </nav>
     </div>
 </header>

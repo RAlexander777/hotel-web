@@ -235,3 +235,68 @@
 .mobile-menu nav a.active {
     color: var(--color-gold);
 }
+
+.navbar-phone {
+    display: none;
+}
+
+/* Estilos para la vista de escritorio */
+@media (min-width: 992px) {
+    .navbar-phone {
+        display: flex; /* Lo hacemos visible */
+        align-items: center;
+        gap: 0.6rem; /* Espacio entre el ícono y el texto */
+        color: #ffffff;
+        text-decoration: none;
+        font-family: "Rethink Sans", sans-serif;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-phone:hover {
+        color: var(--color-gold); /* Efecto hover elegante */
+    }
+
+    .navbar-phone svg {
+        stroke: currentColor; /* El ícono hereda el color del texto */
+        transition: stroke 0.3s ease;
+    }
+}
+
+.mobile-phone-btn {
+    display: flex; /* Visible por defecto en móvil */
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.mobile-phone-popup {
+    position: absolute;
+    top: calc(var(--navbar-height) - 10px); /* Justo debajo de la navbar */
+    right: 2rem; /* Alineado con los íconos */
+    background: #1a1a1a;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    z-index: 1001; /* Por encima de todo, excepto el menú principal */
+}
+
+.mobile-phone-popup a {
+    color: #fff;
+    text-decoration: none;
+    font-family: "Rethink Sans", sans-serif;
+    font-size: 0.9rem;
+    white-space: nowrap; /* Evita que el texto se parta en dos líneas */
+}
+
+/* En vista de escritorio, ocultamos el botón de teléfono móvil */
+@media (min-width: 992px) {
+    .mobile-phone-btn {
+        display: none;
+    }
+}
