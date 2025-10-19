@@ -61,13 +61,266 @@ const { isIndexPage = false } = Astro.props;
         <Footer />
 
         <!--BOTON WHATSAPP -->
-        <a 
-    href="https://api.whatsapp.com/send?phone=51944278647&text=Hola,%20quisiera%20hacer%20una%20consulta%20sobre%20el%20Hostal%20Acuarius."
-    class="whatsapp-fab" 
-    target="_blank" 
-    aria-label="Contactar por WhatsApp"
->
-    <img src="/hotel-web/images/Whatsapp_logo.svg" alt="WhatsApp" />
-</a>
+        <a
+            href="https://api.whatsapp.com/send?phone=51944278647&text=Hola,%20quisiera%20hacer%20una%20consulta%20sobre%20el%20Hostal%20Acuarius."
+            class="whatsapp-fab"
+            target="_blank"
+            aria-label="Contactar por WhatsApp"
+        >
+            <img src="/hotel-web/images/Whatsapp_logo.svg" alt="WhatsApp" />
+        </a>
+
+        <script is:inline>
+            document.addEventListener("alpine:init", () => {
+                Alpine.data("carousel", () => ({
+                    items: [
+                        {
+                            type: "review",
+                            author: "Llique (Perú)",
+                            rating: 5,
+                            text: "La ubicación es excepcional, cerca a la plaza y a diversos lugares. De muy fácil acceso, ni que decir de la señora María, un amor de persona, ella y su familia. ¡Me sentí muy a gusto!",
+                        },
+                        {
+                            type: "review",
+                            author: "Penélope (España)",
+                            rating: 5,
+                            text: "La ubicación del hotel era cercana a la plaza de armas. La señora que nos atendió era muy amable, y como teníamos que madrugar nos hizo un pequeño picnic. Las camas eran muy cómodas y espaciosas.",
+                        },
+                        {
+                            type: "review",
+                            author: "Eder (España)",
+                            rating: 5,
+                            text: "El desayuno es genial y abundante. Las chicas del personal se muestran muy atentas y amables. La habitación estupenda, contaba con todo lo necesario.",
+                        },
+                        {
+                            type: "review",
+                            author: "Gimenez (Argentina)",
+                            rating: 5,
+                            text: "La atención de María muy amable, atenta, disponible en todo momento.",
+                        },
+                        {
+                            type: "review",
+                            author: "Monika (Reino Unido)",
+                            rating: 5,
+                            text: "The location is great, 5 minutes from main square. The LOVELY lady despite no english could not be more helpfull! She allowed us into the room at 6am straight from the bus.",
+                        },
+                        {
+                            type: "review",
+                            author: "Zaviera (Países Bajos)",
+                            rating: 4,
+                            text: "The location was perfect. Nice host. She made the breakfast earlier for us due to a trip. Clean rooms. Warm water.",
+                        },
+                        {
+                            type: "review",
+                            author: "Luciano (Eslovenia)",
+                            rating: 5,
+                            text: "Great value for this low price. The staff very kind and helpfull, they arranged the tours and the taxies. Breakfast included in the price - amazing! Super clean.",
+                        },
+
+                        {
+                            type: "photo",
+                            src: "/hotel-web/images/clientes/1.png",
+                            alt: "1",
+                        },
+                        {
+                            type: "photo",
+                            src: "/hotel-web/images/clientes/2.png",
+                            alt: "2",
+                        },
+                        {
+                            type: "photo",
+                            src: "/hotel-web/images/clientes/3.png",
+                            alt: "3",
+                        },
+                        {
+                            type: "photo",
+                            src: "/hotel-web/images/clientes/4.png",
+                            alt: "4",
+                        },
+                        {
+                            type: "photo",
+                            src: "/hotel-web/images/clientes/5.png",
+                            alt: "5",
+                        },
+                        {
+                            type: "photo",
+                            src: "/hotel-web/images/clientes/6.png",
+                            alt: "6",
+                        },
+                        {
+                            type: "photo",
+                            src: "/hotel-web/images/clientes/7.png",
+                            alt: "7",
+                        },
+                        {
+                            type: "photo",
+                            src: "/hotel-web/images/clientes/8.png",
+                            alt: "8",
+                        },
+                        {
+                            type: "photo",
+                            src: "/hotel-web/images/clientes/9.png",
+                            alt: "9",
+                        },
+                    ],
+                    scrollPosition: 0,
+                    animationFrameId: null,
+                    isPaused: false,
+                    speed: 0.5,
+
+                    isDragging: false,
+                    startX: 0,
+                    dragThreshold: 50,
+
+                    init() {
+                        this.$nextTick(() => {
+                            const track = this.$refs.track;
+                            if (track.children.length === this.items.length) {
+                                const cards = Array.from(track.children);
+                                cards.forEach((card) =>
+                                    track.appendChild(card.cloneNode(true))
+                                );
+                            }
+                            this.startAnimation();
+                        });
+                    },
+
+                    startAnimation() {
+                        if (this.animationFrameId)
+                            cancelAnimationFrame(this.animationFrameId);
+                        this.isPaused = false;
+
+                        const animateScroll = () => {
+                            if (this.isPaused || this.isDragging) return;
+
+                            const track = this.$refs.track;
+                            const originalContentWidth = track.scrollWidth / 2;
+
+                            this.scrollPosition += this.speed;
+
+                            if (this.scrollPosition >= originalContentWidth) {
+                                this.scrollPosition = 0;
+                            }
+
+                            track.style.transform = `translateX(-${this.scrollPosition}px)`;
+                            this.animationFrameId =
+                                requestAnimationFrame(animateScroll);
+                        };
+
+                        this.animationFrameId =
+                            requestAnimationFrame(animateScroll);
+                    },
+
+                    stopAnimation() {
+                        this.isPaused = true;
+                        if (this.animationFrameId) {
+                            cancelAnimationFrame(this.animationFrameId);
+                            this.animationFrameId = null;
+                        }
+                    },
+
+                    next() {
+                        this.stopAnimation();
+                        const track = this.$refs.track;
+                        if (!track.firstElementChild) return;
+                        const cardWidth =
+                            track.firstElementChild.getBoundingClientRect()
+                                .width;
+                        const gap = parseInt(
+                            window.getComputedStyle(track).gap
+                        );
+
+                        track.style.transition = "transform 0.5s ease-in-out";
+                        track.style.transform = `translateX(-${cardWidth + gap}px)`;
+
+                        setTimeout(() => {
+                            track.style.transition = "none";
+                            track.appendChild(track.firstElementChild);
+                            track.style.transform = "translateX(0)";
+                            this.scrollPosition = 0;
+                            this.startAnimation();
+                        }, 500);
+                    },
+
+                    prev() {
+                        this.stopAnimation();
+                        const track = this.$refs.track;
+                        if (!track.firstElementChild) return;
+                        const cardWidth =
+                            track.firstElementChild.getBoundingClientRect()
+                                .width;
+                        const gap = parseInt(
+                            window.getComputedStyle(track).gap
+                        );
+
+                        track.style.transition = "none";
+                        track.insertBefore(
+                            track.lastElementChild,
+                            track.firstElementChild
+                        );
+                        track.style.transform = `translateX(-${cardWidth + gap}px)`;
+
+                        requestAnimationFrame(() => {
+                            track.style.transition =
+                                "transform 0.5s ease-in-out";
+                            track.style.transform = "translateX(0)";
+                        });
+
+                        setTimeout(() => {
+                            this.scrollPosition = 0;
+                            this.startAnimation();
+                        }, 500);
+                    },
+
+                    getStars(rating) {
+                        return "⭐".repeat(rating) + "☆".repeat(5 - rating);
+                    },
+
+                    getPositionX(event) {
+                        return event.type.includes("mouse")
+                            ? event.pageX
+                            : event.touches[0].clientX;
+                    },
+
+                    dragStart(event) {
+                        this.stopAnimation();
+                        this.isDragging = true;
+                        this.startX = this.getPositionX(event);
+
+                        this.$refs.track.style.transition = "none";
+                    },
+
+                    dragMove(event) {
+                        if (!this.isDragging) return;
+                        const currentX = this.getPositionX(event);
+                        const moveX = currentX - this.startX;
+
+                        this.$refs.track.style.transform = `translateX(${-(this.scrollPosition - moveX)}px)`;
+                    },
+
+                    dragEnd(event) {
+                        if (!this.isDragging) return;
+                        this.isDragging = false;
+
+                        this.$refs.track.style.transition = "";
+
+                        const finalX =
+                            event.type === "touchend"
+                                ? event.changedTouches[0].clientX
+                                : event.pageX;
+                        const movedBy = finalX - this.startX;
+
+                        if (movedBy < -this.dragThreshold) {
+                            this.next();
+                        } else if (movedBy > this.dragThreshold) {
+                            this.prev();
+                        } else {
+                            this.$refs.track.style.transform = `translateX(-${this.scrollPosition}px)`;
+                            this.startAnimation();
+                        }
+                    },
+                }));
+            });
+        </script>
     </body>
 </html>

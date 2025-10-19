@@ -21,15 +21,22 @@ import "../styles/index.css";
                 class="hero-slide"
                 :class="{ 'active': current === index }"
                 :style="`background-image: url(${img});`"
-            ></div>
+            >
+            </div>
         </template>
         <div class="hero-overlay">
             <div class="hero-content">
                 <div class="hero-logo">
-                    <img src="/hotel-web/images/logo_hero.png" alt="Hostal Aquarius" />
+                    <img
+                        src="/hotel-web/images/logo_hero.png"
+                        alt="Hostal Aquarius"
+                    />
                 </div>
                 <h2 class="dynamic-text" x-data="{ text: 'Bienvenidos' }">
-                    <template x-for="(letter, index) in text.split('')" :key="index">
+                    <template
+                        x-for="(letter, index) in text.split('')"
+                        :key="index"
+                    >
                         <span
                             x-text="letter"
                             x-init="$el.style.animationDelay = (index * 0.05) + 's'"
@@ -37,160 +44,57 @@ import "../styles/index.css";
                     </template>
                 </h2>
                 <p>
-                    Una combinación única de confort, hospitalidad y la mejor ubicación para explorar la magia de Puno.
+                    Una combinación única de confort, hospitalidad y la mejor
+                    ubicación para explorar la magia de Puno.
                 </p>
-                <a href="#habitaciones" class="btn">Reserva tu Estadía</a>
+                <a href="#habitaciones" class="btn btn-pulse"
+                    >Reserva tu Estadía</a
+                >
             </div>
         </div>
     </section>
 
     <section class="about container reveal" id="about">
-        <div class="section-header reveal">
-            <h2 class="section-title reveal">Hostal Acuarius Puno</h2>
-            <p class="section-subtitle">
-                Ubicados en el corazón de Puno, a solo una cuadra de la Plaza de Armas, ofrecemos habitaciones cómodas y acogedoras. Garantizamos limpieza, seguridad y un ambiente confortable para todo tipo de viajeros.
-            </p>
-        </div>
-        <div class="services-grid">
-            <div class="service-item"><i class="fas fa-wifi"></i><span>WiFi Gratis</span></div>
-            <div class="service-item"><i class="fas fa-shower"></i><span>Agua Caliente 24h</span></div>
-            <div class="service-item"><i class="fas fa-utensils"></i><span>Desayuno Incluido</span></div>
-            <div class="service-item"><i class="fas fa-tv"></i><span>TV por Cable</span></div>
-            <div class="service-item"><i class="fas fa-globe"></i><span>Agencia de Viajes</span></div>
-            <div class="service-item"><i class="fas fa-car"></i><span>Cochera</span></div>
-        </div>
-    </section>
+        <div class="about-layout">
+            <div class="about-content">
+                <div class="section-header">
+                    <h2 class="section-title">Hostal Acuarius Puno</h2>
+                    <p class="section-subtitle">
+                        Ubicados en el corazón de Puno, a solo una cuadra de la
+                        Plaza de Armas, ofrecemos habitaciones cómodas y
+                        acogedoras. Garantizamos limpieza, seguridad y un
+                        ambiente confortable para todo tipo de viajeros.
+                    </p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fas fa-wifi"></i><span>WiFi Gratis</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-shower"></i><span
+                            >Agua Caliente 24h</span
+                        >
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-utensils"></i><span
+                            >Desayuno Incluido</span
+                        >
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-tv"></i><span>TV por Cable</span>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-globe"></i><span
+                            >Agencia de Viajes</span
+                        >
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-car"></i><span>Cochera</span>
+                    </div>
+                </div>
+            </div>
 
-    <section class="rooms-section container reveal" id="habitaciones">
-        <div class="section-header reveal">
-            <h2 class="section-title">Nuestras Habitaciones</h2>
-            <p class="section-subtitle">Confort y estilo pensados para tu descanso.</p>
-        </div>
-        <div class="rooms-grid">
-            <div class="room-card">
-                <img src="/hotel-web/images/rooms/simple/2.png" alt="Habitación Simple" class="room-card-img"/>
-                <div class="room-card-body">
-                    <h3>Habitación Simple</h3>
-                    <p>Ideal para viajeros solos que buscan confort y privacidad.</p>
-                    <div class="room-amenities">
-                        <span><i class="fas fa-wifi"></i> WiFi</span>
-                        <span><i class="fas fa-tv"></i> TV</span>
-                        <span><i class="fas fa-shower"></i> Ducha</span>
-                    </div>
-                    <a href="/hotel-web/habitaciones#simple" class="btn-details">Ver Detalles</a>
-                </div>
-            </div>
-            <div class="room-card">
-                <img src="/hotel-web/images/rooms/doble/1.png" alt="Habitación Doble" class="room-card-img"/>
-                <div class="room-card-body">
-                    <h3>Habitación Doble</h3>
-                    <p>Perfecto para amigos o colegas explorando Puno.</p>
-                    <div class="room-amenities">
-                        <span><i class="fas fa-wifi"></i> WiFi</span>
-                        <span><i class="fas fa-tv"></i> TV</span>
-                        <span><i class="fas fa-shower"></i> Ducha</span>
-                    </div>
-                    <a href="/hotel-web/habitaciones#doble" class="btn-details">Ver Detalles</a>
-                </div>
-            </div>
-            <div class="room-card">
-                <img src="/hotel-web/images/rooms/matrimonial/3.png" alt="Habitación Matrimonial" class="room-card-img"/>
-                <div class="room-card-body">
-                    <h3>Habitación Matrimonial</h3>
-                    <p>Diseñado para el confort de las parejas.</p>
-                    <div class="room-amenities">
-                        <span><i class="fas fa-wifi"></i> WiFi</span>
-                        <span><i class="fas fa-tv"></i> TV</span>
-                        <span><i class="fas fa-shower"></i> Ducha</span>
-                    </div>
-                    <a href="/hotel-web/habitaciones#matrimonial" class="btn-details">Ver Detalles</a>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-4">
-            <a href="/hotel-web/habitaciones" class="btn">Ver Todas las Habitaciones</a>
-        </div>
-    </section>
-    
-    <section class="reviews-section container reveal" id="reviews">
-        <div class="section-header reveal">
-            <h2 class="section-title">Opiniones de nuestros huéspedes</h2>
-            <p class="section-subtitle">Descubre por qué nuestros visitantes nos recomiendan.</p>
-        </div>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="review-header">
-                    <span class="review-author">Maria G.</span>
-                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
-                </div>
-                <p>"¡La ubicación es inmejorable! A pasos de todo. El personal fue muy amable y el desayuno delicioso. Definitivamente volvería."</p>
-            </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <span class="review-author">John D.</span>
-                    <div class="review-rating">⭐⭐⭐⭐</div>
-                </div>
-                <p>"Una excelente opción en Puno. Habitaciones limpias, agua caliente sin problemas y el WiFi funcionaba perfectamente. Muy recomendable."</p>
-            </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <span class="review-author">Ana L.</span>
-                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
-                </div>
-                <p>"Nos ayudaron a organizar todos nuestros tours al Lago Titicaca. Un servicio completo y muy conveniente. El hostal es acogedor y seguro."</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="tours-section container reveal" id="tours">
-        <div class="section-header">
-            <h2 class="section-title">Explora Puno con Nosotros</h2>
-            <p class="section-subtitle">Organizamos experiencias inolvidables en los destinos más emblemáticos.</p>
-        </div>
-        <div class="tours-container">
-            <div class="tour-plan-card">
-                <div class="tour-plan-img">
-                    <img src="/hotel-web/images/tours/uros.jpg" alt="Islas Flotantes de los Uros" />
-                </div>
-                <div class="tour-plan-content">
-                    <h3>Islas Flotantes de los Uros</h3>
-                    <p>Navega por el Lago Titicaca y descubre las fascinantes islas flotantes construidas de totora por la ancestral cultura Uru.</p>
-                    <a href="/hotel-web/tours" class="btn-details">Consultar Plan</a>
-                </div>
-            </div>
-            <div class="tour-plan-card">
-                <div class="tour-plan-img">
-                    <img src="/hotel-web/images/tours/taquile.png" alt="Isla Taquile" />
-                </div>
-                <div class="tour-plan-content">
-                    <h3>Isla Taquile, Patrimonio UNESCO</h3>
-                    <p>Explora esta isla única, famosa por sus extraordinarios tejidos artesanales y paisajes que te dejarán sin aliento.</p>
-                    <a href="/hotel-web/tours" class="btn-details">Consultar Plan</a>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-5">
-            <a href="/hotel-web/tours" class="btn">Ver Todos los Tours</a>
-        </div>
-    </section>
-
-    <section class="contact-section container reveal" id="contacto">
-        <div class="section-header">
-            <h2 class="section-title">Contacto y Ubicación</h2>
-            <p class="section-subtitle">Estamos aquí para ayudarte. Envíanos tu consulta o visítanos.</p>
-        </div>
-        <div class="contact-layout">
-            <div class="contact-form-container">
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Tu Nombre" required>
-                        <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
-                    </div>
-                    <textarea name="message" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea>
-                    <button type="submit" class="btn">Enviar Mensaje</button>
-                </form>
-            </div>
-            <div class="contact-info-container">
+            <div class="about-info-card">
                 <div class="contact-info-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <div>
@@ -202,26 +106,336 @@ import "../styles/index.css";
                     <i class="fas fa-phone"></i>
                     <div>
                         <h4>Teléfono</h4>
-                        <p>+51 944 278 647</p>
+                        <p><a href="tel:+51944278647">+51 944 278 647</a></p>
                     </div>
                 </div>
                 <div class="contact-info-item">
                     <i class="fas fa-envelope"></i>
                     <div>
                         <h4>Email</h4>
-                        <p>contacto@hostalacuarius.com</p>
+                        <p>
+                            <a href="mailto:contacto@hostalacuarius.com"
+                                >contacto@hostalacuarius.com</a
+                            >
+                        </p>
                     </div>
                 </div>
                 <div class="contact-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3848.7760939228!2d-70.0292510888998!3d-15.8427799849503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915d6a367d8d2c3b%3A0x1d36862f36c342f5!2sJr.%20Cajamarca%20206%2C%20Puno%2021001!5e0!3m2!1ses-419!2spe!4v1715892576192!5m2!1ses-419!2spe"
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.2987780281987!2d-70.02870992404007!3d-15.840886524103288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915d695dd2de208d%3A0x34b6cbb487f845c2!2sHostal%20Acuarius%20Puno!5e0!3m2!1ses-419!2spe!4v1760894764117!5m2!1ses-419!2spe"
+                        width="600"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="rooms-section container reveal" id="habitaciones">
+        <div class="section-header reveal">
+            <h2 class="section-title">Nuestras Habitaciones</h2>
+            <p class="section-subtitle">
+                Confort y estilo pensados para tu descanso.
+            </p>
+        </div>
+        <div class="rooms-grid">
+            <div class="room-card">
+                <img
+                    src="/hotel-web/images/rooms/simple/2.png"
+                    alt="Habitación Simple"
+                    class="room-card-img"
+                />
+                <div class="room-card-body">
+                    <h3>Habitación Simple</h3>
+                    <p>
+                        Ideal para viajeros solos que buscan confort y
+                        privacidad.
+                    </p>
+                    <div class="room-amenities">
+                        <span><i class="fas fa-wifi"></i> WiFi</span>
+                        <span><i class="fas fa-tv"></i> TV</span>
+                        <span><i class="fas fa-shower"></i> Ducha</span>
+                    </div>
+                    <div class="room-price">
+                        <span>S/ 80.00</span>
+                        <small>/ por día</small>
+                    </div>
+                    <a
+                        href="https://secure.booking.com/book.html?hotel_id=11965220&occupancy_setup_issue_flags=&aid=356980&label=gog235jc-10CAsosQFCGWhvc3RhbC1hY3Vhcml1cy1wdW5vLXB1bm9IClgDaLEBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuAL1ktTHBsACAdICJGVjNGUwMzE3LWFkM2MtNGZhMS1hNjlmLWQ4NmEzZDhlMzYzZtgCAeACAQ&sid=a1106e9c8b9aa3ebdb304612ac5827e1&room1=A%2CA&error_url=%2Fhotel%2Fpe%2Fhostal-acuarius-puno-puno.es.html%3Faid%3D356980%26label%3Dgog235jc-10CAsosQFCGWhvc3RhbC1hY3Vhcml1cy1wdW5vLXB1bm9IClgDaLEBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuAL1ktTHBsACAdICJGVjNGUwMzE3LWFkM2MtNGZhMS1hNjlmLWQ4NmEzZDhlMzYzZtgCAeACAQ%26sid%3Da1106e9c8b9aa3ebdb304612ac5827e1%26srpvid%3D1f086fbbd1a50277%26%26&hostname=www.booking.com&stage=1&checkin=2025-10-24&interval=1&children_extrabeds=&srpvid=1f086fbbd1a50277&hp_visits_num=1&rt_pos_selected=9&rt_pos_selected_within_room=1&rt_selected_block_position=10&rt_num_blocks=10&rt_num_rooms=9&rt_num_blocks_per_room=%7B%221196522008%22%3A1%2C%221196522006%22%3A1%2C%221196522010%22%3A1%2C%221196522011%22%3A1%2C%221196522015%22%3A1%2C%221196522014%22%3A1%2C%221196522001%22%3A2%2C%221196522009%22%3A1%2C%221196522013%22%3A1%7D&rt_selected_blocks_info=%7B%221196522009_391931401_1_1_0_616192%22%3A%7B%22rt_selected_block_position_in_rt%22%3A10%2C%22rt_selected_block_position_in_room_group%22%3A0%2C%22count%22%3A1%2C%22rt_room_symmetry_category%22%3A%22one_rate%22%7D%7D&rt_relevance_metric_id=50f0bbba-dffe-42ef-8a6f-11710dadeaa2&rt_pageview_id=38327309d55e0274&rt_pos_final=9.1&rt_selected_total_price=24&rt_cheapest_search_price=20&rt_with_no_dimensions=&from_source=hotel&nr_rooms_1196522009_391931401_1_1_0_616192=1&basket_id=2ecd6009-a4bf-451a-b6ce-4f34463892bf"
+                        aria-label="Booking Habitación Simple"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-pulse mt-auto">Reservar Ahora</a
+                    >
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img
+                    src="/hotel-web/images/rooms/doble/1.png"
+                    alt="Habitación Doble"
+                    class="room-card-img"
+                />
+                <div class="room-card-body">
+                    <h3>Habitación Doble</h3>
+                    <p>Perfecto para amigos o colegas explorando Puno.</p>
+                    <div class="room-amenities">
+                        <span><i class="fas fa-wifi"></i> WiFi</span>
+                        <span><i class="fas fa-tv"></i> TV</span>
+                        <span><i class="fas fa-shower"></i> Ducha</span>
+                    </div>
+                    <div class="room-price">
+                        <span>S/ 120.00</span>
+                        <small>/ por día</small>
+                    </div>
+                    <a
+                        href="https://secure.booking.com/book.html?hotel_id=11965220&occupancy_setup_issue_flags=&aid=356980&label=gog235jc-10CAsosQFCGWhvc3RhbC1hY3Vhcml1cy1wdW5vLXB1bm9IClgDaLEBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuAL1ktTHBsACAdICJGVjNGUwMzE3LWFkM2MtNGZhMS1hNjlmLWQ4NmEzZDhlMzYzZtgCAeACAQ&sid=a1106e9c8b9aa3ebdb304612ac5827e1&room1=A%2CA&error_url=%2Fhotel%2Fpe%2Fhostal-acuarius-puno-puno.es.html%3Faid%3D356980%26label%3Dgog235jc-10CAsosQFCGWhvc3RhbC1hY3Vhcml1cy1wdW5vLXB1bm9IClgDaLEBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuAL1ktTHBsACAdICJGVjNGUwMzE3LWFkM2MtNGZhMS1hNjlmLWQ4NmEzZDhlMzYzZtgCAeACAQ%26sid%3Da1106e9c8b9aa3ebdb304612ac5827e1%26srpvid%3D1f086fbbd1a50277%26%26&hostname=www.booking.com&stage=1&checkin=2025-10-24&interval=1&children_extrabeds=&srpvid=1f086fbbd1a50277&hp_visits_num=1&rt_pos_selected=4&rt_pos_selected_within_room=1&rt_selected_block_position=4&rt_num_blocks=10&rt_num_rooms=9&rt_num_blocks_per_room=%7B%221196522008%22%3A1%2C%221196522014%22%3A1%2C%221196522001%22%3A2%2C%221196522011%22%3A1%2C%221196522015%22%3A1%2C%221196522009%22%3A1%2C%221196522010%22%3A1%2C%221196522013%22%3A1%2C%221196522006%22%3A1%7D&rt_selected_blocks_info=%7B%221196522001_391931401_2_1_0_616192%22%3A%7B%22rt_selected_block_position_in_rt%22%3A4%2C%22rt_selected_block_position_in_room_group%22%3A0%2C%22count%22%3A1%2C%22rt_room_symmetry_category%22%3A%22one_dimension%22%7D%7D&rt_relevance_metric_id=5f3378d1-ef1b-4e44-8cd7-e6c18cd64f80&rt_pageview_id=89eb7188496002f0&rt_pos_final=4.1&rt_selected_total_price=33&rt_cheapest_search_price=20&rt_with_no_dimensions=&from_source=hotel&nr_rooms_1196522001_391931401_2_1_0_616192=1&basket_id=79b6f395-e281-4ebe-b072-0e945a948d8b"
+                        aria-label="Booking Habitación Doble"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-pulse mt-auto">Reservar Ahora</a
+                    >
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img
+                    src="/hotel-web/images/rooms/matrimonial/3.png"
+                    alt="Habitación Matrimonial"
+                    class="room-card-img"
+                />
+                <div class="room-card-body">
+                    <h3>Habitación Matrimonial</h3>
+                    <p>Diseñado para el confort de las parejas.</p>
+                    <div class="room-amenities">
+                        <span><i class="fas fa-wifi"></i> WiFi</span>
+                        <span><i class="fas fa-tv"></i> TV</span>
+                        <span><i class="fas fa-shower"></i> Ducha</span>
+                    </div>
+                    <div class="room-price">
+                        <span>S/ 110.00</span>
+                        <small>/ por día</small>
+                    </div>
+                    <a
+                        href="https://secure.booking.com/book.html?hotel_id=11965220&occupancy_setup_issue_flags=&aid=356980&label=gog235jc-10CAsosQFCGWhvc3RhbC1hY3Vhcml1cy1wdW5vLXB1bm9IClgDaLEBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuAL1ktTHBsACAdICJGVjNGUwMzE3LWFkM2MtNGZhMS1hNjlmLWQ4NmEzZDhlMzYzZtgCAeACAQ&sid=a1106e9c8b9aa3ebdb304612ac5827e1&room1=A%2CA&error_url=%2Fhotel%2Fpe%2Fhostal-acuarius-puno-puno.es.html%3Faid%3D356980%26label%3Dgog235jc-10CAsosQFCGWhvc3RhbC1hY3Vhcml1cy1wdW5vLXB1bm9IClgDaLEBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuAL1ktTHBsACAdICJGVjNGUwMzE3LWFkM2MtNGZhMS1hNjlmLWQ4NmEzZDhlMzYzZtgCAeACAQ%26sid%3Da1106e9c8b9aa3ebdb304612ac5827e1%26srpvid%3D1f086fbbd1a50277%26%26&hostname=www.booking.com&stage=1&checkin=2025-10-24&interval=1&children_extrabeds=&srpvid=1f086fbbd1a50277&hp_visits_num=1&rt_pos_selected=2&rt_pos_selected_within_room=1&rt_selected_block_position=2&rt_num_blocks=10&rt_num_rooms=9&rt_num_blocks_per_room=%7B%221196522008%22%3A1%2C%221196522014%22%3A1%2C%221196522001%22%3A2%2C%221196522011%22%3A1%2C%221196522015%22%3A1%2C%221196522009%22%3A1%2C%221196522010%22%3A1%2C%221196522013%22%3A1%2C%221196522006%22%3A1%7D&rt_selected_blocks_info=%7B%221196522014_391931401_2_1_0_616192%22%3A%7B%22rt_selected_block_position_in_rt%22%3A2%2C%22rt_selected_block_position_in_room_group%22%3A0%2C%22count%22%3A1%2C%22rt_room_symmetry_category%22%3A%22one_rate%22%7D%7D&rt_relevance_metric_id=712190fb-c565-47a6-8c0e-65354147f445&rt_pageview_id=8a2570c4b256019d&rt_pos_final=2.1&rt_selected_total_price=26&rt_cheapest_search_price=20&rt_with_no_dimensions=&from_source=hotel&nr_rooms_1196522014_391931401_2_1_0_616192=1&basket_id=51e79c26-d688-4880-963e-22ef8c6992ef"
+                        aria-label="Booking Habitación Matrimonial"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-pulse mt-auto">Reservar Ahora</a
+                    >
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/hotel-web/habitaciones" class="btn"
+                >Ver Todas las Habitaciones</a
+            >
+        </div>
+    </section>
+
+    <section
+        class="reviews-section container reveal"
+        id="reviews"
+        x-data="carousel()"
+        @mouseenter="stopAnimation"
+        @mouseleave="startAnimation"
+    >
+        <div class="section-header reveal">
+            <h2 class="section-title">Opiniones de nuestros huéspedes</h2>
+            <p class="section-subtitle">
+                Descubre por qué nuestros visitantes nos recomiendan.
+            </p>
+        </div>
+
+        <div class="reviews-carousel-container">
+            <div
+                class="reviews-carousel-track"
+                x-ref="track"
+                :class="{ 'dragging': isDragging }"
+                @mousedown.prevent="dragStart"
+                @touchstart.prevent="dragStart"
+                @mousemove="dragMove"
+                @touchmove="dragMove"
+                @mouseup="dragEnd"
+                @mouseleave="dragEnd"
+                @touchend="dragEnd"
+            >
+                <template x-for="(item, index) in items" :key="index">
+                    <div>
+                        <template x-if="item.type === 'review'">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span
+                                        class="review-author"
+                                        x-text="item.author"></span>
+                                    <div
+                                        class="review-rating"
+                                        x-html="getStars(item.rating)"
+                                    >
+                                    </div>
+                                </div>
+                                <p x-text="item.text"></p>
+                            </div>
+                        </template>
+                        <template x-if="item.type === 'photo'">
+                            <div class="review-card photo-card">
+                                <img :src="item.src" :alt="item.alt" />
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+
+            <button @click="prev()" class="carousel-btn prev-btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button @click="next()" class="carousel-btn next-btn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <section class="tours-section-alternating container reveal" id="tours">
+        <div class="section-header">
+            <h2 class="section-title">Explora Puno con Nosotros</h2>
+            <p class="section-subtitle">
+                Organizamos experiencias inolvidables en los destinos más
+                emblemáticos.
+            </p>
+        </div>
+
+        <div class="tours-alternating-container">
+            <article class="tour-alternating-item">
+                <div class="tour-item-image">
+                    <img
+                        src="/hotel-web/images/tours/uros.jpg"
+                        alt="Islas Flotantes de los Uros"
+                    />
+                </div>
+                <div class="tour-item-content">
+                    <h3>Islas Flotantes de los Uros</h3>
+                    <p>
+                        Vive una experiencia única navegando por el Lago
+                        Titicaca y descubre las famosas islas flotantes de los
+                        Uros, construidas con totora por sus propios habitantes.
+                        Conoce su cultura ancestral, sus tradiciones y disfruta
+                        de impresionantes paisajes andinos.
+                    </p>
+                    <div class="tour-item-details">
+                        <span
+                            ><i class="fas fa-clock"></i> Duración: Medio día</span
+                        >
+                        <span
+                            ><i class="fas fa-ticket-alt"></i> Incluye: Transporte,
+                            guía y ticket de ingreso.</span
+                        >
+                    </div>
+                    <a href="/hotel-web/tours#uros" class="btn btn-pulse"
+                        >Consultar Plan</a
+                    >
+                </div>
+            </article>
+
+            <article class="tour-alternating-item">
+                <div class="tour-item-image">
+                    <img
+                        src="/hotel-web/images/tours/taquile.png"
+                        alt="Isla Taquile"
+                    />
+                </div>
+                <div class="tour-item-content">
+                    <h3>Isla Taquile, Patrimonio UNESCO</h3>
+                    <p>
+                        Explora la hermosa Isla Taquile, famosa por sus tejidos
+                        artesanales declarados Patrimonio Cultural por la
+                        UNESCO. Camina por senderos con vistas al Lago Titicaca,
+                        conoce de cerca la cultura quechua y disfruta de un
+                        almuerzo típico con los pobladores locales.
+                    </p>
+                    <div class="tour-item-details">
+                        <span
+                            ><i class="fas fa-clock"></i> Duración: Día Completo</span
+                        >
+                        <span
+                            ><i class="fas fa-utensils"></i> Incluye: Almuerzo típico.</span
+                        >
+                    </div>
+                    <a href="/hotel-web/tours#taquile" class="btn btn-pulse"
+                        >Consultar Plan</a
+                    >
+                </div>
+            </article>
+
+            <article class="tour-alternating-item">
+                <div class="tour-item-image">
+                    <img
+                        src="/hotel-web/images/tours/sillustani.png"
+                        alt="Chullpas de Sillustani"
+                    />
+                </div>
+                <div class="tour-item-content">
+                    <h3>Chullpas de Sillustani</h3>
+                    <p>
+                        Visita el complejo arqueológico de Sillustani, un
+                        cementerio pre-inca con imponentes torres funerarias de
+                        piedra a orillas de la serena laguna Umayo. Un lugar
+                        ideal para amantes de la historia y la fotografía.
+                    </p>
+                    <div class="tour-item-details">
+                        <span
+                            ><i class="fas fa-clock"></i> Duración: 4 horas</span
+                        >
+                        <span
+                            ><i class="fas fa-bus"></i> Incluye: Transporte y guía.</span
+                        >
+                    </div>
+                    <a href="/hotel-web/tours#sillustani" class="btn btn-pulse"
+                        >Consultar Plan</a
+                    >
+                </div>
+            </article>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="/hotel-web/tours" class="btn">Ver Todos los Tours</a>
+        </div>
+    </section>
+
+    <section class="contact-section container reveal" id="contacto">
+        <div class="section-header">
+            <h2 class="section-title">Envíanos un Mensaje</h2>
+            <p class="section-subtitle">
+                Estamos aquí para ayudarte. Completa el formulario y te
+                responderemos a la brevedad.
+            </p>
+        </div>
+
+        <div class="contact-form-container">
+            <form action="https://formspree.io/f/mwprzban" method="POST" class="contact-form">
+                <div class="form-group">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Tu Nombre"
+                        required
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Tu Correo Electrónico"
+                        required
+                    />
+                </div>
+                <textarea
+                    name="message"
+                    rows="6"
+                    placeholder="Escribe tu mensaje aquí..."
+                    required></textarea>
+                <button type="submit" class="btn">Enviar Mensaje</button>
+            </form>
         </div>
     </section>
 </Layout>
