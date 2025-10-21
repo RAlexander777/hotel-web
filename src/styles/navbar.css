@@ -35,21 +35,17 @@
     transition: height 0.4s ease;
 }
 
-/* ================================== */
-/* 2. LOGO CORREGIDO (ANIMACIÓN FINAL)*/
-/* ================================== */
+/*LOGO*/
 .logo {
     display: flex;
     align-items: center;
 
-    /* ESTADO INICIAL (OCULTO): Invisible y más arriba */
     opacity: 0;
-    transform: translateY(-20px); /* Lo movemos 20px hacia arriba */
+    transform: translateY(-20px);
     transition: opacity 0.4s ease, transform 0.4s ease;
     pointer-events: none;
 }
 
-/* ESTADO FINAL (VISIBLE): Visible y en su posición final */
 .logo.logo-visible {
     opacity: 1;
     transform: translateY(0);
@@ -61,12 +57,11 @@
     align-items: center;
 }
 .logo-img {
-    height: 60px; /* Tamaño del logo en móvil */
+    height: 60px;
     width: auto;
     transition: height 0.4s ease;
 }
 
-/* 3. VISIBILIDAD DE ELEMENTOS (MÓVIL PRIMERO) */
 .desktop-nav {
     display: none;
 }
@@ -74,7 +69,7 @@
     display: none;
 }
 
-/* 4. LAYOUT DE ESCRITORIO CON LOGO CENTRADO Y ANIMADO */
+/* 4. LAYOUT DE ESCRITORIO CON LOGO CENTRADO */
 @media (min-width: 992px) {
     .navbar-container {
         display: grid;
@@ -87,25 +82,21 @@
         left: 50%;
         z-index: 10;
 
-        /* CORRECCIÓN CLAVE: Combinamos las transformaciones aquí */
-        /* Estado inicial (oculto) en escritorio */
         transform: translateX(-50%) translateY(-20px);
     }
 
     .logo.logo-visible {
-        /* Estado final (visible) en escritorio */
         transform: translateX(-50%) translateY(0);
     }
 
     .logo-img {
-        height: 100px; /* Tamaño principal del logo */
+        height: 100px; 
     }
 
     .custom-navbar.navbar-scrolled .logo-img {
-        height: 80px; /* Tamaño al hacer scroll */
+        height: 80px; 
     }
 
-    /* Mostramos y posicionamos los elementos laterales */
     .desktop-nav {
         display: flex;
         gap: 2.5rem;
@@ -246,9 +237,9 @@
 /* Estilos para la vista de escritorio */
 @media (min-width: 992px) {
     .navbar-phone {
-        display: flex; /* Lo hacemos visible */
+        display: flex; 
         align-items: center;
-        gap: 0.6rem; /* Espacio entre el ícono y el texto */
+        gap: 0.6rem; 
         color: #ffffff;
         text-decoration: none;
         font-family: "Rethink Sans", sans-serif;
@@ -257,17 +248,17 @@
     }
 
     .navbar-phone:hover {
-        color: var(--color-gold); /* Efecto hover elegante */
+        color: var(--color-gold);
     }
 
     .navbar-phone svg {
-        stroke: currentColor; /* El ícono hereda el color del texto */
+        stroke: currentColor;
         transition: stroke 0.3s ease;
     }
 }
 
 .mobile-phone-btn {
-    display: flex; /* Visible por defecto en móvil */
+    display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
@@ -280,13 +271,13 @@
 
 .mobile-phone-popup {
     position: absolute;
-    top: calc(var(--navbar-height) - 10px); /* Justo debajo de la navbar */
-    right: 2rem; /* Alineado con los íconos */
+    top: calc(var(--navbar-height) - 10px); 
+    right: 2rem; 
     background: #1a1a1a;
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    z-index: 1001; /* Por encima de todo, excepto el menú principal */
+    z-index: 1001; 
 }
 
 .mobile-phone-popup a {
@@ -294,10 +285,10 @@
     text-decoration: none;
     font-family: "Rethink Sans", sans-serif;
     font-size: 0.9rem;
-    white-space: nowrap; /* Evita que el texto se parta en dos líneas */
+    white-space: nowrap;
 }
 
-/* En vista de escritorio, ocultamos el botón de teléfono móvil */
+/* En vista de escritorio, ocultar el botón de teléfono móvil */
 @media (min-width: 992px) {
     .mobile-phone-btn {
         display: none;
@@ -306,10 +297,10 @@
 
 @keyframes pulseAnimation {
     0% {
-        box-shadow: 0 0 0 0 rgba(197, 164, 126, 0.7); /* Usamos el color --color-gold */
+        box-shadow: 0 0 0 0 rgba(197, 164, 126, 0.7); 
     }
     70% {
-        box-shadow: 0 0 0 15px rgba(197, 164, 126, 0); /* La "onda" se expande y desvanece */
+        box-shadow: 0 0 0 15px rgba(197, 164, 126, 0);
     }
     100% {
         box-shadow: 0 0 0 0 rgba(197, 164, 126, 0);

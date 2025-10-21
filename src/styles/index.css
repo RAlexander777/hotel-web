@@ -9,6 +9,10 @@
     --font-body: "Rethink Sans", sans-serif;
 }
 
+[x-cloak] {
+    display: none !important;
+}
+
 .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -19,7 +23,9 @@
     transform: translateY(0);
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
@@ -121,6 +127,16 @@ body {
     background-color: transparent;
     color: var(--color-gold);
 }
+.btn.btn-secondary {
+    background-color: transparent;
+    color: var(--color-gold);
+    border: 2px solid var(--color-border);
+}
+.btn.btn-secondary:hover {
+    background-color: var(--color-gold);
+    color: #111;
+    border-color: var(--color-gold);
+}
 
 /* --- Estructura de Secciones --- */
 .container {
@@ -186,10 +202,9 @@ body {
 /*About*/
 .about-layout {
     display: grid;
-    /* Damos más espacio al contenido principal (1.5fr) que a la tarjeta de info (1fr) */
     grid-template-columns: 1.5fr 1fr;
-    gap: 3.5rem; /* Espacio entre columnas */
-    align-items: start; /* Alinea los items al inicio */
+    gap: 3.5rem;
+    align-items: start;
 }
 
 .about-info-card {
@@ -197,11 +212,10 @@ body {
     border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: 2rem;
-    position: sticky; /* Hacemos que la tarjeta se quede fija al hacer scroll */
-    top: 120px; /* Distancia desde la parte superior */
+    position: sticky;
+    top: 120px;
 }
 
-/* Hacemos que los ítems dentro de la nueva tarjeta hereden el estilo */
 .about-info-card .contact-info-item {
     margin-bottom: 1.5rem;
 }
@@ -235,7 +249,7 @@ body {
 }
 .room-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 .room-card-img {
     width: 100%;
@@ -302,25 +316,245 @@ body {
     align-self: flex-start;
 }
 
+/* --- Ofertas --- */
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.offer-card {
+    background: var(--color-bg-alt); /* Fondo un poco más claro que el base */
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.offer-card-image {
+    position: relative; /* Para posicionar el badge */
+    height: 220px;
+    overflow: hidden;
+}
+
+.offer-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.offer-card:hover .offer-card-image img {
+    transform: scale(1.05); /* Efecto zoom elegante */
+}
+
+.offer-badge {
+    position: absolute;
+    top: 1.5rem; /* 24px desde arriba */
+    left: 0;
+    background-color: var(--color-gold);
+    color: #111; /* Texto oscuro para alto contraste */
+    padding: 0.4rem 1rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border-radius: 0 4px 4px 0; /* Esquina redondeada a la derecha */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.offer-card-body {
+    padding: 1.5rem 1.75rem; /* Un poco más de padding horizontal */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.offer-card-body h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    margin: 0 0 0.75rem;
+    color: var(--color-gold);
+}
+
+.offer-card-body p {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Empuja los detalles y el botón hacia abajo */
+    line-height: 1.6;
+}
+
+.offer-validity {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    border-top: 1px dashed var(--color-border); /* Línea punteada para "profesional" */
+    padding-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.offer-validity i {
+    color: var(--color-gold);
+    font-size: 1rem;
+}
+
+.offer-card-body .btn {
+    align-self: flex-start; /* Alinea el botón a la izquierda */
+}
+
 /* --- Reseñas --- */
 .reviews-section {
     background: #111;
+    position: relative;
+}
+
+.reviews-aggregate-box {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 2.5rem;
+    margin-bottom: 3rem; /* Espacio entre los puntajes y el carrusel */
+}
+
+.reviews-aggregate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.aggregate-score-box {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.aggregate-score {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+}
+.aggregate-score .total-score {
+    font-size: 1.5rem;
+    color: var(--color-text-secondary);
+    margin-left: 0.25rem;
+}
+.aggregate-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-gold);
+    margin-top: 0.5rem;
+}
+.aggregate-total-reviews {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-top: 0.5rem;
+}
+
+.review-source-scores {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.source-item {
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: left;
+    color: var(--color-text-primary);
+}
+
+.source-item i {
+    font-size: 1.25rem;
+    color: var(--color-gold);
+    text-align: center;
+}
+
+.source-item .source-score {
+    font-weight: 600;
+    color: #fff;
+}
+
+.review-category-scores {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    justify-content: center;
+    height: 100%;
+}
+.category-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.category-label {
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+}
+.category-score {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+}
+.category-bar-bg {
+    width: 100%;
+    height: 6px;
+    background-color: #333;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.category-bar-fill {
+    height: 100%;
+    background-color: var(--color-gold);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.aggregate-cta-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+.aggregate-cta-bar p {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 1.1rem;
+}
+
+.reviews-aggregate .btn {
+    width: 100%;
 }
 
 .reviews-carousel-container {
     position: relative;
     width: 100%;
     overflow: hidden;
-    /* La máscara crea un efecto de difuminado en los bordes, muy elegante */
-    mask-image: linear-gradient(to right,
-            transparent,
-            black 10%,
-            black 90%,
-            transparent
+    mask-image: linear-gradient(
+        to right,
+                    transparent,
+                    black 10%,
+                    black 90%,
+                    transparent    
     );
 }
 
-/* NUEVO: Al pasar el mouse, pausamos la animación */
 .reviews-carousel-container:hover .reviews-carousel-track {
     animation-play-state: paused;
 }
@@ -332,7 +566,7 @@ body {
 }
 
 .reviews-carousel-track.dragging {
-    cursor: grabbing; /* <- Y AÑADE ESTO */
+    cursor: grabbing;
 }
 
 .review-card {
@@ -342,8 +576,10 @@ body {
     border-radius: 8px;
     flex-shrink: 0;
     width: clamp(280px, 80vw, 380px);
+    aspect-ratio: 4 / 3;
+    display: flex;
+    flex-direction: column;
 }
-
 .review-header {
     display: flex;
     justify-content: space-between;
@@ -359,18 +595,43 @@ body {
     color: var(--color-gold);
     letter-spacing: 2px;
 }
-.review-card p {
+.review-card p.review-text {
+    flex-grow: 1;
+    overflow-y: auto;
     color: #b0b0b0;
     font-style: italic;
     line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.review-source {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+.review-source i {
+    color: var(--color-gold);
+}
+.review-card.photo-card {
+    padding: 0;
+    overflow: hidden;
+}
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-/* Estilos para los botones de navegación */
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
     border: 1px solid var(--color-border);
     color: var(--color-gold);
     border-radius: 50%;
@@ -388,57 +649,50 @@ body {
     color: #111;
 }
 .prev-btn {
-    left: 0;
+    left: 10px; /* Añadido un pequeño margen */
 }
 .next-btn {
-    right: 0;
+    right: 10px; /* Añadido un pequeño margen */
+}
+
+@media (max-width: 992px) {
+    .review-category-scores {
+        justify-content: flex-start;
+    }
 }
 
 @media (max-width: 768px) {
-    .reviews-carousel-container {
-        padding: 0; /* Sin padding en móvil para aprovechar espacio */
-        mask-image: none; /* Quitamos el degradado en los bordes */
+        .container {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
-    .carousel-btn {
-        /* Ocultamos los botones en móvil ya que el autoplay es suficiente */
-        display: none; 
+    .reviews-aggregate-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
-}
 
-.review-card {
-    background: var(--color-bg);
-    border: 1px solid #222;
-    padding: 2rem;
-    border-radius: 8px;
-    flex-shrink: 0;
-    width: clamp(280px, 80vw, 380px);
-    
-    /* 👇 NUEVO: Unificamos el tamaño y la disposición */
-    aspect-ratio: 4 / 3; /* Proporción visual (ancho / alto) */
-    display: flex;
-    flex-direction: column; /* Para que el contenido se ordene verticalmente */
-}
+    .reviews-aggregate-box {
+        padding: 1.5rem;
+    }
 
-/* Hacemos que el párrafo de la reseña ocupe el espacio disponible */
-.review-card p {
-    flex-grow: 1; /* El párrafo se estira para llenar el espacio */
-    overflow-y: auto; /* Añade scroll si el texto es muy largo */
-    color: #b0b0b0;
-    font-style: italic;
-    line-height: 1.6;
-}
+        .reviews-carousel-container {
+        padding: 0;
+        mask-image: none;
+    }
+        .carousel-btn {
+        display: none;
+    }
 
-
-.review-card.photo-card {
-    padding: 0; /* Las fotos no necesitan padding */
-    overflow: hidden;
-}
-
-.photo-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+        .aggregate-cta-bar {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+        .aggregate-cta-bar p {
+        font-size: 1rem;
+    }
 }
 
 /* --- Tours  --- */
@@ -464,7 +718,7 @@ body {
 .tour-item-image {
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 .tour-item-image img {
@@ -521,7 +775,186 @@ body {
     }
     /* Reseteamos el orden para que la imagen siempre vaya primero */
     .tour-alternating-item:nth-child(even) .tour-item-image {
-        order: 0; 
+        order: 0;
+    }
+}
+
+/* --- Galería --- */
+.gallery-grid {
+    display: grid;
+    /* Un grid responsivo que crea columnas de mínimo 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; /* Espaciado consistente */
+}
+
+.gallery-item {
+    position: relative;
+    aspect-ratio: 4 / 3; /* Proporción para las imágenes */
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05); /* Efecto zoom elegante */
+}
+
+.gallery-item-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.5rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+}
+
+/* --- Estilos del Lightbox (Visor) --- */
+.gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000; /* Por encima de todo */
+    background: rgba(0, 0, 0, 0.85); /* Fondo oscuro translúcido */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 80vh; /* Deja espacio para el caption */
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    /* Animación de zoom al aparecer */
+    animation: zoomIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.lightbox-caption {
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin-top: 1rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Botones del Lightbox */
+.lightbox-close-btn,
+.lightbox-nav-btn {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--color-gold);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-close-btn:hover,
+.lightbox-nav-btn:hover {
+    background-color: var(--color-gold);
+    color: #111;
+}
+
+.lightbox-close-btn {
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 3rem;
+    line-height: 1;
+    font-weight: 300;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.lightbox-nav-btn {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.lightbox-nav-btn.prev {
+    left: 2rem;
+}
+
+.lightbox-nav-btn.next {
+    right: 2rem;
+}
+
+/* Responsividad para botones en móvil */
+@media (max-width: 768px) {
+    .lightbox-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+    .lightbox-nav-btn.prev {
+        left: 5px;
+    }
+    .lightbox-nav-btn.next {
+        right: 5px;
+    }
+    .lightbox-close-btn {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 2.5rem;
+    }
+    .lightbox-image {
+        max-height: 75vh;
     }
 }
 
@@ -630,6 +1063,164 @@ body {
 @media (max-width: 768px) {
     .contact-form .form-group {
         grid-template-columns: 1fr;
+    }
+
+    .rooms-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 1.5rem;
+
+        grid-template-columns: unset;
+
+        margin-left: -1rem;
+        margin-right: -1rem;
+
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        padding-bottom: 1.5rem;
+
+        scroll-snap-type: x mandatory;
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .rooms-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .rooms-grid .room-card {
+        flex-shrink: 0;
+        width: 85vw;
+        max-width: 320px;
+        scroll-snap-align: start;
+    }
+
+    .tours-alternating-container {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 1.5rem;
+
+        gap: 1.5rem;
+
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1.5rem;
+
+        scroll-snap-type: x mandatory;
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .tours-alternating-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tours-alternating-container .tour-alternating-item {
+        flex-shrink: 0;
+        width: 85vw;
+        max-width: 350px;
+        scroll-snap-align: start;
+    }
+
+    .offers-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 1.5rem;
+
+        grid-template-columns: unset;
+
+        margin-left: -1rem;
+        margin-right: -1rem;
+
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1.5rem;
+
+        scroll-snap-type: x mandatory;
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .offers-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .offers-grid .offer-card {
+        flex-shrink: 0;
+        width: 85vw;
+        max-width: 350px;
+        scroll-snap-align: start;
+    }
+
+    .gallery-grid {
+        display: flex; /* Cambia de grid a flex */
+        overflow-x: auto; /* Habilita scroll horizontal */
+        gap: 1.5rem; /* Espaciado entre items */
+
+        grid-template-columns: unset; /* Resetea la propiedad de grid */
+
+        /* Truco de márgenes/padding para ancho completo */
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1.5rem; /* Espacio para barra de scroll (oculta) */
+
+        scroll-snap-type: x mandatory; /* Habilita el snap */
+
+        /* Oculta la barra de scroll */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .gallery-grid::-webkit-scrollbar {
+        display: none; /* Oculta scrollbar en Webkit */
+    }
+
+    .gallery-grid .gallery-item {
+        flex-shrink: 0;
+        width: 80vw;
+        max-width: 300px;
+        scroll-snap-align: start;
+    }
+
+    .gallery-lightbox {
+        align-items: flex-start;
+        padding-top: 5vh;
+    }
+
+    .lightbox-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        background: rgba(0, 0, 0, 0.3);
+    }
+    .lightbox-nav-btn.prev {
+        left: 5px;
+    }
+    .lightbox-nav-btn.next {
+        right: 5px;
+    }
+    .lightbox-close-btn {
+        top: 15px; /* Un poco más abajo */
+        right: 15px; /* Un poco más adentro */
+        width: 35px; /* Más pequeño */
+        height: 35px; /* Más pequeño */
+        font-size: 2rem; /* Más pequeño */
+        background: rgba(0, 0, 0, 0.3);
+    }
+    .lightbox-image {
+        max-height: 80vh; /* Permitimos que sea un poco más alta */
+    }
+    .lightbox-caption {
+        font-size: 0.9rem; /* Hacemos el texto un poco más pequeño */
+        padding: 0 1rem; /* Evita que toque los bordes */
     }
 }
 
