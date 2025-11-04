@@ -662,12 +662,46 @@ body {
 }
 
 @media (max-width: 768px) {
-        .container {
+       .container {
         padding-top: 2.5rem;
         padding-bottom: 2.5rem;
         padding-left: 1rem;
         padding-right: 1rem;
     }
+
+    .hero {
+        height: 80vh; /* Reducimos la altura del 100% al 90% */
+    }
+
+    .hero-overlay {
+        padding-top: 15vh; /* Reducimos el margen superior (era 22vh) */
+    }
+
+    .hero-logo img {
+        width: 350px; /* Opcional: achicar un poco el logo en móvil */
+        margin-bottom: 1.5rem; /* Reducimos margen (era 2rem) */
+    }
+
+    .hero-content p {
+        margin-bottom: 2rem; /* Reducimos margen (era 2.5rem) */
+    }
+
+    .scroll-down-arrow {
+        display: block; /* La hacemos visible (por defecto puede ser 'none') */
+        position: absolute;
+        bottom: 30px; /* A 30px del borde inferior */
+        left: 50%;
+        margin-left: -15px; /* Centrado horizontal */
+        width: 30px;
+        height: 30px;
+        color: var(--color-gold);
+        font-size: 1.5rem; /* Tamaño del ícono */
+        text-align: center;
+        text-decoration: none;
+        animation: bounce-down 2.5s infinite;
+        opacity: 0.8;
+    }
+
     .reviews-aggregate-grid {
         grid-template-columns: 1fr;
         gap: 2.5rem;
@@ -1050,6 +1084,13 @@ body {
         /* Desactivamos el efecto sticky en móvil */
         position: static;
     }
+
+    .about.reveal {
+        opacity: 1;
+        transform: translateY(0);
+        transition: none; 
+    }
+
     .tour-plan-card {
         grid-template-columns: 1fr;
     }
@@ -1060,6 +1101,7 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
 @media (max-width: 768px) {
     .contact-form .form-group {
         grid-template-columns: 1fr;
@@ -1092,8 +1134,8 @@ body {
 
     .rooms-grid .room-card {
         flex-shrink: 0;
-        width: 85vw;
-        max-width: 320px;
+        width: 80vw;
+        max-width: 300px;
         scroll-snap-align: start;
     }
 
@@ -1122,8 +1164,8 @@ body {
 
     .tours-alternating-container .tour-alternating-item {
         flex-shrink: 0;
-        width: 85vw;
-        max-width: 350px;
+        width: 80vw;
+        max-width: 300px;
         scroll-snap-align: start;
     }
 
@@ -1153,8 +1195,8 @@ body {
 
     .offers-grid .offer-card {
         flex-shrink: 0;
-        width: 85vw;
-        max-width: 350px;
+        width: 80vw;
+        max-width: 300px;
         scroll-snap-align: start;
     }
 
@@ -1257,6 +1299,18 @@ body {
     }
     100% {
         box-shadow: 0 0 0 0 rgba(197, 164, 126, 0);
+    }
+}
+
+@keyframes bounce-down {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
     }
 }
 

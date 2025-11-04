@@ -130,7 +130,7 @@ body {
     transform: scale(1.05);
 }
 
-.tour-card-details-overlay {
+/*.tour-card-details-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -147,7 +147,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
+}*/
 
 .tour-card-content {
     padding: 1.5rem;
@@ -173,6 +173,75 @@ body {
     flex-grow: 1;
 }
 
+.tour-card-info {
+    display: flex;
+    flex-wrap: wrap; /* Para que se acomode en pantallas chicas */
+    gap: 0.5rem 1.5rem; /* 0.5rem vertical, 1.5rem horizontal */
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.tour-card-info span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tour-card-info i {
+    color: var(--color-gold);
+}
+
+.tour-card-includes {
+    font-size: 0.9rem;
+    flex-grow: 1; /* Empuja el botón al fondo */
+    margin-bottom: 1.5rem;
+}
+
+.tour-card-includes h4 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: 0.95rem;
+    margin: 0 0 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tour-card-includes h4.optional {
+    color: var(--color-gold);
+    margin-top: 1rem;
+}
+
+.tour-card-includes ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    color: var(--color-text-secondary);
+}
+
+.tour-card-includes li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.tour-card-includes li i {
+    color: var(--color-gold);
+    font-size: 0.8rem;
+}
+
+.tour-card-includes li i.fa-times {
+    color: #8a6a4d; /* Un tono de dorado más oscuro para "no incluye" */
+}
+
+.tour-card-content .btn {
+    margin-top: auto; /* Pega el botón al final de la tarjeta */
+}
+
 /* 5. KEYFRAMES */
 @keyframes fadeUp {
     to {
@@ -190,5 +259,54 @@ body {
     }
     100% {
         box-shadow: 0 0 0 0 rgba(197, 164, 126, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .tours-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 1rem; 
+        grid-template-columns: unset;
+
+        margin-left: -1rem;
+        margin-right: -1rem;
+
+        padding: 0 1.5rem 1.5rem 1rem;
+
+        scroll-snap-type: x mandatory;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .tours-grid::-webkit-scrollbar {
+        display: none; 
+    }
+
+    .tours-grid .tour-card.reveal {
+        opacity: 1;
+        transform: translateY(0);
+        transition: none;
+    }
+
+    .tour-card {
+        flex-shrink: 0;
+        width: 85vw; 
+        max-width: 340px; 
+        scroll-snap-align: start;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .tour-card:hover {
+        transform: translateY(0); 
+    }
+
+    .hero-tours {
+        background-attachment: scroll; 
     }
 }

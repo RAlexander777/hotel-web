@@ -1,15 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/tours.css";
+
+// Número de WhatsApp y mensaje base
+const waNumber = "51944278647";
+const baseMsg = "Hola Hostal Acuarius, estoy interesado/a en el tour:";
+
+// Función para generar enlaces de WhatsApp
+const createWaLink = (tourName: string) => {
+    const text = `${baseMsg} *${tourName}*. ¿Podrían darme más información?`;
+    return `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
+};
 ---
 
-<Layout title="Hostal Aquarius · Tours en Puno">
+<Layout title="Hostal Acuarius · Tours en Puno">
     <section class="hero-tours">
         <div class="hero-tours-overlay">
             <div class="hero-tours-content">
                 <h1 class="hero-tours-title">Tours y Excursiones</h1>
                 <p class="hero-tours-subtitle">
-                    Descubre la magia del Lago Titicaca y los tesoros culturales de Puno con nuestras aventuras guiadas.
+                    Descubre la magia del Lago Titicaca y los tesoros culturales
+                    de Puno con nuestras aventuras guiadas.
                 </p>
             </div>
         </div>
@@ -17,109 +28,287 @@ import "../styles/tours.css";
 
     <main class="container">
         <div class="tours-grid">
-
             <article class="tour-card reveal">
                 <div class="tour-card-image">
-                    <img src="/hotel-web/images/tours/uros.jpg" alt="Islas flotantes de los Uros en el Lago Titicaca" />
-                    <div class="tour-card-details-overlay">
-                        <span><i class="fas fa-clock"></i> 3 Horas</span>
-                        <span><i class="fas fa-dollar-sign"></i> 35 Soles</span>
-                    </div>
+                    <img
+                        src="/hotel-web/images/tours/uros.jpg"
+                        alt="Islas flotantes de los Uros en el Lago Titicaca"
+                    />
                 </div>
                 <div class="tour-card-content">
-                    <h2 class="tour-card-title">Islas Flotantes de los Uros</h2>
+                    <h2 class="tour-card-title">
+                        Islas Flotantes de los Uros
+                    </h2>
+                    <div class="tour-card-info">
+                        <span><i class="fas fa-clock"></i> Aprox. 3 horas</span>
+                        <span
+                            ><i class="fas fa-calendar-alt"></i> Salidas: 9am /
+                            12pm / 4pm</span
+                        >
+                    </div>
                     <p class="tour-card-description">
-                        Navega por el lago navegable más alto del mundo y visita las fascinantes islas de totora, hogar de la ancestral cultura Uru.
+                        Navega por el lago navegable más alto del mundo y visita
+                        las fascinantes islas de totora, hogar de la ancestral
+                        cultura Uru.
                     </p>
-                    <a href="#" class="btn">Reservar Tour</a>
+                    <div class="tour-card-includes">
+                        <h4>Incluye:</h4>
+                        <ul>
+                            <li
+                                ><i class="fas fa-check"></i> Traslados de hotel
+                                (ida/vuelta)</li
+                            >
+                            <li
+                                ><i class="fas fa-check"></i> Transporte lacustre
+                               </li
+                            >
+                            <li
+                                ><i class="fas fa-check"></i> Ticket de ingreso
+                               </li
+                            >
+                            <li
+                                ><i class="fas fa-check"></i> Guía profesional
+                                (Inglés/Español)</li
+                            >
+                        </ul>
+                        <h4 class="optional">Opcional:</h4>
+                        <ul>
+                            <li
+                                ><i class="fas fa-times"></i> Paseo en balsa de
+                                totora</li
+                            >
+                        </ul>
+                    </div>
+                    <a
+                        href={createWaLink("Islas Flotantes de los Uros")}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn">Consultar Tour</a
+                    >
                 </div>
             </article>
 
             <article class="tour-card reveal">
                 <div class="tour-card-image">
-                    <img src="/hotel-web/images/tours/taquile2.png" alt="Paisaje de la Isla Taquile" />
-                    <div class="tour-card-details-overlay">
-                        <span><i class="fas fa-clock"></i> Full Day</span>
-                        <span><i class="fas fa-dollar-sign"></i> 70 Soles</span>
-                    </div>
+                    <img
+                        src="/hotel-web/images/tours/taquile2.png"
+                        alt="Paisaje de la Isla Taquile"
+                    />
                 </div>
                 <div class="tour-card-content">
-                    <h2 class="tour-card-title">Uros y Taquile (Día Completo)</h2>
+                    <h2 class="tour-card-title">
+                        Uros y Taquile (Lancha Rápida)
+                    </h2>
+                    <div class="tour-card-info">
+                        <span
+                            ><i class="fas fa-clock"></i> Día Completo (Aprox.
+                            7am - 4pm)</span
+                        >
+                    </div>
                     <p class="tour-card-description">
-                        Una jornada completa para explorar los Uros y la Isla Taquile, famosa por su arte textil reconocido por la UNESCO.
+                        Una jornada completa para explorar los Uros y la Isla
+                        Taquile, famosa por su arte textil reconocido por la
+                        UNESCO.
                     </p>
-                    <a href="#" class="btn">Reservar Tour</a>
+                    <div class="tour-card-includes">
+                        <h4>Incluye:</h4>
+                        <ul>
+                            <li
+                                ><i class="fas fa-check"></i> Traslados de hotel
+                               </li
+                            >
+                            <li
+                                ><i class="fas fa-check"></i> Transporte en Lancha
+                                Rápida</li
+                            >
+                            <li
+                                ><i class="fas fa-check"></i> Tickets de ingreso
+                                (Uros/Taquile)</li
+                            >
+                            <li
+                                ><i class="fas fa-check"></i> Guía bilingüe</li
+                            >
+                        </ul>
+                        <h4 class="optional">No Incluye:</h4>
+                        <ul>
+                            <li
+                                ><i class="fas fa-times"></i> Almuerzo en Taquile
+                               </li
+                            >
+                        </ul>
+                    </div>
+                    <a
+                        href={createWaLink("Uros y Taquile (Lancha Rápida)")}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn">Consultar Tour</a
+                    >
                 </div>
             </article>
 
             <article class="tour-card reveal">
                 <div class="tour-card-image">
-                    <img src="/hotel-web/images/tours/sillustani.png" alt="Chullpas de Sillustani al atardecer" />
-                    <div class="tour-card-details-overlay">
-                        <span><i class="fas fa-clock"></i> 3 Horas</span>
-                        <span><i class="fas fa-dollar-sign"></i> 40 Soles</span>
-                    </div>
+                    <img
+                        src="/hotel-web/images/tours/sillustani.png"
+                        alt="Chullpas de Sillustani al atardecer"
+                    />
                 </div>
                 <div class="tour-card-content">
                     <h2 class="tour-card-title">Chullpas de Sillustani</h2>
+                    <div class="tour-card-info">
+                        <span
+                            ><i class="fas fa-clock"></i> Aprox. 3.5 horas</span
+                        >
+                        <span
+                            ><i class="fas fa-calendar-alt"></i> Salida: 2:00 PM
+                           </span
+                        >
+                    </div>
                     <p class="tour-card-description">
-                        Visita el impresionante complejo funerario preincaico a orillas de la laguna Umayo. Un viaje a la historia y la mística andina.
+                        Visita el impresionante complejo funerario preincaico a
+                        orillas de la laguna Umayo. Un viaje a la historia y la
+                        mística andina.
                     </p>
-                    <a href="#" class="btn">Reservar Tour</a>
+                    <div class="tour-card-includes">
+                        <h4>Incluye:</h4>
+                        <ul>
+                            <li
+                                ><i class="fas fa-check"></i> Recojo de hotel</li
+                            >
+                            <li
+                                ><i class="fas fa-check"></i> Transporte turístico
+                               </li
+                            >
+                            <li
+                                ><i class="fas fa-check"></i> Ticket de ingreso
+                               </li
+                            >
+                            <li
+                                ><i class="fas fa-check"></i> Guía profesional
+                                (Inglés/Español)</li
+                            >
+                        </ul>
+                    </div>
+                    <a
+                        href={createWaLink("Chullpas de Sillustani")}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn">Consultar Tour</a
+                    >
                 </div>
             </article>
 
             <article class="tour-card reveal">
                 <div class="tour-card-image">
-                    <img src="/hotel-web/images/tours/amantani.png" alt="Vista de la Isla Amantaní" />
-                    <div class="tour-card-details-overlay">
-                        <span><i class="fas fa-clock"></i> 2 Días / 1 Noche</span>
-                        <span><i class="fas fa-dollar-sign"></i> 120 Soles</span>
-                    </div>
+                    <img
+                        src="/hotel-web/images/tours/amantani.png"
+                        alt="Vista de la Isla Amantaní"
+                    />
                 </div>
                 <div class="tour-card-content">
-                    <h2 class="tour-card-title">Isla Amantaní (Vivencial)</h2>
+                    <h2 class="tour-card-title">
+                        Vivencial 2D/1N (Uros + Amantaní + Taquile)
+                    </h2>
+                    <div class="tour-card-info">
+                        <span
+                            ><i class="fas fa-clock"></i> 2 Días / 1 Noche</span
+                        >
+                    </div>
                     <p class="tour-card-description">
-                        Sumérgete en la cultura local. Disfruta de una noche inolvidable compartiendo costumbres y tradiciones con una familia local.
+                        Sumérgete en la cultura local. Pasa la noche en Amantani
+                        con una familia, visita Uros y explora Taquile al día
+                        siguiente.
                     </p>
-                    <a href="#" class="btn">Reservar Tour</a>
+                    <div class="tour-card-includes">
+                        <h4>Incluye:</h4>
+                        <ul>
+                            <li
+                                ><i class="fas fa-check"></i> Traslados y transporte
+                                lacustre</li
+                            >
+                            <li
+                                ><i class="fas fa-check"></i> Tickets (Uros, Amantani)
+                               </li
+                            >
+                            <li
+                                ><i class="fas fa-check"></i> Noche en casa familiar
+                               </li
+                            >
+                            <li
+                                ><i class="fas fa-check"></i> Alimentación en Amantani
+                                (3 comidas)</li
+                            >
+                        </ul>
+                        <h4 class="optional">No Incluye:</h4>
+                        <ul>
+                            <li
+                                ><i class="fas fa-times"></i> Almuerzo del 2do día
+                               </li
+                            >
+                        </ul>
+                    </div>
+                    <a
+                        href={createWaLink(
+                            "Vivencial 2D/1N (Uros + Amantaní + Taquile)"
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn">Consultar Tour</a
+                    >
                 </div>
             </article>
 
             <article class="tour-card reveal">
                 <div class="tour-card-image">
-                    <img src="/hotel-web/images/tours/chucuito.png" alt="Templo de la Fertilidad en Chucuito" />
-                    <div class="tour-card-details-overlay">
-                        <span><i class="fas fa-clock"></i> Medio Día</span>
-                        <span><i class="fas fa-dollar-sign"></i> 50 Soles</span>
-                    </div>
+                    <img
+                        src="/hotel-web/images/tours/chucuito.png"
+                        alt="Templo de la Fertilidad en Chucuito"
+                    />
                 </div>
                 <div class="tour-card-content">
                     <h2 class="tour-card-title">Ciudad de Chucuito</h2>
+                    <div class="tour-card-info">
+                        <span><i class="fas fa-clock"></i> Medio Día</span>
+                    </div>
                     <p class="tour-card-description">
-                        Descubre la arquitectura colonial, iglesias antiguas y el famoso Templo de la Fertilidad en esta histórica ciudad a orillas del lago.
+                        Descubre la arquitectura colonial, iglesias antiguas y
+                        el famoso Templo de la Fertilidad en esta histórica
+                        ciudad a orillas del lago.
                     </p>
-                    <a href="#" class="btn">Reservar Tour</a>
+                    <a
+                        href={createWaLink("Ciudad de Chucuito")}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn">Consultar Tour</a
+                    >
                 </div>
             </article>
 
             <article class="tour-card reveal">
                 <div class="tour-card-image">
-                    <img src="/hotel-web/images/tours/ruta_quechua.png" alt="Paisaje de la Ruta Quechua" />
-                    <div class="tour-card-details-overlay">
-                        <span><i class="fas fa-clock"></i> Full Day</span>
-                        <span><i class="fas fa-dollar-sign"></i> 90 Soles</span>
-                    </div>
+                    <img
+                        src="/hotel-web/images/tours/ruta_quechua.png"
+                        alt="Paisaje de la Ruta Quechua"
+                    />
                 </div>
                 <div class="tour-card-content">
                     <h2 class="tour-card-title">Ruta Quechua</h2>
+                    <div class="tour-card-info">
+                        <span><i class="fas fa-clock"></i> Full Day</span>
+                    </div>
                     <p class="tour-card-description">
-                        Disfruta de una caminata escénica entre bosques de pino, una biodiversidad única y la tranquilidad inigualable del altiplano.
+                        Disfruta de una caminata escénica entre bosques de pino,
+                        una biodiversidad única y la tranquilidad inigualable
+                        del altiplano.
                     </p>
-                    <a href="#" class="btn">Reservar Tour</a>
+                    <a
+                        href={createWaLink("Ruta Quechua")}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn">Consultar Tour</a
+                    >
                 </div>
             </article>
-
         </div>
     </main>
 </Layout>
