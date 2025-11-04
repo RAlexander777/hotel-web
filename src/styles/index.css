@@ -109,6 +109,10 @@ body {
     margin-right: auto;
 }
 
+.scroll-down-arrow {
+    display: none; 
+}
+
 /* --- Botones --- */
 .btn {
     font-family: var(--font-body);
