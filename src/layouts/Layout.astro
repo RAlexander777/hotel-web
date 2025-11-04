@@ -3,7 +3,7 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
-const { title = "Hostal Aquarius" } = Astro.props;
+const { title = "Hostal Acuarius" } = Astro.props;
 const { isIndexPage = false } = Astro.props;
 ---
 
@@ -54,7 +54,7 @@ const { isIndexPage = false } = Astro.props;
         <title>{title}</title>
     </head>
     <body>
-        <Navbar brand="Hostal Aquarius" isIndex={isIndexPage} />
+        <Navbar brand="Hostal Acuarius" isIndex={isIndexPage} />
         <main>
             <slot />
         </main>
