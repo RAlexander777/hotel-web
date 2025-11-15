@@ -52,11 +52,21 @@ body {
     height: 55vh;
     min-height: 350px;
     position: relative;
-    background-image: url("/hotel-web/images/hero4.jpg");
+    /*background-image: url("/hotel-web/images/hero4.jpg");*/
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: #fff;
+}
+.hero-about-bg-fallback {
+    position: absolute;
+    inset: 0; /* Abarca todo el <section> (top, left, right, bottom: 0) */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que cubra todo el espacio */
+    z-index: -1; /* La pone detrás del overlay y el contenido */
+    background-attachment: fixed; /* Mantenemos tu efecto parallax */
+    background-position: center;
 }
 .hero-about-overlay {
     position: absolute;

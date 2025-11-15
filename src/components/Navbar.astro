@@ -1,6 +1,10 @@
 ---
 import "../styles/navbar.css";
 
+import { Image } from 'astro:assets';
+
+import logoNavbar from '../assets/images/logo-hostal-acuarius-puno.png';
+
 // Recibimos las props como antes
 const { isIndex = false } = Astro.props;
 
@@ -38,11 +42,14 @@ const pathname = Astro.url.pathname;
     <div class="navbar-container">
         <div class="logo" :class="{ 'logo-visible': showLogo }">
             <a href="/hotel-web/">
-                <img
-                    src="/hotel-web/images/logo.png"
-                    alt="Hostal Acuarius Logo"
-                    class="logo-img"
-                />
+                <Image
+                    src={logoNavbar}
+                    alt="Logo de Hostal Acuarius, Puno"
+                    class="logo-img"
+                    height={70}
+                    width={280} 
+                    format="webp"
+                />
             </a>
         </div>
 

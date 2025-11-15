@@ -1,10 +1,135 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/habitaciones.css";
+
+import { Image, getImage } from 'astro:assets';
+
+//HERO IMG
+import heroBg from '../assets/images/espectacular-vista-al-lago-en-atardecer-puno-hostal-acuarius-hero.png';
+
+//HABITACIONES IMG
+import simple1 from '../assets/images/rooms/simple/acogedora-habitacion-simple-hostal-cuarius-puno.png';
+import simple2 from '../assets/images/rooms/simple/acogedora-habitacion-simple-servicios-higienicos-hostal-acuarius-puno.png';
+import simple3 from '../assets/images/rooms/simple/acogedora-habitacion-simple-vista-cama-hostal-acuarius-puno.png';
+
+import doble1 from '../assets/images/rooms/doble/acogedora-habitacion-doble-con-cortinas-abiertas-hostal.acuarius-puno.png';
+import doble2 from '../assets/images/rooms/doble/acogedora-habitacion-doble-con-vista-a-la-ciudad-hostal-acuarius-puno.jpg';
+import doble3 from '../assets/images/rooms/doble/acogedora-habitacion-doble-hostal-acuarius-puno.jpg';
+import doble4 from '../assets/images/rooms/doble/acogedora-habitacion-doble-vista-desde-cama-hostal-acuarius-puno.png';
+import doble5 from '../assets/images/rooms/doble/acogedora-habitacion-doble-vista-desde-puerta-hostal-acuarius-puno.png';
+import doble6 from '../assets/images/rooms/doble/acogedora-habitacion-doble-vista-general-hostal-acuarius-puno.jpg';
+import doble7 from '../assets/images/rooms/doble/servicios-higienicos-habitacion-doble-hostal-acuarius-puno.jpg';
+
+import matri1 from '../assets/images/rooms/matrimonial/acogedora-habitacion-matrimonial-con-vista-a-la-ciudad-hostal-acuarius-puno.jpg';
+import matri2 from '../assets/images/rooms/matrimonial/acogedora-habitacion-matrimonial-hostal-acuarius-puno.png';
+import matri3 from '../assets/images/rooms/matrimonial/acogedora-habitacion-matrimonial-vista-cerca-hostal-acuarius-puno.png';
+
+import triple1 from '../assets/images/rooms/triple/acogedora-habitacion-triple-con-vista-a-la-ciudad-cerca-hostal-acuarius-puno.jpg';
+import triple2 from '../assets/images/rooms/triple/acogedora-habitacion-triple-con-vista-a-la-ciudad-hostal-acuarius-puno.png';
+import triple3 from '../assets/images/rooms/triple/acogedora-habitacion-triple-en-atardecer-hostal-acuarius-puno.jpg';
+import triple4 from '../assets/images/rooms/triple/acogedora-habitacion-triple-vista-a-la-ciudad-desde-cama-hostal-acuarius-puno.jpg';
+import triple5 from '../assets/images/rooms/triple/acogedora-habitacion-triple-vista-desde-cama-hostal-acuarius-puno.png';
+
+import cuad1 from '../assets/images/rooms/cuadruple/acogedora-habitacion_cuadruple-con-vista-a-la-ciudad-hostal-acuarius-puno.png';
+import cuad2 from '../assets/images/rooms/cuadruple/acogedora-habitacion-cuadruple-con-cortinas-cerradas-hostal-acuarius-puno.png';
+
+import simpleComp1 from '../assets/images/rooms/simple_compartido/acogedora-habitacion-simple-con-servicios-higienicos-compartidos-hostal-acuarius-puno.png';
+
+import dobleComp1 from '../assets/images/rooms/doble_compartido/acogedora-habitacion_doble-servicios-higienicos-compartidos-hostal-acuarius-puno.png';
+import dobleComp2 from '../assets/images/rooms/doble_compartido/acogedora-habitacion_doble-servicios-higienicos-compartidos-vista-cerca-hostal-acuarius-puno.png';
+
+import matriComp1 from '../assets/images/rooms/matrimonial_compartido/acogedora-matrimonial-servicios-higienicos-compartidos-hostal-acuarius-puno.png';
+import matriComp2 from '../assets/images/rooms/matrimonial_compartido/acogedora-matrimonial-servicios-higienicos-compartidos-vista-cerca-hostal-acuarius-puno.png';
+
+type ImageResult = Awaited<ReturnType<typeof getImage>>;
+
+// Ahora usamos ese tipo que acabamos de crear
+const createItems = (images: ImageResult[]) => images.map(img => ({ 
+    src: img.src, 
+    alt: img.attributes.alt as string 
+}));
+
+const roomImageProps = { width: 800, height: 600, format: 'webp' };
+
+const [
+    simpleItems, 
+    dobleItems, 
+    matriItems, 
+    tripleItems, 
+    cuadItems, 
+    simpleCompItems, 
+    dobleCompItems, 
+    matriCompItems
+] = await Promise.all([
+    // Simple
+    Promise.all([
+        getImage({ ...roomImageProps, src: simple1, alt: 'Habitación simple acogedora en Hostal Acuarius Puno' }),
+        getImage({ ...roomImageProps, src: simple2, alt: 'Baño privado y ducha de habitación simple' }),
+        getImage({ ...roomImageProps, src: simple3, alt: 'Cama de 1.5 plazas en habitación simple' })
+    ]).then(createItems),
+
+    // Doble
+    Promise.all([
+        getImage({ ...roomImageProps, src: doble1, alt: 'Habitación doble con cortinas abiertas en Hostal Acuarius' }),
+        getImage({ ...roomImageProps, src: doble2, alt: 'Habitación doble con vista a la ciudad en Hostal Acuarius' }),
+        getImage({ ...roomImageProps, src: doble3, alt: 'Habitación doble con dos camas en Hostal Acuarius Puno' }),
+        getImage({ ...roomImageProps, src: doble4, alt: 'Vista desde la cama de la habitación doble' }),
+        getImage({ ...roomImageProps, src: doble5, alt: 'Vista desde la puerta de la habitación doble' }),
+        getImage({ ...roomImageProps, src: doble6, alt: 'Vista general de la habitación doble' }),
+        getImage({ ...roomImageProps, src: doble7, alt: 'Servicios higiénicos y ducha de la habitación doble' })
+    ]).then(createItems),
+
+    // Matrimonial
+    Promise.all([
+        getImage({ ...roomImageProps, src: matri1, alt: 'Habitación matrimonial con vista a la ciudad en Puno' }),
+        getImage({ ...roomImageProps, src: matri2, alt: 'Acogedora habitación matrimonial en Hostal Acuarius' }),
+        getImage({ ...roomImageProps, src: matri3, alt: 'Cama de 2 plazas en habitación matrimonial' })
+    ]).then(createItems),
+
+    // Triple
+    Promise.all([
+        getImage({ ...roomImageProps, src: triple1, alt: 'Habitación triple con vista a la ciudad de Puno' }),
+        getImage({ ...roomImageProps, src: triple2, alt: 'Vista amplia de la habitación triple con tres camas' }),
+        getImage({ ...roomImageProps, src: triple3, alt: 'Habitación triple iluminada por el atardecer' }),
+        getImage({ ...roomImageProps, src: triple4, alt: 'Vista a la ciudad desde la cama de la habitación triple' }),
+        getImage({ ...roomImageProps, src: triple5, alt: 'Tres camas cómodas en la habitación triple' })
+    ]).then(createItems),
+
+    // Cuádruple
+    Promise.all([
+        getImage({ ...roomImageProps, src: cuad1, alt: 'Habitación cuádruple con vista a la ciudad, ideal para familias' }),
+        getImage({ ...roomImageProps, src: cuad2, alt: 'Habitación cuádruple espaciosa con cortinas cerradas' })
+    ]).then(createItems),
+
+    // Simple Compartido
+    Promise.all([
+        getImage({ ...roomImageProps, src: simpleComp1, alt: 'Habitación simple económica con baño compartido en Hostal Acuarius' })
+    ]).then(createItems),
+
+    // Doble Compartido
+    Promise.all([
+        getImage({ ...roomImageProps, src: dobleComp1, alt: 'Habitación doble con baño compartido, opción económica' }),
+        getImage({ ...roomImageProps, src: dobleComp2, alt: 'Cama de habitación doble con baño compartido' })
+    ]).then(createItems),
+
+    // Matrimonial Compartido
+    Promise.all([
+        getImage({ ...roomImageProps, src: matriComp1, alt: 'Habitación matrimonial económica con baño compartido' }),
+        getImage({ ...roomImageProps, src: matriComp2, alt: 'Cama de habitación matrimonial con baño compartido' })
+    ]).then(createItems)
+]);
+
+const heroBgOptimized = await getImage({ src: heroBg, width: 1920, format: 'webp', quality: 80 });
 ---
 
 <Layout title="Hostal Acuarius · Habitaciones">
-    <section class="hero-rooms">
+    <section class="hero-rooms" style={`background-image: url(${heroBgOptimized.src});`}>
+        <Image 
+            src={heroBg}
+            alt="Espectacular vista al Lago Titicaca en Puno al atardecer"
+            class="hero-rooms-bg-fallback" format="webp"
+            quality={80}
+        />
         <div class="hero-rooms-overlay">
             <div class="hero-rooms-content">
                 <h1 class="hero-rooms-title">Nuestras Habitaciones</h1>
@@ -21,16 +146,12 @@ import "../styles/habitaciones.css";
         <article class="room-entry reveal">
             <div
                 class="room-carousel"
-                x-data="{
-                    images: [
-                        '/hotel-web/images/rooms/simple/1.png',
-                        '/hotel-web/images/rooms/simple/2.png',
-                        '/hotel-web/images/rooms/simple/3.png'
-                    ],
-                    currentIndex: 0,
-                    next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
-                    prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
-                }"
+                x-data={`{
+                    images: ${JSON.stringify(simpleItems)},
+                    currentIndex: 0,
+                    next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
+                    prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
+                }`}
             >
                 <div
                     class="carousel-track"
@@ -39,8 +160,9 @@ import "../styles/habitaciones.css";
                     <template x-for="image in images">
                         <div class="carousel-slide">
                             <img
-                                :src="image"
-                                alt="Vista de la Habitación Simple"
+                                :src="image.src"
+                                :alt="image.alt"
+                                loading= "lazy"
                             />
                         </div>
                     </template>
@@ -85,17 +207,12 @@ import "../styles/habitaciones.css";
         <article class="room-entry reveal" id="doble">
             <div
                 class="room-carousel"
-                x-data="{
-                    images: [
-                        '/hotel-web/images/rooms/doble/1.png',
-                        '/hotel-web/images/rooms/doble/2.png',
-                        '/hotel-web/images/rooms/doble/3.png',
-                        '/hotel-web/images/rooms/doble/4.png',
-                    ],
-                    currentIndex: 0,
-                    next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
-                    prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
-                }"
+                x-data={`{
+                    images: ${JSON.stringify(dobleItems)},
+                    currentIndex: 0,
+                    next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
+                    prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
+                }`}
             >
                 <div
                     class="carousel-track"
@@ -104,8 +221,9 @@ import "../styles/habitaciones.css";
                     <template x-for="image in images">
                         <div class="carousel-slide">
                             <img
-                                :src="image"
-                                alt="Vista de la Habitación Doble"
+                                :src="image.src"
+                                :alt="image.alt"
+                                loading= "lazy"
                             />
                         </div>
                     </template>
@@ -150,17 +268,12 @@ import "../styles/habitaciones.css";
         <article class="room-entry reveal">
             <div
                 class="room-carousel"
-                x-data="{
-                    images: [
-                        '/hotel-web/images/rooms/matrimonial/3.png',
-                        '/hotel-web/images/rooms/matrimonial/4.png',
-                        '/hotel-web/images/rooms/matrimonial/5.png',
-                        '/hotel-web/images/rooms/matrimonial/6.png'
-                    ],
-                    currentIndex: 0,
-                    next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
-                    prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
-                }"
+                x-data={`{
+                    images: ${JSON.stringify(matriItems)},
+                    currentIndex: 0,
+                    next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
+                    prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
+                }`}
             >
                 <div
                     class="carousel-track"
@@ -169,8 +282,9 @@ import "../styles/habitaciones.css";
                     <template x-for="image in images">
                         <div class="carousel-slide">
                             <img
-                                :src="image"
-                                alt="Vista de la Habitación Matrimonial"
+                                :src="image.src"
+                                :alt="image.alt"
+                                loading= "lazy"
                             />
                         </div>
                     </template>
@@ -217,16 +331,12 @@ import "../styles/habitaciones.css";
         <article class="room-entry reveal">
             <div
                 class="room-carousel"
-                x-data="{
-                    images: [
-                        '/hotel-web/images/rooms/triple/1.png',
-                        '/hotel-web/images/rooms/triple/2.png',
-                        '/hotel-web/images/rooms/triple/3.png'
-                    ],
-                    currentIndex: 0,
-                    next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
-                    prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
-                }"
+                x-data={`{
+                    images: ${JSON.stringify(tripleItems)},
+                    currentIndex: 0,
+                    next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
+                    prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
+                }`}
             >
                 <div
                     class="carousel-track"
@@ -235,8 +345,9 @@ import "../styles/habitaciones.css";
                     <template x-for="image in images">
                         <div class="carousel-slide">
                             <img
-                                :src="image"
-                                alt="Vista de la Habitación Triple"
+                                :src="image.src"
+                                :alt="image.alt"
+                                loading= "lazy"
                             />
                         </div>
                     </template>
@@ -282,16 +393,12 @@ import "../styles/habitaciones.css";
         <article class="room-entry reveal">
             <div
                 class="room-carousel"
-                x-data="{
-                    images: [
-                        '/hotel-web/images/rooms/cuadruple/3.png',
-                        '/hotel-web/images/rooms/cuadruple/4.png',
-                        '/hotel-web/images/rooms/cuadruple/5.png'
-                    ],
-                    currentIndex: 0,
-                    next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
-                    prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
-                }"
+                x-data={`{
+                    images: ${JSON.stringify(cuadItems)},
+                    currentIndex: 0,
+                    next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
+                    prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
+                }`}
             >
                 <div
                     class="carousel-track"
@@ -300,8 +407,9 @@ import "../styles/habitaciones.css";
                     <template x-for="image in images">
                         <div class="carousel-slide">
                             <img
-                                :src="image"
-                                alt="Vista de la Habitación Cuádruple"
+                                :src="image.src"
+                                :alt="image.alt"
+                                loading= "lazy"
                             />
                         </div>
                     </template>
@@ -346,14 +454,12 @@ import "../styles/habitaciones.css";
         <article class="room-entry reveal" id="simple">
             <div
                 class="room-carousel"
-                x-data="{
-                    images: [
-                        '/hotel-web/images/rooms/simple_compartido/1.png'
-                    ],
+                x-data={`{
+                    images: ${JSON.stringify(simpleCompItems)},
                     currentIndex: 0,
                     next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
                     prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
-                }"
+                }`}
             >
                 <div
                     class="carousel-track"
@@ -362,8 +468,9 @@ import "../styles/habitaciones.css";
                     <template x-for="image in images">
                         <div class="carousel-slide">
                             <img
-                                :src="image"
-                                alt="Vista de Habitación Simple con Baño Compartido"
+                                :src="image.src"
+                                :alt="image.alt"
+                                loading= "lazy"
                             />
                         </div>
                     </template>
@@ -408,14 +515,12 @@ import "../styles/habitaciones.css";
         <article class="room-entry reveal">
             <div
                 class="room-carousel"
-                x-data="{
-                    images: [
-                        '/hotel-web/images/rooms/doble_compartido/1.png'
-                    ],
+                x-data={`{
+                    images: ${JSON.stringify(dobleCompItems)},
                     currentIndex: 0,
                     next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
                     prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
-                }"
+                }`}
             >
                 <div
                     class="carousel-track"
@@ -424,8 +529,9 @@ import "../styles/habitaciones.css";
                     <template x-for="image in images">
                         <div class="carousel-slide">
                             <img
-                                :src="image"
-                                alt="Vista de Habitación Doble con Baño Compartido"
+                                :src="image.src"
+                                :alt="image.alt"
+                                loading= "lazy"
                             />
                         </div>
                     </template>
@@ -471,14 +577,12 @@ import "../styles/habitaciones.css";
         <article class="room-entry reveal" id="matrimonial">
             <div
                 class="room-carousel"
-                x-data="{
-                    images: [
-                        '/hotel-web/images/rooms/matrimonial_compartido/2.png'
-                    ],
+                x-data={`{
+                    images: ${JSON.stringify(matriCompItems)},
                     currentIndex: 0,
                     next() { this.currentIndex = (this.currentIndex + 1) % this.images.length; },
                     prev() { this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length; }
-                }"
+                }`}
             >
                 <div
                     class="carousel-track"
@@ -487,8 +591,9 @@ import "../styles/habitaciones.css";
                     <template x-for="image in images">
                         <div class="carousel-slide">
                             <img
-                                :src="image"
-                                alt="Vista de Habitación Matrimonial con Baño Compartido"
+                                :src="image.src"
+                                :alt="image.alt"
+                                loading= "lazy"
                             />
                         </div>
                     </template>

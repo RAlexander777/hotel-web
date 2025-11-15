@@ -1,21 +1,86 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/index.css";
+
+import { Image, getImage } from 'astro:assets';
+
+//IMG
+import logoHero from '../assets/images/logo-hostal-acuarius-puno-hero.png';
+
+//HERO IMG
+import hero1 from '../assets/images/espectacular-vista-al-lago-en-atardecer-puno-hostal-acuarius-hero.png';
+import hero2 from '../assets/images/gran-laguna-de-umayo-con-cielo-despejado-puno-hostal-acuarius-hero.jpg';
+import hero3 from '../assets/images/hermosa-laguna-de-umayo-puno-hostal-acuarius-hero.jpg';
+import hero4 from '../assets/images/imponentes-chullpas-de-sillustani-puno-hostal-acuarius-hero.webp';
+import hero5 from '../assets/images/isla-los-uros-con-lago-titicaca-cristalino-puno-hostal-acuarius-hero.jpg';
+import hero6 from '../assets/images/muelle-con-botes-de-la-ciudad-de-puno-hostal-acuarius-hero.jpg';
+
+//ROOMS IMG
+import roomSimple from '../assets/images/rooms/simple/acogedora-habitacion-simple-hostal-cuarius-puno.png';
+import roomDoble from '../assets/images/rooms/doble/acogedora-habitacion-doble-con-vista-a-la-ciudad-hostal-acuarius-puno.jpg';
+import roomMatrimonial from '../assets/images/rooms/matrimonial/acogedora-habitacion-matrimonial-con-vista-a-la-ciudad-hostal-acuarius-puno.jpg';
+
+//OFFER IMG
+import offerUros from '../assets/images/tours/tour-islas-flotantes-uros-con-lago-cristalino-hostal-acuarius-puno.jpg';
+// roomMatrimonial aqui
+import offerHero3 from '../assets/images/hermosa-laguna-de-umayo-puno-hostal-acuarius-hero.jpg';
+
+//TOURS IMG
+import tourTaquile from '../assets/images/tours/tour-isla-taquile-con-hermosa-vista-al-lago-titicaca-hostal-acuarius-puno.png';
+import tourSillustani from '../assets/images/tours/tour-chullpas-sillustani-en-hermoso-y-espectacular-atardecer-hostal-acuarius-puno.png';
+//offerUros aqui
+
+//GALLERY IMG
+import gallery1 from '../assets/images/nosotros/escaleras-principales-de-hostal-acuarius-puno.png';
+import gallery2 from '../assets/images/nosotros/fachada-en-atardecer-hostal-acuarius-puno.png';
+import gallery3 from '../assets/images/nosotros/fachada-en-otro-angulo-de-hostal-acuarius-puno.jpg';
+import gallery4 from '../assets/images/nosotros/lobby-acogedor-de-hostal-acuarius-puno.png';
+import gallery5 from '../assets/images/rooms/triple/acogedora-habitacion-triple-vista-a-la-ciudad-desde-cama-hostal-acuarius-puno.jpg';
+
+const heroImagesOptimized = await Promise.all([
+    getImage({ src: hero1, width: 1920, height: 1080, format: 'webp' }),
+    getImage({ src: hero2, width: 1920, height: 1080, format: 'webp' }),
+    getImage({ src: hero3, width: 1920, height: 1080, format: 'webp' }),
+    getImage({ src: hero4, width: 1920, height: 1080, format: 'webp' }),
+    getImage({ src: hero5, width: 1920, height: 1080, format: 'webp' }),
+    getImage({ src: hero6, width: 1920, height: 1080, format: 'webp' }),
+]);
+
+const heroImageUrls = heroImagesOptimized.map(img => img.src);
+
+
+// Para la Galeria 
+const galleryImagesOptimized = await Promise.all([
+    getImage({ src: gallery1, width: 800, height: 600, format: 'webp', alt: 'Escaleras principales y recepción del Hostal Acuarius, Puno' }),
+    getImage({ src: gallery2, width: 800, height: 600, format: 'webp', alt: 'Fachada del Hostal Acuarius Puno al atardecer' }),
+    getImage({ src: gallery3, width: 800, height: 600, format: 'webp', alt: 'Fachada en otro ángulo del Hostal Acuarius Puno' }),
+    getImage({ src: roomDoble, width: 800, height: 600, format: 'webp', alt: 'Habitación Doble con dos camas y vista a la ciudad' }),
+    getImage({ src: roomMatrimonial, width: 800, height: 600, format: 'webp', alt: 'Habitación Matrimonial cómoda en Hostal Acuarius' }),
+    getImage({ src: roomSimple, width: 800, height: 600, format: 'webp', alt: 'Habitación Simple para viajeros en Hostal Acuarius' }),
+    getImage({ src: gallery4, width: 800, height: 600, format: 'webp', alt: 'Lobby acogedor del Hostal Acuarius Puno' }),
+    getImage({ src: gallery5, width: 800, height: 600, format: 'webp', alt: 'Habitación triple con vista a la ciudad en Puno' }),
+    getImage({ src: offerUros, width: 800, height: 600, format: 'webp', alt: 'Experiencia en las Islas de los Uros, Lago Titicaca' })
+]);
+
+const galleryItems = galleryImagesOptimized.map(img => ({
+    src: img.src,
+    alt: img.attributes.alt,
+}));
 ---
 
 <Layout title="Hostal Acuarius · Inicio" isIndexPage={true}>
     <section
-        class="hero"
-        x-data="{
-            images: ['/hotel-web/images/hero.webp','/hotel-web/images/hero2.jpg','/hotel-web/images/hero3.jpg','/hotel-web/images/hero4.jpg', '/hotel-web/images/hero5.jpg', '/hotel-web/images/hero6.png'],
-            current: 0,
-            init() {
-                setInterval(() => {
-                    this.current = (this.current + 1) % this.images.length;
-                }, 5000);
-            }
-        }"
-    >
+        class="hero"
+        x-data=`{
+            images: ${JSON.stringify(heroImageUrls)}, 
+            current: 0,
+            init() {
+                setInterval(() => {
+                    this.current = (this.current + 1) % this.images.length;
+                }, 5000);
+            }
+        }`
+    >
         <template x-for="(img, index) in images" :key="index">
             <div
                 class="hero-slide"
@@ -27,10 +92,13 @@ import "../styles/index.css";
         <div class="hero-overlay">
             <div class="hero-content">
                 <div class="hero-logo">
-                    <img
-                        src="/hotel-web/images/logo_hero.png"
-                        alt="Hostal Acuarius"
-                    />
+                    <Image
+                        src={logoHero}
+                        alt="Logo de Hostal Acuarius Puno"
+                            format="webp"
+                            width={500} 
+                            height={203}
+                    />
                 </div>
                 <h2 class="dynamic-text" x-data="{ text: 'Bienvenidos' }">
                     <template
@@ -147,11 +215,14 @@ import "../styles/index.css";
         </div>
         <div class="rooms-grid">
             <div class="room-card">
-                <img
-                    src="/hotel-web/images/rooms/simple/2.png"
-                    alt="Habitación Simple"
-                    class="room-card-img"
-                />
+                <Image
+                    src={roomSimple}
+                    alt="Acogedora habitación simple en Hostal Acuarius Puno"
+                    class="room-card-img"
+                    format="webp"
+                    width={400}
+                    height={300}
+                />
                 <div class="room-card-body">
                     <h3>Habitación Simple</h3>
                     <p>
@@ -178,11 +249,14 @@ import "../styles/index.css";
             </div>
 
             <div class="room-card">
-                <img
-                    src="/hotel-web/images/rooms/doble/1.png"
-                    alt="Habitación Doble"
-                    class="room-card-img"
-                />
+                <Image
+                    src={roomDoble}
+                    alt="Habitación doble con vista a la ciudad en Hostal Acuarius Puno"
+                    class="room-card-img"
+                    format="webp"
+                    width={400}
+                    height={300}
+                />
                 <div class="room-card-body">
                     <h3>Habitación Doble</h3>
                     <p>Perfecto para amigos o colegas explorando Puno.</p>
@@ -206,11 +280,14 @@ import "../styles/index.css";
             </div>
 
             <div class="room-card">
-                <img
-                    src="/hotel-web/images/rooms/matrimonial/3.png"
-                    alt="Habitación Matrimonial"
-                    class="room-card-img"
-                />
+                <Image
+                    src={roomMatrimonial}
+                    alt="Habitación matrimonial con vista a la ciudad en Hostal Acuarius Puno"
+                    class="room-card-img"
+                    format="webp"
+                    width={400}
+                    height={300}
+                />
                 <div class="room-card-body">
                     <h3>Habitación Matrimonial</h3>
                     <p>Diseñado para el confort de las parejas.</p>
@@ -252,10 +329,13 @@ import "../styles/index.css";
         <div class="offers-grid">
             <div class="offer-card">
                 <div class="offer-card-image">
-                    <img
-                        src="/hotel-web/images/tours/uros.jpg"
-                        alt="Oferta Reserva Anticipada"
-                    />
+                    <Image
+                        src={offerUros}
+                        alt="Oferta de reserva anticipada con tour a los Uros"
+                            format="webp"
+                            width={400}
+                            height={300}
+                    />
                     <span class="offer-badge">Ahorra 20%</span>
                 </div>
                 <div class="offer-card-body">
@@ -277,10 +357,13 @@ import "../styles/index.css";
 
             <div class="offer-card">
                 <div class="offer-card-image">
-                    <img
-                        src="/hotel-web/images/rooms/matrimonial/3.png"
-                        alt="Oferta Noche Romántica"
-                    />
+                    <Image
+                        src={roomMatrimonial}
+                        alt="Oferta de escapada romántica en habitación matrimonial"
+                            format="webp"
+                            width={400}
+                            height={300}
+                    />
                     <span class="offer-badge">Paquete</span>
                 </div>
                 <div class="offer-card-body">
@@ -299,10 +382,13 @@ import "../styles/index.css";
 
             <div class="offer-card">
                 <div class="offer-card-image">
-                    <img
-                        src="/hotel-web/images/hero3.jpg"
-                        alt="Oferta Larga Estancia"
-                    />
+                    <Image
+                        src={offerHero3}
+                        alt="Oferta de larga estancia con vista a la laguna Umayo"
+                            format="webp"
+                            width={400}
+                            height={300}
+                    />
                     <span class="offer-badge">Larga Estadía</span>
                 </div>
                 <div class="offer-card-body">
@@ -524,10 +610,13 @@ import "../styles/index.css";
         <div class="tours-alternating-container">
             <article class="tour-alternating-item">
                 <div class="tour-item-image">
-                    <img
-                        src="/hotel-web/images/tours/uros.jpg"
-                        alt="Islas Flotantes de los Uros"
-                    />
+                    <Image
+                        src={offerUros}
+                        alt="Tour a las Islas Flotantes de los Uros, Puno"
+                            format="webp"
+                            width={500}
+                            height={400}
+                    />
                 </div>
                 <div class="tour-item-content">
                     <h3>Islas Flotantes de los Uros</h3>
@@ -555,10 +644,13 @@ import "../styles/index.css";
 
             <article class="tour-alternating-item">
                 <div class="tour-item-image">
-                    <img
-                        src="/hotel-web/images/tours/taquile.png"
-                        alt="Isla Taquile"
-                    />
+                    <Image
+                        src={tourTaquile}
+                        alt="Tour a la Isla Taquile, patrimonio UNESCO, Puno"
+                            format="webp"
+                            width={500}
+                            height={400}
+                    />
                 </div>
                 <div class="tour-item-content">
                     <h3>Isla Taquile, Patrimonio UNESCO</h3>
@@ -585,10 +677,13 @@ import "../styles/index.css";
 
             <article class="tour-alternating-item">
                 <div class="tour-item-image">
-                    <img
-                        src="/hotel-web/images/tours/sillustani.png"
-                        alt="Chullpas de Sillustani"
-                    />
+                    <Image
+                        src={tourSillustani}
+                        alt="Tour a las Chullpas de Sillustani al atardecer, Puno"
+                            format="webp"
+                            width={500}
+                            height={400}
+                    />
                 </div>
                 <div class="tour-item-content">
                     <h3>Chullpas de Sillustani</h3>
@@ -624,16 +719,7 @@ import "../styles/index.css";
         x-data="{
         isOpen: false,
         currentImageIndex: 0,
-        images: [
-            { src: '/hotel-web/images/hero.webp', alt: 'Recepción Hostal Acuarius' },
-            { src: '/hotel-web/images/rooms/doble/1.png', alt: 'Habitación Doble con dos camas' },
-            { src: '/hotel-web/images/rooms/matrimonial/3.png', alt: 'Habitación Matrimonial' },
-            { src: '/hotel-web/images/rooms/simple/2.png', alt: 'Habitación Simple' },
-            { src: '/hotel-web/images/hero3.jpg', alt: 'Área de desayuno' },
-            { src: '/hotel-web/images/hero5.jpg', alt: 'Detalle de la cama' },
-            { src: '/hotel-web/images/hero2.jpg', alt: 'Vista del comedor' },
-            { src: '/hotel-web/images/tours/uros.jpg', alt: 'Experiencia en las Islas de los Uros' }
-        ],
+        images: ${JSON.stringify(galleryItems)},
         openLightbox(index) {
             this.currentImageIndex = index;
             this.isOpen = true;

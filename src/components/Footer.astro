@@ -1,15 +1,21 @@
 ---
 // src/components/Footer.astro
+import { Image } from 'astro:assets';
+
+import logoFooter from '../assets/images/logo-hostal-acuarius-puno.png';
 ---
 
 <footer class="site-footer">
     <div class="footer-container container">
         <div class="footer-col footer-about">
-            <img
-                src="/hotel-web/images/logo.png"
-                alt="Hostal Acuarius Logo"
-                class="footer-logo"
-            />
+            <Image
+                src={logoFooter}
+                alt="Logo de Hostal Acuarius, Puno"
+                class="footer-logo"
+                height={70}
+                width={280} 
+                format="webp"
+            />
             <p class="footer-tagline">
                 Tu refugio de confort y hospitalidad en el corazón de Puno, a
                 solo pasos de la Plaza de Armas.
@@ -19,10 +25,10 @@
         <div class="footer-col footer-links">
             <h4 class="footer-title">Explorar</h4>
             <ul>
-                <li><a href="/nosotros">Nosotros</a></li>
-                <li><a href="/habitaciones">Habitaciones</a></li>
-                <li><a href="/tours">Tours</a></li>
-                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/hotel-web/nosotros">Nosotros</a></li>
+                <li><a href="/hotel-web/habitaciones">Habitaciones</a></li>
+                <li><a href="/hotel-web/tours">Tours</a></li>
+                <li><a href="/hotel-web/contacto">Contacto</a></li>
             </ul>
         </div>
 

@@ -1,10 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/contacto.css";
+
+import { Image, getImage } from 'astro:assets';
+
+//HERO IMG
+import heroBg from '../assets/images/muelle-con-botes-de-la-ciudad-de-puno-hostal-acuarius-hero.jpg';
+
+const heroBgOptimized = await getImage({ src: heroBg, width: 1920, format: 'webp', quality: 80 });
 ---
 
 <Layout title="Hostal Acuarius · Contacto" heroLayout={true}>
-    <section class="hero-contact">
+    <section class="hero-contact" style={`background-image: url(${heroBgOptimized.src});`}>
         <div class="hero-contact-overlay">
             <div class="hero-contact-content">
                 <h1 class="hero-contact-title">Contáctanos</h1>

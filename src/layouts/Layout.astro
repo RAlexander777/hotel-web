@@ -2,9 +2,108 @@
 import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import { Image, getImage } from 'astro:assets';
+
+//IMPORTACION DE IMG
+import wsp from '../assets/images/Whatsapp_logo.svg';
+
+import client1 from '../assets/images/clientes/pareja-de-turistas-en-isla-taquile-hostal-acuarius-puno.png';
+import client2 from '../assets/images/clientes/turista-de-hostal-acuarius-en-isla-los-uros-con-ropa-nativa-puno.png';
+import client3 from '../assets/images/clientes/turista-de-hostal-acuarius-en-isla-los-uros-puno.png';
+import client4 from '../assets/images/clientes/turista-feliz-en-instalaciones-de-hostal-acuarius-puno.jpg';
+import client5 from '../assets/images/clientes/turistas-a-la-luz-del-sol-en-isla-taquile-hostal-acuarius-puno.png';
+import client6 from '../assets/images/clientes/turistas-de-hostal-acuarius-en-excursion-puno.png';
+import client7 from '../assets/images/clientes/turistas-desayunando-en-hostal-acuarius-puno.jpg';
+import client8 from '../assets/images/clientes/turistas-en-el-lobby-de-hostal-acuarius-puno.png';
+import client9 from '../assets/images/clientes/turistas-sonrientes-en-el-lobby-de-hostal-acuarius-puno.png';
+import client10 from '../assets/images/clientes/varios-turistas-en-el-lobby-de-hostal-acuarius-puno.png';
+import client11 from '../assets/images/clientes/varios-turistas-saludando-en-el-lobby-de-hostal-acuarius-puno.png';
 
 const { title = "Hostal Acuarius" } = Astro.props;
 const { isIndexPage = false } = Astro.props;
+
+const reviews = [
+    {
+        type: "review",
+        author: "Llique (Perú)",
+        rating: 5,
+        text: "La ubicación es excepcional, cerca a la plaza y a diversos lugares. De muy fácil acceso, ni que decir de la señora María, un amor de persona, ella y su familia. ¡Me sentí muy a gusto!",
+        source: 'Booking.com',
+        source_icon: 'fas fa-suitcase'
+    },
+    {
+        type: "review",
+        author: "Penélope (España)",
+        rating: 5,
+        text: "La ubicación del hotel era cercana a la plaza de armas. La señora que nos atendió era muy amable, y como teníamos que madrugar nos hizo un pequeño picnic. Las camas eran muy cómodas y espaciosas.",
+        source: 'Booking.com',
+        source_icon: 'fas fa-suitcase'
+    },
+    {
+        type: "review",
+        author: "Eder (España)",
+        rating: 5,
+        text: "El desayuno es genial y abundante. Las chicas del personal se muestran muy atentas y amables. La habitación estupenda, contaba con todo lo necesario.",
+        source: 'Booking.com',
+        source_icon: 'fas fa-suitcase'
+    },
+    {
+        type: "review",
+        author: "Gimenez (Argentina)",
+        rating: 5,
+        text: "La atención de María muy amable, atenta, disponible en todo momento.",
+        source: 'Booking.com',
+        source_icon: 'fas fa-suitcase'
+    },
+    {
+        type: "review",
+        author: "Monika (Reino Unido)",
+        rating: 5,
+        text: "The location is great, 5 minutes from main square. The LOVELY lady despite no english could not be more helpfull! She allowed us into the room at 6am straight from the bus.",
+        source: 'Booking.com',
+        source_icon: 'fas fa-suitcase'
+    },
+    {
+        type: "review",
+        author: "Zaviera (Países Bajos)",
+        rating: 4,
+        text: "The location was perfect. Nice host. She made the breakfast earlier for us due to a trip. Clean rooms. Warm water.",
+        source: 'Booking.com',
+        source_icon: 'fas fa-suitcase'
+    },
+    {
+        type: "review",
+        author: "Luciano (Eslovenia)",
+        rating: 5,
+        text: "Great value for this low price. The staff very kind and helpfull, they arranged the tours and the taxies. Breakfast included in the price - amazing! Super clean.",
+        source: 'Booking.com',
+        source_icon: 'fas fa-suitcase'
+    },
+];
+
+// Optimizacion img
+const optimizedPhotos = await Promise.all([
+    getImage({ src: client1, width: 400, format: 'webp', alt: "Pareja de turistas del Hostal Acuarius en la Isla Taquile, Puno" }),
+    getImage({ src: client2, width: 400, format: 'webp', alt: "Turista del Hostal Acuarius con ropa nativa en la Isla Los Uros, Puno" }),
+    getImage({ src: client3, width: 400, format: 'webp', alt: "Turista del Hostal Acuarius visitando la Isla Los Uros, Puno" }),
+    getImage({ src: client4, width: 400, format: 'webp', alt: "Turista feliz en las instalaciones del Hostal Acuarius, Puno" }),
+    getImage({ src: client5, width: 400, format: 'webp', alt: "Turistas del Hostal Acuarius en la Isla Taquile, Puno" }),
+    getImage({ src: client6, width: 400, format: 'webp', alt: "Grupo de turistas del Hostal Acuarius en una excursión en Puno" }),
+    getImage({ src: client7, width: 400, format: 'webp', alt: "Turistas desayunando en el comedor del Hostal Acuarius, Puno" }),
+    getImage({ src: client8, width: 400, format: 'webp', alt: "Turistas en el lobby del Hostal Acuarius, Puno" }),
+    getImage({ src: client9, width: 400, format: 'webp', alt: "Turistas sonrientes en la recepción del Hostal Acuarius, Puno" }),
+    getImage({ src: client10, width: 400, format: 'webp', alt: "Varios turistas esperando en el lobby del Hostal Acuarius, Puno" }),
+    getImage({ src: client11, width: 400, format: 'webp', alt: "Varios turistas saludando desde el lobby del Hostal Acuarius, Puno" }),
+]);
+
+const photoItems = optimizedPhotos.map(photo => ({
+    type: "photo",
+    src: photo.src, // URL optimizada
+    alt: photo.attributes.alt, // Alt text con SEO
+}));
+
+//Combinar reseñas y fotos en un solo array
+const carouselItems = [...reviews, ...photoItems];
 ---
 
 <!doctype html>
@@ -67,116 +166,19 @@ const { isIndexPage = false } = Astro.props;
             target="_blank"
             aria-label="Contactar por WhatsApp"
         >
-            <img src="/hotel-web/images/Whatsapp_logo.svg" alt="WhatsApp" />
+            <Image 
+                src={wsp} 
+                alt="Contactar por WhatsApp a Hostal Acuarius" 
+                width={60} 
+                height={60}
+            />
         </a>
 
-        <script is:inline>
+        <script is:inline define:vars={{ carouselItems }}>
             document.addEventListener("alpine:init", () => {
                 Alpine.data("carousel", () => ({
-                    items: [
-                        {
-                            type: "review",
-                            author: "Llique (Perú)",
-                            rating: 5,
-                            text: "La ubicación es excepcional, cerca a la plaza y a diversos lugares. De muy fácil acceso, ni que decir de la señora María, un amor de persona, ella y su familia. ¡Me sentí muy a gusto!",
-                            source: 'Booking.com',
-                            source_icon: 'fas fa-suitcase'
-                        },
-                        {
-                            type: "review",
-                            author: "Penélope (España)",
-                            rating: 5,
-                            text: "La ubicación del hotel era cercana a la plaza de armas. La señora que nos atendió era muy amable, y como teníamos que madrugar nos hizo un pequeño picnic. Las camas eran muy cómodas y espaciosas.",
-                            source: 'Booking.com',
-                            source_icon: 'fas fa-suitcase'
-                        },
-                        {
-                            type: "review",
-                            author: "Eder (España)",
-                            rating: 5,
-                            text: "El desayuno es genial y abundante. Las chicas del personal se muestran muy atentas y amables. La habitación estupenda, contaba con todo lo necesario.",
-                            source: 'Booking.com',
-                            source_icon: 'fas fa-suitcase'
-                        },
-                        {
-                            type: "review",
-                            author: "Gimenez (Argentina)",
-                            rating: 5,
-                            text: "La atención de María muy amable, atenta, disponible en todo momento.",
-                            source: 'Booking.com',
-                            source_icon: 'fas fa-suitcase'
-                        },
-                        {
-                            type: "review",
-                            author: "Monika (Reino Unido)",
-                            rating: 5,
-                            text: "The location is great, 5 minutes from main square. The LOVELY lady despite no english could not be more helpfull! She allowed us into the room at 6am straight from the bus.",
-                            source: 'Booking.com',
-                            source_icon: 'fas fa-suitcase'
-                        },
-                        {
-                            type: "review",
-                            author: "Zaviera (Países Bajos)",
-                            rating: 4,
-                            text: "The location was perfect. Nice host. She made the breakfast earlier for us due to a trip. Clean rooms. Warm water.",
-                            source: 'Booking.com',
-                            source_icon: 'fas fa-suitcase'
-                        },
-                        {
-                            type: "review",
-                            author: "Luciano (Eslovenia)",
-                            rating: 5,
-                            text: "Great value for this low price. The staff very kind and helpfull, they arranged the tours and the taxies. Breakfast included in the price - amazing! Super clean.",
-                            source: 'Booking.com',
-                            source_icon: 'fas fa-suitcase'
-                        },
-
-                        {
-                            type: "photo",
-                            src: "/hotel-web/images/clientes/1.png",
-                            alt: "1",
-                        },
-                        {
-                            type: "photo",
-                            src: "/hotel-web/images/clientes/2.png",
-                            alt: "2",
-                        },
-                        {
-                            type: "photo",
-                            src: "/hotel-web/images/clientes/3.png",
-                            alt: "3",
-                        },
-                        {
-                            type: "photo",
-                            src: "/hotel-web/images/clientes/4.png",
-                            alt: "4",
-                        },
-                        {
-                            type: "photo",
-                            src: "/hotel-web/images/clientes/5.png",
-                            alt: "5",
-                        },
-                        {
-                            type: "photo",
-                            src: "/hotel-web/images/clientes/6.png",
-                            alt: "6",
-                        },
-                        {
-                            type: "photo",
-                            src: "/hotel-web/images/clientes/7.png",
-                            alt: "7",
-                        },
-                        {
-                            type: "photo",
-                            src: "/hotel-web/images/clientes/8.png",
-                            alt: "8",
-                        },
-                        {
-                            type: "photo",
-                            src: "/hotel-web/images/clientes/9.png",
-                            alt: "9",
-                        },
-                    ],
+                    items: carouselItems,
+                
                     scrollPosition: 0,
                     animationFrameId: null,
                     isPaused: false,

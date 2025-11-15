@@ -2,6 +2,19 @@
 import Layout from "../layouts/Layout.astro";
 import "../styles/tours.css";
 
+import { Image, getImage } from 'astro:assets';
+
+//HERO IMG
+import heroBg from '../assets/images/hermosa-laguna-de-umayo-puno-hostal-acuarius-hero.jpg';
+
+//TOURS IMG
+import tour1 from '../assets/images/tours/tour-amantani-en-hermoso-y-espectacular-atardecer-hostal-acuarius-puno.png';
+import tour2 from '../assets/images/tours/tour-chucuito-viendo-antigua-iglesia-en-atardecer-hostal-acuarius-puno.png';
+import tour3 from '../assets/images/tours/tour-chullpas-sillustani-en-hermoso-y-espectacular-atardecer-hostal-acuarius-puno.png';
+import tour4 from '../assets/images/tours/tour-islas-flotantes-uros-con-lago-cristalino-hostal-acuarius-puno.jpg';
+import tour5 from '../assets/images/tours/tour-isla-taquile-con-hermosa-vista-al-lago-titicaca-desde-portal-de-piedra-hostal-acuarius-puno.png';
+import tour6 from '../assets/images/tours/tour-ruta-quechua-con-imponentes-y-naturales-formaciones-rocosas-hostal-acuarius-puno.png';
+
 // Número de WhatsApp y mensaje base
 const waNumber = "51944278647";
 const baseMsg = "Hola Hostal Acuarius, estoy interesado/a en el tour:";
@@ -11,10 +24,19 @@ const createWaLink = (tourName: string) => {
     const text = `${baseMsg} *${tourName}*. ¿Podrían darme más información?`;
     return `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
 };
+
+const heroBgOptimized = await getImage({ src: heroBg, width: 1920, format: 'webp', quality: 80 });
 ---
 
 <Layout title="Hostal Acuarius · Tours en Puno">
-    <section class="hero-tours">
+    <section class="hero-tours" style={`background-image: url(${heroBgOptimized.src});`}>
+        <Image 
+            src={heroBg}
+            alt="Hermosa Laguna de Umayo en Puno, destino turístico principal"
+            class="hero-tours-bg-fallback"
+            format="webp"
+            quality={80} 
+        />
         <div class="hero-tours-overlay">
             <div class="hero-tours-content">
                 <h1 class="hero-tours-title">Tours y Excursiones</h1>
@@ -30,10 +52,14 @@ const createWaLink = (tourName: string) => {
         <div class="tours-grid">
             <article class="tour-card reveal">
                 <div class="tour-card-image">
-                    <img
-                        src="/hotel-web/images/tours/uros.jpg"
-                        alt="Islas flotantes de los Uros en el Lago Titicaca"
-                    />
+                    <Image
+                        src={tour4}                         
+                        alt="Tour a las Islas flotantes de los Uros en el Lago Titicaca, Puno"
+                        format="webp"
+                        width={500}
+                        height={400}
+                        loading="lazy"
+                    />
                 </div>
                 <div class="tour-card-content">
                     <h2 class="tour-card-title">
@@ -90,10 +116,14 @@ const createWaLink = (tourName: string) => {
 
             <article class="tour-card reveal">
                 <div class="tour-card-image">
-                    <img
-                        src="/hotel-web/images/tours/taquile2.png"
-                        alt="Paisaje de la Isla Taquile"
-                    />
+                    <Image
+                        src={tour5}
+                        alt="Tour a la Isla Taquile con vista desde portal de piedra, Puno"
+                        format="webp"
+                        width={500}
+                        height={400}
+                        loading="lazy"
+                    />
                 </div>
                 <div class="tour-card-content">
                     <h2 class="tour-card-title">
@@ -148,10 +178,14 @@ const createWaLink = (tourName: string) => {
 
             <article class="tour-card reveal">
                 <div class="tour-card-image">
-                    <img
-                        src="/hotel-web/images/tours/sillustani.png"
-                        alt="Chullpas de Sillustani al atardecer"
-                    />
+                    <Image
+                        src={tour3}
+                        alt="Tour a las Chullpas de Sillustani al atardecer, Puno"
+                        format="webp"
+                        width={500}
+                        height={400}
+                        loading="lazy"
+                    />
                 </div>
                 <div class="tour-card-content">
                     <h2 class="tour-card-title">Chullpas de Sillustani</h2>
@@ -200,10 +234,14 @@ const createWaLink = (tourName: string) => {
 
             <article class="tour-card reveal">
                 <div class="tour-card-image">
-                    <img
-                        src="/hotel-web/images/tours/amantani.png"
-                        alt="Vista de la Isla Amantaní"
-                    />
+                    <Image
+                        src={tour1}
+                        alt="Tour vivencial a la Isla Amantaní en un espectacular atardecer"
+                        format="webp"
+                        width={500}
+                        height={400}
+                        loading="lazy"
+                    />
                 </div>
                 <div class="tour-card-content">
                     <h2 class="tour-card-title">
@@ -260,10 +298,14 @@ const createWaLink = (tourName: string) => {
 
             <article class="tour-card reveal">
                 <div class="tour-card-image">
-                    <img
-                        src="/hotel-web/images/tours/chucuito.png"
-                        alt="Templo de la Fertilidad en Chucuito"
-                    />
+                    <Image
+                        src={tour2}
+                        alt="Tour a Chucuito viendo la antigua iglesia al atardecer"
+                        format="webp"
+                        width={500}
+                        height={400}
+                        loading="lazy"
+                    />
                 </div>
                 <div class="tour-card-content">
                     <h2 class="tour-card-title">Ciudad de Chucuito</h2>
@@ -286,10 +328,14 @@ const createWaLink = (tourName: string) => {
 
             <article class="tour-card reveal">
                 <div class="tour-card-image">
-                    <img
-                        src="/hotel-web/images/tours/ruta_quechua.png"
-                        alt="Paisaje de la Ruta Quechua"
-                    />
+                    <Image
+                        src={tour6}
+                        alt="Imponentes formaciones rocosas en la Ruta Quechua, Puno"
+                        format="webp"
+                        width={500}
+                        height={400}
+                        loading="lazy"
+                    />
                 </div>
                 <div class="tour-card-content">
                     <h2 class="tour-card-title">Ruta Quechua</h2>

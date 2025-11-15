@@ -1,11 +1,61 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/nosotros.css";
-// Estilos integrados en el componente.
+
+import { Image, getImage } from 'astro:assets';
+
+//HERO IMG
+import heroBg from '../assets/images/gran-laguna-de-umayo-con-cielo-despejado-puno-hostal-acuarius-hero.jpg';
+
+//HISTORIA IMG
+import hist1 from '../assets/images/nosotros/entrada-principal-de-hostal-acuarius-puno.jpg';
+import hist2 from '../assets/images/nosotros/escaleras-principales-de-hostal-acuarius-puno.png';
+import hist3 from '../assets/images/nosotros/fachada-de-hostal-acuarius-puno.jpg';
+import hist4 from '../assets/images/nosotros/fachada-en-atardecer-hostal-acuarius-puno.png';
+import hist5 from '../assets/images/nosotros/fachada-en-otro-angulo-de-hostal-acuarius-puno.jpg';
+import hist6 from '../assets/images/nosotros/lobby-acogedor-con-decoracion-natural-hostal-acuarius-puno.png';
+import hist7 from '../assets/images/nosotros/lobby-acogedor-de-hostal-acuarius-puno.png';
+import hist8 from '../assets/images/nosotros/lobby-acogedor-y-puerta-hacia-habitaciones-de-hostal-acuarius-puno.png';
+
+//MOMENTOS IMG
+import moment1 from '../assets/images/clientes/pareja-de-turistas-en-isla-taquile-hostal-acuarius-puno.png';
+import moment2 from '../assets/images/clientes/turista-de-hostal-acuarius-en-isla-los-uros-con-ropa-nativa-puno.png';
+import moment3 from '../assets/images/clientes/turista-de-hostal-acuarius-en-isla-los-uros-puno.png';
+import moment4 from '../assets/images/clientes/turista-feliz-en-instalaciones-de-hostal-acuarius-puno.jpg';
+import moment5 from '../assets/images/clientes/turistas-a-la-luz-del-sol-en-isla-taquile-hostal-acuarius-puno.png';
+import moment6 from '../assets/images/clientes/turistas-de-hostal-acuarius-en-excursion-puno.png';
+import moment7 from '../assets/images/clientes/turistas-desayunando-en-hostal-acuarius-puno.jpg';
+import moment8 from '../assets/images/clientes/turistas-en-el-lobby-de-hostal-acuarius-puno.png';
+import moment9 from '../assets/images/clientes/turistas-sonrientes-en-el-lobby-de-hostal-acuarius-puno.png';
+import moment10 from '../assets/images/clientes/varios-turistas-en-el-lobby-de-hostal-acuarius-puno.png';
+import moment11 from '../assets/images/clientes/varios-turistas-saludando-en-el-lobby-de-hostal-acuarius-puno.png';
+
+const heroBgOptimized = await getImage({ src: heroBg, width: 1920, format: 'webp', quality: 80 });
+
+// 2. Para el carrusel de Alpine (que usa background-image)
+// Necesitamos un array de URLs
+const storyImages = await Promise.all([
+    getImage({ src: hist1, width: 900, height: 600, format: 'webp' }),
+    getImage({ src: hist2, width: 900, height: 600, format: 'webp' }),
+    getImage({ src: hist3, width: 900, height: 600, format: 'webp' }),
+    getImage({ src: hist4, width: 900, height: 600, format: 'webp' }),
+    getImage({ src: hist5, width: 900, height: 600, format: 'webp' }),
+    getImage({ src: hist6, width: 900, height: 600, format: 'webp' }),
+    getImage({ src: hist7, width: 900, height: 600, format: 'webp' }),
+    getImage({ src: hist8, width: 900, height: 600, format: 'webp' }),
+]);
+const storyImageUrls = storyImages.map(img => img.src);
 ---
 
 <Layout title="Hostal Acuarius · Sobre Nosotros">
-    <section class="hero-about">
+    <section class="hero-about" style={`background-image: url(${heroBgOptimized.src});`}>
+        <Image 
+            src={heroBg}
+            alt="Gran Laguna de Umayo con cielo despejado en Puno"
+            class="hero-about-bg-fallback"
+            format="webp"
+            quality={80}
+        />
         <div class="hero-about-overlay">
             <div class="hero-about-content">
                 <h1 class="hero-about-title">Corazón y Alma de Puno</h1>
@@ -34,27 +84,21 @@ import "../styles/nosotros.css";
 
         <div
             class="story-carousel reveal"
-            x-data="{
-                images: [
-                    '/hotel-web/images/nosotros/1.png',
-                    '/hotel-web/images/nosotros/5.png',
-                    '/hotel-web/images/nosotros/2.png',
-                    '/hotel-web/images/nosotros/3.png',
-                    '/hotel-web/images/nosotros/4.png',
-                ],
-                current: 0,
-                init() {
-                    setInterval(() => {
-                        this.current = (this.current + 1) % this.images.length;
-                    }, 4000); // Cambia de imagen cada 4 segundos
-                }
-            }"
+            x-data={`{
+                images: ${JSON.stringify(storyImageUrls)},
+                current: 0,
+                init() {
+                    setInterval(() => {
+                        this.current = (this.current + 1) % this.images.length;
+                    }, 4000); 
+                }
+            }`}
         >
             <template x-for="(image, index) in images" :key="index">
                 <div
-                    class="carousel-slide"
-                    :class="{ 'active': current === index }"
-                    :style="`background-image: url(${image})`"
+                    class="carousel-slide"
+                    :class="{ 'active': current === index }"
+                    :style="`background-image: url(${image})`"
                 >
                 </div>
             </template>
@@ -143,65 +187,82 @@ import "../styles/nosotros.css";
 
         <div class="masonry-gallery">
             <div class="masonry-item reveal">
-                <img
-                    src="/hotel-web/images/clientes/1.png"
-                    alt="Huéspedes felices en el Hostal Acuarius"
-                />
+                <Image
+                    src={moment1}
+                    alt="Pareja de turistas del Hostal Acuarius en Isla Taquile, Puno"
+                    format="webp" width={500} height={400} loading="lazy"
+                />
             </div>
             <div class="masonry-item reveal">
-                <img
-                    src="/hotel-web/images/clientes/2.png"
-                    alt="Detalle del ambiente del Hostal Acuarius"
-                />
+                <Image
+                    src={moment2}
+                    alt="Turista de Hostal Acuarius con ropa nativa en Isla Los Uros"
+                    format="webp" width={500} height={700} loading="lazy"
+                />
             </div>
             <div class="masonry-item reveal">
-                <img
-                    src="/hotel-web/images/clientes/5.png"
-                    alt="Desayuno en Hostal Acuarius"
-                />
+                <Image
+                    src={moment5}
+                    alt="Turistas disfrutando del sol en Isla Taquile, Puno"
+                    format="webp" width={500} height={400} loading="lazy"
+                />
             </div>
             <div class="masonry-item reveal">
-                <img
-                    src="/hotel-web/images/clientes/3.png"
-                    alt="Grupo de amigos en Puno"
-                />
+                <Image
+                    src={moment3}
+                    alt="Turista del Hostal Acuarius en la Isla Los Uros"
+                    format="webp" width={500} height={600} loading="lazy"
+                />
             </div>
             <div class="masonry-item reveal">
-                <img
-                    src="/hotel-web/images/clientes/4.png"
-                    alt="Pareja de viajeros en Hostal Acuarius"
-                />
+                <Image
+                    src={moment4}
+                    alt="Turista feliz en las instalaciones del Hostal Acuarius"
+                    format="webp" width={500} height={400} loading="lazy"
+                />
             </div>
             <div class="masonry-item reveal">
-                <img
-                    src="/hotel-web/images/clientes/7.png"
-                    alt="Recepción del hostal"
-                />
+                <Image
+                    src={moment7}
+                    alt="Turistas desayunando en el comedor del Hostal Acuarius"
+                    format="webp" width={500} height={500} loading="lazy"
+                />
             </div>
             <div class="masonry-item reveal">
-                <img
-                    src="/hotel-web/images/clientes/6.png"
-                    alt="Vista desde el hostal"
-                />
+                <Image
+                    src={moment6}
+                    alt="Turistas de Hostal Acuarius en una excursión en Puno"
+                    format="webp" width={500} height={700} loading="lazy"
+                />
             </div>
             <div class="masonry-item reveal">
-                <img
-                    src="/hotel-web/images/clientes/7.png"
-                    alt="Vista desde el hostal"
-                />
+                <Image
+                    src={moment8}
+                    alt="Turistas en el lobby de Hostal Acuarius Puno"
+                    format="webp" width={500} height={400} loading="lazy"
+                />
             </div>
             <div class="masonry-item reveal">
-                <img
-                    src="/hotel-web/images/clientes/8.png"
-                    alt="Vista desde el hostal"
-                />
+                <Image
+                    src={moment9}
+                    alt="Turistas sonrientes en la recepción del Hostal Acuarius"
+                    format="webp" width={500} height={500} loading="lazy"
+                />
             </div>
             <div class="masonry-item reveal">
-                <img
-                    src="/hotel-web/images/clientes/9.png"
-                    alt="Vista desde el hostal"
-                />
+                <Image
+                    src={moment10}
+                    alt="Varios turistas en el lobby del Hostal Acuarius"
+                    format="webp" width={500} height={600} loading="lazy"
+                />
             </div>
+            <div class="masonry-item reveal">
+                <Image
+                    src={moment11}
+                    alt="Turistas saludando en el lobby del Hostal Acuarius Puno"
+                    format="webp" width={500} height={500} loading="lazy"
+                />
+            </div>
         </div>
     </section>
 
