@@ -18,6 +18,7 @@
     transform: translateY(40px);
     transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
@@ -46,6 +47,7 @@ body {
     justify-content: center;
     text-align: center;
 }
+
 .hero-slide {
     position: absolute;
     inset: 0;
@@ -57,10 +59,12 @@ body {
     transform: scale(1.1);
     transition: opacity 1.5s ease-in-out, transform 6s ease-out;
 }
+
 .hero-slide.active {
     opacity: 1;
     transform: scale(1);
 }
+
 .hero-overlay {
     position: relative;
     z-index: 10;
@@ -73,11 +77,13 @@ body {
     justify-content: flex-start;
     padding-top: 22vh;
 }
+
 .hero-logo img {
     width: 380px;
     height: auto;
     margin-bottom: 2rem;
 }
+
 .hero-content {
     color: #fff;
     max-width: 750px;
@@ -86,6 +92,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
 }
+
 .dynamic-text {
     font-family: var(--font-heading);
     font-weight: 600;
@@ -94,12 +101,14 @@ body {
     line-height: 1.1;
     margin-bottom: 1rem;
 }
+
 .dynamic-text span {
     opacity: 0;
     display: inline-block;
     transform: translateY(20px);
     animation: fadeUp 0.6s forwards;
 }
+
 .hero-content p {
     font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     margin-bottom: 2.5rem;
@@ -110,7 +119,7 @@ body {
 }
 
 .scroll-down-arrow {
-    display: none; 
+    display: none;
 }
 
 /* --- Botones --- */
@@ -127,15 +136,18 @@ body {
     transition: all 0.3s ease;
     border: 2px solid var(--color-gold);
 }
+
 .btn:hover {
     background-color: transparent;
     color: var(--color-gold);
 }
+
 .btn.btn-secondary {
     background-color: transparent;
     color: var(--color-gold);
     border: 2px solid var(--color-border);
 }
+
 .btn.btn-secondary:hover {
     background-color: var(--color-gold);
     color: #111;
@@ -163,12 +175,14 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
 .section-title {
     font-family: var(--font-heading);
     font-size: clamp(2.2rem, 5vw, 3rem);
     margin-bottom: 1rem;
     color: var(--color-gold);
 }
+
 .section-subtitle {
     font-size: 1.15rem;
     color: #b0b0b0;
@@ -192,11 +206,13 @@ body {
 .service-item {
     text-align: center;
 }
+
 .service-item i {
     font-size: 2rem;
     color: var(--color-gold);
     margin-bottom: 0.8rem;
 }
+
 .service-item span {
     display: block;
     font-size: 1rem;
@@ -204,36 +220,174 @@ body {
 }
 
 /*About*/
-.about-layout {
+.about-compact-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.about-split-layout {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 3.5rem;
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    /* Dividir pantalla a la mitad */
+    gap: 3rem;
+    align-items: center;
 }
 
-.about-info-card {
-    background-color: #1a1a1a;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 2rem;
-    position: sticky;
-    top: 120px;
-}
-
-.about-info-card .contact-info-item {
-    margin-bottom: 1.5rem;
-}
-.about-info-card .contact-info-item:last-child {
-    margin-bottom: 0;
-}
-/* Añadimos enlaces clicables */
-.about-info-card a {
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.about-info-card a:hover {
+/* Columna Izquierda */
+.section-title-left {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
     color: var(--color-gold);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.about-desc {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.services-title-small {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.services-compact-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.service-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-border);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #ddd;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+.service-pill i {
+    color: var(--color-gold);
+}
+
+.service-pill:hover {
+    border-color: var(--color-gold);
+    background: rgba(197, 164, 126, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Columna Derecha (Tarjeta de Mapa y Contacto) */
+.contact-map-card {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1rem;
+    /* Padding interno para enmarcar el mapa */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.contact-header-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.contact-bit {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+.contact-bit i {
+    color: var(--color-gold);
+    font-size: 1.1rem;
+}
+
+.contact-bit a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-bit a:hover {
+    color: var(--color-gold);
+}
+
+.compact-map-frame {
+    width: 100%;
+    height: 250px;
+    /* Altura controlada (Compacta) */
+    border-radius: 8px;
+    overflow: hidden;
+    background: #222;
+    /* Placeholder mientras carga */
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .about-split-layout {
+        grid-template-columns: 1fr;
+        /* Una columna en tablets/móviles */
+        gap: 2.5rem;
+    }
+
+    .section-title-left {
+        text-align: center;
+    }
+
+    .about-desc {
+        text-align: center;
+    }
+
+    .services-title-small {
+        text-align: center;
+    }
+
+    .services-compact-list {
+        justify-content: center;
+    }
+
+    .contact-header-row {
+        display: flex;
+        justify-content: center;
+        /* Centramos todo para que se vea equilibrado */
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        /* Un poco más de espacio entre elementos */
+        margin-bottom: 1rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    /* Aseguramos que el correo no rompa el diseño en móviles muy pequeños */
+    .contact-bit a {
+        word-break: break-all;
+        /* Opcional: rompe el texto si es muy largo en pantallas diminutas */
+    }
+
+    .compact-map-frame {
+        height: 300px;
+        /* Un poco más alto en móvil para que sea táctil */
+    }
 }
 
 /* --- Habitaciones --- */
@@ -242,6 +396,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.5rem;
 }
+
 .room-card {
     background: #111;
     border-radius: 8px;
@@ -251,43 +406,51 @@ body {
     border: 1px solid #222;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .room-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
+
 .room-card-img {
     width: 100%;
     height: 250px;
     object-fit: cover;
 }
+
 .room-card-body {
     padding: 1.5rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
+
 .room-card-body h3 {
     font-family: var(--font-heading);
     font-size: 1.6rem;
     margin: 0 0 0.5rem;
     color: var(--color-gold);
 }
+
 .room-card-body p {
     font-size: 1rem;
     color: #b0b0b0;
     margin-bottom: 1.5rem;
     flex-grow: 1;
 }
+
 .room-amenities {
     display: flex;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
     color: #ccc;
 }
+
 .room-amenities i {
     color: var(--color-gold);
     margin-right: 0.5rem;
 }
+
 .btn-details {
     align-self: flex-start;
     color: var(--color-gold);
@@ -296,9 +459,11 @@ body {
     border-bottom: 2px solid transparent;
     transition: border-color 0.3s ease;
 }
+
 .btn-details:hover {
     border-bottom-color: var(--color-gold);
 }
+
 .room-price {
     margin-bottom: 1.5rem;
     text-align: left;
@@ -316,247 +481,256 @@ body {
     color: var(--color-text-secondary);
     margin-left: 0.5rem;
 }
+
 .room-card-body .btn {
     align-self: flex-start;
 }
 
-/* --- Ofertas --- */
-.offers-grid {
+/* --- OFERTAS COMPACTAS --- */
+.offers-horizontal-track {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding-bottom: 1rem;
 }
 
-.offer-card {
-    background: var(--color-bg-alt); /* Fondo un poco más claro que el base */
+.offer-card-compact {
+    background: #1a1a1a; /* Fondo un poco más claro que el negro puro */
+    border: 1px solid #333;
     border-radius: 8px;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
-    border: 1px solid var(--color-border);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    /* Layout horizontal en desktop para ahorrar altura */
+    flex-direction: row; 
+    align-items: center;
+    transition: transform 0.3s ease;
 }
 
-.offer-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+.offer-card-compact:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-gold);
 }
 
-.offer-card-image {
-    position: relative; /* Para posicionar el badge */
-    height: 220px;
-    overflow: hidden;
+.offer-img-wrapper {
+    position: relative;
+    width: 40%;
+    height: 100%;
+    min-height: 140px;
 }
 
-.offer-card-image img {
+.offer-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
-}
-
-.offer-card:hover .offer-card-image img {
-    transform: scale(1.05); /* Efecto zoom elegante */
 }
 
 .offer-badge {
     position: absolute;
-    top: 1.5rem; /* 24px desde arriba */
-    left: 0;
-    background-color: var(--color-gold);
-    color: #111; /* Texto oscuro para alto contraste */
-    padding: 0.4rem 1rem;
+    top: 10px;
+    left: 10px;
+    background: var(--color-gold);
+    color: #000;
     font-weight: bold;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    border-radius: 0 4px 4px 0; /* Esquina redondeada a la derecha */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
 }
 
-.offer-card-body {
-    padding: 1.5rem 1.75rem; /* Un poco más de padding horizontal */
-    flex-grow: 1;
+.offer-content-compact {
+    padding: 1rem 1.2rem;
+    width: 60%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
-.offer-card-body h3 {
+.offer-content-compact h3 {
     font-family: var(--font-heading);
-    font-size: 1.6rem;
-    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
     color: var(--color-gold);
+    margin: 0 0 0.3rem 0;
 }
 
-.offer-card-body p {
-    font-size: 1rem;
+.offer-content-compact p {
+    font-size: 0.85rem;
+    color: #bbb;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.offer-meta {
+    font-size: 0.8rem;
     color: var(--color-text-secondary);
-    margin-bottom: 1.5rem;
-    flex-grow: 1; /* Empuja los detalles y el botón hacia abajo */
-    line-height: 1.6;
+    margin-bottom: 0.8rem;
 }
+.offer-meta i { color: var(--color-gold); margin-right: 4px; }
 
-.offer-validity {
-    display: flex;
+.btn-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: color 0.3s;
+    display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    border-top: 1px dashed var(--color-border); /* Línea punteada para "profesional" */
-    padding-top: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 5px;
 }
-
-.offer-validity i {
+.btn-link:hover {
     color: var(--color-gold);
-    font-size: 1rem;
-}
-
-.offer-card-body .btn {
-    align-self: flex-start; /* Alinea el botón a la izquierda */
 }
 
 /* --- Reseñas --- */
-.reviews-section {
-    background: #111;
-    position: relative;
-}
-
-.reviews-aggregate-box {
-    background-color: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 2.5rem;
-    margin-bottom: 3rem; /* Espacio entre los puntajes y el carrusel */
-}
-
-.reviews-aggregate-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.25fr;
-    gap: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.aggregate-score-box {
-    margin-bottom: 2rem;
-    text-align: center;
-}
-.aggregate-score {
-    font-family: var(--font-heading);
-    font-size: 4.5rem;
-    font-weight: 600;
-    color: #fff;
-    line-height: 1;
-}
-.aggregate-score .total-score {
-    font-size: 1.5rem;
-    color: var(--color-text-secondary);
-    margin-left: 0.25rem;
-}
-.aggregate-title {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--color-gold);
-    margin-top: 0.5rem;
-}
-.aggregate-total-reviews {
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    margin-top: 0.5rem;
-}
-
-.review-source-scores {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+.section-header-compact {
     margin-bottom: 2rem;
 }
-
-.source-item {
-    display: grid;
-    grid-template-columns: 30px 1fr auto;
-    align-items: center;
-    gap: 0.75rem;
-    text-align: left;
-    color: var(--color-text-primary);
-}
-
-.source-item i {
-    font-size: 1.25rem;
-    color: var(--color-gold);
+.section-header-compact.center-text {
     text-align: center;
 }
-
-.source-item .source-score {
-    font-weight: 600;
-    color: #fff;
-}
-
-.review-category-scores {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    justify-content: center;
-    height: 100%;
-}
-.category-item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.section-header-compact .section-title {
+    font-size: 2rem;
     margin-bottom: 0.5rem;
 }
-.category-label {
-    font-size: 0.95rem;
-    color: var(--color-text-primary);
-}
-.category-score {
+.section-header-compact .section-subtitle {
     font-size: 1rem;
-    font-weight: 600;
+    margin: 0;
+}
+
+.reviews-dashboard {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2.5rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* Score Principal (Izquierda) */
+.dashboard-score {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.score-big {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: var(--color-gold);
+    line-height: 1;
+    font-weight: 700;
+}
+.score-text {
+    display: flex;
+    flex-direction: column;
+}
+.score-verdict {
+    font-size: 1.1rem;
+    font-weight: bold;
     color: #fff;
 }
-.category-bar-bg {
-    width: 100%;
-    height: 6px;
-    background-color: #333;
-    border-radius: 3px;
-    overflow: hidden;
-}
-.category-bar-fill {
-    height: 100%;
-    background-color: var(--color-gold);
-    border-radius: 3px;
-    transition: width 0.5s ease;
+.score-count {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
 }
 
-.aggregate-cta-bar {
+/* Fuentes (Centro) */
+.dashboard-sources {
+    display: flex;
+    gap: 1rem;
+}
+.source-pill {
+    background: rgba(255,255,255,0.05);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #ddd;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.source-pill i { color: var(--color-gold); }
+
+/* Categorías (Derecha - Grid de Badges) */
+.dashboard-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas de badges */
+    gap: 0.6rem 1.5rem;
+}
+.cat-badge {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #aaa;
+    min-width: 140px;
+    border-bottom: 1px solid #333; /* Línea sutil debajo */
+    padding-bottom: 2px;
 }
-.aggregate-cta-bar p {
-    margin: 0;
-    color: var(--color-text-primary);
-    font-size: 1.1rem;
+.cat-badge strong {
+    color: #fff;
 }
 
-.reviews-aggregate .btn {
-    width: 100%;
+/* --- RESPONSIVE MÓVIL --- */
+@media (max-width: 768px) {
+    /* Ofertas en Carrusel Horizontal (Igual que Habitaciones) */
+    .offers-horizontal-track {
+        display: flex; /* Cambiar de grid a flex */
+        grid-template-columns: unset;
+        overflow-x: auto;
+        gap: 1rem;
+        padding-left: 1rem;
+        padding-right: 2rem; /* Peek effect */
+        margin-left: -1rem;
+        margin-right: -1rem;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1.5rem;
+        scrollbar-width: none;
+    }
+    .offers-horizontal-track::-webkit-scrollbar { display: none; }
+
+    .offer-card-compact {
+        flex: 0 0 85vw; /* Ancho tarjeta móvil */
+        scroll-snap-align: start;
+        flex-direction: column; /* Imagen arriba, texto abajo en móvil */
+    }
+    .offer-img-wrapper {
+        width: 100%;
+        height: 160px;
+    }
+    .offer-content-compact {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    /* Reviews Dashboard Stacked */
+    .reviews-dashboard {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+    .dashboard-categories {
+        width: 100%;
+        grid-template-columns: 1fr 1fr; /* Mantener 2 columnas si caben */
+    }
+    .cat-badge {
+        min-width: auto;
+    }
 }
 
 .reviews-carousel-container {
     position: relative;
     width: 100%;
     overflow: hidden;
-    mask-image: linear-gradient(
-        to right,
-                    transparent,
-                    black 10%,
-                    black 90%,
-                    transparent    
-    );
+    mask-image: linear-gradient(to right,
+            transparent,
+            black 10%,
+            black 90%,
+            transparent);
 }
 
 .reviews-carousel-container:hover .reviews-carousel-track {
@@ -574,39 +748,62 @@ body {
 }
 
 .review-card {
-    background: var(--color-bg);
+    background: var(--color-bg); /* Fondo oscuro base */
     border: 1px solid #222;
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 12px;
+    
+    /* DIMENSIONES FIJAS: La clave de la uniformidad */
     flex-shrink: 0;
-    width: clamp(280px, 80vw, 380px);
-    aspect-ratio: 4 / 3;
+    width: clamp(300px, 85vw, 380px); /* Ancho adaptable pero controlado */
+    height: 280px; /* Altura ESTRICTA fija para todas */
+    
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* Empuja el footer (fuente) hacia abajo */
+    
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
+
+.review-card:hover {
+    border-color: var(--color-gold); /* Detalle elegante al pasar el mouse */
+}
+
 .review-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
 }
+
 .review-author {
     font-weight: bold;
     font-size: 1.1rem;
     color: #fff;
 }
+
 .review-rating {
     color: var(--color-gold);
     letter-spacing: 2px;
 }
+
 .review-card p.review-text {
-    flex-grow: 1;
-    overflow-y: auto;
+    /* Quitamos el scroll para un look más limpio */
+    overflow: hidden;
+    
+    /* Propiedades para limitar líneas y poner "..." */
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    
     color: #b0b0b0;
     font-style: italic;
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin: 0; /* Quitamos margen para que flex-gap o justify manejen el espacio */
 }
+
 .review-source {
     margin-top: auto;
     padding-top: 1rem;
@@ -616,18 +813,24 @@ body {
     gap: 0.75rem;
     color: var(--color-text-secondary);
     font-size: 0.9rem;
+    margin-top: auto;
 }
+
 .review-source i {
     color: var(--color-gold);
 }
+
 .review-card.photo-card {
     padding: 0;
     overflow: hidden;
+    border: none;
 }
+
 .photo-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 12px;
     display: block;
 }
 
@@ -648,15 +851,20 @@ body {
     z-index: 10;
     transition: all 0.3s ease;
 }
+
 .carousel-btn:hover {
     background-color: var(--color-gold);
     color: #111;
 }
+
 .prev-btn {
-    left: 10px; /* Añadido un pequeño margen */
+    left: 10px;
+    /* Añadido un pequeño margen */
 }
+
 .next-btn {
-    right: 10px; /* Añadido un pequeño margen */
+    right: 10px;
+    /* Añadido un pequeño margen */
 }
 
 @media (max-width: 992px) {
@@ -666,7 +874,7 @@ body {
 }
 
 @media (max-width: 768px) {
-       .container {
+    .container {
         padding-top: 2.5rem;
         padding-bottom: 2.5rem;
         padding-left: 1rem;
@@ -674,32 +882,41 @@ body {
     }
 
     .hero {
-        height: 80vh; /* Reducimos la altura del 100% al 90% */
+        height: 80vh;
+        /* Reducimos la altura del 100% al 90% */
     }
 
     .hero-overlay {
-        padding-top: 15vh; /* Reducimos el margen superior (era 22vh) */
+        padding-top: 15vh;
+        /* Reducimos el margen superior (era 22vh) */
     }
 
     .hero-logo img {
-        width: 350px; /* Opcional: achicar un poco el logo en móvil */
-        margin-bottom: 1.5rem; /* Reducimos margen (era 2rem) */
+        width: 350px;
+        /* Opcional: achicar un poco el logo en móvil */
+        margin-bottom: 1.5rem;
+        /* Reducimos margen (era 2rem) */
     }
 
     .hero-content p {
-        margin-bottom: 2rem; /* Reducimos margen (era 2.5rem) */
+        margin-bottom: 2rem;
+        /* Reducimos margen (era 2.5rem) */
     }
 
     .scroll-down-arrow {
-        display: block; /* La hacemos visible (por defecto puede ser 'none') */
+        display: block;
+        /* La hacemos visible (por defecto puede ser 'none') */
         position: absolute;
-        bottom: 30px; /* A 30px del borde inferior */
+        bottom: 30px;
+        /* A 30px del borde inferior */
         left: 50%;
-        margin-left: -15px; /* Centrado horizontal */
+        margin-left: -15px;
+        /* Centrado horizontal */
         width: 30px;
         height: 30px;
         color: var(--color-gold);
-        font-size: 1.5rem; /* Tamaño del ícono */
+        font-size: 1.5rem;
+        /* Tamaño del ícono */
         text-align: center;
         text-decoration: none;
         animation: bounce-down 2.5s infinite;
@@ -715,170 +932,355 @@ body {
         padding: 1.5rem;
     }
 
-        .reviews-carousel-container {
+    .reviews-carousel-container {
         padding: 0;
         mask-image: none;
     }
-        .carousel-btn {
+
+    .carousel-btn {
         display: none;
     }
 
-        .aggregate-cta-bar {
+    .aggregate-cta-bar {
         flex-direction: column;
         gap: 1.5rem;
         text-align: center;
     }
-        .aggregate-cta-bar p {
+
+    .aggregate-cta-bar p {
         font-size: 1rem;
     }
 }
 
 /* --- Tours  --- */
-.tours-alternating-container {
+.tours-nav-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .tours-nav-controls { display: none; } /* Ocultar en móvil */
+}
+
+.nav-circle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-gold);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.nav-circle-btn:hover {
+    background: var(--color-gold);
+    color: #000;
+}
+
+/* Track del Carrusel */
+.tours-carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 2rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    cursor: grab;
+    align-items: stretch;
+}
+.tours-carousel-track::-webkit-scrollbar { display: none; } /* Chrome */
+
+.tours-carousel-track.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    user-select: none;
+}
+
+/* Tarjeta de Tour (Diseño Vertical) */
+.tour-card-carousel {
+    flex: 0 0 320px;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    
+    /* CLAVE 2: Flex vertical para distribuir espacio */
     display: flex;
     flex-direction: column;
-    gap: 5rem; /* Espacio vertical grande entre cada tour */
+    height: auto; /* Se estira gracias al track */
+    
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.tour-alternating-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
-    gap: 3.5rem;
-    align-items: center;
+.tour-card-carousel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    border-color: var(--color-gold);
 }
 
-/* LA MAGIA DE LA INTERCALACIÓN */
-/* Selecciona el segundo, cuarto, sexto... tour */
-.tour-alternating-item:nth-child(even) .tour-item-image {
-    order: 2; /* Mueve la columna de la imagen al segundo lugar */
-}
-
-.tour-item-image {
-    border-radius: 8px;
+/* Imagen del Tour */
+.tour-img-box {
+    position: relative;
+    height: 180px; /* Altura fija imagen */
+    width: 100%;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0; /* Evita que se aplaste */
 }
 
-.tour-item-image img {
+.tour-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
     transition: transform 0.5s ease;
 }
 
-.tour-alternating-item:hover .tour-item-image img {
-    transform: scale(1.05); /* Zoom sutil a la imagen al pasar el ratón */
+.tour-card-carousel:hover .tour-img {
+    transform: scale(1.1);
 }
 
-.tour-item-content h3 {
-    font-family: var(--font-heading);
-    color: var(--color-gold);
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    margin: 0 0 1rem;
+.tour-badges {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    gap: 5px;
 }
 
-.tour-item-content p {
-    font-size: 1.1rem;
-    color: #b0b0b0;
-    margin-bottom: 2rem;
-    line-height: 1.8;
+.badge-duration {
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
-.tour-item-details {
+/* Contenido */
+.tour-content-box {
+    padding: 1.2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-    margin-bottom: 2rem;
-    padding-left: 1.5rem;
-    border-left: 3px solid var(--color-gold);
+    flex-grow: 1;
 }
 
-.tour-item-details span {
+.tour-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-gold);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+
+    height: 2.4em; 
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.tour-schedule {
+    font-size: 0.85rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 6px;
+}
+.tour-schedule i { color: var(--color-gold); }
+
+.tour-desc {
+    font-size: 0.9rem;
     color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    
+    /* CLAVE 4: Altura fija descripción (3 líneas exactas) */
+    height: 4.5em; 
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
-.tour-item-details i {
+.tour-includes-box {
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    
+    /* CLAVE 5: Altura MÍNIMA fija para la caja de detalles */
+    /* Esto asegura que si un tour tiene pocas cosas, la caja ocupe lo mismo que el que tiene muchas */
+    min-height: 160px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.includes-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #aaa;
+    letter-spacing: 0.5px;
+}
+
+.tour-includes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.8rem 0;
+    font-size: 0.80rem;
+    color: #ccc;
+}
+
+.tour-includes-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+.tour-includes-list li i {
     color: var(--color-gold);
+    font-size: 0.7rem;
 }
 
-/* Responsividad: en pantallas pequeñas, todo se apila en una columna */
-@media (max-width: 992px) {
-    .tour-alternating-item {
-        grid-template-columns: 1fr; /* Una sola columna */
-        gap: 2rem;
+.tour-extra-info {
+    font-size: 0.8rem;
+    color: #e0e0e0;
+    padding-top: 0.5rem;
+    border-top: 1px dashed #444;
+    margin-top: auto;
+}
+.tour-extra-info i { margin-right: 4px; color: #aaa; }
+
+/* Botón */
+.btn-tour-outline {
+    margin-top: auto; /* Empuja el botón al final */
+    display: block;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    color: #fff;
+    padding: 0.6rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-tour-outline:hover {
+    background: var(--color-gold);
+    color: #000;
+    border-color: var(--color-gold);
+}
+
+/* Responsive Móvil */
+@media (max-width: 768px) {
+    .tours-carousel-track {
+        padding-left: 1rem;
+        padding-right: 4rem; /* Peek effect */
+        margin-left: -1rem;
+        margin-right: -1rem;
     }
-    /* Reseteamos el orden para que la imagen siempre vaya primero */
-    .tour-alternating-item:nth-child(even) .tour-item-image {
-        order: 0;
+    
+    .tour-card-carousel {
+        flex: 0 0 80vw; /* Más ancho en móvil */
     }
 }
 
 /* --- Galería --- */
-.gallery-grid {
-    display: grid;
-    /* Un grid responsivo que crea columnas de mínimo 280px */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem; /* Espaciado consistente */
+.gallery-masonry {
+    column-count: 3;
+    column-gap: 1rem;
+    padding-bottom: 2rem;
 }
 
-.gallery-item {
+@media (max-width: 992px) {
+    .gallery-masonry {
+        column-count: 2;
+    }
+}
+
+/* Mantenemos 2 columnas en móvil para que se vea compacto */
+@media (max-width: 600px) {
+    .gallery-masonry {
+        column-count: 2; 
+        column-gap: 0.5rem;
+    }
+}
+
+.masonry-item {
     position: relative;
-    aspect-ratio: 4 / 3; /* Proporción para las imágenes */
-    overflow: hidden;
+    background: #000;
     border-radius: 8px;
-    border: 1px solid var(--color-border);
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    margin-bottom: 1rem; /* Importante para separar verticalmente */
+    break-inside: avoid; /* Evita que las fotos se corten entre columnas */
+    cursor: zoom-in;
+    border: 1px solid #333;
+    transition: transform 0.3s ease;
 }
 
-.gallery-item img {
+.masonry-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.5s ease;
 }
 
-.gallery-item:hover img {
-    transform: scale(1.05); /* Efecto zoom elegante */
+.masonry-item:hover {
+    border-color: var(--color-gold);
 }
 
-.gallery-item-overlay {
+.masonry-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.8);
+}
+
+.masonry-overlay {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 2.5rem;
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
-.gallery-item:hover .gallery-item-overlay {
+.masonry-overlay i {
+    color: #fff;
+    font-size: 1.5rem;
+    background: rgba(197, 164, 126, 0.8);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.masonry-item:hover .masonry-overlay {
     opacity: 1;
 }
 
-/* --- Estilos del Lightbox (Visor) --- */
+.masonry-item:hover .masonry-overlay i {
+    transform: scale(1);
+}
+
 .gallery-lightbox {
     position: fixed;
-    inset: 0;
-    z-index: 1000; /* Por encima de todo */
-    background: rgba(0, 0, 0, 0.85); /* Fondo oscuro translúcido */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    inset: 0; /* Top, Left, Right, Bottom = 0 */
+    z-index: 9999; /* Por encima de todo */
+    background: rgba(0, 0, 0, 0.95); /* Fondo casi negro */
+    backdrop-filter: blur(5px); /* Efecto borroso de fondo */
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    box-sizing: border-box;
 }
 
 .lightbox-content {
@@ -888,111 +1290,102 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .lightbox-image {
     max-width: 100%;
-    max-height: 80vh; /* Deja espacio para el caption */
+    max-height: 85vh; /* Altura máxima para dejar espacio al caption */
     display: block;
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    /* Animación de zoom al aparecer */
-    animation: zoomIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@keyframes zoomIn {
-    from {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    animation: zoomIn 0.3s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
 .lightbox-caption {
-    color: var(--color-text-secondary);
-    font-style: italic;
     margin-top: 1rem;
+    color: #ccc;
+    font-family: var(--font-body);
     font-size: 1rem;
     text-align: center;
 }
 
 /* Botones del Lightbox */
-.lightbox-close-btn,
+.lightbox-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 10000;
+    line-height: 1;
+    transition: color 0.3s;
+}
+.lightbox-close-btn:hover {
+    color: var(--color-gold);
+}
+
 .lightbox-nav-btn {
     position: absolute;
-    background: rgba(0, 0, 0, 0.4);
-    color: var(--color-gold);
-    border: 1px solid var(--color-border);
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
     cursor: pointer;
-    z-index: 1001;
-    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10000;
 }
 
-.lightbox-close-btn:hover,
 .lightbox-nav-btn:hover {
-    background-color: var(--color-gold);
-    color: #111;
+    background: var(--color-gold);
+    color: #000;
+    border-color: var(--color-gold);
 }
 
-.lightbox-close-btn {
-    top: 1.5rem;
-    right: 2rem;
-    font-size: 3rem;
-    line-height: 1;
-    font-weight: 300;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    padding: 0;
+.lightbox-nav-btn.prev { left: 2rem; }
+.lightbox-nav-btn.next { right: 2rem; }
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
-.lightbox-nav-btn {
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    font-weight: bold;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+/* Responsive Galería */
+@media (max-width: 992px) {
+    .gallery-masonry {
+        column-count: 2;
+    }
 }
 
-.lightbox-nav-btn.prev {
-    left: 2rem;
-}
-
-.lightbox-nav-btn.next {
-    right: 2rem;
-}
-
-/* Responsividad para botones en móvil */
 @media (max-width: 768px) {
+    .gallery-masonry {
+        column-gap: 0.5rem;
+    }
+    
+    /* Ajustes Lightbox Móvil */
     .lightbox-nav-btn {
         width: 40px;
         height: 40px;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        background: rgba(0,0,0,0.5); /* Fondo más oscuro para contraste */
     }
-    .lightbox-nav-btn.prev {
-        left: 5px;
-    }
-    .lightbox-nav-btn.next {
-        right: 5px;
-    }
+    .lightbox-nav-btn.prev { left: 10px; }
+    .lightbox-nav-btn.next { right: 10px; }
+    
     .lightbox-close-btn {
         top: 10px;
         right: 10px;
-        width: 40px;
-        height: 40px;
         font-size: 2.5rem;
-    }
-    .lightbox-image {
-        max-height: 75vh;
     }
 }
 
@@ -1003,21 +1396,25 @@ body {
     gap: 3rem;
     align-items: start;
 }
+
 .contact-form-container h3 {
     font-family: var(--font-heading);
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
 }
+
 .contact-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
+
 .contact-form .form-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
+
 .contact-form input,
 .contact-form textarea {
     width: 100%;
@@ -1030,11 +1427,13 @@ body {
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
+
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--color-gold);
 }
+
 .contact-form .btn {
     align-self: flex-start;
     cursor: pointer;
@@ -1045,25 +1444,30 @@ body {
     flex-direction: column;
     gap: 1.5rem;
 }
+
 .contact-info-item {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
 }
+
 .contact-info-item i {
     color: var(--color-gold);
     font-size: 1.5rem;
     margin-top: 5px;
 }
+
 .contact-info-item h4 {
     margin: 0 0 0.3rem;
     color: #fff;
     font-size: 1.1rem;
 }
+
 .contact-info-item p {
     margin: 0;
     color: #b0b0b0;
 }
+
 .contact-map {
     width: 100%;
     height: 250px;
@@ -1072,6 +1476,7 @@ body {
     margin-top: 1rem;
     border: 1px solid #333;
 }
+
 .contact-map iframe {
     width: 100%;
     height: 100%;
@@ -1084,6 +1489,7 @@ body {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
+
     .about-info-card {
         /* Desactivamos el efecto sticky en móvil */
         position: static;
@@ -1092,15 +1498,17 @@ body {
     .about.reveal {
         opacity: 1;
         transform: translateY(0);
-        transition: none; 
+        transition: none;
     }
 
     .tour-plan-card {
         grid-template-columns: 1fr;
     }
+
     .tour-plan-content {
         padding: 2rem;
     }
+
     .contact-layout {
         grid-template-columns: 1fr;
     }
@@ -1205,20 +1613,26 @@ body {
     }
 
     .gallery-grid {
-        display: flex; /* Cambia de grid a flex */
-        overflow-x: auto; /* Habilita scroll horizontal */
-        gap: 1.5rem; /* Espaciado entre items */
+        display: flex;
+        /* Cambia de grid a flex */
+        overflow-x: auto;
+        /* Habilita scroll horizontal */
+        gap: 1.5rem;
+        /* Espaciado entre items */
 
-        grid-template-columns: unset; /* Resetea la propiedad de grid */
+        grid-template-columns: unset;
+        /* Resetea la propiedad de grid */
 
         /* Truco de márgenes/padding para ancho completo */
         margin-left: -1rem;
         margin-right: -1rem;
         padding-left: 1rem;
         padding-right: 1rem;
-        padding-bottom: 1.5rem; /* Espacio para barra de scroll (oculta) */
+        padding-bottom: 1.5rem;
+        /* Espacio para barra de scroll (oculta) */
 
-        scroll-snap-type: x mandatory; /* Habilita el snap */
+        scroll-snap-type: x mandatory;
+        /* Habilita el snap */
 
         /* Oculta la barra de scroll */
         -ms-overflow-style: none;
@@ -1226,7 +1640,8 @@ body {
     }
 
     .gallery-grid::-webkit-scrollbar {
-        display: none; /* Oculta scrollbar en Webkit */
+        display: none;
+        /* Oculta scrollbar en Webkit */
     }
 
     .gallery-grid .gallery-item {
@@ -1247,26 +1662,39 @@ body {
         font-size: 1.5rem;
         background: rgba(0, 0, 0, 0.3);
     }
+
     .lightbox-nav-btn.prev {
         left: 5px;
     }
+
     .lightbox-nav-btn.next {
         right: 5px;
     }
+
     .lightbox-close-btn {
-        top: 15px; /* Un poco más abajo */
-        right: 15px; /* Un poco más adentro */
-        width: 35px; /* Más pequeño */
-        height: 35px; /* Más pequeño */
-        font-size: 2rem; /* Más pequeño */
+        top: 15px;
+        /* Un poco más abajo */
+        right: 15px;
+        /* Un poco más adentro */
+        width: 35px;
+        /* Más pequeño */
+        height: 35px;
+        /* Más pequeño */
+        font-size: 2rem;
+        /* Más pequeño */
         background: rgba(0, 0, 0, 0.3);
     }
+
     .lightbox-image {
-        max-height: 80vh; /* Permitimos que sea un poco más alta */
+        max-height: 80vh;
+        /* Permitimos que sea un poco más alta */
     }
+
     .lightbox-caption {
-        font-size: 0.9rem; /* Hacemos el texto un poco más pequeño */
-        padding: 0 1rem; /* Evita que toque los bordes */
+        font-size: 0.9rem;
+        /* Hacemos el texto un poco más pequeño */
+        padding: 0 1rem;
+        /* Evita que toque los bordes */
     }
 }
 
@@ -1277,6 +1705,7 @@ body {
         transform: translateY(0);
     }
 }
+
 @keyframes fadeDown {
     to {
         opacity: 1;
@@ -1288,6 +1717,7 @@ body {
     from {
         transform: translateX(0);
     }
+
     to {
         /* Mueve el track la mitad de su longitud total */
         transform: translateX(-50%);
@@ -1296,23 +1726,34 @@ body {
 
 @keyframes pulseAnimation {
     0% {
-        box-shadow: 0 0 0 0 rgba(197, 164, 126, 0.7); /* Usamos el color --color-gold */
+        box-shadow: 0 0 0 0 rgba(197, 164, 126, 0.7);
+        /* Usamos el color --color-gold */
     }
+
     70% {
-        box-shadow: 0 0 0 15px rgba(197, 164, 126, 0); /* La "onda" se expande y desvanece */
+        box-shadow: 0 0 0 15px rgba(197, 164, 126, 0);
+        /* La "onda" se expande y desvanece */
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(197, 164, 126, 0);
     }
 }
 
 @keyframes bounce-down {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-10px);
     }
+
     60% {
         transform: translateY(-5px);
     }
@@ -1322,4 +1763,436 @@ body {
 .btn-pulse {
     animation: pulseAnimation 2.5s infinite;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+}
+
+/* Navegación Superior (Tabs) */
+.room-selector-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.room-nav-btn {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.room-nav-btn:hover,
+.room-nav-btn.active {
+    background: var(--color-gold);
+    color: #000;
+    border-color: var(--color-gold);
+    font-weight: bold;
+}
+
+/* Contenedor de la Diapositiva */
+.room-entry-slide {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    background: #111;
+    /* Fondo oscuro para resaltar */
+    border: 1px solid #222;
+    padding: 2rem;
+    border-radius: 12px;
+    animation: fadeIn 0.5s ease;
+}
+
+@media (min-width: 992px) {
+    .room-entry-slide {
+        grid-template-columns: 1.2fr 1fr;
+        /* Más espacio a la imagen */
+        gap: 3rem;
+        align-items: center;
+    }
+}
+
+/* Encabezado Flexible */
+.section-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Botones de navegación del carrusel principal */
+.slider-nav-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.slider-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    background: var(--color-gold);
+    color: #000;
+}
+
+/* TRACK PRINCIPAL (El carrusel en sí) */
+.rooms-horizontal-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 2rem;
+    /* Espacio para scrollbar si aparece */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+}
+
+.rooms-horizontal-track::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari: ocultar scrollbar */
+}
+
+/* TARJETA COMPACTA */
+.room-compact-card {
+    flex: 0 0 320px;
+    /* Ancho fijo para desktop */
+    min-width: 300px;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    /* Para que se detenga justo al inicio de la tarjeta */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-compact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: var(--color-gold);
+}
+
+/* Área de Imagen */
+.compact-image-wrapper {
+    position: relative;
+    height: 200px;
+    /* Altura compacta */
+    width: 100%;
+    background: #000;
+    overflow: hidden;
+}
+
+.compact-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
+
+.fade-in {
+    animation: simpleFade 0.4s ease;
+}
+
+@keyframes simpleFade {
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Badge (Privado/Eco) */
+.room-type-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    backdrop-filter: blur(4px);
+}
+
+/* Controles sobre la imagen */
+.compact-img-controls {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.compact-img-controls button {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: background 0.2s;
+}
+
+.compact-img-controls button:hover {
+    background: var(--color-gold);
+    color: #000;
+}
+
+/* Contenido de Texto */
+.compact-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.compact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.compact-title {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--color-gold);
+    margin: 0;
+    line-height: 1.2;
+    max-width: 65%;
+}
+
+.compact-price {
+    text-align: right;
+}
+
+.compact-price .amount {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.compact-price .period {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
+
+.compact-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    height: 40px;
+    /* Altura fija para alineación (aprox 2 líneas) */
+    overflow: hidden;
+}
+
+/* Iconos compactos */
+.compact-features {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+.compact-features i {
+    color: var(--color-gold);
+    margin-right: 4px;
+}
+
+/* Botón Compacto */
+.btn-compact {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+
+    /* Estilo Sólido (tomado de referencia navbar) */
+    background: var(--color-gold);
+    color: #000;
+    /* Texto negro para contraste */
+    border: 1px solid var(--color-gold);
+
+    padding: 0.8rem 2rem;
+    /* Un poco más de cuerpo */
+    border-radius: 30px;
+    /* Bordes redondeados como en el navbar */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+
+    /* Animación de Pulso (Asegúrate de tener @keyframes pulseAnimation definido) */
+    animation: pulseAnimation 2.5s infinite;
+    box-shadow: 0 4px 15px rgba(197, 164, 126, 0.4);
+}
+
+.btn-compact:hover {
+    background: #fff;
+    /* Invertir a blanco al pasar el mouse */
+    color: var(--color-gold);
+    border-color: #fff;
+    transform: translateY(-2px);
+    animation: none;
+    /* Pausar pulso al hacer hover */
+}
+
+/* --- Responsive Móvil Mejorado (Efecto "Peek") --- */
+@media (max-width: 768px) {
+    .section-header-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .slider-nav-buttons {
+        display: none;
+    }
+
+    .rooms-horizontal-track {
+        /* Padding izquierdo para alinear con el borde de la web */
+        padding-left: 1.5rem;
+        /* Mucho padding derecho para que el usuario sienta que hay 'aire' al final */
+        padding-right: 4rem;
+        gap: 1rem;
+        scroll-snap-type: x mandatory;
+    }
+
+    .room-compact-card {
+        /* CLAVE: 75vw hace que la tarjeta sea más estrecha.
+           El usuario verá claramente la siguiente tarjeta a la derecha. */
+        flex: 0 0 65vw;
+        min-width: unset;
+        scroll-snap-align: center;
+        /* Centramos la tarjeta activa */
+        margin-right: 0;
+    }
+}
+
+/* Indicador de zoom en la tarjeta (opcional, para UX) */
+.zoom-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    /* Dejar pasar el clic a la imagen */
+    transition: opacity 0.3s ease;
+    z-index: 5;
+}
+
+.compact-image-wrapper:hover .zoom-indicator {
+    opacity: 1;
+}
+
+/* Modal Overlay */
+.room-lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(5px);
+}
+
+/* Contenido del Modal */
+.room-lightbox-content {
+    position: relative;
+    max-width: 95vw;
+    max-height: 90vh;
+}
+
+.room-lightbox-img {
+    max-width: 100%;
+    max-height: 90vh;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: zoomIn 0.3s ease;
+}
+
+/* Botón cerrar */
+.room-lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* --- Estilos para el Arrastre (Drag) en Escritorio --- */
+.rooms-horizontal-track {
+    /* Cursor de manito abierta por defecto */
+    cursor: grab;
+    /* Aseguramos que el snap funcione suavemente cuando no se arrastra */
+    scroll-behavior: smooth;
+}
+
+/* Clase activa mientras se arrastra */
+.rooms-horizontal-track.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+    /* Evita seleccionar texto/imágenes accidentalmente */
+    scroll-snap-type: none;
+    /* DESACTIVAR SNAP temporalmente para fluidez */
+    scroll-behavior: auto;
+    /* Quitar suavizado para que siga al mouse al instante */
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* En móvil, ocultar el indicador hover porque no existe hover */
+@media (max-width: 768px) {
+    .zoom-indicator {
+        display: none;
+    }
 }
