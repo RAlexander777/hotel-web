@@ -1,0 +1,205 @@
+---
+/* src/components/BookingModal.astro */
+---
+
+<div
+    x-data="{ open: false }"
+    @open-booking-modal.window="open = true"
+    @keydown.escape.window="open = false"
+    class="booking-modal-root"
+>
+    <!-- Overlay Oscuro -->
+    <div 
+        class="modal-overlay" 
+        x-show="open" 
+        x-transition.opacity.duration.300ms
+        style="display: none;"
+    ></div>
+
+    <!-- Contenido del Modal -->
+    <div 
+        class="modal-container" 
+        x-show="open" 
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+        x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+        x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+        style="display: none;"
+    >
+        <div class="modal-box" @click.outside="open = false">
+            <button class="close-btn" @click="open = false">&times;</button>
+            
+            <div class="modal-header">
+                <h2 class="modal-title">Reserva tu Estadía</h2>
+                <p class="modal-subtitle">Completa tus datos para confirmar disponibilidad.</p>
+            </div>
+
+            <form action="https://formspree.io/f/mwprzban" method="POST" class="modal-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">Nombre Completo *</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Tu nombre" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono / WhatsApp</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+51 999 999 999" />
+                    </div>
+                    <div class="form-group">
+                        <label for="roomType">Habitación</label>
+                        <select id="roomType" name="roomType">
+                            <option value="cualquiera">Cualquiera disponible</option>
+                            <option value="simple">Simple</option>
+                            <option value="doble">Doble</option>
+                            <option value="matrimonial">Matrimonial</option>
+                            <option value="triple">Triple</option>
+                            <option value="cuadruple">Cuádruple</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkin">Llegada *</label>
+                        <input type="date" id="checkin" name="checkin" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout">Salida *</label>
+                        <input type="date" id="checkout" name="checkout" required />
+                    </div>
+                    <div class="form-group half">
+                        <label for="adults">Adultos</label>
+                        <select id="adults" name="adults">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+                    <div class="form-group half">
+                        <label for="children">Niños</label>
+                        <select id="children" name="children">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2+</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group full">
+                    <label for="requests">Mensaje / Peticiones</label>
+                    <textarea id="requests" name="requests" rows="2" placeholder="Ej: Llegada tarde..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Solicitar Reserva</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Estilos exclusivos del Modal */
+    .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(4px);
+        z-index: 9998;
+    }
+
+    .modal-container {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        pointer-events: none; /* Para que el click outside funcione bien en el box */
+    }
+
+    .modal-box {
+        pointer-events: auto;
+        background: #1c1c1c;
+        border: 1px solid #333;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 600px;
+        max-height: 90vh;
+        overflow-y: auto; /* Scroll si es muy alto */
+        padding: 2rem;
+        position: relative;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-size: 2rem;
+        cursor: pointer;
+        line-height: 1;
+        transition: color 0.3s;
+    }
+    .close-btn:hover { color: #c5a47e; }
+
+    .modal-header { text-align: center; margin-bottom: 1.5rem; }
+    .modal-title { font-family: "Playfair Display", serif; color: #c5a47e; font-size: 1.8rem; margin: 0; }
+    .modal-subtitle { color: #aaa; font-size: 0.9rem; margin-top: 0.5rem; }
+
+    /* Formulario Compacto */
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .form-group { display: flex; flex-direction: column; }
+    .form-group.full { grid-column: span 2; }
+    
+    label { color: #aaa; font-size: 0.85rem; margin-bottom: 0.3rem; }
+    
+    input, select, textarea {
+        background: #111;
+        border: 1px solid #333;
+        color: #fff;
+        padding: 0.6rem;
+        border-radius: 6px;
+        font-family: "Rethink Sans", sans-serif;
+        width: 100%;
+    }
+    input:focus, select:focus, textarea:focus {
+        border-color: #c5a47e;
+        outline: none;
+    }
+
+    .btn-submit {
+        background: #c5a47e;
+        color: #000;
+        font-weight: bold;
+        border: none;
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 6px;
+        margin-top: 1.5rem;
+        cursor: pointer;
+        transition: transform 0.2s, background 0.3s;
+    }
+    .btn-submit:hover {
+        background: #fff;
+        transform: translateY(-2px);
+    }
+
+    /* Ajuste Móvil */
+    @media (max-width: 600px) {
+        .form-grid { grid-template-columns: 1fr; }
+        .form-group.full { grid-column: span 1; }
+        .form-group.half { grid-column: span 1; } /* Truco si quisieras medios en desktop */
+        .modal-box { padding: 1.5rem; }
+    }
+</style>

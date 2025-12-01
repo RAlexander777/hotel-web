@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import BookingModal from '../components/BookingModal.astro';
 import { Image, getImage } from 'astro:assets';
 
 //IMPORTACION DE IMG
@@ -338,5 +339,7 @@ const carouselItems = [...reviews, ...photoItems];
                 }));
             });
         </script>
+
+        <BookingModal />
     </body>
 </html>
