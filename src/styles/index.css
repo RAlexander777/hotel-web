@@ -1,9 +1,9 @@
 :root {
     --color-gold: #fc7548;
-    --color-bg: #111111;
-    --color-bg-alt: #1c1c1c;
-    --color-text-primary: #e0e0e0;
-    --color-text-secondary: #a0a0a0;
+    --color-bg: #1A1917;      /* Ébano (Fondo principal) */
+    --color-bg-alt: #262422;
+    --color-text-primary: #FAF3E1;
+    --color-text-secondary: #a8a4a0;
     --color-border: #333;
     --font-heading: "Playfair Display", serif;
     --font-body: "Rethink Sans", sans-serif;

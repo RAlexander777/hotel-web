@@ -3,9 +3,9 @@
 /* ================================== */
 :root {
     --color-gold: #c5a47e;
-    --color-bg: #111111;
-    --color-bg-alt: #1c1c1c;
-    --color-text-primary: #e0e0e0;
+    --color-bg: #222224;      /* Caviar (Fondo principal) */
+    --color-bg-alt: #2d2d30;
+    --color-text-primary: #FAF3E1;
     --color-text-secondary: #a0a0a0;
     --color-border: #333;
     --font-heading: "Playfair Display", serif;
