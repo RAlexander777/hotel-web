@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import "../styles/index.css";
 
 import { Image, getImage } from 'astro:assets';
+import { infoHabitaciones } from '../config/habitaciones.js';
 
 //IMG
 import logoHero from '../assets/images/logo-hostal-acuarius-puno-hero.png';
@@ -158,76 +159,68 @@ const [
 
 const allRooms = [
     {
-        title: "Habitación Simple",
-        desc: "Un lugar acogedor y funcional, perfectamente equipado para el viajero independiente.",
-        price: "S/ 70",
+        ...infoHabitaciones.simple, // Trae título, precio, desc y features del config
         images: simpleItems,
-        features: [{icon: "fas fa-user", txt: "1 Huésped"}, {icon: "fas fa-bed", txt: "Cama 1.5 plazas"}, {icon: "fas fa-shower", txt: "Baño Privado"}],
-        link: "https://secure.booking.com/book.html?hotel_id=11965220...", // Poner enlace completo
-        type: "privado"
+        type: "privado",
+        // Mapeamos las features de texto plano a iconos aquí mismo
+        features: infoHabitaciones.simple.features.map(txt => ({
+            icon: txt.includes("Huésped") ? "fas fa-user" : 
+                  txt.includes("Cama") ? "fas fa-bed" : 
+                  txt.includes("Baño") ? "fas fa-shower" : "fas fa-check",
+            txt: txt
+        }))
     },
     {
-        title: "Habitación Doble",
-        desc: "Ideal para amigos o colegas, esta habitación cuenta con dos camas confortables.",
-        price: "S/ 100",
+        ...infoHabitaciones.doble,
         images: dobleItems,
-        features: [{icon: "fas fa-user-friends", txt: "2 Huéspedes"}, {icon: "fas fa-bed", txt: "2 Camas 1.5 plazas"}, {icon: "fas fa-shower", txt: "Baño Privado"}],
-        link: "https://secure.booking.com/book.html?hotel_id=11965220...", // Poner enlace completo
-        type: "privado"
+        type: "privado",
+        features: infoHabitaciones.doble.features.map(txt => ({
+            icon: txt.includes("Huéspedes") ? "fas fa-user-friends" : 
+                  txt.includes("Cama") ? "fas fa-bed" : 
+                  txt.includes("Baño") ? "fas fa-shower" : "fas fa-check",
+            txt: txt
+        }))
     },
     {
-        title: "Habitación Matrimonial",
-        desc: "Diseñada para parejas, ambiente íntimo y cálido para una escapada romántica.",
-        price: "S/ 80",
+        ...infoHabitaciones.matrimonial,
         images: matriItems,
-        features: [{icon: "fas fa-user-friends", txt: "2 Huéspedes"}, {icon: "fas fa-bed", txt: "Cama 2 plazas"}, {icon: "fas fa-shower", txt: "Baño Privado"}],
-        link: "https://secure.booking.com/book.html?hotel_id=11965220...", 
-        type: "privado"
+        type: "privado",
+        features: infoHabitaciones.matrimonial.features.map(txt => ({
+            icon: txt.includes("Huéspedes") ? "fas fa-user-friends" : 
+                  txt.includes("Cama") ? "fas fa-bed" : 
+                  txt.includes("Baño") ? "fas fa-shower" : "fas fa-check",
+            txt: txt
+        }))
     },
     {
-        title: "Habitación Triple",
-        desc: "Espaciosa y versátil, perfecta para familias pequeñas o grupos.",
-        price: "S/ 120",
+        ...infoHabitaciones.triple,
         images: tripleItems,
-        features: [{icon: "fas fa-users", txt: "3 Huéspedes"}, {icon: "fas fa-bed", txt: "3 Camas 1.5 plazas"}, {icon: "fas fa-shower", txt: "Baño Privado"}],
-        link: "https://secure.booking.com/book.html?hotel_id=11965220...",
-        type: "privado"
+        type: "privado",
+        features: [{icon: "fas fa-users", txt: "3 Huéspedes"}, {icon: "fas fa-bed", txt: "3 Camas 1.5 plazas"}, {icon: "fas fa-shower", txt: "Baño Privado"}]
     },
     {
-        title: "Habitación Cuádruple",
-        desc: "Máxima capacidad y comodidad para familias y grupos grandes.",
-        price: "S/ 140",
+        ...infoHabitaciones.cuadruple,
         images: cuadItems,
-        features: [{icon: "fas fa-users", txt: "4 Huéspedes"}, {icon: "fas fa-bed", txt: "4 Camas 1.5 plazas"}, {icon: "fas fa-shower", txt: "Baño Privado"}],
-        link: "https://secure.booking.com/book.html?hotel_id=11965220...",
-        type: "privado"
+        type: "privado",
+        features: [{icon: "fas fa-users", txt: "4 Huéspedes"}, {icon: "fas fa-bed", txt: "4 Camas 1.5 plazas"}, {icon: "fas fa-shower", txt: "Baño Privado"}]
     },
     {
-        title: "Simple (Baño Compartido)",
-        desc: "Opción económica para viajeros prácticos.",
-        price: "S/ 40",
+        ...infoHabitaciones.simple_comp,
         images: simpleCompItems,
-        features: [{icon: "fas fa-user", txt: "1 Huésped"}, {icon: "fas fa-bed", txt: "Cama 1.5 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}],
-        link: "https://secure.booking.com/book.html?hotel_id=11965220...",
-        type: "compartido"
+        type: "compartido",
+        features: [{icon: "fas fa-user", txt: "1 Huésped"}, {icon: "fas fa-bed", txt: "Cama 1.5 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}]
     },
     {
-        title: "Doble (Baño Compartido)",
-        desc: "Comodidad para dos a un precio accesible.",
-        price: "S/ 80",
+        ...infoHabitaciones.doble_comp,
         images: dobleCompItems,
-        features: [{icon: "fas fa-user-friends", txt: "2 Huéspedes"}, {icon: "fas fa-bed", txt: "Cama 2 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}],
-        link: "https://secure.booking.com/book.html?hotel_id=11965220...",
-        type: "compartido"
+        type: "compartido",
+        features: [{icon: "fas fa-user-friends", txt: "2 Huéspedes"}, {icon: "fas fa-bed", txt: "Cama 2 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}]
     },
     {
-        title: "Matrimonial (Baño Compartido)",
-        desc: "Acogedora para parejas que buscan maximizar su presupuesto.",
-        price: "S/ 60",
+        ...infoHabitaciones.matri_comp,
         images: matriCompItems,
-        features: [{icon: "fas fa-user-friends", txt: "2 Huéspedes"}, {icon: "fas fa-bed", txt: "Cama 2 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}],
-        link: "https://secure.booking.com/book.html?hotel_id=11965220...",
-        type: "compartido"
+        type: "compartido",
+        features: [{icon: "fas fa-user-friends", txt: "2 Huéspedes"}, {icon: "fas fa-bed", txt: "Cama 2 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}]
     }
 ];
 
@@ -653,8 +646,9 @@ const storyImageUrls = storyImagesOptimized.map(img => img.src);
                         />
                         </template>
                     
-                    <div class="room-type-badge">
-                        {room.type === 'privado' ? 'Privado' : 'Económico'}
+                    {/* CAMBIO 1: Badge explícito sobre el tipo de baño */}
+                    <div class="room-type-badge" style={room.type === 'compartido' ? 'background: rgba(200, 80, 0, 0.85);' : ''}>
+                        {room.type === 'privado' ? 'Baño Privado' : 'Baño Compartido'}
                     </div>
 
                     <div class="compact-img-controls">
@@ -665,6 +659,7 @@ const storyImageUrls = storyImagesOptimized.map(img => img.src);
 
                 <div class="compact-content">
                     <div class="compact-header">
+                        {/* Limpiamos el título para que no repita info */}
                         <h3 class="compact-title">{room.title.replace('Habitación ', '').replace(' (Baño Compartido)', '')}</h3>
                         <div class="compact-price">
                             <span class="amount">{room.price}</span>
@@ -678,13 +673,21 @@ const storyImageUrls = storyImagesOptimized.map(img => img.src);
 
                     <div class="compact-features">
                         {room.features.slice(0, 3).map(feat => (
-                            <span title={feat.txt}><i class={feat.icon}></i> {feat.txt.split(' ')[0]}</span>
+                            <span title={feat.txt}>
+                                <i class={feat.icon}></i> 
+                                {/* CAMBIO 2: Si es info del baño, mostramos texto completo. Si no, solo la primera palabra */}
+                                {feat.txt.includes('Baño') ? feat.txt : feat.txt.split(' ')[0]}
+                            </span>
                         ))}
                     </div>
 
-                    <a href={room.link} target="_blank" rel="noopener noreferrer" class="btn-compact">
+                    <button
+                        @click={`$dispatch('open-booking-modal', { room: '${room.title}' })`}
+                        class="btn-compact"
+                        style="cursor: pointer; width: 100%;"
+                    >
                         Reservar Ahora
-                    </a>
+                    </button>
                 </div>
             </article>
         ))}
