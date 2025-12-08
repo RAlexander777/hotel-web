@@ -1,15 +1,113 @@
 ---
 /* src/components/BookingModal.astro */
+const { lang = 'es' } = Astro.props;
+
+const t = {
+    es: {
+        title: "Reserva tu Estadía",
+        subtitle: "Te confirmaremos disponibilidad vía WhatsApp.",
+        // Etiquetas del formulario
+        lbl_name: "Nombre Completo *",
+        lbl_email: "Email *",
+        lbl_phone: "Teléfono / WhatsApp",
+        lbl_room: "Habitación",
+        lbl_checkin: "Llegada *",
+        lbl_checkout: "Salida *",
+        lbl_adults: "Adultos",
+        lbl_children: "Niños",
+        lbl_msg: "Mensaje / Peticiones",
+        lbl_submit: "Solicitar Reserva",
+        // Placeholders
+        ph_name: "Tu nombre",
+        ph_email: "correo@ejemplo.com",
+        ph_phone: "+51 999 999 999",
+        ph_msg: "Ej: Llegada tarde...",
+        // Opciones de Habitación (Value y Label)
+        rooms: [
+            { val: "Cualquiera", label: "Cualquiera disponible" },
+            { val: "Simple", label: "Habitación Simple" },
+            { val: "Doble", label: "Habitación Doble" },
+            { val: "Matrimonial", label: "Habitación Matrimonial" },
+            { val: "Triple", label: "Habitación Triple" },
+            { val: "Cuádruple", label: "Habitación Cuádruple" },
+            { val: "Simple (Baño Comp.)", label: "Simple (Baño Compartido)" },
+            { val: "Doble (Baño Comp.)", label: "Doble (Baño Compartido)" },
+            { val: "Matrimonial (Baño Comp.)", label: "Matrimonial (Baño Compartido)" }
+        ],
+        // Mensaje de WhatsApp
+        alert_missing: "Por favor completa los campos obligatorios (*)",
+        wsp_greeting: "Hola Hostal Acuarius, deseo realizar una reserva:",
+        wsp_name: "Nombre",
+        wsp_email: "Email",
+        wsp_phone: "Teléfono",
+        wsp_room: "Habitación",
+        wsp_date: "Fecha",
+        wsp_from: "Del",
+        wsp_to: "al",
+        wsp_pax: "Pasajeros",
+        wsp_adults: "Adultos",
+        wsp_children: "Niños",
+        wsp_note: "Nota"
+    },
+    en: {
+        title: "Book your Stay",
+        subtitle: "We will confirm availability via WhatsApp.",
+        // Form Labels
+        lbl_name: "Full Name *",
+        lbl_email: "Email *",
+        lbl_phone: "Phone / WhatsApp",
+        lbl_room: "Room Type",
+        lbl_checkin: "Check-in *",
+        lbl_checkout: "Check-out *",
+        lbl_adults: "Adults",
+        lbl_children: "Children",
+        lbl_msg: "Message / Requests",
+        lbl_submit: "Request Reservation",
+        // Placeholders
+        ph_name: "Your name",
+        ph_email: "email@example.com",
+        ph_phone: "+1 999 999 999",
+        ph_msg: "Ex: Late arrival...",
+        // Room Options
+        rooms: [
+            { val: "Any", label: "Any available" },
+            { val: "Single Room", label: "Single Room" },
+            { val: "Double Room", label: "Double Room" },
+            { val: "Matrimonial Room", label: "Matrimonial Room" },
+            { val: "Triple Room", label: "Triple Room" },
+            { val: "Quadruple Room", label: "Quadruple Room" },
+            { val: "Single (Shared Bath)", label: "Single (Shared Bath)" },
+            { val: "Double (Shared Bath)", label: "Double (Shared Bath)" },
+            { val: "Matrimonial (Shared Bath)", label: "Matrimonial (Shared Bath)" }
+        ],
+        // WhatsApp Message
+        alert_missing: "Please complete the required fields (*)",
+        wsp_greeting: "Hello Hostal Acuarius, I would like to make a reservation:",
+        wsp_name: "Name",
+        wsp_email: "Email",
+        wsp_phone: "Phone",
+        wsp_room: "Room",
+        wsp_date: "Date",
+        wsp_from: "From",
+        wsp_to: "to",
+        wsp_pax: "Guests",
+        wsp_adults: "Adults",
+        wsp_children: "Children",
+        wsp_note: "Note"
+    }
+};
+
+const text = t[lang as keyof typeof t];
 ---
 
 <div
-    x-data="{ 
+    x-data={`{ 
         open: false,
         formData: {
             name: '',
             email: '',
             phone: '',
-            room: 'cualquiera',
+            room: '${text.rooms[0].val}',
             checkin: '',
             checkout: '',
             adults: '1',
@@ -28,34 +126,34 @@
         sendToWhatsapp() {
             // 1. Validaciones básicas
             if (!this.formData.name || !this.formData.checkin || !this.formData.checkout) {
-                alert('Por favor completa los campos obligatorios (*)');
+                alert('${text.alert_missing}');
                 return;
             }
 
             // 2. Número del Hostal (formato internacional sin +)
             const phoneHotel = '51944278647'; 
             
-            // 3. Construir el mensaje
-            let text = `Hola Hostal Acuarius, deseo realizar una reserva:%0A%0A`;
-            text += `👤 *Nombre:* ${this.formData.name}%0A`;
-            text += `📧 *Email:* ${this.formData.email}%0A`;
-            text += `📱 *Teléfono:* ${this.formData.phone}%0A`;
-            text += `🛏️ *Habitación:* ${this.formData.room}%0A`;
-            text += `📅 *Fecha:* Del ${this.formData.checkin} al ${this.formData.checkout}%0A`;
-            text += `👥 *Pasajeros:* ${this.formData.adults} Adultos, ${this.formData.children} Niños%0A`;
+            // 3. Construir el mensaje (Usamos concatenación para evitar conflictos con Astro)
+            let text = '${text.wsp_greeting}%0A%0A';
+            text += '👤 *${text.wsp_name}:* ' + this.formData.name + '%0A';
+            text += '📧 *${text.wsp_email}:* ' + this.formData.email + '%0A';
+            text += '📱 *${text.wsp_phone}:* ' + this.formData.phone + '%0A';
+            text += '🛏️ *${text.wsp_room}:* ' + this.formData.room + '%0A';
+            text += '📅 *${text.wsp_date}:* ${text.wsp_from} ' + this.formData.checkin + ' ${text.wsp_to} ' + this.formData.checkout + '%0A';
+            text += '👥 *${text.wsp_pax}:* ' + this.formData.adults + ' ${text.wsp_adults}, ' + this.formData.children + ' ${text.wsp_children}%0A';
             
             if(this.formData.message) {
-                text += `📝 *Nota:* ${this.formData.message}`;
+                text += '📝 *${text.wsp_note}:* ' + this.formData.message;
             }
 
             // 4. Abrir WhatsApp
-            const url = `https://api.whatsapp.com/send?phone=${phoneHotel}&text=${text}`;
+            const url = 'https://api.whatsapp.com/send?phone=' + phoneHotel + '&text=' + text;
             window.open(url, '_blank');
             
             // 5. Cerrar modal (opcional)
             this.open = false;
         }
-    }"
+    }`}
     @keydown.escape.window="open = false"
     class="booking-modal-root"
 >
@@ -81,48 +179,42 @@
             <button class="close-btn" @click="open = false">&times;</button>
             
             <div class="modal-header">
-                <h2 class="modal-title">Reserva tu Estadía</h2>
-                <p class="modal-subtitle">Te confirmaremos disponibilidad vía WhatsApp.</p>
+                <h2 class="modal-title">{text.title}</h2>
+                <p class="modal-subtitle">{text.subtitle}</p>
             </div>
 
             <form @submit.prevent="sendToWhatsapp" class="modal-form">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="fullName">Nombre Completo *</label>
-                        <input type="text" id="fullName" x-model="formData.name" placeholder="Tu nombre" required />
+                        <label for="fullName">{text.lbl_name}</label>
+                        <input type="text" id="fullName" x-model="formData.name" placeholder={text.ph_name} required />
                     </div>
                     <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" x-model="formData.email" placeholder="correo@ejemplo.com" required />
+                        <label for="email">{text.lbl_email}</label>
+                        <input type="email" id="email" x-model="formData.email" placeholder={text.ph_email} required />
                     </div>
                     <div class="form-group">
-                        <label for="phone">Teléfono / WhatsApp</label>
-                        <input type="tel" id="phone" x-model="formData.phone" placeholder="+51 999 999 999" />
+                        <label for="phone">{text.lbl_phone}</label>
+                        <input type="tel" id="phone" x-model="formData.phone" placeholder={text.ph_phone} />
                     </div>
                     <div class="form-group">
-                        <label for="roomType">Habitación</label>
+                        <label for="roomType">{text.lbl_room}</label>
                         <select id="roomType" x-model="formData.room">
-                            <option value="cualquiera">Cualquiera disponible</option>
-                            <option value="Habitación Simple">Simple</option>
-                            <option value="Habitación Doble">Doble</option>
-                            <option value="Habitación Matrimonial">Matrimonial</option>
-                            <option value="Habitación Triple">Triple</option>
-                            <option value="Habitación Cuádruple">Cuádruple</option>
-                            <option value="Simple (Baño Compartido)">Simple (Baño Comp.)</option>
-                            <option value="Doble (Baño Compartido)">Doble (Baño Comp.)</option>
-                            <option value="Matrimonial (Baño Compartido)">Matrimonial (Baño Comp.)</option>
+                            {text.rooms.map((option) => (
+                                <option value={option.val}>{option.label}</option>
+                            ))}
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="checkin">Llegada *</label>
+                        <label for="checkin">{text.lbl_checkin}</label>
                         <input type="date" id="checkin" x-model="formData.checkin" required />
                     </div>
                     <div class="form-group">
-                        <label for="checkout">Salida *</label>
+                        <label for="checkout">{text.lbl_checkout}</label>
                         <input type="date" id="checkout" x-model="formData.checkout" required />
                     </div>
                     <div class="form-group half">
-                        <label for="adults">Adultos</label>
+                        <label for="adults">{text.lbl_adults}</label>
                         <select id="adults" x-model="formData.adults">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -131,7 +223,7 @@
                         </select>
                     </div>
                     <div class="form-group half">
-                        <label for="children">Niños</label>
+                        <label for="children">{text.lbl_children}</label>
                         <select id="children" x-model="formData.children">
                             <option value="0">0</option>
                             <option value="1">1</option>
@@ -141,12 +233,12 @@
                 </div>
                 
                 <div class="form-group full">
-                    <label for="requests">Mensaje / Peticiones</label>
-                    <textarea id="requests" x-model="formData.message" rows="2" placeholder="Ej: Llegada tarde..."></textarea>
+                    <label for="requests">{text.lbl_msg}</label>
+                    <textarea id="requests" x-model="formData.message" rows="2" placeholder={text.ph_msg}></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit">
-                    <i class="fab fa-whatsapp"></i> Solicitar Reserva
+                    <i class="fab fa-whatsapp"></i> {text.lbl_submit}
                 </button>
             </form>
         </div>
@@ -154,6 +246,7 @@
 </div>
 
 <style>
+    /* ... (MANTÉN TU CSS EXACTAMENTE IGUAL QUE ANTES) ... */
     /* Estilos exclusivos del Modal */
     .modal-overlay {
         position: fixed;

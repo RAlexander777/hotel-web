@@ -1,0 +1,1083 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/index.css";
+
+import { Image, getImage } from 'astro:assets';
+import { infoHabitaciones, promociones } from '../../config/habitaciones.js';
+
+//IMG
+import logoHero from '../../assets/images/logo-hostal-acuarius-puno-hero.png';
+
+//HERO IMG
+import hero1 from '../../assets/images/espectacular-vista-al-lago-en-atardecer-puno-hostal-acuarius-hero.png';
+import hero2 from '../../assets/images/gran-laguna-de-umayo-con-cielo-despejado-puno-hostal-acuarius-hero.jpg';
+import hero3 from '../../assets/images/hermosa-laguna-de-umayo-puno-hostal-acuarius-hero.jpg';
+import hero4 from '../../assets/images/imponentes-chullpas-de-sillustani-puno-hostal-acuarius-hero.webp';
+import hero5 from '../../assets/images/isla-los-uros-con-lago-titicaca-cristalino-puno-hostal-acuarius-hero.jpg';
+import hero6 from '../../assets/images/muelle-con-botes-de-la-ciudad-de-puno-hostal-acuarius-hero.jpg';
+
+// Simple
+import simple1 from '../../assets/images/rooms/simple/acogedora-habitacion-simple-hostal-cuarius-puno.jpg';
+import simple2 from '../../assets/images/rooms/simple/acogedora-habitacion-simple-servicios-higienicos-hostal-acuarius-puno.png';
+import simple3 from '../../assets/images/rooms/simple/acogedora-habitacion-simple-vista-cama-hostal-acuarius-puno.jpg';
+// Doble
+import doble1 from '../../assets/images/rooms/doble/acogedora-habitacion-doble-con-cortinas-abiertas-hostal.acuarius-puno.png';
+import doble2 from '../../assets/images/rooms/doble/acogedora-habitacion-doble-con-vista-a-la-ciudad-hostal-acuarius-puno.jpg';
+import doble3 from '../../assets/images/rooms/doble/acogedora-habitacion-doble-hostal-acuarius-puno.jpg';
+import doble4 from '../../assets/images/rooms/doble/acogedora-habitacion-doble-vista-desde-cama-hostal-acuarius-puno.png';
+import doble5 from '../../assets/images/rooms/doble/acogedora-habitacion-doble-vista-desde-puerta-hostal-acuarius-puno.png';
+import doble6 from '../../assets/images/rooms/doble/acogedora-habitacion-doble-vista-general-hostal-acuarius-puno.jpg';
+import doble7 from '../../assets/images/rooms/doble/servicios-higienicos-habitacion-doble-hostal-acuarius-puno.jpg';
+// Matrimonial
+import matri1 from '../../assets/images/rooms/matrimonial/acogedora-habitacion-matrimonial-con-vista-a-la-ciudad-hostal-acuarius-puno.jpg';
+import matri2 from '../../assets/images/rooms/matrimonial/acogedora-habitacion-matrimonial-hostal-acuarius-puno.png';
+import matri3 from '../../assets/images/rooms/matrimonial/acogedora-habitacion-matrimonial-vista-cerca-hostal-acuarius-puno.png';
+import matri4 from '../../assets/images/rooms/matrimonial/acogedora-habitacion-matrimonial-con-cortinas-cerradas-hostal-acuarius-puno.jpg';
+import matri5 from '../../assets/images/rooms/matrimonial/acogedora-habitacion-matrimonial-con-cortinas-cerradas-vista-lejos-hostal-acuarius-puno.jpg';
+// Triple
+import triple1 from '../../assets/images/rooms/triple/acogedora-habitacion-triple-con-vista-a-la-ciudad-cerca-hostal-acuarius-puno.jpg';
+import triple2 from '../../assets/images/rooms/triple/acogedora-habitacion-triple-con-vista-a-la-ciudad-hostal-acuarius-puno.png';
+import triple3 from '../../assets/images/rooms/triple/acogedora-habitacion-triple-en-atardecer-hostal-acuarius-puno.jpg';
+import triple4 from '../../assets/images/rooms/triple/acogedora-habitacion-triple-vista-a-la-ciudad-desde-cama-hostal-acuarius-puno.jpg';
+import triple5 from '../../assets/images/rooms/triple/acogedora-habitacion-triple-vista-desde-cama-hostal-acuarius-puno.png';
+// Cuádruple
+import cuad1 from '../../assets/images/rooms/cuadruple/acogedora-habitacion_cuadruple-con-vista-a-la-ciudad-hostal-acuarius-puno.jpg';
+import cuad2 from '../../assets/images/rooms/cuadruple/acogedora-habitacion-cuadruple-con-cortinas-cerradas-hostal-acuarius-puno.jpg';
+// Compartidos
+import simpleComp1 from '../../assets/images/rooms/simple_compartido/acogedora-habitacion-simple-con-servicios-higienicos-compartidos-hostal-acuarius-puno.png';
+import dobleComp1 from '../../assets/images/rooms/doble_compartido/acogedora-habitacion_doble-servicios-higienicos-compartidos-hostal-acuarius-puno.png';
+import dobleComp2 from '../../assets/images/rooms/doble_compartido/acogedora-habitacion_doble-servicios-higienicos-compartidos-vista-cerca-hostal-acuarius-puno.jpg';
+import dobleComp3 from '../../assets/images/rooms/doble_compartido/acogedora-habitacion_doble-servicios-higienicos-compartidos-vista-lateral2-hostal-acuarius-puno.jpg';
+import dobleComp4 from '../../assets/images/rooms/doble_compartido/acogedora-habitacion_doble-servicios-higienicos-compartidos-vista-lateral-hostal-acuarius-puno.jpg';
+import dobleComp5 from '../../assets/images/rooms/doble_compartido/acogedora-habitacion_doble-servicios-higienicos-compartidos-vista-lejos-hostal-acuarius-puno.jpg';
+import matriComp1 from '../../assets/images/rooms/matrimonial_compartido/acogedora-matrimonial-servicios-higienicos-compartidos-hostal-acuarius-puno.png';
+import matriComp2 from '../../assets/images/rooms/matrimonial_compartido/acogedora-matrimonial-servicios-higienicos-compartidos-vista-lejos-hostal-acuarius-puno.png';
+import matriComp3 from '../../assets/images/rooms/matrimonial_compartido/acogedora-matrimonial-servicios-higienicos-compartidos-vista-cerca-hostal-acuarius-puno.jpg';
+
+//OFFER IMG
+import offerUros from '../../assets/images/tours/tour-islas-flotantes-uros-con-lago-cristalino-hostal-acuarius-puno.jpg';
+// roomMatrimonial aqui
+import offerHero3 from '../../assets/images/hermosa-laguna-de-umayo-puno-hostal-acuarius-hero.jpg';
+
+//TOURS
+import tour1 from '../../assets/images/tours/tour-amantani-en-hermoso-y-espectacular-atardecer-hostal-acuarius-puno.png';
+import tour2 from '../../assets/images/tours/tour-chucuito-viendo-antigua-iglesia-en-atardecer-hostal-acuarius-puno.png';
+import tour3 from '../../assets/images/tours/tour-chullpas-sillustani-en-hermoso-y-espectacular-atardecer-hostal-acuarius-puno.png';
+import tour4 from '../../assets/images/tours/tour-islas-flotantes-uros-con-lago-cristalino-hostal-acuarius-puno.jpg';
+import tour5 from '../../assets/images/tours/tour-isla-taquile-con-hermosa-vista-al-lago-titicaca-desde-portal-de-piedra-hostal-acuarius-puno.png';
+import tour6 from '../../assets/images/tours/tour-ruta-quechua-con-imponentes-y-naturales-formaciones-rocosas-hostal-acuarius-puno.png';
+
+//GALLERY IMG
+import gallery1 from '../../assets/images/nosotros/escaleras-principales-de-hostal-acuarius-puno.png';
+import gallery2 from '../../assets/images/nosotros/fachada-en-atardecer-hostal-acuarius-puno.png';
+import gallery3 from '../../assets/images/nosotros/fachada-en-otro-angulo-de-hostal-acuarius-puno.jpg';
+import gallery4 from '../../assets/images/nosotros/lobby-acogedor-de-hostal-acuarius-puno.jpg';
+import gallery5 from '../../assets/images/rooms/triple/acogedora-habitacion-triple-vista-a-la-ciudad-desde-cama-hostal-acuarius-puno.jpg';
+
+// --- 1. IMPORTAR IMÁGENES DE HISTORIA (Desde nosotros.astro) ---
+import hist1 from '../../assets/images/nosotros/entrada-principal-de-hostal-acuarius-puno.jpg';
+import hist2 from '../../assets/images/nosotros/escaleras-principales-de-hostal-acuarius-puno.png';
+import hist3 from '../../assets/images/nosotros/fachada-de-hostal-acuarius-puno.jpg';
+import hist4 from '../../assets/images/nosotros/fachada-en-atardecer-hostal-acuarius-puno.png';
+import hist5 from '../../assets/images/nosotros/fachada-en-otro-angulo-de-hostal-acuarius-puno.jpg';
+import hist6 from '../../assets/images/nosotros/lobby-acogedor-con-decoracion-natural-hostal-acuarius-puno.png';
+import hist7 from '../../assets/images/nosotros/lobby-acogedor-de-hostal-acuarius-puno.jpg';
+import hist8 from '../../assets/images/nosotros/lobby-acogedor-y-puerta-de-hostal-acuarius-puno.jpg';
+
+// --- 2. IMPORTAR IMÁGENES DE MOMENTOS/CLIENTES (Desde nosotros.astro) ---
+import moment1 from '../../assets/images/clientes/pareja-de-turistas-en-isla-taquile-hostal-acuarius-puno.png';
+import moment2 from '../../assets/images/clientes/turista-de-hostal-acuarius-en-isla-los-uros-con-ropa-nativa-puno.png';
+import moment3 from '../../assets/images/clientes/turista-de-hostal-acuarius-en-isla-los-uros-puno.png';
+import moment4 from '../../assets/images/clientes/turista-feliz-en-instalaciones-de-hostal-acuarius-puno.jpg';
+import moment5 from '../../assets/images/clientes/turistas-a-la-luz-del-sol-en-isla-taquile-hostal-acuarius-puno.png';
+import moment6 from '../../assets/images/clientes/turistas-de-hostal-acuarius-en-excursion-puno.png';
+import moment7 from '../../assets/images/clientes/turistas-desayunando-en-hostal-acuarius-puno.jpg';
+import moment8 from '../../assets/images/clientes/turistas-en-el-lobby-de-hostal-acuarius-puno.png';
+import moment9 from '../../assets/images/clientes/turistas-sonrientes-en-el-lobby-de-hostal-acuarius-puno.png';
+import moment10 from '../../assets/images/clientes/varios-turistas-en-el-lobby-de-hostal-acuarius-puno.png';
+import moment11 from '../../assets/images/clientes/varios-turistas-saludando-en-el-lobby-de-hostal-acuarius-puno.png';
+
+type ImageResult = Awaited<ReturnType<typeof getImage>>;
+const createItems = (images: ImageResult[]) => images.map(img => ({ 
+    src: img.src, 
+    alt: img.attributes.alt as string 
+}));
+const roomImageProps = { width: 800, height: 600, format: 'webp' };
+
+const [
+    simpleItems, dobleItems, matriItems, tripleItems, cuadItems, 
+    simpleCompItems, dobleCompItems, matriCompItems
+] = await Promise.all([
+    Promise.all([
+        getImage({ ...roomImageProps, src: simple1, alt: 'Habitación simple acogedora' }),
+        getImage({ ...roomImageProps, src: simple2, alt: 'Baño privado habitación simple' }),
+        getImage({ ...roomImageProps, src: simple3, alt: 'Cama 1.5 plazas simple' })
+    ]).then(createItems),
+    Promise.all([
+        getImage({ ...roomImageProps, src: doble1, alt: 'Habitación doble cortinas abiertas' }),
+        getImage({ ...roomImageProps, src: doble2, alt: 'Habitación doble vista ciudad' }),
+        getImage({ ...roomImageProps, src: doble3, alt: 'Habitación doble dos camas' }),
+        getImage({ ...roomImageProps, src: doble4, alt: 'Vista desde cama doble' }),
+        getImage({ ...roomImageProps, src: doble5, alt: 'Vista puerta doble' }),
+        getImage({ ...roomImageProps, src: doble6, alt: 'Vista general doble' }),
+        getImage({ ...roomImageProps, src: doble7, alt: 'Baño habitación doble' })
+    ]).then(createItems),
+    Promise.all([
+        getImage({ ...roomImageProps, src: matri1, alt: 'Matrimonial vista ciudad' }),
+        getImage({ ...roomImageProps, src: matri2, alt: 'Acogedora matrimonial' }),
+        getImage({ ...roomImageProps, src: matri3, alt: 'Cama 2 plazas matrimonial' }),
+        getImage({ ...roomImageProps, src: matri4, alt: 'Cama 2 plazas matrimonial' }),
+        getImage({ ...roomImageProps, src: matri5, alt: 'Cama 2 plazas matrimonial' })
+    ]).then(createItems),
+    Promise.all([
+        getImage({ ...roomImageProps, src: triple1, alt: 'Triple vista ciudad' }),
+        getImage({ ...roomImageProps, src: triple2, alt: 'Triple tres camas' }),
+        getImage({ ...roomImageProps, src: triple3, alt: 'Triple atardecer' }),
+        getImage({ ...roomImageProps, src: triple4, alt: 'Vista cama triple' }),
+        getImage({ ...roomImageProps, src: triple5, alt: 'Camas cómodas triple' })
+    ]).then(createItems),
+    Promise.all([
+        getImage({ ...roomImageProps, src: cuad1, alt: 'Cuádruple vista ciudad' }),
+        getImage({ ...roomImageProps, src: cuad2, alt: 'Cuádruple amplia' })
+    ]).then(createItems),
+    Promise.all([
+        getImage({ ...roomImageProps, src: simpleComp1, alt: 'Simple baño compartido' })
+    ]).then(createItems),
+    Promise.all([
+        getImage({ ...roomImageProps, src: dobleComp1, alt: 'Doble baño compartido' }),
+        getImage({ ...roomImageProps, src: dobleComp2, alt: 'Cama doble compartido' }),
+        getImage({ ...roomImageProps, src: dobleComp3, alt: 'Cama doble compartido vista lateral 2' }),
+        getImage({ ...roomImageProps, src: dobleComp4, alt: 'Cama doble compartido vista lateral' }),
+        getImage({ ...roomImageProps, src: dobleComp5, alt: 'Cama doble compartido vista lejos' }),
+    ]).then(createItems),
+    Promise.all([
+        getImage({ ...roomImageProps, src: matriComp1, alt: 'Matrimonial compartido' }),
+        getImage({ ...roomImageProps, src: matriComp2, alt: 'Cama matrimonial compartido vista lejos' }),
+        getImage({ ...roomImageProps, src: matriComp3, alt: 'Cama matrimonial compartido vista cerca' })
+    ]).then(createItems)
+]);
+
+const allRooms = [
+    {
+        ...infoHabitaciones.simple, // Trae título, precio, desc y features del config
+        images: simpleItems,
+        type: "privado",
+        // Mapeamos las features de texto plano a iconos aquí mismo
+        features: infoHabitaciones.simple.features.map(txt => ({
+            icon: txt.includes("Huésped") ? "fas fa-user" : 
+                  txt.includes("Cama") ? "fas fa-bed" : 
+                  txt.includes("Baño") ? "fas fa-shower" : "fas fa-check",
+            txt: txt
+        }))
+    },
+    {
+        ...infoHabitaciones.doble,
+        images: dobleItems,
+        type: "privado",
+        features: infoHabitaciones.doble.features.map(txt => ({
+            icon: txt.includes("Huéspedes") ? "fas fa-user-friends" : 
+                  txt.includes("Cama") ? "fas fa-bed" : 
+                  txt.includes("Baño") ? "fas fa-shower" : "fas fa-check",
+            txt: txt
+        }))
+    },
+    {
+        ...infoHabitaciones.matrimonial,
+        images: matriItems,
+        type: "privado",
+        features: infoHabitaciones.matrimonial.features.map(txt => ({
+            icon: txt.includes("Huéspedes") ? "fas fa-user-friends" : 
+                  txt.includes("Cama") ? "fas fa-bed" : 
+                  txt.includes("Baño") ? "fas fa-shower" : "fas fa-check",
+            txt: txt
+        }))
+    },
+    {
+        ...infoHabitaciones.triple,
+        images: tripleItems,
+        type: "privado",
+        features: [{icon: "fas fa-users", txt: "3 Huéspedes"}, {icon: "fas fa-bed", txt: "3 Camas 1.5 plazas"}, {icon: "fas fa-shower", txt: "Baño Privado"}]
+    },
+    {
+        ...infoHabitaciones.cuadruple,
+        images: cuadItems,
+        type: "privado",
+        features: [{icon: "fas fa-users", txt: "4 Huéspedes"}, {icon: "fas fa-bed", txt: "4 Camas 1.5 plazas"}, {icon: "fas fa-shower", txt: "Baño Privado"}]
+    },
+    {
+        ...infoHabitaciones.simple_comp,
+        images: simpleCompItems,
+        type: "compartido",
+        features: [{icon: "fas fa-user", txt: "1 Huésped"}, {icon: "fas fa-bed", txt: "Cama 1.5 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}]
+    },
+    {
+        ...infoHabitaciones.doble_comp,
+        images: dobleCompItems,
+        type: "compartido",
+        features: [{icon: "fas fa-user-friends", txt: "2 Huéspedes"}, {icon: "fas fa-bed", txt: "Cama 2 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}]
+    },
+    {
+        ...infoHabitaciones.matri_comp,
+        images: matriCompItems,
+        type: "compartido",
+        features: [{icon: "fas fa-user-friends", txt: "2 Huéspedes"}, {icon: "fas fa-bed", txt: "Cama 2 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}]
+    }
+];
+
+const waNumber = "51944278647";
+const baseMsg = "Hola Hostal Acuarius, estoy interesado/a en el tour:";
+const createWaLink = (tourName: string) => {
+    const text = `${baseMsg} *${tourName}*. ¿Podrían darme más información?`;
+    return `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
+};
+
+// DATA COMPLETA DE TOURS
+const allTours = [
+    {
+        image: tour4, // Uros
+        title: "Islas Flotantes de los Uros",
+        duration: "3 horas",
+        schedule: "Salidas: 9am / 12pm / 4pm",
+        desc: "Navega por el lago navegable más alto del mundo y visita las fascinantes islas de totora, hogar de la ancestral cultura Uru.",
+        includes: ["Traslados (ida/vuelta)", "Transporte lacustre", "Ticket de ingreso", "Guía (Inglés/Español)"],
+        extra: { type: "Opcional", text: "Paseo en balsa de totora" },
+        link: createWaLink("Islas Flotantes de los Uros")
+    },
+    {
+        image: tour5, // Taquile
+        title: "Uros y Taquile (Lancha Rápida)",
+        duration: "Full Day",
+        schedule: "7:00 AM - 4:00 PM",
+        desc: "Jornada completa explorando los Uros y la Isla Taquile, famosa por su arte textil reconocido por la UNESCO.",
+        includes: ["Traslados de hotel", "Lancha Rápida", "Tickets (Uros/Taquile)", "Guía bilingüe"],
+        extra: { type: "No Incluye", text: "Almuerzo en Taquile" },
+        link: createWaLink("Uros y Taquile (Lancha Rápida)")
+    },
+    {
+        image: tour3, // Sillustani
+        title: "Chullpas de Sillustani",
+        duration: "3.5 horas",
+        schedule: "Salida: 2:00 PM",
+        desc: "Visita el impresionante complejo funerario preincaico a orillas de la laguna Umayo. Un viaje a la historia y mística andina.",
+        includes: ["Recojo de hotel", "Transporte turístico", "Ticket de ingreso", "Guía profesional"],
+        link: createWaLink("Chullpas de Sillustani")
+    },
+    {
+        image: tour1, // Vivencial
+        title: "Vivencial 2D/1N (Amantaní)",
+        duration: "2 Días / 1 Noche",
+        schedule: "Salida: 8:00 AM",
+        desc: "Sumérgete en la cultura local. Pasa la noche en Amantaní con una familia, visita Uros y explora Taquile al día siguiente.",
+        includes: ["Traslados y lancha", "Tickets (Uros, Amantani)", "Noche en casa familiar", "3 Comidas en Amantani"],
+        extra: { type: "No Incluye", text: "Almuerzo del 2do día" },
+        link: createWaLink("Vivencial 2D/1N (Uros + Amantaní + Taquile)")
+    },
+    {
+        image: tour2, // Chucuito
+        title: "Ciudad de Chucuito",
+        duration: "Medio Día",
+        schedule: "Consultar Horario",
+        desc: "Descubre la arquitectura colonial, iglesias antiguas y el famoso Templo de la Fertilidad en esta histórica ciudad.",
+        includes: ["Transporte privado", "Guía profesional", "Tickets de ingreso"],
+        link: createWaLink("Ciudad de Chucuito")
+    },
+    {
+        image: tour6, // Ruta Quechua
+        title: "Ruta Quechua",
+        duration: "Full Day",
+        schedule: "Salida: 7:00 AM",
+        desc: "Disfruta de una caminata escénica entre bosques de pino, biodiversidad única y la tranquilidad inigualable del altiplano.",
+        includes: ["Transporte", "Guía especializado", "Box Lunch", "Asistencia"],
+        link: createWaLink("Ruta Quechua")
+    }
+];
+
+const heroImagesOptimized = await Promise.all([
+    getImage({ src: hero1, width: 1920, height: 1080, format: 'webp' }),
+    getImage({ src: hero2, width: 1920, height: 1080, format: 'webp' }),
+    getImage({ src: hero3, width: 1920, height: 1080, format: 'webp' }),
+    getImage({ src: hero4, width: 1920, height: 1080, format: 'webp' }),
+    getImage({ src: hero5, width: 1920, height: 1080, format: 'webp' }),
+    getImage({ src: hero6, width: 1920, height: 1080, format: 'webp' }),
+]);
+
+const heroImageUrls = heroImagesOptimized.map(img => img.src);
+
+
+// Para la Galeria 
+const galleryImagesOptimized = await Promise.all([
+    getImage({ src: gallery1, width: 800, height: 600, format: 'webp', alt: 'Escaleras principales y recepción del Hostal Acuarius, Puno' }),
+    getImage({ src: gallery2, width: 800, height: 600, format: 'webp', alt: 'Fachada del Hostal Acuarius Puno al atardecer' }),
+    getImage({ src: gallery3, width: 800, height: 600, format: 'webp', alt: 'Fachada en otro ángulo del Hostal Acuarius Puno' }),
+    getImage({ src: gallery4, width: 800, height: 600, format: 'webp', alt: 'Lobby acogedor del Hostal Acuarius Puno' }),
+    getImage({ src: gallery5, width: 800, height: 600, format: 'webp', alt: 'Habitación triple con vista a la ciudad en Puno' }),
+    getImage({ src: offerUros, width: 800, height: 600, format: 'webp', alt: 'Experiencia en las Islas de los Uros, Lago Titicaca' }),
+    
+    // --- Momentos (Nuevos con nombre de archivo en Alt) ---
+    getImage({ src: moment1, width: 800, height: 600, format: 'webp', alt: 'Pareja de turistas en isla taquile Hostal Acuarius Puno' }),
+    getImage({ src: moment2, width: 800, height: 600, format: 'webp', alt: 'Turista de Hostal Acuarius en isla los Uros con ropa nativa Puno' }),
+    getImage({ src: moment3, width: 800, height: 600, format: 'webp', alt: 'Turista de Hostal Acuarius en isla los Uros Puno' }),
+    getImage({ src: moment4, width: 800, height: 600, format: 'webp', alt: 'Turista feliz en instalaciones de Hostal Acuarius Puno' }),
+    getImage({ src: moment5, width: 800, height: 600, format: 'webp', alt: 'Turistas a la luz del sol en isla Taquile Hostal Acuarius Puno' }),
+    getImage({ src: moment6, width: 800, height: 600, format: 'webp', alt: 'Turistas de Hostal Acuarius en excursion Puno' }),
+    getImage({ src: moment7, width: 800, height: 600, format: 'webp', alt: 'Turistas desayunando en Hostal Acuarius Puno' }),
+    getImage({ src: moment8, width: 800, height: 600, format: 'webp', alt: 'Turistas en el lobby de Hostal Acuarius Puno' }),
+    getImage({ src: moment9, width: 800, height: 600, format: 'webp', alt: 'Turistas sonrientes en el lobby de Hostal Acuarius Puno' }),
+    getImage({ src: moment10, width: 800, height: 600, format: 'webp', alt: 'Varios turistas en el lobby de Hostal Acuarius Puno' }),
+    getImage({ src: moment11, width: 800, height: 600, format: 'webp', alt: 'Varios turistas saludando en el lobby de Hostal Acuarius Puno' }),
+
+    getImage({ src: hist1, width: 800, height: 600, format: 'webp', alt: 'Entrada principal de Hostal Acuarius Puno' }),
+    getImage({ src: hist3, width: 800, height: 600, format: 'webp', alt: 'Fachada principal de Hostal Acuarius Puno' }),
+    getImage({ src: hist6, width: 800, height: 600, format: 'webp', alt: 'Decoración natural en lobby de Hostal Acuarius Puno' }),
+    getImage({ src: hist8, width: 800, height: 600, format: 'webp', alt: 'Vista hacia habitaciones desde lobby Hostal Acuarius Puno' }),
+]);
+
+const galleryItems = galleryImagesOptimized.map(img => ({
+    src: img.src,
+    alt: img.attributes.alt,
+}));
+
+const storyImagesOptimized = await Promise.all([
+    getImage({ src: hist1, width: 800, height: 500, format: 'webp' }),
+    getImage({ src: hist2, width: 800, height: 500, format: 'webp' }),
+    getImage({ src: hist3, width: 800, height: 500, format: 'webp' }),
+    getImage({ src: hist4, width: 800, height: 500, format: 'webp' }),
+    getImage({ src: hist5, width: 800, height: 500, format: 'webp' }),
+    getImage({ src: hist6, width: 800, height: 500, format: 'webp' }),
+    getImage({ src: hist7, width: 800, height: 500, format: 'webp' }),
+    getImage({ src: hist8, width: 800, height: 500, format: 'webp' }),
+]);
+// Extraemos solo las URLs para pasarlas a Alpine.js
+const storyImageUrls = storyImagesOptimized.map(img => img.src);
+
+---
+
+<Layout title="Hostal Acuarius · Inicio" isIndexPage={true}>
+    <section
+        class="hero"
+        x-data=`{
+            images: ${JSON.stringify(heroImageUrls)}, 
+            current: 0,
+            init() {
+                setInterval(() => {
+                    this.current = (this.current + 1) % this.images.length;
+                }, 5000);
+            }
+        }`
+    >
+        <template x-for="(img, index) in images" :key="index">
+            <div
+                class="hero-slide"
+                :class="{ 'active': current === index }"
+                :style="`background-image: url(${img});`"
+            >
+            </div>
+        </template>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <Image
+                        src={logoHero}
+                        alt="Logo de Hostal Acuarius Puno"
+                            format="webp"
+                            width={500} 
+                            height={203}
+                    />
+                </div>
+                <h2 class="dynamic-text" x-data="{ text: 'Bienvenidos' }">
+                    <template
+                        x-for="(letter, index) in text.split('')"
+                        :key="index"
+                    >
+                        <span
+                            x-text="letter"
+                            x-init="$el.style.animationDelay = (index * 0.05) + 's'"
+                        ></span>
+                    </template>
+                </h2>
+                <p>
+                    Una combinación única de confort, hospitalidad y la mejor
+                    ubicación para explorar la magia de Puno.
+                </p>
+                <a href="#habitaciones" class="btn btn-pulse"
+                    >Reserva tu Estadía</a
+                >
+            </div>
+
+            <a href="#about" class="scroll-down-arrow" aria-label="Deslizar hacia abajo">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section class="about-bento-section container reveal" id="about">
+    <div class="about-bento-grid">
+        
+        <div class="bento-col-content">
+            <div class="bento-header">
+                <h2 class="section-title-left">Bienvenidos a Hostal Acuarius</h2>
+                <p class="about-desc">
+                    Ubicados a pasos de la Plaza de Armas, somos más que un hostal: somos tu hogar en Puno. 
+                    Desde nuestra fundación, trabajamos para ofrecerte seguridad, limpieza y ese calor humano 
+                    que hace la diferencia en el Altiplano.
+                </p>
+            </div>
+
+            <div class="values-mini-grid">
+                <div class="value-item">
+                    <div class="value-icon"><i class="fas fa-bullseye"></i></div>
+                    <div class="value-text">
+                        <strong>Nuestra Misión</strong>
+                        <span>Calidad y calidez puneña.</span>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon"><i class="fas fa-eye"></i></div>
+                    <div class="value-text">
+                        <strong>Nuestra Visión</strong>
+                        <span>Líderes en hospitalidad.</span>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="value-text">
+                        <strong>Ubicación Top</strong>
+                        <span>Cerca de todo.</span>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="value-text">
+                        <strong>Seguridad</strong>
+                        <span>Tranquilidad 24/7.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-area">
+                <h3 class="services-label">Incluye:</h3>
+                <div class="services-pills-list">
+                    <div class="service-pill"><i class="fas fa-wifi"></i> WiFi</div>
+                    <div class="service-pill"><i class="fas fa-shower"></i> Agua Caliente</div>
+                    <div class="service-pill"><i class="fas fa-utensils"></i> Desayuno</div>
+                    <div class="service-pill"><i class="fas fa-tv"></i> TV Cable</div>
+                    <div class="service-pill"><i class="fas fa-car"></i> Cochera</div>
+                    <div class="service-pill"><i class="fas fa-concierge-bell"></i> Recepción 24h</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bento-col-contact">
+            <div class="contact-card-integrated">
+                <div class="contact-row-top">
+                    <div class="contact-data-item">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <div>
+                            <strong>Dirección</strong>
+                            <span>Jr. Cajamarca 206, Puno</span>
+                        </div>
+                    </div>
+                    <div class="contact-data-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <strong>Teléfono</strong>
+                            <a href="tel:+51944278647">+51 944 278 647</a>
+                        </div>
+                    </div>
+                    <div class="contact-data-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <a href="mailto:contacto@hostalacuarius.com">contacto@hostalacuarius.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="check-times-row">
+                    <div class="time-item">
+                        <i class="fas fa-clock"></i>
+                        <span><strong>Check-In:</strong> 10:00 – 10:30 hrs.</span>
+                    </div>
+                    <div class="time-divider">|</div>
+                    <div class="time-item">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span><strong>Check-Out:</strong> 11:00 hrs.</span>
+                    </div>
+                </div>
+                
+                <div class="map-frame-integrated">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.2987780281987!2d-70.02870992404007!3d-15.840886524103288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915d695dd2de208d%3A0x34b6cbb487f845c2!2sHostal%20Acuarius%20Puno!5e0!3m2!1ses-419!2spe!4v1760894764117!5m2!1ses-419!2spe"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <section 
+    class="rooms-section container reveal" 
+    id="habitaciones" 
+    x-data="{ 
+        /* --- Lógica de Scroll (Botones Flecha) --- */
+        container: null,
+        init() {
+            this.container = this.$refs.scrollContainer;
+        },
+        scrollRight() {
+            const track = this.container;
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            // 344px = Ancho tarjeta (320) + gap (24) aprox
+            if (track.scrollLeft >= maxScroll - 10) {
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: 344, behavior: 'smooth' });
+            }
+        },
+        scrollLeft() {
+            const track = this.container;
+            if (track.scrollLeft <= 10) {
+                track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: -344, behavior: 'smooth' });
+            }
+        },
+
+        /* --- Lógica de Arrastre con Mouse (Drag to Scroll) --- */
+        isDown: false,
+        startX: 0,
+        scrollLeftPos: 0,
+        isDragging: false, // Bandera para diferenciar clic de arrastre
+
+        startDrag(e) {
+            this.isDown = true;
+            this.isDragging = false;
+            this.container.classList.add('is-dragging');
+            this.startX = e.pageX - this.container.offsetLeft;
+            this.scrollLeftPos = this.container.scrollLeft;
+        },
+        stopDrag() {
+            this.isDown = false;
+            this.container.classList.remove('is-dragging');
+            // Pequeño timeout para limpiar la bandera después de que el evento 'click' potencial haya ocurrido
+            setTimeout(() => { this.isDragging = false; }, 50);
+        },
+        moveDrag(e) {
+            if (!this.isDown) return;
+            e.preventDefault();
+            const x = e.pageX - this.container.offsetLeft;
+            const walk = (x - this.startX) * 1.5; // Velocidad de arrastre (1.5x)
+            
+            // Si se mueve más de 5px, lo consideramos arrastre y bloqueamos el click de la imagen
+            if (Math.abs(walk) > 5) {
+                this.isDragging = true;
+            }
+            this.container.scrollLeft = this.scrollLeftPos - walk;
+        },
+
+        /* --- Lógica Lightbox --- */
+        lightboxOpen: false,
+        activeImage: '',
+        activeAlt: '',
+        openZoom(src, alt) {
+            // SEGURIDAD: Si estamos arrastrando, NO abrir la foto
+            if (this.isDragging) return;
+            
+            this.activeImage = src;
+            this.activeAlt = alt;
+            this.lightboxOpen = true;
+        },
+        closeZoom() {
+            this.lightboxOpen = false;
+        }
+    }"
+    @keydown.escape.window="closeZoom()"
+>
+    <div class="section-header-flex reveal">
+        <div>
+            <h2 class="section-title">Nuestras Habitaciones</h2>
+            <p class="section-subtitle">Descubre el espacio ideal para tu descanso.</p>
+        </div>
+        <div class="slider-nav-buttons">
+            <button @click="scrollLeft()" class="slider-btn" aria-label="Anterior">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button @click="scrollRight()" class="slider-btn" aria-label="Siguiente">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div 
+        class="rooms-horizontal-track" 
+        x-ref="scrollContainer"
+        @mousedown="startDrag($event)"
+        @mouseleave="stopDrag()"
+        @mouseup="stopDrag()"
+        @mousemove="moveDrag($event)"
+    >
+        {allRooms.map((room) => (
+            <article class="room-compact-card">
+                
+                <div class="compact-image-wrapper"
+                    x-data={`{
+                        images: ${JSON.stringify(room.images)},
+                        curr: 0,
+                        nextImg() { this.curr = (this.curr + 1) % this.images.length; },
+                        prevImg() { this.curr = (this.curr - 1 + this.images.length) % this.images.length; }
+                    }`}
+                >
+                    <template x-for="(img, idx) in images" :key="idx">
+                        <img 
+                            :src="img.src" 
+                            :alt="img.alt" 
+                            x-show="curr === idx"
+                            class="compact-img fade-in"
+                            style="cursor: zoom-in;"
+                            @click="openZoom(img.src, img.alt)"
+                            draggable="false" 
+                        />
+                        </template>
+                    
+                    {/* CAMBIO 1: Badge explícito sobre el tipo de baño */}
+                    <div class="room-type-badge" style={room.type === 'compartido' ? 'background: rgba(200, 80, 0, 0.85);' : ''}>
+                        {room.type === 'privado' ? 'Baño Privado' : 'Baño Compartido'}
+                    </div>
+
+                    <div class="compact-img-controls">
+                        <button @click.stop="prevImg()" @mousedown.stop><i class="fas fa-chevron-left"></i></button>
+                        <button @click.stop="nextImg()" @mousedown.stop><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="compact-content">
+                    <div class="compact-header">
+                        {/* Limpiamos el título para que no repita info */}
+                        <h3 class="compact-title">{room.title.replace('Habitación ', '').replace(' (Baño Compartido)', '')}</h3>
+                        <div class="compact-price">
+                            <div class="price-row">
+                                <span class="amount">{room.price.pen}</span>
+                                <span class="amount-usd">/ {room.price.usd}</span>
+                            </div>
+                            <span class="period">por noche</span>
+                        </div>
+                    </div>
+
+                    <p class="compact-desc" title={room.desc}>
+                        {room.desc.length > 80 ? room.desc.substring(0, 80) + '...' : room.desc}
+                    </p>
+
+                    <div class="compact-features">
+                        {room.features.slice(0, 3).map(feat => (
+                            <span title={feat.txt}>
+                                <i class={feat.icon}></i> 
+                                {/* CAMBIO 2: Si es info del baño, mostramos texto completo. Si no, solo la primera palabra */}
+                                {feat.txt.includes('Baño') ? feat.txt : feat.txt.split(' ')[0]}
+                            </span>
+                        ))}
+                    </div>
+
+                    <button
+                        @click={`$dispatch('open-booking-modal', { room: '${room.title}' })`}
+                        class="btn-compact"
+                        style="cursor: pointer; width: 100%;"
+                    >
+                        Reservar Ahora
+                    </button>
+                </div>
+            </article>
+        ))}
+    </div>
+
+    <div 
+        class="room-lightbox-overlay" 
+        x-show="lightboxOpen" 
+        x-transition.opacity.duration.300ms
+        @click.self="closeZoom()"
+        style="display: none;"
+    >
+        <div class="room-lightbox-content" @click.outside="closeZoom()">
+            <img :src="activeImage" :alt="activeAlt" class="room-lightbox-img">
+            <button class="room-lightbox-close" @click="closeZoom()">×</button>
+        </div>
+    </div>
+</section>
+
+    <section class="offers-section container reveal" id="ofertas">
+        <div class="section-header-compact center-text">
+            <h2 class="section-title">Ofertas Especiales</h2>
+            <p class="section-subtitle">Promociones exclusivas para tu estadía.</p>
+        </div>
+
+        <div class="offers-horizontal-track">
+            
+            <div class="offer-card-compact">
+                <div class="offer-img-wrapper">
+                    <Image src={offerUros} alt="Oferta Uros" format="webp" width={400} height={250} class="offer-img" />
+                    <span class="offer-badge">-20%</span>
+                </div>
+                <div class="offer-content-compact">
+                    <h3>{promociones.anticipada.title}</h3>
+                    <p>{promociones.anticipada.desc}</p> 
+                    <div class="offer-meta">
+                        <i class="fas fa-calendar-check"></i> {promociones.anticipada.meta}
+                    </div>
+                    <a href="#" class="btn-link">Ver Oferta <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="offer-card-compact">
+                <div class="offer-img-wrapper">
+                    <Image src={offerHero3} alt="Larga Estadía" format="webp" width={400} height={250} class="offer-img" />
+                    <span class="offer-badge">Promo</span>
+                </div>
+                <div class="offer-content-compact">
+                    <h3>{promociones.larga.title}</h3>
+                    <p>{promociones.larga.desc}</p>
+                    <div class="offer-meta">
+                        <i class="fas fa-moon"></i> {promociones.larga.meta}
+                    </div>
+                    <a href="#" class="btn-link">Ver Oferta <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            </div>
+    </section>
+
+    <section class="reviews-section container reveal" id="reviews" x-data="carousel()">
+        <div class="section-header-compact center-text">
+            <h2 class="section-title">Lo que dicen de nosotros</h2>
+        </div>
+
+        <div class="reviews-dashboard">
+            <div class="dashboard-score">
+                <div class="score-big">4.5</div>
+                <div class="score-text">
+                    <span class="score-verdict">Excelente</span>
+                    <span class="score-count">Based on 100+ reviews</span>
+                </div>
+            </div>
+
+            <div class="dashboard-sources">
+                <div class="source-pill"><i class="fab fa-google"></i> 4.7/5</div>
+                <div class="source-pill"><i class="fas fa-suitcase"></i> 8.5/10</div>
+            </div>
+
+            <div class="dashboard-categories">
+                <div class="cat-badge"><span>Personal</span> <strong>9.4</strong></div>
+                <div class="cat-badge"><span>Limpieza</span> <strong>8.7</strong></div>
+                <div class="cat-badge"><span>Ubicación</span> <strong>8.9</strong></div>
+                <div class="cat-badge"><span>Confort</span> <strong>8.6</strong></div>
+                <div class="cat-badge"><span>Calidad/Precio</span> <strong>8.9</strong></div>
+                <div class="cat-badge"><span>WiFi</span> <strong>8.5</strong></div>
+            </div>
+        </div>
+
+        <div class="reviews-carousel-container" @mouseenter="stopAnimation" @mouseleave="startAnimation">
+            <div class="reviews-carousel-track" x-ref="track" :class="{ 'dragging': isDragging }"
+                @mousedown.prevent="dragStart" @touchstart.prevent="dragStart" @mousemove="dragMove"
+                @touchmove="dragMove" @mouseup="dragEnd" @mouseleave="dragEnd" @touchend="dragEnd">
+                <template x-for="(item, index) in items" :key="index">
+                    <div>
+                        <template x-if="item.type === 'review'">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <span class="review-author" x-text="item.author"></span>
+                                    <div class="review-rating" x-html="getStars(item.rating)"></div>
+                                </div>
+                                <p class="review-text" x-text="item.text"></p>
+                                <div class="review-source">
+                                    <i :class="item.source_icon"></i>
+                                    <span x-text="item.source"></span>
+                                </div>
+                            </div>
+                        </template>
+                        <template x-if="item.type === 'photo'">
+                            <div class="review-card photo-card">
+                                <img :src="item.src" :alt="item.alt" />
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+            <button @click="prev()" class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button @click="next()" class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <div class="text-center mt-4">
+             <a href="#contacto" class="btn btn-secondary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Deja tu opinión</a>
+        </div>
+    </section>
+
+    <section 
+    class="tours-section container reveal" 
+    id="tours"
+    x-data="{ 
+        container: null,
+        isDown: false,
+        startX: 0,
+        scrollLeftPos: 0,
+        isDragging: false,
+        
+        init() { 
+            this.container = this.$refs.toursContainer; 
+        },
+        startDrag(e) {
+            this.isDown = true;
+            this.isDragging = false;
+            this.container.classList.add('is-dragging');
+            this.startX = e.pageX - this.container.offsetLeft;
+            this.scrollLeftPos = this.container.scrollLeft;
+        },
+        stopDrag() {
+            this.isDown = false;
+            this.container.classList.remove('is-dragging');
+            setTimeout(() => { this.isDragging = false; }, 50);
+        },
+        moveDrag(e) {
+            if (!this.isDown) return;
+            e.preventDefault();
+            const x = e.pageX - this.container.offsetLeft;
+            const walk = (x - this.startX) * 1.5;
+            if (Math.abs(walk) > 5) this.isDragging = true;
+            this.container.scrollLeft = this.scrollLeftPos - walk;
+        },
+        /* --- LÓGICA DE BUCLE INFINITO --- */
+        scrollRight() { 
+            const track = this.container;
+            const stride = 324; // Ancho card (300) + gap (24)
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            
+            // Si estamos cerca del final, volver al principio
+            if (track.scrollLeft >= maxScroll - 20) {
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: stride, behavior: 'smooth' }); 
+            }
+        },
+        scrollLeft() { 
+            const track = this.container;
+            const stride = 324;
+            // Si estamos al principio, ir al final
+            if (track.scrollLeft <= 20) {
+                track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: -stride, behavior: 'smooth' }); 
+            }
+        }
+    }"
+>
+    <div class="section-header-compact center-text">
+        <h2 class="section-title">Explora Puno con Nosotros</h2>
+        <p class="section-subtitle">Aventuras inolvidables en el altiplano.</p>
+        
+        <div class="tours-nav-controls">
+            <button @click="scrollLeft()" class="nav-circle-btn"><i class="fas fa-chevron-left"></i></button>
+            <button @click="scrollRight()" class="nav-circle-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <div 
+        class="tours-carousel-track" 
+        x-ref="toursContainer"
+        @mousedown="startDrag($event)"
+        @mouseleave="stopDrag()"
+        @mouseup="stopDrag()"
+        @mousemove="moveDrag($event)"
+    >
+        {allTours.map((tour) => (
+            <article class="tour-card-carousel">
+                <div class="tour-img-box">
+                    <Image 
+                        src={tour.image} 
+                        alt={tour.title} 
+                        width={400} 
+                        height={300} 
+                        format="webp"
+                        class="tour-img"
+                        draggable="false"
+                    />
+                    <div class="tour-badges">
+                        <span class="badge-duration"><i class="fas fa-clock"></i> {tour.duration}</span>
+                    </div>
+                </div>
+                
+                <div class="tour-content-box">
+                    <h3 class="tour-title">{tour.title}</h3>
+                    
+                    <div class="tour-schedule">
+                        <i class="fas fa-calendar-alt"></i> {tour.schedule}
+                    </div>
+
+                    <p class="tour-desc" title={tour.desc}>
+                        {tour.desc}
+                    </p>
+                    
+                    <div class="tour-includes-box">
+                        <h4 class="includes-title">Incluye:</h4>
+                        <ul class="tour-includes-list">
+                            {tour.includes.map(item => (
+                                <li><i class="fas fa-check"></i> {item}</li>
+                            ))}
+                        </ul>
+                        
+                        {tour.extra && (
+                            <div class="tour-extra-info">
+                                <i class={`fas ${tour.extra.type === 'No Incluye' ? 'fa-times-circle' : 'fa-info-circle'}`}></i>
+                                <strong>{tour.extra.type}:</strong> {tour.extra.text}
+                            </div>
+                        )}
+                    </div>
+
+                    <a href={tour.link} target="_blank" rel="noopener noreferrer" class="btn-tour-outline">
+                        Consultar Tour <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </article>
+        ))}
+    </div>
+</section>
+
+    <section
+    class="gallery-section container reveal"
+    id="galeria"
+    x-data={`{
+        /* --- Lógica Lightbox --- */
+        isOpen: false,
+        currentImageIndex: 0,
+        images: ${JSON.stringify(galleryItems)},
+        
+        /* --- Lógica Drag Scroll --- */
+        container: null,
+        isDown: false,
+        startX: 0,
+        scrollLeftPos: 0,
+        isDragging: false,
+
+        init() {
+            this.container = this.$refs.galleryTrack;
+        },
+
+        /* Funciones de Arrastre */
+        startDrag(e) {
+            this.isDown = true;
+            this.isDragging = false;
+            this.container.classList.add('is-dragging');
+            this.startX = e.pageX - this.container.offsetLeft;
+            this.scrollLeftPos = this.container.scrollLeft;
+        },
+        stopDrag() {
+            this.isDown = false;
+            this.container.classList.remove('is-dragging');
+            setTimeout(() => { this.isDragging = false; }, 50);
+        },
+        moveDrag(e) {
+            if (!this.isDown) return;
+            e.preventDefault();
+            const x = e.pageX - this.container.offsetLeft;
+            const walk = (x - this.startX) * 1.5;
+            if (Math.abs(walk) > 5) this.isDragging = true;
+            this.container.scrollLeft = this.scrollLeftPos - walk;
+        },
+
+        /* Funciones Lightbox */
+        openLightbox(index) {
+            if (this.isDragging) return; // Evita abrir si se está arrastrando
+            this.currentImageIndex = index;
+            this.isOpen = true;
+        },
+        closeLightbox() {
+            this.isOpen = false;
+        },
+        nextImage() {
+            this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
+        },
+        prevImage() {
+            this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
+        }
+    }`}
+    @keydown.escape.window="closeLightbox()"
+    @keydown.arrow-right.window="if (isOpen) nextImage()"
+    @keydown.arrow-left.window="if (isOpen) prevImage()"
+>
+    
+    <div class="section-header-compact center-text">
+        <h2 class="section-title">Nuestra Galería</h2>
+        <p class="section-subtitle">Desliza para ver nuestros rincones favoritos.</p>
+    </div>
+
+    <div 
+        class="gallery-horizontal-track" 
+        x-ref="galleryTrack"
+        @mousedown="startDrag($event)"
+        @mouseleave="stopDrag()"
+        @mouseup="stopDrag()"
+        @mousemove="moveDrag($event)"
+    >
+        <template x-for="(image, index) in images" :key="index">
+            <div class="masonry-item-horizontal" @click="openLightbox(index)">
+                <img :src="image.src" :alt="image.alt" loading="lazy" draggable="false"/>
+                <div class="masonry-overlay">
+                    <i class="fas fa-expand-alt"></i>
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <div class="gallery-lightbox" x-show="isOpen" @click.self="closeLightbox()" x-transition.opacity x-cloak>
+        <button @click="closeLightbox()" class="lightbox-close-btn">×</button>
+        <button @click.stop="prevImage()" class="lightbox-nav-btn prev">❮</button>
+        <button @click.stop="nextImage()" class="lightbox-nav-btn next">❯</button>
+        <div class="lightbox-content">
+            <img :src="isOpen ? images[currentImageIndex].src : ''" class="lightbox-image" @click.stop />
+            <div class="lightbox-caption" x-text="isOpen ? images[currentImageIndex].alt : ''"></div>
+        </div>
+    </div>
+</section>
+
+    <section class="contact-section container reveal" id="contacto">
+        <div class="section-header">
+            <h2 class="section-title">Envíanos un Mensaje</h2>
+            <p class="section-subtitle">
+                Estamos aquí para ayudarte. Completa el formulario y te
+                responderemos a la brevedad.
+            </p>
+        </div>
+
+        <div class="contact-form-container">
+            <form
+                action="https://formspree.io/f/mwprzban"
+                method="POST"
+                class="contact-form"
+            >
+                <div class="form-group">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Tu Nombre"
+                        required
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Tu Correo Electrónico"
+                        required
+                    />
+                </div>
+                <textarea
+                    name="message"
+                    rows="6"
+                    placeholder="Escribe tu mensaje aquí..."
+                    required></textarea>
+                <button type="submit" class="btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+</Layout>

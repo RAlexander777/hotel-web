@@ -1,76 +1,85 @@
 ---
+/* src/components/Footer.astro */
 import { Image } from 'astro:assets';
 import logoFooter from '../assets/images/logo-hostal-acuarius-puno.png';
-
-// Importación de Logos de Pago
 import visaImg from '../assets/images/pago/visa.png';
 import mastercardImg from '../assets/images/pago/mastercard.png';
 import amexImg from '../assets/images/pago/americanexpress.png';
 import dinersImg from '../assets/images/pago/dinersclub.png';
+
+const { lang = 'es' } = Astro.props;
+
+const t = {
+    es: {
+        desc: "Tu refugio de confort y hospitalidad en el corazón de Puno.",
+        payment: "Medios de Pago Aceptados",
+        nav: "Navegación",
+        about: "Nosotros", rooms: "Habitaciones", tours: "Tours", contact: "Contacto",
+        terms: "Términos y Condiciones",
+        follow: "Síguenos",
+        rights: "Todos los derechos reservados.",
+        design: "Diseño y Desarrollo por",
+        // Modal Headers
+        termsTitle: "Términos y Condiciones",
+        termsSub: "Política de Alojamiento y Uso del Sitio Web",
+        intro: "Al acceder a este sitio web (Hostalacuariuspuno.com) y hospedarse en Hostal Acuarius Puno, usted acepta los siguientes términos y condiciones sin limitaciones.",
+        accept: "He leído y acepto los términos",
+        legal: "Estos Términos y Condiciones se rigen e interpretan de acuerdo con las leyes del Perú."
+    },
+    en: {
+        desc: "Your refuge of comfort and hospitality in the heart of Puno.",
+        payment: "Accepted Payment Methods",
+        nav: "Navigation",
+        about: "About Us", rooms: "Rooms", tours: "Tours", contact: "Contact",
+        terms: "Terms & Conditions",
+        follow: "Follow Us",
+        rights: "All rights reserved.",
+        design: "Designed & Developed by",
+        // Modal Headers
+        termsTitle: "Terms & Conditions",
+        termsSub: "Accommodation & Website Use Policy",
+        intro: "By accessing this website (Hostalacuariuspuno.com) and staying at Hostal Acuarius Puno, you accept the following terms and conditions without limitation.",
+        accept: "I have read and accept the terms",
+        legal: "These Terms and Conditions are governed by and interpreted in accordance with the laws of Peru."
+    }
+};
+
+const text = t[lang as keyof typeof t];
 ---
 
 <div x-data="{ showTerms: false }">
-    
     <footer class="site-footer">
         <div class="footer-container container">
             
             <div class="footer-col footer-about">
-                <Image
-                    src={logoFooter}
-                    alt="Logo de Hostal Acuarius, Puno"
-                    class="footer-logo"
-                    height={80}
-                    width={300} 
-                    format="webp"
-                />
-                
-                <p class="footer-description">
-                    Tu refugio de confort y hospitalidad en el corazón de Puno. 
-                    Ubicados a solo pasos de la Plaza de Armas, ofrecemos una experiencia 
-                    segura y cálida para hacer de tu viaje algo inolvidable.
-                </p>
-
+                <Image src={logoFooter} alt="Logo" class="footer-logo" height={80} width={300} format="webp" />
+                <p class="footer-description">{text.desc}</p>
                 <div class="payment-section">
-                    <span class="payment-title">Medios de Pago Aceptados</span>
+                    <span class="payment-title">{text.payment}</span>
                     <div class="payment-grid">
-                        <div class="pay-card" title="Visa">
-                            <Image src={visaImg} alt="Visa" height={25} format="webp" />
-                        </div>
-                        <div class="pay-card" title="Mastercard">
-                            <Image src={mastercardImg} alt="Mastercard" height={25} format="webp" />
-                        </div>
-                        <div class="pay-card" title="American Express">
-                            <Image src={amexImg} alt="Amex" height={25} format="webp" />
-                        </div>
-                        <div class="pay-card" title="Diners Club">
-                            <Image src={dinersImg} alt="Diners" height={25} format="webp" />
-                        </div>
+                        <div class="pay-card"><Image src={visaImg} alt="Visa" height={25} format="webp" /></div>
+                        <div class="pay-card"><Image src={mastercardImg} alt="Mastercard" height={25} format="webp" /></div>
+                        <div class="pay-card"><Image src={amexImg} alt="Amex" height={25} format="webp" /></div>
+                        <div class="pay-card"><Image src={dinersImg} alt="Diners" height={25} format="webp" /></div>
                     </div>
                 </div>
             </div>
 
             <div class="footer-col footer-links">
-                <h4 class="footer-title">Navegación</h4>
+                <h4 class="footer-title">{text.nav}</h4>
                 <ul>
-                    <li><a href="#about">Nosotros</a></li>
-                    <li><a href="#habitaciones">Habitaciones</a></li>
-                    <li><a href="#tours">Tours y Experiencias</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                    <li>
-                        <button @click.prevent="showTerms = true" class="btn-terms-link">
-                            Términos y Condiciones
-                        </button>
-                    </li>
+                    <li><a href="#about">{text.about}</a></li>
+                    <li><a href="#habitaciones">{text.rooms}</a></li>
+                    <li><a href="#tours">{text.tours}</a></li>
+                    <li><a href="#contacto">{text.contact}</a></li>
+                    <li><button @click.prevent="showTerms = true" class="btn-terms-link">{text.terms}</button></li>
                 </ul>
             </div>
 
             <div class="footer-col footer-contact">
-                <h4 class="footer-title">Contacto</h4>
+                <h4 class="footer-title">{text.contact}</h4>
                 <ul>
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Jr. Cajamarca 206, Puno, Perú</span>
-                    </li>
+                    <li><i class="fas fa-map-marker-alt"></i><span>Jr. Cajamarca 206, Puno, Perú</span></li>
                     <li>
                         <i class="fas fa-phone-alt"></i>
                         <div class="contact-phones">
@@ -78,177 +87,257 @@ import dinersImg from '../assets/images/pago/dinersclub.png';
                             <a href="tel:051775993">(051) 775993</a>
                         </div>
                     </li>
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:hostalacuariuspuno@gmail.com">hostalacuariuspuno@gmail.com</a>
-                    </li>
+                    <li><i class="fas fa-envelope"></i><a href="mailto:hostalacuariuspuno@gmail.com">hostalacuariuspuno@gmail.com</a></li>
                 </ul>
             </div>
 
             <div class="footer-col footer-social">
-                <h4 class="footer-title">Síguenos</h4>
+                <h4 class="footer-title">{text.follow}</h4>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/share/1EGQqyvqPe/?mibextid=wwXIfr" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/acuariusutama/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                    <a href="https://www.facebook.com/share/1EGQqyvqPe/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/acuariusutama/" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <div class="container footer-bottom-container">
-                <p class="copyright">
-                    © {new Date().getFullYear()} Hostal Acuarius - Todos los derechos reservados.
-                </p>
-                <p class="developer-credit">
-                    Diseño y Desarrollo por
-                    <a href="https://www.linkedin.com/in/rodrigo-alexander-becerra-lucano-268a8121a/" target="_blank" rel="noopener noreferrer">
+                <p class="copyright">© {new Date().getFullYear()} Hostal Acuarius - {text.rights}</p>
+                <p class="developer-credit">{text.design} <a href="https://www.linkedin.com/in/rodrigo-alexander-becerra-lucano-268a8121a/" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-linkedin"></i> Rodrigo Alexander Becerra Lucano
-                    </a>
-                </p>
+                    </a></p>
             </div>
         </div>
     </footer>
 
-    <div 
-        class="terms-modal-overlay" 
-        x-show="showTerms" 
-        style="display: none;"
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-in duration-200"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-    >
+    <div class="terms-modal-overlay" x-show="showTerms" style="display: none;" x-transition.opacity>
         <div class="modal-backdrop" @click="showTerms = false"></div>
-
-        <div class="terms-modal-content" 
-             x-show="showTerms"
-             x-transition:enter="transition ease-out duration-300"
-             x-transition:enter-start="opacity-0 transform translate-y-8 scale-95"
-             x-transition:enter-end="opacity-100 transform translate-y-0 scale-100"
-        >
+        <div class="terms-modal-content" x-show="showTerms" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-8 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100">
             <button class="terms-close-btn" @click="showTerms = false">&times;</button>
             
             <div class="terms-header">
-                <h3>Términos y Condiciones</h3>
-                <p>Política de Alojamiento y Uso del Sitio Web</p>
+                <h3>{text.termsTitle}</h3>
+                <p>{text.termsSub}</p>
             </div>
             
             <div class="terms-body">
-                <p class="terms-intro-text">
-                    Al acceder a este sitio web (Hostalacuariuspuno.com) y hospedarse en Hostal Acuarius Puno, usted acepta los siguientes términos y condiciones sin limitaciones.
-                </p>
+                <p class="terms-intro-text">{text.intro}</p>
 
-                <div class="terms-section">
-                    <h4>1. Tarifas</h4>
-                    <ul>
-                        <li>Las tarifas publicadas son valoradas por cada noche de alojamiento.</li>
-                        <li>Las tarifas especiales o promocionales son válidas únicamente reservando en línea a través de nuestra página web.</li>
-                        <li>Los precios pueden cambiar sin previo aviso hasta el momento de la confirmación.</li>
-                        <li>Las tarifas y pagos se efectúan en <strong>Dólares Estadounidenses (USD)</strong>. Se permite el pago en moneda nacional (Soles) según el tipo de cambio del día.</li>
-                    </ul>
+                {lang === 'es' ? (
+                    /* --- CONTENIDO EN ESPAÑOL --- */
+                    <div>
+                        <div class="terms-section">
+                            <h4><i class="fas fa-tags"></i> 1. Tarifas</h4>
+                            <ul>
+                                <li>Las tarifas publicadas son valoradas por cada noche de alojamiento.</li>
+                                <li>Las tarifas especiales o promocionales son válidas <strong>únicamente reservando en línea</strong> a través de nuestra página web.</li>
+                                <li>Los precios pueden cambiar sin previo aviso hasta el momento de la confirmación.</li>
+                                <li>Las tarifas y pagos se efectúan en <strong>Dólares Estadounidenses (USD)</strong>. Se permite el pago en moneda nacional (Soles) según el tipo de cambio del día.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-calendar-check"></i> 2. Reservaciones y Depósitos</h4>
+                            <ul>
+                                <li>Las reservas pueden realizarse vía web, Call Center (051-775993) o WhatsApp (+51 944 278 647).</li>
+                                <li><strong>Confirmación:</strong> Una reserva solo se considera confirmada tras realizar un Depósito de Garantía. De lo contrario, es solo una solicitud.</li>
+                                <li><strong>Monto de Garantía:</strong> Se requiere el depósito equivalente a media noche de estadía (o 1 noche en días festivos). Para ofertas especiales, el depósito es del 50%.</li>
+                                <li>El saldo pendiente se cancela al momento del Check-in.</li>
+                                <li>Los comprobantes de depósito deben enviarse a: <strong>hostalacuariuspunoqAa@gmail.com</strong>.</li>
+                                <li>Las consultas sobre reservas se responden en un plazo máximo de 2 días hábiles.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-clock"></i> 3. Check-in y Check-out</h4>
+                            <ul>
+                                <li><strong>Check-in (Entrada):</strong> A partir de las 11:00 a.m.</li>
+                                <li><strong>Check-out (Salida):</strong> Hasta las 10:30 a.m.</li>
+                                <li>Las salidas después de las 10:30 a.m. estarán sujetas al cobro de una noche adicional.</li>
+                                <li>Es obligatorio presentar DNI, Pasaporte o Carnet de Extranjería de <strong>todos los ocupantes</strong>, incluyendo niños y visitas.</li>
+                                <li><strong>Menores:</strong> Solo pueden ingresar con acompañantes responsables y, si no son sus padres, con autorización notarial.</li>
+                                <li><strong>Visitas:</strong> Máximo 30 minutos y deben estar debidamente identificadas.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-credit-card"></i> 4. Pagos</h4>
+                            <ul>
+                                <li>Se requiere tarjeta de crédito/débito o depósito en cuenta corriente para fijar la reserva.</li>
+                                <li>La información de tarjeta de crédito se usa de forma confidencial solo para procesar el pago.</li>
+                                <li>Si elige "Pagar a la llegada", su reserva <strong>NO está garantizada</strong> y se considera solo una intención de reserva.</li>
+                                <li>Se aceptan transferencias bancarias con aviso previo.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-exchange-alt"></i> 5. Cambios, Cancelaciones y No-Show</h4>
+                            <ul>
+                                <li>Cambios sujetos a disponibilidad.</li>
+                                <li><strong>Cancelación Gratuita:</strong> Se permite cancelar o modificar sin costo hasta 48 horas antes del check-in (salvo promociones con condiciones especiales).</li>
+                                <li><strong>Penalidad por Cancelación Tardía:</strong> Si no se respeta el plazo de 48h, se cobrarán las noches anuladas.</li>
+                                <li><strong>No-Show:</strong> Si el pasajero no se presenta sin notificación previa, se cobrará automáticamente una penalidad de las 2 primeras noches.</li>
+                                <li><strong>Temporadas Altas/Festivos:</strong> Cancelaciones requieren 15 días de anticipación (penalidad: 1 noche). En temporada baja (2-5 días previos), la penalidad es 1 noche.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-concierge-bell"></i> 6. Servicios del Hostal</h4>
+                            <ul>
+                                <li><strong>Gratuitos:</strong> WiFi en todo el hotel y custodia de equipaje (hasta la hora de salida/llegada).</li>
+                                <li><strong>Con Costo Adicional:</strong> Estacionamiento (Cochera), Lavandería (por prenda/kg), Movilidad (coordinar 24h antes) y Tours.</li>
+                                <li>El hotel no se responsabiliza por dinero, joyas u objetos de valor dejados en la habitación. Se recomienda dejarlos en custodia en recepción.</li>
+                                <li>Objetos olvidados se guardan por 30 días calendario; vencido el plazo, el hotel dispondrá de ellos.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-exclamation-triangle"></i> 7. Daños al Mobiliario</h4>
+                            <ul>
+                                <li>El huésped deberá cubrir los costos por daños no considerados desgaste natural. Sanciones en Soles (S/.):</li>
+                                <li><strong>S/. 100.00:</strong> Por daños en lencería (sábanas, edredón, almohadas).</li>
+                                <li><strong>S/. 300.00:</strong> Por daños en alfombras, muebles y objetos.</li>
+                                <li><strong>S/. 1000.00:</strong> Por daños en el colchón.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-ban"></i> 8. Restricciones y Conducta</h4>
+                            <ul>
+                                <li>No somos Pet Friendly (No se aceptan mascotas).</li>
+                                <li>Prohibido ingresar ropa de cama propia (almohadas, sábanas).</li>
+                                <li>Prohibido ingresar aparatos eléctricos para cocinar/calentar. El hotel puede retener estos artículos.</li>
+                                <li><strong>Prohibido Fumar:</strong> Según Ley N° 29517, está prohibido fumar en las habitaciones. Sanción: 1 noche de alojamiento o cancelación de estadía.</li>
+                                <li>Prohibido el ingreso de personas no registradas y el consumo/tenencia de drogas.</li>
+                                <li>Se espera una conducta ordenada que no interrumpa a otros huéspedes. El hotel se reserva el derecho de cancelar la reserva de inmediato ante violaciones de conducta.</li>
+                                <li><strong>Smart TV:</strong> El huésped es responsable de cerrar sesión en sus plataformas antes de retirarse.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-user-slash"></i> 9. Cliente No Grato</h4>
+                            <p>Se podrá declarar persona NO GRATA y denegar el servicio por:</p>
+                            <ul>
+                                <li>Retirarse sin pagar consumos o deudas.</li>
+                                <li>Registrarse con información falsa o suplantación de identidad.</li>
+                                <li>Uso de dinero o documentos falsificados.</li>
+                                <li>Agresiones, amenazas, acoso o robo dentro del hotel.</li>
+                                <li>Ingresar con menores sin autorización o acompañantes no identificados.</li>
+                            </ul>
+                        </div>
+                    </div>
+                ) : (
+                    /* --- ENGLISH CONTENT --- */
+                    <div>
+                        <div class="terms-section">
+                            <h4><i class="fas fa-tags"></i> 1. Rates</h4>
+                            <ul>
+                                <li>Published rates are valued per night of accommodation.</li>
+                                <li>Special or promotional rates are valid <strong>only when booking online</strong> through our website.</li>
+                                <li>Prices are subject to change without prior notice until confirmation.</li>
+                                <li>Rates and payments are made in <strong>US Dollars (USD)</strong>. Payment in local currency (Soles) is allowed based on the daily exchange rate.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-calendar-check"></i> 2. Reservations & Deposits</h4>
+                            <ul>
+                                <li>Reservations can be made via the website, Call Center (+51-775993), or WhatsApp (+51 944 278 647).</li>
+                                <li><strong>Confirmation:</strong> A reservation is only considered confirmed after a Warranty Deposit is made. Otherwise, it is merely a request.</li>
+                                <li><strong>Deposit Amount:</strong> A deposit equivalent to half a night's stay (or 1 night on holidays) is required. For special offers, the deposit is 50%.</li>
+                                <li>The remaining balance is paid upon Check-in.</li>
+                                <li>Proof of deposit must be sent to: <strong>hostalacuariuspunoqAa@gmail.com</strong>.</li>
+                                <li>Inquiries about reservations are answered within a maximum of 2 business days.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-clock"></i> 3. Check-in & Check-out</h4>
+                            <ul>
+                                <li><strong>Check-in:</strong> From 11:00 a.m.</li>
+                                <li><strong>Check-out:</strong> Until 10:30 a.m.</li>
+                                <li>Departures after 10:30 a.m. will be subject to an additional night's charge.</li>
+                                <li>It is mandatory to present an ID, Passport, or Alien Registration Card for <strong>all occupants</strong>, including children and visitors.</li>
+                                <li><strong>Minors:</strong> May only enter with responsible guardians and, if not their parents, with notarized authorization.</li>
+                                <li><strong>Visitors:</strong> Maximum 30 minutes and must be properly identified.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-credit-card"></i> 4. Payments</h4>
+                            <ul>
+                                <li>A credit/debit card or bank deposit is required to secure the reservation.</li>
+                                <li>Credit card information is used confidentially only to process payment.</li>
+                                <li>If you choose "Pay on arrival", your reservation is <strong>NOT guaranteed</strong> and is considered only a booking intention.</li>
+                                <li>Bank transfers are accepted with prior notice.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-exchange-alt"></i> 5. Changes, Cancellations & No-Show</h4>
+                            <ul>
+                                <li>Changes are subject to availability.</li>
+                                <li><strong>Free Cancellation:</strong> Allowed without cost up to 48 hours before check-in (except for promotions with special conditions).</li>
+                                <li><strong>Late Cancellation Penalty:</strong> If the 48h deadline is not met, the cancelled nights will be charged.</li>
+                                <li><strong>No-Show:</strong> If the guest does not show up without prior notification, a penalty of the first 2 nights will be automatically charged.</li>
+                                <li><strong>High Season/Holidays:</strong> Cancellations require 15 days notice (penalty: 1 night). In low season (2-5 days prior), the penalty is 1 night.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-concierge-bell"></i> 6. Hostel Services</h4>
+                            <ul>
+                                <li><strong>Complimentary:</strong> WiFi throughout the hotel and luggage storage (until departure/arrival time).</li>
+                                <li><strong>Additional Cost:</strong> Parking (Garage), Laundry (per item/kg), Transportation (coordinate 24h in advance), and Tours.</li>
+                                <li>The hotel is not responsible for money, jewelry, or valuables left in the room. It is recommended to leave them in custody at the reception.</li>
+                                <li>Lost items are kept for 30 calendar days; after this period, the hotel will dispose of them.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-exclamation-triangle"></i> 7. Damage to Property</h4>
+                            <ul>
+                                <li>The guest must cover costs for damages not considered natural wear and tear. Penalties in Soles (S/.):</li>
+                                <li><strong>S/. 100.00:</strong> For damage to linen (sheets, duvet, pillows).</li>
+                                <li><strong>S/. 300.00:</strong> For damage to carpets, furniture, and objects.</li>
+                                <li><strong>S/. 1000.00:</strong> For damage to the mattress.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-ban"></i> 8. Restrictions & Conduct</h4>
+                            <ul>
+                                <li>We are not Pet Friendly.</li>
+                                <li>Prohibited to bring own bedding (pillows, sheets).</li>
+                                <li>Prohibited to bring electrical appliances for cooking/heating. The hotel may retain these items.</li>
+                                <li><strong>No Smoking:</strong> According to Law N° 29517, smoking is prohibited in rooms. Penalty: 1 night accommodation or cancellation of stay.</li>
+                                <li>Entry of unregistered persons and possession/consumption of drugs is prohibited.</li>
+                                <li>Orderly conduct is expected so as not to disturb other guests. The hotel reserves the right to cancel the reservation immediately upon conduct violations.</li>
+                                <li><strong>Smart TV:</strong> The guest is responsible for logging out of their platforms before leaving.</li>
+                            </ul>
+                        </div>
+
+                        <div class="terms-section">
+                            <h4><i class="fas fa-user-slash"></i> 9. Right of Refusal (Persona Non Grata)</h4>
+                            <p>Service may be denied and a person declared NON GRATA for:</p>
+                            <ul>
+                                <li>Leaving without paying for consumption or debts.</li>
+                                <li>Registering with false information or identity theft.</li>
+                                <li>Use of counterfeit money or documents.</li>
+                                <li>Aggression, threats, harassment, or theft within the hotel.</li>
+                                <li>Entering with minors without authorization or unidentified companions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                )}
+
+                <div class="terms-legal">
+                    <p>{text.legal}</p>
                 </div>
-
-                <div class="terms-section">
-                    <h4>2. Reservaciones y Depósitos</h4>
-                    <ul>
-                        <li>Las reservas pueden realizarse vía web, Call Center (051-775993) o WhatsApp (+51 944 278 647).</li>
-                        <li><strong>Confirmación:</strong> Una reserva solo se considera confirmada tras realizar un <strong>Depósito de Garantía</strong>. De lo contrario, es solo una solicitud.</li>
-                        <li><strong>Monto de Garantía:</strong> Se requiere el depósito equivalente a media noche de estadía (o 1 noche en días festivos). Para ofertas especiales, el depósito es del 50%.</li>
-                        <li>El saldo pendiente se cancela al momento del Check-in.</li>
-                        <li>Los comprobantes de depósito deben enviarse a: <em>hostalacuariuspunoqAa@gmail.com</em>.</li>
-                        <li>Las consultas sobre reservas se responden en un plazo máximo de 2 días hábiles.</li>
-                    </ul>
-                </div>
-
-                <div class="terms-section">
-                    <h4>3. Check-in y Check-out</h4>
-                    <ul>
-                        <li><strong>Check-in (Entrada):</strong> A partir de las 11:00 a.m.</li>
-                        <li><strong>Check-out (Salida):</strong> Hasta las 10:30 a.m.</li>
-                        <li>Las salidas después de las 10:30 a.m. estarán sujetas al cobro de una noche adicional.</li>
-                        <li>Es obligatorio presentar DNI, Pasaporte o Carnet de Extranjería de <strong>todos los ocupantes</strong>, incluyendo niños y visitas.</li>
-                        <li><strong>Menores:</strong> Solo pueden ingresar con acompañantes responsables y, si no son sus padres, con autorización notarial.</li>
-                        <li><strong>Visitas:</strong> Máximo 30 minutos y deben estar debidamente identificadas.</li>
-                    </ul>
-                </div>
-
-                <div class="terms-section">
-                    <h4>4. Pagos</h4>
-                    <ul>
-                        <li>Se requiere tarjeta de crédito/débito o depósito en cuenta corriente para fijar la reserva.</li>
-                        <li>La información de tarjeta de crédito se usa de forma confidencial solo para procesar el pago.</li>
-                        <li>Si elige <strong>"Pagar a la llegada"</strong>, su reserva NO está garantizada y se considera solo una intención de reserva.</li>
-                        <li>Se aceptan transferencias bancarias con aviso previo.</li>
-                    </ul>
-                </div>
-
-                <div class="terms-section">
-                    <h4>5. Cambios, Cancelaciones y No-Show</h4>
-                    <ul>
-                        <li>Cambios sujetos a disponibilidad.</li>
-                        <li><strong>Cancelación Gratuita:</strong> Se permite cancelar o modificar sin costo hasta <strong>48 horas antes del check-in</strong> (salvo promociones con condiciones especiales).</li>
-                        <li><strong>Penalidad por Cancelación Tardía:</strong> Si no se respeta el plazo de 48h, se cobrarán las noches anuladas.</li>
-                        <li><strong>No-Show:</strong> Si el pasajero no se presenta sin notificación previa, se cobrará automáticamente una penalidad de las 2 primeras noches.</li>
-                        <li><strong>Temporadas Altas/Festivos:</strong> Cancelaciones requieren 15 días de anticipación (penalidad: 1 noche). En temporada baja (2-5 días previos), la penalidad es 1 noche.</li>
-                    </ul>
-                </div>
-
-                <div class="terms-section">
-                    <h4>6. Servicios del Hostal</h4>
-                    <ul>
-                        <li><strong>Gratuitos:</strong> WiFi en todo el hotel y custodia de equipaje (hasta la hora de salida/llegada).</li>
-                        <li><strong>Con Costo Adicional:</strong> Estacionamiento (Cochera), Lavandería (por prenda/kg), Movilidad (coordinar 24h antes) y Tours.</li>
-                        <li>El hotel no se responsabiliza por dinero, joyas u objetos de valor dejados en la habitación. Se recomienda dejarlos en custodia en recepción.</li>
-                        <li>Objetos olvidados se guardan por 30 días calendario; vencido el plazo, el hotel dispondrá de ellos.</li>
-                    </ul>
-                </div>
-
-                <div class="terms-section">
-                    <h4>7. Daños al Mobiliario</h4>
-                    <p>El huésped deberá cubrir los costos por daños no considerados desgaste natural. Sanciones en Soles (S/.):</p>
-                    <ul>
-                        <li><strong>S/. 100.00:</strong> Por daños en lencería (sábanas, edredón, almohadas).</li>
-                        <li><strong>S/. 300.00:</strong> Por daños en alfombras, muebles y objetos.</li>
-                        <li><strong>S/. 1000.00:</strong> Por daños en el colchón.</li>
-                    </ul>
-                </div>
-
-                <div class="terms-section">
-                    <h4>8. Restricciones y Conducta</h4>
-                    <ul>
-                        <li><strong>No somos Pet Friendly.</strong></li>
-                        <li>Prohibido ingresar ropa de cama propia (almohadas, sábanas).</li>
-                        <li>Prohibido ingresar aparatos eléctricos para cocinar/calentar. El hotel puede retener estos artículos.</li>
-                        <li><strong>Prohibido Fumar:</strong> Según Ley N° 29517, está prohibido fumar en las habitaciones. Sanción: 1 noche de alojamiento o cancelación de estadía.</li>
-                        <li>Prohibido el ingreso de personas no registradas y el consumo/tenencia de drogas.</li>
-                        <li>Se espera una conducta ordenada que no interrumpa a otros huéspedes. El hotel se reserva el derecho de cancelar la reserva de inmediato ante violaciones de conducta.</li>
-                        <li><strong>Smart TV:</strong> El huésped es responsable de cerrar sesión en sus plataformas antes de retirarse.</li>
-                    </ul>
-                </div>
-
-                <div class="terms-section">
-                    <h4>9. Cliente No Grato</h4>
-                    <p>Se podrá declarar persona NO GRATA y denegar el servicio por:</p>
-                    <ul>
-                        <li>Retirarse sin pagar consumos o deudas.</li>
-                        <li>Registrarse con información falsa o suplantación de identidad.</li>
-                        <li>Uso de dinero o documentos falsificados.</li>
-                        <li>Agresiones, amenazas, acoso o robo dentro del hotel.</li>
-                        <li>Ingresar con menores sin autorización o acompañantes no identificados.</li>
-                    </ul>
-                </div>
-
-                <p class="terms-legal">Estos Términos y Condiciones se rigen e interpretan de acuerdo con las leyes del Perú.</p>
             </div>
             
             <div class="terms-footer">
-                <button class="btn-accept" @click="showTerms = false">He leído y acepto los términos</button>
+                <button class="btn-accept" @click="showTerms = false">{text.accept}</button>
             </div>
         </div>
     </div>
@@ -257,7 +346,7 @@ import dinersImg from '../assets/images/pago/dinersclub.png';
 <style>
     :root {
         --color-gold: #fc7548;
-        --color-bg: #1A1917;      /* Ébano (Fondo principal) */
+        --color-bg: #1A1917;
         --color-bg-alt: #262422;
         --color-text-primary: #FAF3E1;
         --color-text-secondary: #a8a4a0;
@@ -325,8 +414,8 @@ import dinersImg from '../assets/images/pago/dinersclub.png';
     .pay-card {
         background-color: #fff;
         border-radius: 4px;
-        width: 50px; /* Ancho fijo */
-        height: 32px; /* Alto fijo */
+        width: 50px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -342,25 +431,9 @@ import dinersImg from '../assets/images/pago/dinersclub.png';
         display: block;
     }
     
-    .pay-card.cash {
-        width: auto; /* El de efectivo puede ser más ancho para el texto */
-        padding: 0 10px;
-        background-color: transparent;
-        border: 1px solid #27ae60;
-        color: #27ae60;
-        gap: 6px;
-        font-size: 0.85rem;
-        font-weight: 600;
-    }
-    .pay-card.cash i { font-size: 1rem; }
-
     .pay-card:hover {
         transform: translateY(-3px);
         box-shadow: 0 5px 15px rgba(255, 255, 255, 0.15);
-    }
-    .pay-card.cash:hover {
-        background-color: #27ae60;
-        color: #fff;
     }
 
     /* --- OTRAS COLUMNAS --- */
@@ -438,7 +511,7 @@ import dinersImg from '../assets/images/pago/dinersclub.png';
         z-index: 1000000;
         background: #151515;
         width: 100%;
-        max-width: 800px; /* ANCHO GRANDE PARA LECTURA */
+        max-width: 800px;
         max-height: 85vh;
         border-radius: 12px;
         border: 1px solid var(--color-gold);
