@@ -1074,7 +1074,7 @@ const storyImageUrls = storyImagesOptimized.map(img => img.src);
     @keydown.arrow-right.window="if (isOpen) nextImage()"
     @keydown.arrow-left.window="if (isOpen) prevImage()"
 >
-    
+    <div class="gallery-card-wrapper">
     <div class="section-header-compact center-text">
         <h2 class="section-title">Nuestra Galería</h2>
         <p class="section-subtitle">Desliza para ver nuestros rincones favoritos.</p>
@@ -1096,6 +1096,7 @@ const storyImageUrls = storyImagesOptimized.map(img => img.src);
                 </div>
             </div>
         </template>
+    </div>
     </div>
 
     <div class="gallery-lightbox" x-show="isOpen" @click.self="closeLightbox()" x-transition.opacity x-cloak>

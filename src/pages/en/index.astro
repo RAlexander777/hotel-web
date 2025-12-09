@@ -759,6 +759,7 @@ const storyImageUrls = storyImagesOptimized.map(img => img.src);
 
     <section class="gallery-section container reveal" id="galeria" x-data={`{ isOpen: false, currentImageIndex: 0, images: ${JSON.stringify(galleryItems)}, container: null, isDown: false, startX: 0, scrollLeftPos: 0, isDragging: false, init() { this.container = this.$refs.galleryTrack; }, startDrag(e) { this.isDown = true; this.isDragging = false; this.container.classList.add('is-dragging'); this.startX = e.pageX - this.container.offsetLeft; this.scrollLeftPos = this.container.scrollLeft; }, stopDrag() { this.isDown = false; this.container.classList.remove('is-dragging'); setTimeout(() => { this.isDragging = false; }, 50); }, moveDrag(e) { if (!this.isDown) return; e.preventDefault(); const x = e.pageX - this.container.offsetLeft; const walk = (x - this.startX) * 1.5; if (Math.abs(walk) > 5) this.isDragging = true; this.container.scrollLeft = this.scrollLeftPos - walk; }, openLightbox(index) { if (this.isDragging) return; this.currentImageIndex = index; this.isOpen = true; }, closeLightbox() { this.isOpen = false; }, nextImage() { this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length; }, prevImage() { this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length; } }`} @keydown.escape.window="closeLightbox()" @keydown.arrow-right.window="if (isOpen) nextImage()" @keydown.arrow-left.window="if (isOpen) prevImage()">
     
+        <div class="gallery-card-wrapper">
     <div class="section-header-compact center-text">
         <h2 class="section-title">Our Gallery</h2>
         <p class="section-subtitle">Swipe to see our favorite corners.</p>
@@ -773,6 +774,8 @@ const storyImageUrls = storyImagesOptimized.map(img => img.src);
                 </div>
             </div>
         </template>
+    </div>
+
     </div>
 
     <div class="gallery-lightbox" x-show="isOpen" @click.self="closeLightbox()" x-transition.opacity x-cloak>
