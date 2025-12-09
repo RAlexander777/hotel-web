@@ -1,7 +1,5 @@
 :root {
     --navbar-height: 90px;
-    --color-gold: #fc7548;
-    --color-bg: #1A1917;
 }
 
 /* 1. ESTILO BASE DEL NAVBAR */
@@ -161,6 +159,7 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    position: relative;
     z-index: 10;
 }
 .hamburger span {
@@ -169,15 +168,16 @@
     background: #fff;
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
+    transform-origin: center;
 }
 .hamburger span.toggled:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translateY(10px);
 }
 .hamburger span.toggled:nth-child(2) {
     opacity: 0;
 }
 .hamburger span.toggled:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+    transform: rotate(-45deg) translateY(-10px);
 }
 
 .mobile-menu {

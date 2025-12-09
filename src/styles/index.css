@@ -1,7 +1,7 @@
 :root {
     --color-gold: #fc7548;
-    --color-bg: #1A1917;      /* Ébano (Fondo principal) */
-    --color-bg-alt: #262422;
+    --color-bg: #24211f;     /* Caviar (Fondo principal) */
+    --color-bg-alt: #2b2625;
     --color-text-primary: #FAF3E1;
     --color-text-secondary: #a8a4a0;
     --color-border: #333;
@@ -491,7 +491,7 @@ body {
 }
 
 .room-card {
-    background: #111;
+    background: #25201e;
     border-radius: 8px;
     overflow: hidden;
     display: flex;
@@ -588,7 +588,7 @@ body {
 }
 
 .offer-card-compact {
-    background: #1a1a1a; /* Fondo un poco más claro que el negro puro */
+    background: #1a1817; /* Fondo un poco más claro que el negro puro */
     border: 1px solid #333;
     border-radius: 8px;
     overflow: hidden;
@@ -1565,7 +1565,7 @@ body {
 .contact-form textarea {
     width: 100%;
     padding: 1rem;
-    background: #1a1a1a;
+    background: #1a1817;
     border: 1px solid #333;
     border-radius: 5px;
     color: #fff;
@@ -2022,7 +2022,7 @@ body {
     flex: 0 0 320px;
     /* Ancho fijo para desktop */
     min-width: 300px;
-    background: #111;
+    background: #1a1817;
     border: 1px solid #222;
     border-radius: 12px;
     overflow: hidden;
