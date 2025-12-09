@@ -104,6 +104,19 @@ const targetLink = `${cleanBase}${targetLang}/`;
             <button class="mobile-phone-btn" @click="mobilePhoneOpen = !mobilePhoneOpen; mobileMenuOpen = false" aria-label="Llamar">
                 <i class="fas fa-phone"></i>
             </button>
+
+            <div 
+                class="mobile-phone-popup" 
+                x-show="mobilePhoneOpen" 
+                @click.outside="mobilePhoneOpen = false"
+                x-transition
+                style="display: none;"
+            >
+                <a href="tel:+51944278647">
+                    +51 944 278 647
+                </a>
+            </div>
+
             <button class="hamburger" @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Menu">
                 <span :class="{ 'toggled': mobileMenuOpen }"></span>
                 <span :class="{ 'toggled': mobileMenuOpen }"></span>

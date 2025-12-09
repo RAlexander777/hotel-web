@@ -68,15 +68,15 @@ export const infoHabitaciones = {
         precioAntes: 65,  // Precio Tachado
         oferta: true,
         features: ["2 Huéspedes", "Cama 2 plazas", "Baño Compartido"]
-    },
-    comp: {
+    }
+    /*comp: {
         title: "Habitación Compartida",
         desc: "Espacio compartido con otros viajeros, nuestra habitación mas accesible.",
         precio: 30,       // Precio Real
         precioAntes: 45,  // Precio Tachado
         oferta: true,
         features: ["2 Huéspedes", "2 Camas 1.5 plazas", "Baño Compartido"]
-    }
+    }*/
 };
 
 // Promociones editables

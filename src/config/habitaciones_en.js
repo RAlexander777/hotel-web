@@ -68,15 +68,15 @@ export const infoHabitaciones = {
         precioAntes: 65,  // Precio Tachado
         oferta: true, 
         features: ["2 Guests", "Double Bed", "Shared Bathroom"]
-    },
-    comp: {
+    }
+    /*comp: {
         title: "Shared Room",
         desc: "Shared space with other travelers, our most accessible room.",
         precio: 30,       // Precio Real
         precioAntes: 45,  // Precio Tachado
         oferta: true,
         features: ["2 Guests", "2 Single Beds", "Shared Bathroom"]
-    }
+    }*/
 };
 
 export const promociones = {

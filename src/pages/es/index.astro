@@ -52,10 +52,6 @@ import dobleComp5 from '../../assets/images/rooms/doble_compartido/acogedora-hab
 import matriComp1 from '../../assets/images/rooms/matrimonial_compartido/acogedora-matrimonial-servicios-higienicos-compartidos-hostal-acuarius-puno.jpg';
 import matriComp2 from '../../assets/images/rooms/matrimonial_compartido/acogedora-matrimonial-servicios-higienicos-compartidos-vista-lejos-hostal-acuarius-puno.jpg';
 
-import comp1 from '../../assets/images/rooms/compartida/acogedora-habitacion-compartida-con-vista-a-la-ciudad-hostal-acuarius-puno.jpg';
-import comp2 from '../../assets/images/rooms/compartida/acogedora-habitacion-compartida-hostal-acuarius-puno.jpg';
-import comp3 from '../../assets/images/rooms/compartida/acogedora-habitacion-compartida-vista-desde-cama-hostal-acuarius-puno.png';
-
 //OFFER IMG
 import offerUros from '../../assets/images/tours/tour-islas-flotantes-uros-con-lago-cristalino-hostal-acuarius-puno.jpg';
 // roomMatrimonial aqui
@@ -108,7 +104,7 @@ const roomImageProps = { width: 800, height: 600, format: 'webp' };
 
 const [
     simpleItems, dobleItems, matriItems, tripleItems, cuadItems, 
-    simpleCompItems, dobleCompItems, matriCompItems, compItems
+    simpleCompItems, dobleCompItems, matriCompItems
 ] = await Promise.all([
     Promise.all([
         getImage({ ...roomImageProps, src: simple1, alt: 'Habitación simple acogedora' }),
@@ -154,28 +150,10 @@ const [
     Promise.all([
         getImage({ ...roomImageProps, src: matriComp1, alt: 'Matrimonial compartido' }),
         getImage({ ...roomImageProps, src: matriComp2, alt: 'Cama matrimonial compartido vista lejos' }),
-    ]).then(createItems),
-    Promise.all([
-        getImage({ ...roomImageProps, src: comp1, alt: 'Habitación compartida vista cuidad' }),
-        getImage({ ...roomImageProps, src: comp2, alt: 'Habitación compartida' }),
-        getImage({ ...roomImageProps, src: comp3, alt: 'Habitación compartida vista cama' }),
     ]).then(createItems)
 ]);
 
 const allRooms = [
-    {
-        ...infoHabitaciones.comp,
-        images: compItems,
-        type: "compartido",
-        price: {
-            pen: infoHabitaciones.comp.precio,
-            penAntes: infoHabitaciones.comp.precioAntes,
-            usd: calcularUSD(infoHabitaciones.comp.precio),
-            usdAntes: infoHabitaciones.comp.precioAntes ? calcularUSD(infoHabitaciones.comp.precioAntes) : null,
-            oferta: infoHabitaciones.comp.oferta
-        },
-        features: [{icon: "fas fa-user-friends", txt: "2 Huéspedes"}, {icon: "fas fa-bed", txt: "Cama 1.5 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}]
-    },
     {
         ...infoHabitaciones.simple, // Trae título, precio, desc y features del config
         images: simpleItems,
@@ -532,7 +510,7 @@ const storyImageUrls = storyImagesOptimized.map(img => img.src);
                 <div class="services-pills-list">
                     <div class="service-pill"><i class="fas fa-wifi"></i> WiFi</div>
                     <div class="service-pill"><i class="fas fa-shower"></i> Agua Caliente</div>
-                    <!--<div class="service-pill"><i class="fas fa-utensils"></i> Desayuno</div>-->
+                    <div class="service-pill"><i class="fas fa-utensils"></i> Desayuno</div>
                     <div class="service-pill"><i class="fas fa-tv"></i> TV Cable</div>
                     <div class="service-pill"><i class="fas fa-car"></i> Cochera</div>
                     <div class="service-pill"><i class="fas fa-concierge-bell"></i> Recepción 24h</div>
