@@ -1,52 +1,72 @@
 // src/config/habitaciones.js
 
+export const TIPO_CAMBIO= 3.40;
+
+export const calcularUSD = (soles) => Math.ceil(soles / TIPO_CAMBIO);
+
 export const infoHabitaciones = {
     simple: {
         title: "Habitación Simple",
         desc: "Un lugar acogedor y funcional, perfectamente equipado para el viajero independiente.",
-        price: { pen: "S/ 70", usd: "$ 19" }, // AHORA ES UN OBJETO
+        precio: 60,       // Precio Real
+        precioAntes: 80,  // Precio Tachado
+        oferta: true,     
         features: ["1 Huésped", "Cama 1.5 plazas", "Baño Privado"]
     },
     doble: {
         title: "Habitación Doble",
         desc: "Ideal para amigos o colegas, esta habitación cuenta con dos camas confortables.",
-        price: { pen: "S/ 100", usd: "$ 27" },
+        precio: 60,       // Precio Real
+        precioAntes: 80,  // Precio Tachado
+        oferta: true,
         features: ["2 Huéspedes", "2 Camas 1.5 plazas", "Baño Privado"]
     },
     matrimonial: {
         title: "Habitación Matrimonial",
         desc: "Diseñada para parejas, ambiente íntimo y cálido para una escapada romántica.",
-        price: { pen: "S/ 80", usd: "$ 22" },
+        precio: 60,       // Precio Real
+        precioAntes: 80,  // Precio Tachado
+        oferta: true,
         features: ["2 Huéspedes", "Cama 2 plazas", "Baño Privado"]
     },
     triple: {
         title: "Habitación Triple",
         desc: "Espaciosa y versátil, perfecta para familias pequeñas o grupos.",
-        price: { pen: "S/ 120", usd: "$ 33" },
+        precio: 60,       // Precio Real
+        precioAntes: 80,  // Precio Tachado
+        oferta: true,
         features: ["3 Huéspedes", "3 Camas 1.5 plazas", "Baño Privado"]
     },
     cuadruple: {
         title: "Habitación Cuádruple",
         desc: "Máxima capacidad y comodidad para familias y grupos grandes.",
-        price: { pen: "S/ 140", usd: "$ 38" },
+        precio: 60,       // Precio Real
+        precioAntes: 80,  // Precio Tachado
+        oferta: true,
         features: ["4 Huéspedes", "4 Camas 1.5 plazas", "Baño Privado"]
     },
     simple_comp: {
         title: "Simple (Baño Compartido)",
         desc: "Opción económica para viajeros prácticos.",
-        price: { pen: "S/ 40", usd: "$ 11" },
+        precio: 60,       // Precio Real
+        precioAntes: 80,  // Precio Tachado
+        oferta: true,
         features: ["1 Huésped", "Cama 1.5 plazas", "Baño Compartido"]
     },
     doble_comp: {
         title: "Doble (Baño Compartido)",
         desc: "Comodidad para dos a un precio accesible.",
-        price: { pen: "S/ 80", usd: "$ 22" },
+        precio: 60,       // Precio Real
+        precioAntes: 80,  // Precio Tachado
+        oferta: true,
         features: ["2 Huéspedes", "2 Camas 1.5 plazas", "Baño Compartido"]
     },
     matri_comp: {
         title: "Matrimonial (Baño Compartido)",
         desc: "Acogedora para parejas que buscan maximizar su presupuesto.",
-        price: { pen: "S/ 60", usd: "$ 16" },
+        precio: 60,       // Precio Real
+        precioAntes: 80,  // Precio Tachado
+        oferta: true,
         features: ["2 Huéspedes", "Cama 2 plazas", "Baño Compartido"]
     }
 };

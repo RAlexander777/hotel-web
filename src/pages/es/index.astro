@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import "../../styles/index.css";
 
 import { Image, getImage } from 'astro:assets';
-import { infoHabitaciones, promociones } from '../../config/habitaciones.js';
+import { infoHabitaciones, promociones, TIPO_CAMBIO, calcularUSD } from '../../config/habitaciones.js';
 
 //IMG
 import logoHero from '../../assets/images/logo-hostal-acuarius-puno-hero.png';
@@ -162,7 +162,13 @@ const allRooms = [
         ...infoHabitaciones.simple, // Trae título, precio, desc y features del config
         images: simpleItems,
         type: "privado",
-        // Mapeamos las features de texto plano a iconos aquí mismo
+        price: {
+            pen: infoHabitaciones.simple.precio,
+            penAntes: infoHabitaciones.simple.precioAntes,
+            usd: calcularUSD(infoHabitaciones.simple.precio),
+            usdAntes: infoHabitaciones.simple.precioAntes ? calcularUSD(infoHabitaciones.simple.precioAntes) : null,
+            oferta: infoHabitaciones.simple.oferta
+        },
         features: infoHabitaciones.simple.features.map(txt => ({
             icon: txt.includes("Huésped") ? "fas fa-user" : 
                   txt.includes("Cama") ? "fas fa-bed" : 
@@ -174,6 +180,13 @@ const allRooms = [
         ...infoHabitaciones.doble,
         images: dobleItems,
         type: "privado",
+        price: {
+            pen: infoHabitaciones.doble.precio,
+            penAntes: infoHabitaciones.doble.precioAntes,
+            usd: calcularUSD(infoHabitaciones.doble.precio),
+            usdAntes: infoHabitaciones.doble.precioAntes ? calcularUSD(infoHabitaciones.doble.precioAntes) : null,
+            oferta: infoHabitaciones.doble.oferta
+        },
         features: infoHabitaciones.doble.features.map(txt => ({
             icon: txt.includes("Huéspedes") ? "fas fa-user-friends" : 
                   txt.includes("Cama") ? "fas fa-bed" : 
@@ -185,6 +198,13 @@ const allRooms = [
         ...infoHabitaciones.matrimonial,
         images: matriItems,
         type: "privado",
+        price: {
+            pen: infoHabitaciones.matrimonial.precio,
+            penAntes: infoHabitaciones.matrimonial.precioAntes,
+            usd: calcularUSD(infoHabitaciones.matrimonial.precio),
+            usdAntes: infoHabitaciones.matrimonial.precioAntes ? calcularUSD(infoHabitaciones.matrimonial.precioAntes) : null,
+            oferta: infoHabitaciones.matrimonial.oferta
+        },
         features: infoHabitaciones.matrimonial.features.map(txt => ({
             icon: txt.includes("Huéspedes") ? "fas fa-user-friends" : 
                   txt.includes("Cama") ? "fas fa-bed" : 
@@ -196,30 +216,65 @@ const allRooms = [
         ...infoHabitaciones.triple,
         images: tripleItems,
         type: "privado",
+        price: {
+            pen: infoHabitaciones.triple.precio,
+            penAntes: infoHabitaciones.triple.precioAntes,
+            usd: calcularUSD(infoHabitaciones.triple.precio),
+            usdAntes: infoHabitaciones.triple.precioAntes ? calcularUSD(infoHabitaciones.triple.precioAntes) : null,
+            oferta: infoHabitaciones.triple.oferta
+        },
         features: [{icon: "fas fa-users", txt: "3 Huéspedes"}, {icon: "fas fa-bed", txt: "3 Camas 1.5 plazas"}, {icon: "fas fa-shower", txt: "Baño Privado"}]
     },
     {
         ...infoHabitaciones.cuadruple,
         images: cuadItems,
         type: "privado",
+        price: {
+            pen: infoHabitaciones.cuadruple.precio,
+            penAntes: infoHabitaciones.cuadruple.precioAntes,
+            usd: calcularUSD(infoHabitaciones.cuadruple.precio),
+            usdAntes: infoHabitaciones.cuadruple.precioAntes ? calcularUSD(infoHabitaciones.cuadruple.precioAntes) : null,
+            oferta: infoHabitaciones.cuadruple.oferta
+        },
         features: [{icon: "fas fa-users", txt: "4 Huéspedes"}, {icon: "fas fa-bed", txt: "4 Camas 1.5 plazas"}, {icon: "fas fa-shower", txt: "Baño Privado"}]
     },
     {
         ...infoHabitaciones.simple_comp,
         images: simpleCompItems,
         type: "compartido",
+        price: {
+            pen: infoHabitaciones.simple_comp.precio,
+            penAntes: infoHabitaciones.simple_comp.precioAntes,
+            usd: calcularUSD(infoHabitaciones.simple_comp.precio),
+            usdAntes: infoHabitaciones.simple_comp.precioAntes ? calcularUSD(infoHabitaciones.simple_comp.precioAntes) : null,
+            oferta: infoHabitaciones.simple_comp.oferta
+        },
         features: [{icon: "fas fa-user", txt: "1 Huésped"}, {icon: "fas fa-bed", txt: "Cama 1.5 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}]
     },
     {
         ...infoHabitaciones.doble_comp,
         images: dobleCompItems,
         type: "compartido",
+        price: {
+            pen: infoHabitaciones.doble_comp.precio,
+            penAntes: infoHabitaciones.doble_comp.precioAntes,
+            usd: calcularUSD(infoHabitaciones.doble_comp.precio),
+            usdAntes: infoHabitaciones.doble_comp.precioAntes ? calcularUSD(infoHabitaciones.doble_comp.precioAntes) : null,
+            oferta: infoHabitaciones.doble_comp.oferta
+        },
         features: [{icon: "fas fa-user-friends", txt: "2 Huéspedes"}, {icon: "fas fa-bed", txt: "Cama 2 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}]
     },
     {
         ...infoHabitaciones.matri_comp,
         images: matriCompItems,
         type: "compartido",
+        price: {
+            pen: infoHabitaciones.matri_comp.precio,
+            penAntes: infoHabitaciones.matri_comp.precioAntes,
+            usd: calcularUSD(infoHabitaciones.matri_comp.precio),
+            usdAntes: infoHabitaciones.matri_comp.precioAntes ? calcularUSD(infoHabitaciones.matri_comp.precioAntes) : null,
+            oferta: infoHabitaciones.matri_comp.oferta
+        },
         features: [{icon: "fas fa-user-friends", txt: "2 Huéspedes"}, {icon: "fas fa-bed", txt: "Cama 2 plazas"}, {icon: "fas fa-door-open", txt: "Baño Compartido"}]
     }
 ];
@@ -662,10 +717,26 @@ const storyImageUrls = storyImagesOptimized.map(img => img.src);
                         {/* Limpiamos el título para que no repita info */}
                         <h3 class="compact-title">{room.title.replace('Habitación ', '').replace(' (Baño Compartido)', '')}</h3>
                         <div class="compact-price">
-                            <div class="price-row">
-                                <span class="amount">{room.price.pen}</span>
-                                <span class="amount-usd">/ {room.price.usd}</span>
+                            {room.price.oferta && room.price.penAntes && (
+                                <div class="price-meta-row">
+                                    <span class="save-badge">
+                                        -{Math.round((1 - room.price.pen/room.price.penAntes)*100)}%
+                                    </span>
+                                    <span class="price-old">
+                                        S/. {room.price.penAntes} / $ {room.price.usdAntes}
+                                    </span>
+                                </div>
+                            )}
+
+                            <div class="price-unified-row">
+                                <span class={`amount-pen ${room.price.oferta ? 'offer-highlight' : ''}`}>
+                                    S/. {room.price.pen}
+                                </span>
+                                <span class="amount-usd">
+                                    / ${room.price.usd}
+                                </span>
                             </div>
+
                             <span class="period">por noche</span>
                         </div>
                     </div>

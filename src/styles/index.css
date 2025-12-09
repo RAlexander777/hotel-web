@@ -2120,10 +2120,31 @@ body {
 }
 
 .compact-price {
-    text-align: right;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-end; /* Todo alineado a la derecha */
+    justify-content: center;
+    text-align: right;
+}
+
+.price-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+.price-unified-row {
+    display: flex;
+    align-items: baseline; /* Alinea la base de las letras */
+    gap: 6px; /* Espacio entre Soles y Dólares */
+    line-height: 1.1;
+}
+
+.price-old {
+    font-size: 0.85rem;
+    color: #777;
+    text-decoration: line-through; /* Efecto tachado */
 }
 
 .price-row {
@@ -2132,17 +2153,68 @@ body {
     gap: 5px;
 }
 
+.price-secondary-row {
+    font-size: 0.9rem;
+    color: #aaa;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.amount {
+    display: block;
+    font-size: 1.4rem; /* Más grande para destacar */
+    font-weight: 700;
+    color: #fff;
+    margin-top: 2px;
+}
+
+.amount-pen {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.amount-pen.offer-highlight {
+    color: var(--color-gold);
+}
+
+.amount-usd {
+    font-size: 1rem; /* Un poco más pequeño que los soles */
+    color: #ccc;
+    font-weight: 400;
+}
+
+.period {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 2px;
+}
+
 .compact-price .amount {
     display: block;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #fff;
+}
+
+.amount.offer-highlight {
+    color: var(--color-gold); /* Dorado si es oferta */
 }
 
 .compact-price .amount-usd {
     font-size: 0.95rem;     
     font-weight: 400;
-    color: var(--color-gold); 
+    color: #aaa;
+}
+
+.save-badge {
+    font-size: 0.7rem;
+    background: #27ae60; /* Verde éxito */
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
 }
 
 .compact-price .period {
