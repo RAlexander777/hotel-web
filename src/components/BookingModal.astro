@@ -8,6 +8,7 @@ const t = {
         subtitle: "Te confirmaremos disponibilidad vía WhatsApp.",
         // Etiquetas del formulario
         lbl_name: "Nombre Completo *",
+        lbl_nationality: "Nacionalidad", // NUEVO
         lbl_email: "Email *",
         lbl_phone: "Teléfono / WhatsApp",
         lbl_room: "Habitación",
@@ -19,12 +20,14 @@ const t = {
         lbl_submit: "Solicitar Reserva",
         // Placeholders
         ph_name: "Tu nombre",
+        ph_nationality: "Ej: Peruana", // NUEVO
         ph_email: "correo@ejemplo.com",
         ph_phone: "+51 999 999 999",
         ph_msg: "Ej: Llegada tarde...",
         // Opciones de Habitación (Value y Label)
         rooms: [
             { val: "Cualquiera", label: "Cualquiera disponible" },
+            { val: "Habitación Compartida", label: "Habitación Compartida" },
             { val: "Simple", label: "Habitación Simple" },
             { val: "Doble", label: "Habitación Doble" },
             { val: "Matrimonial", label: "Habitación Matrimonial" },
@@ -38,6 +41,7 @@ const t = {
         alert_missing: "Por favor completa los campos obligatorios (*)",
         wsp_greeting: "Hola Hostal Acuarius, deseo realizar una reserva:",
         wsp_name: "Nombre",
+        wsp_nationality: "Nacionalidad", // NUEVO
         wsp_email: "Email",
         wsp_phone: "Teléfono",
         wsp_room: "Habitación",
@@ -54,6 +58,7 @@ const t = {
         subtitle: "We will confirm availability via WhatsApp.",
         // Form Labels
         lbl_name: "Full Name *",
+        lbl_nationality: "Nationality", // NUEVO
         lbl_email: "Email *",
         lbl_phone: "Phone / WhatsApp",
         lbl_room: "Room Type",
@@ -65,12 +70,14 @@ const t = {
         lbl_submit: "Request Reservation",
         // Placeholders
         ph_name: "Your name",
+        ph_nationality: "Ex: American", // NUEVO
         ph_email: "email@example.com",
         ph_phone: "+1 999 999 999",
         ph_msg: "Ex: Late arrival...",
         // Room Options
         rooms: [
             { val: "Any", label: "Any available" },
+            { val: "Shared Room", label: "Shared Room" },
             { val: "Single Room", label: "Single Room" },
             { val: "Double Room", label: "Double Room" },
             { val: "Matrimonial Room", label: "Matrimonial Room" },
@@ -84,6 +91,7 @@ const t = {
         alert_missing: "Please complete the required fields (*)",
         wsp_greeting: "Hello Hostal Acuarius, I would like to make a reservation:",
         wsp_name: "Name",
+        wsp_nationality: "Nationality", // NUEVO
         wsp_email: "Email",
         wsp_phone: "Phone",
         wsp_room: "Room",
@@ -105,6 +113,7 @@ const text = t[lang as keyof typeof t];
         open: false,
         formData: {
             name: '',
+            nationality: '', /* NUEVO CAMPO */
             email: '',
             phone: '',
             room: '${text.rooms[0].val}',
@@ -136,6 +145,12 @@ const text = t[lang as keyof typeof t];
             // 3. Construir el mensaje (Usamos concatenación para evitar conflictos con Astro)
             let text = '${text.wsp_greeting}%0A%0A';
             text += '👤 *${text.wsp_name}:* ' + this.formData.name + '%0A';
+            
+            // Lógica para agregar nacionalidad si existe
+            if(this.formData.nationality) {
+                text += '🏳️ *${text.wsp_nationality}:* ' + this.formData.nationality + '%0A';
+            }
+
             text += '📧 *${text.wsp_email}:* ' + this.formData.email + '%0A';
             text += '📱 *${text.wsp_phone}:* ' + this.formData.phone + '%0A';
             text += '🛏️ *${text.wsp_room}:* ' + this.formData.room + '%0A';
@@ -189,6 +204,13 @@ const text = t[lang as keyof typeof t];
                         <label for="fullName">{text.lbl_name}</label>
                         <input type="text" id="fullName" x-model="formData.name" placeholder={text.ph_name} required />
                     </div>
+                    
+                    {/* NUEVO GRUPO: NACIONALIDAD */}
+                    <div class="form-group">
+                        <label for="nationality">{text.lbl_nationality}</label>
+                        <input type="text" id="nationality" x-model="formData.nationality" placeholder={text.ph_nationality} />
+                    </div>
+
                     <div class="form-group">
                         <label for="email">{text.lbl_email}</label>
                         <input type="email" id="email" x-model="formData.email" placeholder={text.ph_email} required />
@@ -197,6 +219,9 @@ const text = t[lang as keyof typeof t];
                         <label for="phone">{text.lbl_phone}</label>
                         <input type="tel" id="phone" x-model="formData.phone" placeholder={text.ph_phone} />
                     </div>
+                    
+                    {/* El tipo de habitación ahora comparte fila o queda abajo dependiendo del layout. 
+                        Al agregar un campo arriba, los siguientes se desplazan. */}
                     <div class="form-group">
                         <label for="roomType">{text.lbl_room}</label>
                         <select id="roomType" x-model="formData.room">
@@ -205,34 +230,43 @@ const text = t[lang as keyof typeof t];
                             ))}
                         </select>
                     </div>
+
                     <div class="form-group">
                         <label for="checkin">{text.lbl_checkin}</label>
                         <input type="date" id="checkin" x-model="formData.checkin" required />
                     </div>
+                    
+                    {/* Hacemos que checkout ocupe su espacio */}
                     <div class="form-group">
-                        <label for="checkout">{text.lbl_checkout}</label>
-                        <input type="date" id="checkout" x-model="formData.checkout" required />
+                         <label for="checkout">{text.lbl_checkout}</label>
+                         <input type="date" id="checkout" x-model="formData.checkout" required />
                     </div>
-                    <div class="form-group half">
-                        <label for="adults">{text.lbl_adults}</label>
-                        <select id="adults" x-model="formData.adults">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4+</option>
-                        </select>
-                    </div>
-                    <div class="form-group half">
-                        <label for="children">{text.lbl_children}</label>
-                        <select id="children" x-model="formData.children">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2+</option>
-                        </select>
+
+                    {/* Contenedor dividido para adultos y niños */}
+                    <div class="form-group">
+                        <div style="display: flex; gap: 10px;">
+                            <div style="flex: 1;">
+                                <label for="adults" style="display:block;">{text.lbl_adults}</label>
+                                <select id="adults" x-model="formData.adults" style="width:100%">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4+</option>
+                                </select>
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="children" style="display:block;">{text.lbl_children}</label>
+                                <select id="children" x-model="formData.children" style="width:100%">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2+</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="form-group full">
+                <div class="form-group full" style="margin-top: 1rem;">
                     <label for="requests">{text.lbl_msg}</label>
                     <textarea id="requests" x-model="formData.message" rows="2" placeholder={text.ph_msg}></textarea>
                 </div>
@@ -246,7 +280,6 @@ const text = t[lang as keyof typeof t];
 </div>
 
 <style>
-    /* ... (MANTÉN TU CSS EXACTAMENTE IGUAL QUE ANTES) ... */
     /* Estilos exclusivos del Modal */
     .modal-overlay {
         position: fixed;
@@ -352,7 +385,6 @@ const text = t[lang as keyof typeof t];
     @media (max-width: 600px) {
         .form-grid { grid-template-columns: 1fr; }
         .form-group.full { grid-column: span 1; }
-        .form-group.half { grid-column: span 1; } 
         .modal-box { padding: 1.5rem; }
     }
 </style>
