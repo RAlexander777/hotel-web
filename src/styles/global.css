@@ -1,13 +1,20 @@
-/* ================================== */
-/* ESTILOS GLOBALES REUTILIZABLES     */
-/* ================================== */
+
 :root {
-    --color-gold: #c5a47e;
-    --color-bg: #24211f;     /* Caviar (Fondo principal) */
-    --color-bg-alt: #2b2625;
+    /* --- PALETA PRINCIPAL --- */
+    --color-gold: #fc7548;       /* El naranja/dorado principal */
+    --color-bg: #24211f;         /* Caviar (Fondo principal) */
+    --color-bg-alt: #2b2625;     /* Fondo alternativo (secciones About, etc) */
+    --color-bg-card: #1a1817;    /* NUEVO: Para tarjetas compactas (era hardcoded) */
+    
+    /* --- TEXTOS --- */
     --color-text-primary: #FAF3E1;
-    --color-text-secondary: #a0a0a0;
-    --color-border: #333;
+    --color-text-secondary: #a8a4a0; /* Unificamos los grises */
+    
+    /* --- UTILIDADES --- */
+    --color-border: #333333;
+    --color-backdrop: rgba(0, 0, 0, 0.9); /* Para modales y overlays */
+    
+    /* --- FUENTES --- */
     --font-heading: "Playfair Display", serif;
     --font-body: "Rethink Sans", sans-serif;
 }
@@ -17,6 +24,7 @@ body {
     font-family: var(--font-body);
     background-color: var(--color-bg);
     color: var(--color-text-primary);
+    line-height: 1.7;
 }
 
 /* ESTILO MAESTRO PARA BOTONES */
