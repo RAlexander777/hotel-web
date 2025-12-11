@@ -1,29 +1,83 @@
 ---
 // src/pages/index.astro
-// Obtenemos la URL base correcta (por ejemplo: /hotel-web/)
+import { Image } from 'astro:assets';
+// Nota: Ajusté la ruta a "../" porque estamos en la raíz de /pages/
+import logoHero from '../assets/images/logo-hostal-acuarius-puno-hero.png';
+
+// Lógica de redirección
 const base = import.meta.env.BASE_URL;
-// Aseguramos que termine en / antes de agregar 'es/'
-const cleanBase = base.endsWith('/') ? base : `${base}/`;
-const target = `${cleanBase}es/`;
+const finalBase = base === '/' ? '' : base; 
+const target = `${finalBase}/es/`;
 ---
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Redireccionando...</title>
-    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargando Hostal Acuarius...</title>
     
+    <meta http-equiv="refresh" content={`2;url=${target}`} />
     <link rel="canonical" href={target} />
     
-    <script define:vars={{ target }}>
-        window.location.href = target;
-    </script>
-
     <style>
-        body { margin: 0; padding: 0; overflow: hidden; background-color: #24211f; }
+        body { 
+            margin: 0; 
+            padding: 0; 
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; 
+            background-color: #24211f; /* Tu color oscuro corporativo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .loader-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* Animación de salida suave al final */
+            animation: fadeOut 0.5s ease-in-out 1.5s forwards; 
+        }
+
+        /* Animación suave del logo */
+        .logo-wrapper {
+            animation: breathe 2s infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
     </style>
 </head>
 <body>
-    </body>
+    <div class="loader-container">
+        <div class="logo-wrapper">
+            <Image
+                src={logoHero}
+                alt="Logo Hostal Acuarius"
+                width={300} 
+                height={122}
+                loading="eager" 
+            />
+        </div>
+    </div>
+
+    <script define:vars={{ target }}>
+        // Esperamos 1.6 segundos (para ver el logo) y redirigimos
+        setTimeout(() => {
+            window.location.href = target;
+        }, 1600);
+    </script>
+</body>
 </html>
