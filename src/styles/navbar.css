@@ -214,7 +214,7 @@
 .btn-reserva-mobile {
     margin-top: 1rem;
     background: var(--color-gold);
-    color: #000;
+    color: var(--color-text-hero);
     padding: 0.8rem 2rem;
     border-radius: 30px;
     text-decoration: none;
@@ -329,4 +329,23 @@
 
 :root[data-theme="light"] .custom-navbar:not(.nav-inverted) .logo-img {
     filter: grayscale(100%) brightness(0) invert(100%); /* Forzar Blanco */
+}
+
+.custom-navbar.mobile-open {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    transition: none !important; /* Evita parpadeos al abrir */
+}
+
+/* 2. El botón del teléfono: Cambiamos el COLOR del icono a blanco */
+.custom-navbar.mobile-open .mobile-phone-btn {
+    color: #FAF3E1 !important;
+    z-index: 1002; /* Aseguramos que quede encima de todo */
+}
+
+/* 3. El Hamburger: Cambiamos el FONDO de las líneas a blanco */
+.custom-navbar.mobile-open .hamburger span {
+    background-color: #FAF3E1 !important;
+    z-index: 1002;
 }

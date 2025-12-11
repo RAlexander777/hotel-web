@@ -69,7 +69,7 @@ const targetLink = `${cleanBase}${targetLang}/`;
             $dispatch('open-booking-modal');
         }
     }`
-    :class="{ 'navbar-scrolled': scrolled, 'nav-inverted': showLogo }" 
+    :class="{ 'navbar-scrolled': scrolled, 'nav-inverted': showLogo, 'mobile-open': mobileMenuOpen }" 
     class="custom-navbar"
 >
     <div class="navbar-container">
