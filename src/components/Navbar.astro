@@ -69,7 +69,7 @@ const targetLink = `${cleanBase}${targetLang}/`;
             $dispatch('open-booking-modal');
         }
     }`
-    :class="{ 'navbar-scrolled': scrolled }"
+    :class="{ 'navbar-scrolled': scrolled, 'nav-inverted': showLogo }" 
     class="custom-navbar"
 >
     <div class="navbar-container">
@@ -147,7 +147,7 @@ const targetLink = `${cleanBase}${targetLang}/`;
 <style>
 /* Estilo para el botón de idioma */
 .lang-switch {
-    color: #fff;
+    color: var(--color-text-primary);
     text-decoration: none;
     font-family: "Rethink Sans", sans-serif;
     font-size: 0.9rem;
@@ -161,7 +161,7 @@ const targetLink = `${cleanBase}${targetLang}/`;
 }
 .lang-switch:hover {
     background: var(--color-gold);
-    color: #000;
+    color: var(--color-text-hero) !important;
     border-color: var(--color-gold);
 }
 @media (max-width: 992px) {

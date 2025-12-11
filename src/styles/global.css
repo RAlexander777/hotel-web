@@ -1,30 +1,63 @@
 
 :root {
-    /* --- PALETA PRINCIPAL --- */
-    --color-gold: #fc7548;       /* El naranja/dorado principal */
-    --color-bg: #24211f;         /* Caviar (Fondo principal) */
-    --color-bg-alt: #2b2625;     /* Fondo alternativo (secciones About, etc) */
-    --color-bg-card: #1a1817;    /* NUEVO: Para tarjetas compactas (era hardcoded) */
-    
-    /* --- TEXTOS --- */
-    --color-text-primary: #FAF3E1;
-    --color-text-secondary: #afacaa; /* Unificamos los grises */
-    
-    /* --- UTILIDADES --- */
-    --color-border: #333333;
-    --color-backdrop: rgba(0, 0, 0, 0.9); /* Para modales y overlays */
-    
-    /* --- FUENTES --- */
+    /* Tipografía */
     --font-heading: "Playfair Display", serif;
     --font-body: "Rethink Sans", sans-serif;
+
+    /* Utilidades Fijas (No cambian con el tema) */
+    --color-backdrop: rgba(0, 0, 0, 0.9); /* El overlay siempre debe ser oscuro */
+    --navbar-height: 90px;
 }
 
+/* --- TEMA OSCURO --- */
+
+:root, 
+[data-theme="dark"] {
+    --color-gold: #fc7548;          
+    --color-bg: #24211f;             
+    --color-bg-alt: #2b2625;        
+    --color-bg-card: #1a1817;        
+    
+    --color-text-primary: #FAF3E1;   
+    --color-text-secondary: #afacaa; 
+    
+    --color-text-hero: #FAF3E1;
+    --color-text-hero-p: #afacaa;
+
+    
+    --color-border: #333333;
+    --color-shadow: rgba(0, 0, 0, 0.5); 
+
+    --logo-filter: grayscale(100%) brightness(0) invert(100%);
+}
+
+/* --- TEMA CLARO  --- */
+[data-theme="light"] {
+    --color-gold: #d65a2f;           
+    --color-bg: #fdfbf7;             
+    --color-bg-alt: #f4efe9;         
+    --color-bg-card: #ffffff;
+
+    --color-text-primary: #2d2a28;   
+    --color-text-secondary: #66625e; 
+    
+    --color-text-hero: #FAF3E1;
+    --color-text-hero-p: #bab7b5;
+
+    --color-border: #e6ddd0;         
+    --color-shadow: rgba(233, 214, 192, 0.621); 
+
+    --logo-filter: grayscale(100%) brightness(0);
+}
+
+/* RESET Y ESTILOS GLOBALES */
 body {
     margin: 0;
     font-family: var(--font-body);
     background-color: var(--color-bg);
     color: var(--color-text-primary);
     line-height: 1.7;
+    transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
 /* ESTILO MAESTRO PARA BOTONES */

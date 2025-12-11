@@ -15,7 +15,7 @@
 }
 
 .custom-navbar.navbar-scrolled {
-    background: rgba(10, 10, 10, 0.8);
+    background: var(--color-shadow);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     --navbar-height: 80px;
@@ -57,7 +57,8 @@
 .logo-img {
     height: 60px;
     width: auto;
-    transition: height 0.4s ease;
+    filter: var(--logo-filter);
+    transition: filter 0.3s ease, height 0.4s ease;
 }
 
 .desktop-nav {
@@ -115,7 +116,7 @@
 
 .desktop-nav a {
     position: relative;
-    color: #fff;
+    color: var(--color-text-primary);
     font-family: "Rethink Sans", sans-serif;
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -165,7 +166,7 @@
 .hamburger span {
     width: 100%;
     height: 2px;
-    background: #fff;
+    background: var(--color-text-primary);
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
     transform-origin: center;
@@ -200,7 +201,7 @@
     gap: 2.5rem;
 }
 .mobile-menu nav a {
-    color: #fff;
+    color: var(--color-text-hero-p);
     font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -240,7 +241,7 @@
         display: flex; 
         align-items: center;
         gap: 0.6rem; 
-        color: #ffffff;
+        color: var(--color-text-primary);
         text-decoration: none;
         font-family: "Rethink Sans", sans-serif;
         font-size: 0.9rem;
@@ -263,7 +264,7 @@
     justify-content: center;
     background: transparent;
     border: none;
-    color: #fff;
+    color: var(--color-text-primary);
     cursor: pointer;
     padding: 0;
     z-index: 10;
@@ -281,7 +282,7 @@
 }
 
 .mobile-phone-popup a {
-    color: #fff;
+    color: var(--color-text-primary);
     text-decoration: none;
     font-family: "Rethink Sans", sans-serif;
     font-size: 0.9rem;
@@ -297,7 +298,7 @@
 
 @keyframes pulseAnimation {
     0% {
-        box-shadow: 0 0 0 0 rgba(197, 164, 126, 0.7); 
+        box-shadow: 0 0 0 0 rgba(255, 175, 106, 0.7); 
     }
     70% {
         box-shadow: 0 0 0 15px rgba(197, 164, 126, 0);
@@ -305,4 +306,27 @@
     100% {
         box-shadow: 0 0 0 0 rgba(197, 164, 126, 0);
     }
+}
+
+:root[data-theme="light"] .custom-navbar:not(.nav-inverted) .desktop-nav a,
+:root[data-theme="light"] .custom-navbar:not(.nav-inverted) .navbar-phone,
+:root[data-theme="light"] .custom-navbar:not(.nav-inverted) .lang-switch,
+:root[data-theme="light"] .custom-navbar:not(.nav-inverted) .mobile-phone-btn {
+    color: #FAF3E1; /* Blanco crema */
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Ajuste hamburguesa */
+:root[data-theme="light"] .custom-navbar:not(.nav-inverted) .hamburger span {
+    background: #FAF3E1; 
+}
+
+/* Hover en la zona Hero */
+:root[data-theme="light"] .custom-navbar:not(.nav-inverted) .desktop-nav a:hover,
+:root[data-theme="light"] .custom-navbar:not(.nav-inverted) .navbar-phone:hover {
+    color: var(--color-gold);
+}
+
+:root[data-theme="light"] .custom-navbar:not(.nav-inverted) .logo-img {
+    filter: grayscale(100%) brightness(0) invert(100%); /* Forzar Blanco */
 }

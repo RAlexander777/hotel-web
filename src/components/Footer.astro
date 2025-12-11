@@ -370,9 +370,11 @@ const text = t[lang as keyof typeof t];
         height: 80px;
         width: auto;
         margin-bottom: 1.5rem;
+        filter: var(--logo-filter);
+        transition: filter 0.3s ease;
     }
     .footer-description {
-        color: #ccc;
+        color: var(--color-text-secondary);
         line-height: 1.6;
         margin-bottom: 2rem;
         max-width: 350px;
@@ -467,15 +469,15 @@ const text = t[lang as keyof typeof t];
 
     .footer-bottom {
         padding: 1.5rem 0;
-        border-top: 1px solid var(--color-bg-alt);
+        border-top: 1px solid #1a1817;
         text-align: center;
         font-size: 0.85rem;
-        color: var(--color-text-secondary);
-        background: var(--color-bg-card);
+        color: var(--color-text-hero);
+        background: #1a1817;
     }
     .footer-bottom-container { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; }
-    .developer-credit a { color: var(--color-text-secondary); text-decoration: none; transition: 0.3s; }
-    .developer-credit a:hover { color: var(--color-gold); }
+    .developer-credit a { color: var(--color-gold); text-decoration: none; transition: 0.3s; }
+    .developer-credit a:hover { color: var(--color-text-hero); }
 
     /* --- MODAL TÉRMINOS (FIXED + GRANDE) --- */
     .terms-modal-overlay {
