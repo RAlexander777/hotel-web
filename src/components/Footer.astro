@@ -14,7 +14,7 @@ const t = {
         desc: "Tu refugio de confort y hospitalidad en el corazón de Puno.",
         payment: "Medios de Pago Aceptados",
         nav: "Navegación",
-        about: "Nosotros", rooms: "Habitaciones", tours: "Tours", contact: "Contacto",
+        about: "Nosotros", rooms: "Habitaciones", tours: "Tours", contact: "Contacto", work: "Trabaja con nosotros",
         terms: "Términos y Condiciones",
         follow: "Síguenos",
         rights: "Todos los derechos reservados.",
@@ -30,7 +30,7 @@ const t = {
         desc: "Your refuge of comfort and hospitality in the heart of Puno.",
         payment: "Accepted Payment Methods",
         nav: "Navigation",
-        about: "About Us", rooms: "Rooms", tours: "Tours", contact: "Contact",
+        about: "About Us", rooms: "Rooms", tours: "Tours", contact: "Contact",  work: "Work with us",
         terms: "Terms & Conditions",
         follow: "Follow Us",
         rights: "All rights reserved.",
@@ -73,6 +73,7 @@ const text = t[lang as keyof typeof t];
                     <li><a href="#tours">{text.tours}</a></li>
                     <li><a href="#contacto">{text.contact}</a></li>
                     <li><button @click.prevent="showTerms = true" class="btn-terms-link">{text.terms}</button></li>
+                    <li><a href="https://www.linkedin.com/in/hostal-acuarius-45b645396/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">{text.work}</a></li>
                 </ul>
             </div>
 
@@ -94,8 +95,8 @@ const text = t[lang as keyof typeof t];
             <div class="footer-col footer-social">
                 <h4 class="footer-title">{text.follow}</h4>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/share/1EGQqyvqPe/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/acuariusutama/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1EGQqyvqPe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/acuariusutama/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
