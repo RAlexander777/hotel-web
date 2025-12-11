@@ -282,7 +282,7 @@ const text = t[lang as keyof typeof t];
     .modal-overlay {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.85);
+        background: var(--color-backdrop);
         backdrop-filter: blur(4px);
         z-index: 9998;
     }
@@ -301,8 +301,8 @@ const text = t[lang as keyof typeof t];
     .modal-box {
         pointer-events: auto;
         /* Usamos la variable global si está disponible, sino fallback */
-        background: var(--color-bg-alt, #222224); 
-        border: 1px solid var(--color-border, #333);
+        background: var(--color-bg-alt); 
+        border: 1px solid var(--color-border);
         border-radius: 12px;
         width: 100%;
         max-width: 600px;
@@ -319,17 +319,17 @@ const text = t[lang as keyof typeof t];
         right: 15px;
         background: transparent;
         border: none;
-        color: #fff;
+        color: var(--color-text-primary);
         font-size: 2rem;
         cursor: pointer;
         line-height: 1;
         transition: color 0.3s;
     }
-    .close-btn:hover { color: var(--color-gold, #fc7548); }
+    .close-btn:hover { color: var(--color-gold); }
 
     .modal-header { text-align: center; margin-bottom: 1.5rem; }
-    .modal-title { font-family: "Playfair Display", serif; color: var(--color-gold, #fc7548); font-size: 1.8rem; margin: 0; }
-    .modal-subtitle { color: #aaa; font-size: 0.9rem; margin-top: 0.5rem; }
+    .modal-title { font-family: "Playfair Display", serif; color: var(--color-gold); font-size: 1.8rem; margin: 0; }
+    .modal-subtitle { color: var(--color-text-secondary); font-size: 0.9rem; margin-top: 0.5rem; }
 
     /* Formulario Compacto */
     .form-grid {
@@ -341,25 +341,25 @@ const text = t[lang as keyof typeof t];
     .form-group { display: flex; flex-direction: column; }
     .form-group.full { grid-column: span 2; }
     
-    label { color: #aaa; font-size: 0.85rem; margin-bottom: 0.3rem; }
+    label { color: var(--color-text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem; }
     
     input, select, textarea {
-        background: var(--color-bg, #1A1917);
-        border: 1px solid var(--color-border, #333);
-        color: #fff;
+        background: var(--color-bg-card);
+        border: 1px solid var(--color-border);
+        color: var(--color-text-primary);
         padding: 0.6rem;
         border-radius: 6px;
         font-family: "Rethink Sans", sans-serif;
         width: 100%;
     }
     input:focus, select:focus, textarea:focus {
-        border-color: var(--color-gold, #fc7548);
+        border-color: var(--color-gold);
         outline: none;
     }
 
     .btn-submit {
-        background: var(--color-gold, #fc7548);
-        color: #000;
+        background: var(--color-gold);
+        color: var(--color-bg-card);
         font-weight: bold;
         border: none;
         width: 100%;
@@ -375,7 +375,7 @@ const text = t[lang as keyof typeof t];
         font-size: 1rem;
     }
     .btn-submit:hover {
-        background: #fff;
+        background: var(--color-text-primary);
         transform: translateY(-2px);
     }
 

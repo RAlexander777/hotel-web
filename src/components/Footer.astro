@@ -344,14 +344,6 @@ const text = t[lang as keyof typeof t];
 </div>
 
 <style>
-    :root {
-        --color-text-primary: #FAF3E1;
-        --color-text-secondary: #a8a4a0;
-        --color-border: #333;
-        --font-heading: "Playfair Display", serif;
-        --font-body: "Rethink Sans", sans-serif;
-    }
-
     .site-footer {
         background-color: var(--color-bg);
         color: var(--color-text-secondary);
@@ -389,7 +381,7 @@ const text = t[lang as keyof typeof t];
 
     /* MEDIOS DE PAGO MEJORADOS */
     .payment-section {
-        border-top: 1px solid #333;
+        border-top: 1px solid var(--color-border);
         padding-top: 1.5rem;
     }
     .payment-title {
@@ -409,7 +401,7 @@ const text = t[lang as keyof typeof t];
     
     /* Tarjetas de Pago */
     .pay-card {
-        background-color: #fff;
+        background-color: var(--color-text-primary);
         border-radius: 4px;
         width: 50px;
         height: 32px;
@@ -437,7 +429,7 @@ const text = t[lang as keyof typeof t];
     .footer-title {
         font-family: var(--font-heading);
         font-size: 1.3rem;
-        color: #fff;
+        color: var(--color-text-primary);
         margin-top: 0;
         margin-bottom: 1.5rem;
     }
@@ -468,21 +460,21 @@ const text = t[lang as keyof typeof t];
         background: var(--color-bg-alt);
         border: 1px solid var(--color-border);
         border-radius: 50%;
-        color: #fff;
+        color: var(--color-text-primary);
         transition: all 0.3s;
     }
-    .social-icons a:hover { background: var(--color-gold); border-color: var(--color-gold); color: #000; }
+    .social-icons a:hover { background: var(--color-gold); border-color: var(--color-gold); color: var(--color-bg-card); }
 
     .footer-bottom {
         padding: 1.5rem 0;
-        border-top: 1px solid #222;
+        border-top: 1px solid var(--color-bg-alt);
         text-align: center;
         font-size: 0.85rem;
-        color: #666;
-        background: #0a0a0a;
+        color: var(--color-text-secondary);
+        background: var(--color-bg-card);
     }
     .footer-bottom-container { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; }
-    .developer-credit a { color: #888; text-decoration: none; transition: 0.3s; }
+    .developer-credit a { color: var(--color-text-secondary); text-decoration: none; transition: 0.3s; }
     .developer-credit a:hover { color: var(--color-gold); }
 
     /* --- MODAL TÉRMINOS (FIXED + GRANDE) --- */
@@ -506,7 +498,7 @@ const text = t[lang as keyof typeof t];
     .terms-modal-content {
         position: relative;
         z-index: 1000000;
-        background: #151515;
+        background: var(--color-bg-card);
         width: 100%;
         max-width: 800px;
         max-height: 85vh;
@@ -514,32 +506,32 @@ const text = t[lang as keyof typeof t];
         border: 1px solid var(--color-gold);
         display: flex;
         flex-direction: column;
-        box-shadow: 0 0 60px rgba(0,0,0,0.9);
+        box-shadow: 0 0 60px var(--color-backdrop);
     }
 
     .terms-header {
         padding: 1.5rem 2rem;
-        background: #1e1e1e;
+        background: var(--color-bg-card);
         border-radius: 12px 12px 0 0;
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid var(--color-border);
     }
     .terms-header h3 { margin: 0; color: var(--color-gold); font-family: var(--font-heading); font-size: 1.8rem;}
-    .terms-header p { margin: 5px 0 0; font-size: 0.95rem; color: #aaa; }
+    .terms-header p { margin: 5px 0 0; font-size: 0.95rem; color: var(--color-text-secondary); }
 
     .terms-body {
         padding: 2rem;
         overflow-y: auto;
-        color: #d0d0d0;
+        color: var(--color-text-primary);
         line-height: 1.7;
     }
 
-    .terms-intro-text { font-size: 1rem; margin-bottom: 2rem; font-style: italic; color: #ccc; }
+    .terms-intro-text { font-size: 1rem; margin-bottom: 2rem; font-style: italic; color: var(--color-text-secondary); }
 
     .terms-section { margin-bottom: 2rem; }
     .terms-section:last-child { margin-bottom: 0; }
     
     .terms-section h4 {
-        color: #fff;
+        color: var(--color-text-primary);
         font-size: 1.1rem;
         margin-bottom: 0.8rem;
         border-bottom: 1px dashed #444;
@@ -552,22 +544,22 @@ const text = t[lang as keyof typeof t];
     
     .terms-section ul { padding-left: 1.2rem; font-size: 0.95rem; }
     .terms-section li { margin-bottom: 0.5rem; }
-    .terms-section strong { color: #fff; }
+    .terms-section strong { color: var(--color-text-primary); }
 
     .terms-legal { 
         margin-top: 2rem; 
         padding-top: 1rem; 
-        border-top: 1px solid #333; 
+        border-top: 1px solid var(--color-border); 
         font-size: 0.85rem; 
-        color: #777; 
+        color: var(--color-text-secondary); 
         text-align: center; 
     }
 
     .terms-footer {
         padding: 1.2rem;
         text-align: center;
-        border-top: 1px solid #333;
-        background: #1e1e1e;
+        border-top: 1px solid var(--color-border);
+        background: var(--color-bg-card);
         border-radius: 0 0 12px 12px;
     }
 
@@ -577,7 +569,7 @@ const text = t[lang as keyof typeof t];
         right: 20px;
         background: none;
         border: none;
-        color: #fff;
+        color: var(--color-text-primary);
         font-size: 2.5rem;
         cursor: pointer;
         line-height: 1;
@@ -587,7 +579,7 @@ const text = t[lang as keyof typeof t];
 
     .btn-accept {
         background: var(--color-gold);
-        color: #000;
+        color: var(--color-bg-card);
         border: none;
         padding: 0.8rem 3rem;
         border-radius: 30px;
@@ -598,7 +590,7 @@ const text = t[lang as keyof typeof t];
         letter-spacing: 1px;
         font-size: 0.9rem;
     }
-    .btn-accept:hover { background: #fff; transform: scale(1.02); }
+    .btn-accept:hover { background: var(--color-text-primary); transform: scale(1.02); }
 
     /* --- RESPONSIVE --- */
     @media (min-width: 768px) {

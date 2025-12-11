@@ -1,13 +1,3 @@
-:root {
-    --color-gold: #fc7548;
-    --color-bg: #24211f;     /* Caviar (Fondo principal) */
-    --color-bg-alt: #2b2625;
-    --color-text-primary: #FAF3E1;
-    --color-text-secondary: #a8a4a0;
-    --color-border: #333;
-    --font-heading: "Playfair Display", serif;
-    --font-body: "Rethink Sans", sans-serif;
-}
 
 [x-cloak] {
     display: none !important;
@@ -26,14 +16,6 @@
 
 html {
     scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family: var(--font-body);
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    line-height: 1.7;
 }
 
 /* --- Hero --- */
@@ -85,7 +67,7 @@ body {
 }
 
 .hero-content {
-    color: #fff;
+    color: var(--color-text-primary);
     max-width: 750px;
     padding: 0 1rem;
     animation: fadeUp 1.2s 0.5s ease forwards;
@@ -96,7 +78,7 @@ body {
 .dynamic-text {
     font-family: var(--font-heading);
     font-weight: 600;
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: clamp(3rem, 6vw, 5rem);
     line-height: 1.1;
     margin-bottom: 1rem;
@@ -143,7 +125,7 @@ body {
     font-family: var(--font-body);
     display: inline-block;
     background: var(--color-gold);
-    color: #000;
+    color: var(--color-bg-card);
     padding: 0.8rem 2.2rem;
     border-radius: 5px;
     text-decoration: none;
@@ -166,7 +148,7 @@ body {
 
 .btn.btn-secondary:hover {
     background-color: var(--color-gold);
-    color: #111;
+    color: var(--color-bg-card);
     border-color: var(--color-gold);
 }
 
@@ -201,7 +183,7 @@ body {
 
 .section-subtitle {
     font-size: 1.15rem;
-    color: #b0b0b0;
+    color: var(--color-text-primary);
     line-height: 1.7;
 }
 
@@ -232,7 +214,7 @@ body {
 .service-item span {
     display: block;
     font-size: 1rem;
-    color: #ccc;
+    color: var(-color-text-primary);
 }
 
 /*About*/
@@ -250,7 +232,7 @@ body {
     padding: 0.8rem 1rem;
     border-bottom: 1px solid var(--color-border);
     font-size: 0.9rem;
-    color: #ddd;
+    color: var(--color-text-primary);
 }
 
 .time-item {
@@ -264,7 +246,7 @@ body {
 }
 
 .time-item strong {
-    color: #fff;
+    color: var(--color-text-primary);
     margin-right: 3px;
 }
 
@@ -343,13 +325,13 @@ body {
 }
 
 .value-text strong {
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 0.95rem;
     margin-bottom: 2px;
 }
 
 .value-text span {
-    color: #aaa;
+    color: var(--color-text-secondary);
     font-size: 0.85rem;
     line-height: 1.2;
 }
@@ -358,7 +340,7 @@ body {
 .services-label {
     font-size: 0.9rem;
     text-transform: uppercase;
-    color: #888;
+    color: var(--color-text-secondary);
     margin-bottom: 1rem;
     letter-spacing: 1px;
 }
@@ -375,7 +357,7 @@ body {
     padding: 0.5rem 1rem;
     border-radius: 50px;
     font-size: 0.9rem;
-    color: #ccc;
+    color: var(--color-text-primary);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -385,7 +367,7 @@ body {
 .service-pill i { color: var(--color-gold); }
 .service-pill:hover {
     border-color: var(--color-gold);
-    color: #fff;
+    color: var(--color-text-primary);
     transform: translateY(-2px);
 }
 
@@ -427,14 +409,14 @@ body {
 }
 
 .contact-data-item strong {
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 0.9rem;
     margin-bottom: 2px;
 }
 
 .contact-data-item span, 
 .contact-data-item a {
-    color: #aaa;
+    color: var(--color-text-secondary);
     font-size: 0.95rem;
     text-decoration: none;
     transition: color 0.3s;
@@ -445,7 +427,7 @@ body {
 .map-frame-integrated {
     width: 100%;
     height: 300px; /* Altura fija suficiente para ver el contexto */
-    background: #222;
+    background: var(--color-bg-alt);
 }
 
 /* Responsive */
@@ -491,12 +473,12 @@ body {
 }
 
 .room-card {
-    background: #25201e;
+    background: var(--color-bg-card);
     border-radius: 8px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: 1px solid #222;
+    border: 1px solid var(--color-bg-alt);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -527,7 +509,7 @@ body {
 
 .room-card-body p {
     font-size: 1rem;
-    color: #b0b0b0;
+    color: var(--color-text-secondary);
     margin-bottom: 1.5rem;
     flex-grow: 1;
 }
@@ -536,7 +518,7 @@ body {
     display: flex;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
-    color: #ccc;
+    color: var(--color-text-primary);
 }
 
 .room-amenities i {
@@ -588,7 +570,7 @@ body {
 }
 
 .offer-card-compact {
-    background: #1a1817; /* Fondo un poco más claro que el negro puro */
+    background: var(--color-bg-card); /* Fondo un poco más claro que el negro puro */
     border: 1px solid #333;
     border-radius: 8px;
     overflow: hidden;
@@ -623,7 +605,7 @@ body {
     top: 10px;
     left: 10px;
     background: var(--color-gold);
-    color: #000;
+    color: var(--color-bg-card);
     font-weight: bold;
     font-size: 0.75rem;
     padding: 2px 6px;
@@ -647,7 +629,7 @@ body {
 
 .offer-content-compact p {
     font-size: 0.85rem;
-    color: #bbb;
+    color: var(--color-text-secondary);
     line-height: 1.4;
     margin-bottom: 0.5rem;
 }
@@ -660,7 +642,7 @@ body {
 .offer-meta i { color: var(--color-gold); margin-right: 4px; }
 
 .btn-link {
-    color: #fff;
+    color: var(--color-text-primary);
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: bold;
@@ -723,7 +705,7 @@ body {
 .score-verdict {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #fff;
+    color: var(--color-text-primary);
 }
 .score-count {
     font-size: 0.8rem;
@@ -740,7 +722,7 @@ body {
     padding: 0.4rem 0.8rem;
     border-radius: 20px;
     font-size: 0.9rem;
-    color: #ddd;
+    color: var(--color-text-primary);
     display: flex;
     align-items: center;
     gap: 6px;
@@ -757,13 +739,13 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 0.85rem;
-    color: #aaa;
+    color: var(--color-text-secondary);
     min-width: 140px;
     border-bottom: 1px solid #333; /* Línea sutil debajo */
     padding-bottom: 2px;
 }
 .cat-badge strong {
-    color: #fff;
+    color: var(--color-text-primary);
 }
 
 /* --- RESPONSIVE MÓVIL --- */
@@ -842,7 +824,7 @@ body {
 
 .review-card {
     background: var(--color-bg); /* Fondo oscuro base */
-    border: 1px solid #222;
+    border: 1px solid var(--color-bg-alt);
     padding: 2rem;
     border-radius: 12px;
     
@@ -872,7 +854,7 @@ body {
 .review-author {
     font-weight: bold;
     font-size: 1.1rem;
-    color: #fff;
+    color: var(--color-text-primary);
 }
 
 .review-rating {
@@ -891,7 +873,7 @@ body {
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     
-    color: #b0b0b0;
+    color: var(--color-text-secondary);
     font-style: italic;
     line-height: 1.6;
     margin: 0; /* Quitamos margen para que flex-gap o justify manejen el espacio */
@@ -947,7 +929,7 @@ body {
 
 .carousel-btn:hover {
     background-color: var(--color-gold);
-    color: #111;
+    color: var(--color-bg-card);
 }
 
 .prev-btn {
@@ -1068,7 +1050,7 @@ body {
 }
 .nav-circle-btn:hover {
     background: var(--color-gold);
-    color: #000;
+    color: var(--color-bg-card);
 }
 
 /* Track del Carrusel */
@@ -1143,7 +1125,7 @@ body {
 
 .badge-duration {
     background: rgba(0,0,0,0.8);
-    color: #fff;
+    color: var(--color-text-primary);
     padding: 3px 8px;
     border-radius: 4px;
     font-size: 0.75rem;
@@ -1175,7 +1157,7 @@ body {
 
 .tour-schedule {
     font-size: 0.85rem;
-    color: #fff;
+    color: var(--color-text-primary);
     margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
@@ -1215,7 +1197,7 @@ body {
     margin: 0 0 0.5rem 0;
     font-size: 0.8rem;
     text-transform: uppercase;
-    color: #aaa;
+    color: var(--color-text-secondary);
     letter-spacing: 0.5px;
 }
 
@@ -1224,7 +1206,7 @@ body {
     padding: 0;
     margin: 0 0 0.8rem 0;
     font-size: 0.80rem;
-    color: #ccc;
+    color: var(--color-text-primary);
 }
 
 .tour-includes-list li {
@@ -1241,12 +1223,12 @@ body {
 
 .tour-extra-info {
     font-size: 0.8rem;
-    color: #e0e0e0;
+    color: var(--color-text-primary);
     padding-top: 0.5rem;
     border-top: 1px dashed #444;
     margin-top: auto;
 }
-.tour-extra-info i { margin-right: 4px; color: #aaa; }
+.tour-extra-info i { margin-right: 4px; color: var(--color-text-secondary); }
 
 /* Botón */
 .btn-tour-outline {
@@ -1254,7 +1236,7 @@ body {
     display: block;
     text-align: center;
     border: 1px solid var(--color-border);
-    color: #fff;
+    color: var(--color-text-primary);
     padding: 0.6rem;
     border-radius: 6px;
     text-decoration: none;
@@ -1265,7 +1247,7 @@ body {
 
 .btn-tour-outline:hover {
     background: var(--color-gold);
-    color: #000;
+    color: var(--color-bg-card);
     border-color: var(--color-gold);
 }
 
@@ -1385,7 +1367,7 @@ body {
 }
 
 .masonry-overlay i {
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 1.5rem;
     background: rgba(197, 164, 126, 0.9);
     width: 50px;
@@ -1442,7 +1424,7 @@ body {
 
 .lightbox-caption {
     margin-top: 1rem;
-    color: #ccc;
+    color: var(--color-text-primary);
     font-family: var(--font-body);
     font-size: 1.1rem;
     text-align: center;
@@ -1456,7 +1438,7 @@ body {
     right: 30px;
     background: transparent;
     border: none;
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 3.5rem;
     line-height: 0.5;
     cursor: pointer;
@@ -1471,7 +1453,7 @@ body {
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
+    color: var(--color-text-primary);
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -1486,7 +1468,7 @@ body {
 
 .lightbox-nav-btn:hover {
     background: var(--color-gold);
-    color: #000;
+    color: var(--color-bg-card);
     border-color: var(--color-gold);
 }
 
@@ -1565,10 +1547,10 @@ body {
 .contact-form textarea {
     width: 100%;
     padding: 1rem;
-    background: #1a1817;
+    background: var(--color-bg-card);
     border: 1px solid #333;
     border-radius: 5px;
-    color: #fff;
+    color: var(--color-text-primary);
     font-family: var(--font-body);
     font-size: 1rem;
     transition: border-color 0.3s ease;
@@ -1605,13 +1587,13 @@ body {
 
 .contact-info-item h4 {
     margin: 0 0 0.3rem;
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 1.1rem;
 }
 
 .contact-info-item p {
     margin: 0;
-    color: #b0b0b0;
+    color: var(--color-text-secondary);
 }
 
 .contact-map {
@@ -1934,7 +1916,7 @@ body {
 .room-nav-btn:hover,
 .room-nav-btn.active {
     background: var(--color-gold);
-    color: #000;
+    color: var(--color-bg-card);
     border-color: var(--color-gold);
     font-weight: bold;
 }
@@ -1944,9 +1926,9 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    background: #111;
+    background: var(--color-bg-card);
     /* Fondo oscuro para resaltar */
-    border: 1px solid #222;
+    border: 1px solid var(--color-bg-alt);
     padding: 2rem;
     border-radius: 12px;
     animation: fadeIn 0.5s ease;
@@ -1996,7 +1978,7 @@ body {
 
 .slider-btn:hover {
     background: var(--color-gold);
-    color: #000;
+    color: var(--color-bg-card);
 }
 
 /* TRACK PRINCIPAL (El carrusel en sí) */
@@ -2022,8 +2004,8 @@ body {
     flex: 0 0 320px;
     /* Ancho fijo para desktop */
     min-width: 300px;
-    background: #1a1817;
-    border: 1px solid #222;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-bg-alt);
     border-radius: 12px;
     overflow: hidden;
     scroll-snap-align: start;
@@ -2045,7 +2027,7 @@ body {
     height: 200px;
     /* Altura compacta */
     width: 100%;
-    background: #000;
+    background: var(--color-bg-card);
     overflow: hidden;
 }
 
@@ -2077,7 +2059,7 @@ body {
     top: 10px;
     left: 10px;
     background: rgba(0, 0, 0, 0.7);
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 0.75rem;
     padding: 2px 8px;
     border-radius: 4px;
@@ -2109,7 +2091,7 @@ body {
 
 .compact-img-controls button:hover {
     background: var(--color-gold);
-    color: #000;
+    color: var(--color-bg-card);
 }
 
 /* Contenido de Texto */
@@ -2170,7 +2152,7 @@ body {
 
 .price-old {
     font-size: 0.85rem;
-    color: #777;
+    color: var(--color-text-secondary);
     text-decoration: line-through; /* Efecto tachado */
 }
 
@@ -2182,7 +2164,7 @@ body {
 
 .price-secondary-row {
     font-size: 0.9rem;
-    color: #aaa;
+    color: var(--color-text-secondary);
     display: flex;
     gap: 4px;
     align-items: center;
@@ -2192,14 +2174,14 @@ body {
     display: block;
     font-size: 1.4rem; /* Más grande para destacar */
     font-weight: 700;
-    color: #fff;
+    color: var(--color-text-primary);
     margin-top: 2px;
 }
 
 .amount-pen {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--color-text-primary);
 }
 
 .amount-pen.offer-highlight {
@@ -2208,13 +2190,13 @@ body {
 
 .amount-usd {
     font-size: 1rem; /* Un poco más pequeño que los soles */
-    color: #ccc;
+    color: var(--color-text-primary);
     font-weight: 400;
 }
 
 .period {
     font-size: 0.75rem;
-    color: #666;
+    color: var(--color-text-secondary);
     margin-top: 2px;
 }
 
@@ -2222,7 +2204,7 @@ body {
     display: block;
     font-size: 1.2rem;
     font-weight: bold;
-    color: #fff;
+    color: var(--color-text-primary);
 }
 
 .amount.offer-highlight {
@@ -2232,13 +2214,13 @@ body {
 .compact-price .amount-usd {
     font-size: 0.95rem;     
     font-weight: 400;
-    color: #aaa;
+    color: var(--color-text-secondary);
 }
 
 .save-badge {
     font-size: 0.7rem;
     background: #27ae60; /* Verde éxito */
-    color: white;
+    color: var(--color-text-primary);
     padding: 2px 6px;
     border-radius: 4px;
     font-weight: bold;
@@ -2266,7 +2248,7 @@ body {
     gap: 1rem;
     margin-bottom: 1.5rem;
     font-size: 0.85rem;
-    color: #ccc;
+    color: var(--color-text-primary);
 }
 
 .compact-features i {
@@ -2282,7 +2264,7 @@ body {
 
     /* Estilo Sólido (tomado de referencia navbar) */
     background: var(--color-gold);
-    color: #000;
+    color: var(--color-bg-card);
     /* Texto negro para contraste */
     border: 1px solid var(--color-gold);
 
@@ -2302,10 +2284,10 @@ body {
 }
 
 .btn-compact:hover {
-    background: #fff;
+    background: var(--color-text-primary);
     /* Invertir a blanco al pasar el mouse */
     color: var(--color-gold);
-    border-color: #fff;
+    border-color: var(--color-text-primary);
     transform: translateY(-2px);
     animation: none;
     /* Pausar pulso al hacer hover */
@@ -2397,7 +2379,7 @@ body {
     right: 0;
     background: transparent;
     border: none;
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 2rem;
     cursor: pointer;
     line-height: 1;
