@@ -8,6 +8,8 @@ export default defineConfig({
   
   // 2. Carpeta del repositorio
   base: "/",
+
+  trailingSlash: 'always',
   
   outDir: "dist",
 
