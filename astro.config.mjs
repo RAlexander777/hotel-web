@@ -4,7 +4,7 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   // 1. Dominio 
-  site: "https://www.hostalacuariuspuno.com", 
+  site: "https://hostalacuariuspuno.com", 
   
   // 2. Carpeta del repositorio
   base: "/",
