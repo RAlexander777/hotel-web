@@ -432,7 +432,7 @@ const storyImageUrls = storyImagesOptimized.map(img => img.src);
 
 ---
 
-<Layout title="Hostal Acuarius · Home" isIndexPage={true} lang="en">
+<Layout title="Hostal Acuarius Puno" isIndexPage={true} lang="en">
     <section class="hero" x-data={`{ images: ${JSON.stringify(heroImageUrls)}, current: 0, init() { setInterval(() => { this.current = (this.current + 1) % this.images.length; }, 5000); } }`}>
         <template x-for="(img, index) in images" :key="index">
             <div class="hero-slide" :class="{ 'active': current === index }" :style="`background-image: url(${img});`"></div>
