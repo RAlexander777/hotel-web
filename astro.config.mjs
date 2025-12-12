@@ -13,7 +13,7 @@ export default defineConfig({
   
   outDir: "dist",
 
-  // 3. CONFIGURACIÓN DE IDIOMAS
+  // 3. IDIOMAS
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],
