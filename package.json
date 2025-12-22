@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@keystatic/astro": "^5.0.6",
+    "@keystatic/core": "^0.5.48",
     "@tailwindcss/vite": "^4.1.13",
     "alpinejs": "^3.15.0",
     "astro": "^5.13.9",

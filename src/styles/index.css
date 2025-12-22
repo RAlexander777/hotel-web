@@ -371,6 +371,20 @@ html {
     transform: translateY(-2px);
 }
 
+/* Diferenciador visual para servicios extra */
+.service-pill.pill-extra {
+    border-color: var(--color-gold); /* Borde dorado */
+    background: var(--color-text-card); 
+}
+
+.service-pill.pill-extra:hover {
+    background: var(--color-gold);
+    color: var(--color-bg-alt);
+}
+.service-pill.pill-extra:hover i {
+    color: var(--color-bg-alt) !important;
+}
+
 /* Columna Derecha (Contacto + Mapa) */
 .contact-card-integrated {
     background: var(--color-bg-alt);
