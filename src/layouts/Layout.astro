@@ -164,7 +164,6 @@ const carouselItems = [...reviews, ...photoItems];
         </a>
 
         <script is:inline define:vars={{ carouselItems }}>
-            // ... (Tu script del carrusel se mantiene igual) ...
             document.addEventListener("alpine:init", () => {
                 Alpine.data("carousel", () => ({
                     items: carouselItems,
