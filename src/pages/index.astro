@@ -25,7 +25,7 @@ const target = `${finalBase}/es/`;
             height: 100vh;
             width: 100vw;
             overflow: hidden; 
-            background-color: #24211f; /* Tu color oscuro corporativo */
+            background-color: #24211f;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,7 +37,6 @@ const target = `${finalBase}/es/`;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* Animación de salida suave al final */
             animation: fadeOut 0.5s ease-in-out 1.5s forwards; 
         }
 
@@ -72,7 +71,6 @@ const target = `${finalBase}/es/`;
     </div>
 
     <script define:vars={{ target }}>
-        // Esperamos 1.6 segundos (para ver el logo) y redirigimos
         setTimeout(() => {
             window.location.href = target;
         }, 1600);
